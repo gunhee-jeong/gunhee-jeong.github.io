@@ -40,7 +40,7 @@
         <span class="nav__sub-title">Coding Test</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "프로그래머스" %}
+                    {% if category[0] == "programmers" %}
                         <li><a href="/categories/programmers" class="">프로그래머스 문제풀이 (with C++) ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
