@@ -20,7 +20,7 @@ title: "gunhee's coding blog"
 title_separator: "|"
 subtitle: "꾸준히, 하루 한 줄"
 name: "gunhee Jeong"
-description: "gunhee's blog"
+description: "평생 공부"
 url: "https://gunhee-jeong.github.io"
 baseurl: # the subpath of your site, e.g. "/blog"
 repository: # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -103,7 +103,7 @@ analytics:
 author:
   name: "gunhee"
   avatar: # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio: "탐구하는 개발자 gunhee's coding blog"
+  bio: "탐구하는 개발자"
   location: "South Korea"
   email:
   links:
@@ -229,16 +229,16 @@ tag_archive:
   type: liquid
   path: /tags/
 # https://github.com/jekyll/jekyll-archives
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-  layouts:
-    category: archive-taxonomy
-    tag: archive-taxonomy
-  permalinks:
-    category: /categories/:name/
-    tag: /tags/:name/
+# jekyll-archives:
+#   enabled:
+#     - categories
+#     - tags
+#   layouts:
+#     category: archive-taxonomy
+#     tag: archive-taxonomy
+#   permalinks:
+#     category: /categories/:name/
+#     tag: /tags/:name/
 
 # HTML Compression
 # - https://jch.penibelst.de/
@@ -260,6 +260,7 @@ defaults:
       comments: true
       share: true
       related: true
-      show_date: true
+      mathjax: true
+      sidebar_main: true
 
 date_format: "%Y-%m-%d"
