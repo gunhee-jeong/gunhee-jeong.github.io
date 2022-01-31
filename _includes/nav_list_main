@@ -63,8 +63,8 @@
         <span class="nav__sub-title">etc</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Git" %}
-                        <li><a href="/categories/github" class="">Git % Github ({{category[1].size}})</a></li>
+                    {% if category[0] == "Github" %}
+                        <li><a href="/categories/github" class="">Github ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
