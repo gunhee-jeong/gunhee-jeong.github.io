@@ -29,32 +29,27 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
   console.log(sliceCityFromAddress(address));
   ```
 
-```javascript
-let address = "경기도 성남시 분당구 중앙공원로 53";
+# 문제풀이
 
-function sliceCityFromAddress(address) {
-  // your code her
+- 나의 코드
 
-  const words = address.split(" ");
-  console.log(words); //output == ['경기도', '성남시', '분당구', '중앙공원로', '53']
+  ```javascript
+  const address = "경기도 성남시 분당구 중앙공원로 53";
 
-  for (let i = 0; i < words.length; i++) {
-    const wordLength = words[i].length; //word[0]은 '경기도'로 3이라는 length를 가짐
-    if (words[i][wordLength - 1] === "시") {
-      //word[0][3 - 1]은 '도'로 if문의 조건식은 false
-      words.splice(i, 1); //words의 1번 index인 '성남시'가
-      break;
-    }
+  function sliceCityFromAddress(address) {
+    return address
+      .split(" ")
+      .filter((x) => (x[2] == "시" ? false : true))
+      .join(" ");
   }
 
-  return words.join(" "); //output == 경기도 분당구 중앙공원로 53
+  console.log(sliceCityFromAddress(address));
+  ```
 
-  // console.log(words.join(' '))
-  // return words.join('')
-}
-
-console.log(sliceCityFromAddress(address));
-```
+  - address의 String을 ['경기도', '성남시', '분당구', '중앙공원로', '53']의 **array 형태로** 바꾸기 위해서 <span style="color:red">split(" ")</span>을 사용함
+  - ['경기도', '성남시', '분당구', '중앙공원로', '53']<span style="color:red">.filter</span>를 사용하였고 <u>x의 2번 index</u>에 **'시'가 있다면 false를 전달**하는 방식으로  
+    '성남시'를 제거하여 ['경기도', '분당구', '중앙공원로', '53']이 반환되도록 만들었다!
+  - 마지막으로 ['경기도', '분당구', '중앙공원로', '53']<span style="color:red">.join(' ')</span>를 사용하여 정답인 '경기도 분당구 중앙공원로 53'를 완성했다!
 
 <!-- ### 2. Link 넣기
 
