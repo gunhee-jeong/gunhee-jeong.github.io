@@ -3,7 +3,7 @@ layout: single
 title: "commit test중"
 # categories: Git
 categories:
-  - weCode # HTML CSS JavaScript Server Algorithm weCode Programmers CS Github Blog
+  - Algorithm # HTML CSS JavaScript Server Algorithm weCode Programmers CS Github Blog
 tag: [blog, coding, git] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
