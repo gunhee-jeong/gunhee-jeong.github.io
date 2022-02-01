@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "원치않는 주소 제거하기"
+title: "wecodeTest"
 # categories: Git
 categories:
   - wecode # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
