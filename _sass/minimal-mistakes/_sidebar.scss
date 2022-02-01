@@ -125,8 +125,8 @@
   //프로필 사진의 디자인 수정
   display: table-cell;
   vertical-align: top;
-  width: 50px; //36px;
-  height: 50px; //36px;
+  width: 36px; //50px;
+  height: 36px; //50px;
 
   @include breakpoint($large) {
     display: block;
@@ -135,7 +135,7 @@
   }
 
   img {
-    max-width: 150px; //110px;
+    max-width: 175px; //110px;
     border-radius: 40%;
 
     @include breakpoint($large) {
