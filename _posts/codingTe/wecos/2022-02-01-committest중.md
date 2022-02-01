@@ -1,75 +1,20 @@
 ---
 layout: single
-title: "배열 join과 split"
-categories: JavaScript
-tag: [blog, coding, JavaScript, front-end, front, array] #tag는 여러개 가능함
+title: "commit test중"
+# categories: Git
 categories:
-  - JavaScript # CSS HTML JavaScript React programmers CS Git vsCode Blog
+  - Wecode # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
+tag: [blog, coding, git] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
 # sidebar:
-  # nav: "docs" #네비게이션에 있는 docs를 의미함
+# nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# join
+# 문제설명
 
-> oin(separator?: string): string;
-> Adds all the elements of an array into a string, separated by the specified separator string.
-> (배열의 모든 요소를 지정된 구분 기호 문자열로 구분하여 문자열에 추가합니다.)
-> @param separator A string used to separate one element of the array from the next in the resulting string.  
-> If omitted, the array elements are separated with a comma
-
-- <u>array를</u> <span style="color:red">문자열로 만들고</span> 이를 반환한다(array -> string)
-
-  ```javascript
-  const fruits = ["apple", "banana", "orange"];
-  console.log(fruits.join("")); //output == applebananaorange
-
-  const result = fruits.join("*");
-  console.log(result); //output == "apple*banana*orange"
-  ```
-
-  **join**을 사용하면 이렇게 <u>array로 반환되는 것이 아니라</u>, <span style="color:red">String 타입</span>으로 결과물이 반환된다!!
-
-# split
-
-> Split a string into substrings using the specified separator and return them as an array.
-> (지정된 구분 기호를 사용하여 문자열을 부분 문자열로 분할하고 배열로 반환합니다.)
-> @param splitter An object that can split a string.
-
-- **split**는 <span style="color:red">String을 array로</span> 만드는 것으로 join과 split는 반대적인 개념이다
-- 문자열이 하나로 연결된 <span style="color:red">'문자열'</span> 형태라면 *.split("")*를 사용해서 **['문', '자', '열']**로 만들 수 있음
-
-  - 문자열이 <span style="color:red">'문, 자, 열'</span>의 형태라면 *.split(",")*를 사용해서 **['문', '자', '열']**로 만들 수 있음
-
-  ```javascript
-  const numbers = "1234";
-  console.log(numbers.split("")); //output == ['1', '2', '3', '4']
-
-  //예시
-  const fruits = "🍎, 🥝, 🍌, 🍒";
-
-  console.log(fruits.split(",")); //output == ['🍎', ' 🥝', ' 🍌', ' 🍒']
-
-  const result = fruits.split(",", 2);
-  console.log(result); //output == ["🍎", " 🥝"]
-
-  const result = fruits.split(",", 3);
-  console.log(result); //output == ["🍎", " 🥝", "🍌"]
-  ```
-
-- <u>지정된 구분 기호나 문자를 입력</u>하면, <span style="color:red">해당하는 문자열은 제거하고 분할</span>하여 **배열로 반환**한다!
-
-  ```javascript
-  const fruits = "one4seveneight";
-  let arr = fruits.split("seven");
-  console.log(arr); //output == ['one4', 'eight']
-
-  const fruits = "one4seveneight";
-  let arr = fruits.split("one");
-  console.log(arr); //output == [ '', '4seveneight' ]
-  ```
+# 문제풀이
 
 <!-- ### 2. Link 넣기
 

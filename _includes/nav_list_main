@@ -1,87 +1,98 @@
+<!--전체 글 수를 세기 위한 연산. sum 변수에 전체 글 수 저장-->
+
 {% assign sum = site.posts | size %}
 
 <nav class="nav__list">
   <input id="ac-toc" name="accordion-toc" type="checkbox" />
   <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label }}</label>
   <ul class="nav__items" id="category_tag_menu">
+      <!--전체 글 수-->
       <li>
             📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">{{sum}}</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
       </li>
       <li>
+        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
         <span class="nav__sub-title">Front-end</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                {% for category in site.categories %}
+                    {% if category[0] == "HTML" %}
+                        <li><a href="/categories/html" class="">HTML ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "CSS" %} <!--post.md 매번 지정하는 카테고리를 결정하는 변수-->
+                    {% if category[0] == "CSS" %}
                         <li><a href="/categories/css" class="">CSS ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "HTML" %} <!--post.md 매번 지정하는 카테고리를 결정하는 변수-->
-                        <li><a href="/categories/html" class="">HTML ({{category[1].size}})</a></li>
+                    {% if category[0] == "JavaScript" %}
+                        <li><a href="/categories/javascript" class="">JavaScript ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">Back-end</span>
+            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+            <ul>
+                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
+                {% for category in site.categories %}
+                    {% if category[0] == "Server" %}
+                        <li><a href="/categories/server" class="">Server ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>   
+        <span class="nav__sub-title">Coding Test</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Algorithm" %}
+                        <li><a href="/categories/algorithm" class="">Algorithm (with C++) ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "JavaScript" %} <!--post.md 매번 지정하는 카테고리를 결정하는 변수-->
-                      <li><a href="/categories/javascript" class="">JavaScript ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
-            </ul>
-            <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "React" %} <!--post.md 매번 지정하는 카테고리를 결정하는 변수-->
-                      <li><a href="/categories/react" class="">React ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
-            </ul>
-        <span class="nav__sub-title">Coding Test</span>
-            <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "Wecode" %} <!--post.md 매번 지정하는 카테고리를 결정하는 변수-->
-                      <li><a href="/categories/wecode" class="">위코드 문제풀이 ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
+                {% for category in site.categories %}
+                    {% if category[0] == "Wecode" %}
+                        <li><a href="/categories/wecode" class="">Wecode ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Programmers" %} <!--post.md 매번 지정하는 카테고리를 결정하는 변수-->
-                        <li><a href="/categories/programmers" class="">프로그래머스 문제풀이 ({{category[1].size}})</a></li>
+                    {% if category[0] == "Programmers" %}
+                        <li><a href="/categories/programmers" class="">Programmers ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
         <span class="nav__sub-title">Computer Science</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "CS" %} <!--post.md 매번 지정하는 카테고리를 결정하는 변수-->
+                    {% if category[0] == "CS" %}
                         <li><a href="/categories/cs" class="">CS ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
-            </ul>    
+            </ul>
         <span class="nav__sub-title">etc</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Github" %} <!--post.md 매번 지정하는 카테고리를 결정하는 변수-->
+                    {% if category[0] == "Github" %}
                         <li><a href="/categories/github" class="">Github ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "vsCode" %} <!--post.md 매번 지정하는 카테고리를 결정하는 변수-->
-                        <li><a href="/categories/vs" class="">비주얼 스튜디오 ({{category[1].size}})</a></li>
+                    {% if category[0] == "Blog" %}
+                        <li><a href="/categories/blog" class="">Blog ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
-            </ul>   
-            <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "Blog" %} <!--post.md 매번 지정하는 카테고리를 결정하는 변수-->
-                      <li><a href="/categories/blog" class="">blog ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
-            </ul> 
+            </ul>
       </li>
   </ul>
 </nav>

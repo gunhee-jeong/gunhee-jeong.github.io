@@ -1,7 +1,7 @@
 ---
-title: "blog" #왼쪽 사이드바에 나타나는 글씨
+title: "Blog"
 layout: archive
-permalink: categories/blog #9번 라인의 이름과 통일시켜야함 -> nav_list_main 수정해야함
+permalink: categories/blog
 author_profile: true
 sidebar_main: true
 ---

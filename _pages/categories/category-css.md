@@ -1,7 +1,7 @@
 ---
-title: "CSS" #왼쪽 사이드바에 나타나는 글씨
+title: "CSS"
 layout: archive
-permalink: categories/css #9번 라인에도 변수 있음 -> nav_list_main 수정해야함
+permalink: categories/css
 author_profile: true
 sidebar_main: true
 ---

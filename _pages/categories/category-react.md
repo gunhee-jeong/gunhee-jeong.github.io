@@ -1,7 +1,7 @@
 ---
 title: "React"
 layout: archive
-permalink: categories/react #9번 라인의 이름과 통일시켜야함 -> nav_list_main 수정해야함
+permalink: categories/react
 author_profile: true
 sidebar_main: true
 ---
