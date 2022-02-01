@@ -1,5 +1,5 @@
 ---
-title: "wecode"
+title: "wecode 문제풀이"
 layout: archive
 permalink: categories/wecode
 author_profile: true
