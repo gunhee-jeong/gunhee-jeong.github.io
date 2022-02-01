@@ -58,17 +58,10 @@
             </ul>
             <ul>
               {% for category in site.categories %}
-                  {% if category[0] == "Wecodes" %}
-                      <li><a href="/categories/wecodes" class="">wecodes ({{category[1].size}})</a></li>
+                  {% if category[0] == "wecodes" %}
+                      <li><a href="/categories/wecodes" class="">wecode ({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "wecode" %}
-                        <li><a href="/categories/wecode" class="">wecode ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
