@@ -192,9 +192,9 @@ sass:
 
 # Outputting
 permalink: /:categories/:title/
-paginate: 10 # amount of posts to show 몇 개까지 블로그 글을 노출할 것인가?
+paginate: 5 # amount of posts to show
 paginate_path: /page:num/
-timezone: Asia/Seoul
+timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 # Plugins (previously gems:)
 plugins:
@@ -262,5 +262,4 @@ defaults:
       related: true
       mathjax: true
       sidebar_main: true
-
-date_format: "%Y-%m-%d"
+# date_format: "%Y-%m-%d"
