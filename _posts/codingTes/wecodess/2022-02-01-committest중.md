@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "원치않는 위코드 제거"
+title: "commit test중"
 # categories: Git
 categories:
-  - Server # HTML CSS JavaScript Server Algorithm weCode Programmers CS Github Blog
-tag: [blog, coding, wecode, javascript] #tag는 여러개 가능함
+  - Wecodes # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [blog, coding, git] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
