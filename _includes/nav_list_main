@@ -48,8 +48,7 @@
             <ul>
               {% for category in site.categories %}
                   {% if category[0] == "Wecode" %} <!--post.md 매번 지정하는 카테고리를 결정하는 변수-->
-                      <li><a href="/categories/wecode" class="">wecode 문제풀이 ({{category[1].size}})</a></li> 
-                      <!--파일이름으로 설정 -> 사이드바에 보이는 제목-->
+                      <li><a href="/categories/wecode" class="">Wecode ({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
             </ul>

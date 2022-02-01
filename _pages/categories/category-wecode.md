@@ -1,8 +1,8 @@
 ---
-title: "wecode 문제풀이" #사이드바 클릭시 메인으로 들어가서 보이는 제목
+title: "Wecode" #왼쪽 사이드바에 나타나는 글씨
 layout: archive
-permalink: categories/wecode #_pages > categories 파일이름으로 설정
-author_profile: true #9번 라인의 변수와, includes > nav_list_main의 post.md를 지정하는 변수가 같아야함
+permalink: categories/wecode #9번 라인에도 변수 있음 -> nav_list_main 수정해야함
+author_profile: true
 sidebar_main: true
 ---
 
