@@ -3,7 +3,7 @@ layout: single
 title: "wecodeTest"
 # categories: Git
 categories:
-  - wecode # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+  - wecodes # HTML CSS JavaScript Server Algorithm wecodes Programmers CS Github Blog
 tag: [blog, coding, javascript, coding test] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
