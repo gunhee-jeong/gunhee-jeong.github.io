@@ -28,6 +28,9 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 
   const result = fruits.join("*");
   console.log(result); //output == "apple*banana*orange"
+
+  const adress = ["경기도", "분당구", "중앙공원로", "53"];
+  console.log(adress.join(" ")); //output == "경기도 분당구 중앙공원로 53"
   ```
 
   **join**을 사용하면 이렇게 <u>array로 반환되는 것이 아니라</u>, <span style="color:red">String 타입</span>으로 결과물이 반환된다!!
@@ -43,21 +46,21 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 
   - 문자열이 <span style="color:red">'문, 자, 열'</span>의 형태라면 *.split(",")*를 사용해서 **['문', '자', '열']**로 만들 수 있음
 
-  ```javascript
-  const numbers = "1234";
-  console.log(numbers.split("")); //output == ['1', '2', '3', '4']
+    ```javascript
+    const numbers = "1234";
+    console.log(numbers.split("")); //output == ['1', '2', '3', '4']
 
-  //예시
-  const fruits = "🍎, 🥝, 🍌, 🍒";
+    //예시
+    const fruits = "🍎, 🥝, 🍌, 🍒";
 
-  console.log(fruits.split(",")); //output == ['🍎', ' 🥝', ' 🍌', ' 🍒']
+    console.log(fruits.split(",")); //output == ['🍎', ' 🥝', ' 🍌', ' 🍒']
 
-  const result = fruits.split(",", 2);
-  console.log(result); //output == ["🍎", " 🥝"]
+    const result = fruits.split(",", 2);
+    console.log(result); //output == ["🍎", " 🥝"]
 
-  const result = fruits.split(",", 3);
-  console.log(result); //output == ["🍎", " 🥝", "🍌"]
-  ```
+    const result = fruits.split(",", 3);
+    console.log(result); //output == ["🍎", " 🥝", "🍌"]
+    ```
 
 - <u>지정된 구분 기호나 문자를 입력</u>하면, <span style="color:red">해당하는 문자열은 제거하고 분할</span>하여 **배열로 반환**한다!
 
