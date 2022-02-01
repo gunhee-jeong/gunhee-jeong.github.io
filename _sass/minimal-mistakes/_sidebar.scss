@@ -122,10 +122,11 @@
    ========================================================================== */
 
 .author__avatar {
+  //프로필 사진의 디자인 수정
   display: table-cell;
   vertical-align: top;
-  width: 36px;
-  height: 36px;
+  width: 50px; //36px;
+  height: 50px; //36px;
 
   @include breakpoint($large) {
     display: block;
@@ -134,8 +135,8 @@
   }
 
   img {
-    max-width: 110px;
-    border-radius: 50%;
+    max-width: 150px; //110px;
+    border-radius: 40%;
 
     @include breakpoint($large) {
       padding: 5px;
@@ -216,7 +217,7 @@
 
     &:before {
       @supports (pointer-events: none) {
-        content: '';
+        content: "";
         position: fixed;
         top: 0;
         left: 0;
@@ -350,4 +351,3 @@
     margin-right: initial;
   }
 }
-
