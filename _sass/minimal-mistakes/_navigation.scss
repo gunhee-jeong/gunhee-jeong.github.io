@@ -441,6 +441,15 @@
   margin: 0;
   font-size: 1.25rem;
 
+  img {
+    // 방문자수 이미지 크기 맞추느라 추가했던 것
+    width: auto;
+    height: auto;
+    max-width: 140px;
+    max-height: 38px;
+    margin-bottom: 1em;
+  }
+
   a {
     color: inherit;
   }
@@ -568,6 +577,6 @@
   }
 
   li ul li ul li ul li ul li ul > li a {
-    padding-left: 3.25rem
+    padding-left: 3.25rem;
   }
 }
