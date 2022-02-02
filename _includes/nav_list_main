@@ -57,25 +57,25 @@
                 {% endfor %}
             </ul>
             <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "wecodes" %}
-                      <li><a href="/categories/wecodes" class="">wecode ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
-            </ul>
-            <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Programmers" %}
-                        <li><a href="/categories/programmers" class="">Programmers ({{category[1].size}})</a></li>
+                    {% if category[0] == "wecodes" %}
+                        <li><a href="/categories/wecodes" class="">wecode ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "Programmers" %}
-                      <li><a href="/categories/programmers" class="">Programmers ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
+                {% for category in site.categories %}
+                    {% if category[0] == "Programmers1" %}
+                        <li><a href="/categories/programmers1" class="">Programmers 1단계 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Programmers2" %}
+                        <li><a href="/categories/programmers2" class="">Programmers 2단계 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         <span class="nav__sub-title">Computer Science</span>
             <ul>
@@ -100,6 +100,10 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+      </li>
+      <li>
+            <br>
+            <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgunhee-jeong.github.io&count_bg=%2350B8D3&title_bg=%233B86BC&icon=github.svg&icon_color=%23E7E7E7&title=visitors&edge_flat=false">
       </li>
   </ul>
 </nav>
