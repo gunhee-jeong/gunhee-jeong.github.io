@@ -452,6 +452,7 @@
 
   a {
     color: inherit;
+    font-size: $type-size-4; //사이드바 분류 소제목 font 사이즈
   }
 
   .active {
@@ -502,7 +503,7 @@
   margin: 0.5rem 0;
   padding: 0.25rem 0;
   font-family: $sans-serif-narrow;
-  font-size: $type-size-6;
+  font-size: $type-size-5; //사이드바 분류 제목 font 사이즈
   font-weight: bold;
   text-transform: uppercase;
   border-bottom: 1px solid $border-color;
@@ -523,7 +524,7 @@
 
   .nav__title {
     color: #fff;
-    font-size: $type-size-6;
+    font-size: $type-size-5;
     background: $primary-color;
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
@@ -540,10 +541,10 @@
   padding: 0;
   width: 100%;
   list-style: none;
-  font-size: $type-size-6;
+  font-size: $type-size-6; //toc 모바일 화면에서 소제목 font 크기
 
   @include breakpoint($large) {
-    font-size: $type-size-7;
+    font-size: $type-size-5; //toc 전체화면에서 소제목 font 크기
   }
 
   a {
