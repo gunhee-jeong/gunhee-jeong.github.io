@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "template literals and string method"
+title: "array methods"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [blog, coding, javascript] #tag는 여러개 가능함
+tag: [blog, coding, javascript, array] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,82 +12,121 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# template literals
+# map 메서드
 
-ES6에서 추가된 문법 중 하나가 바로 <span style="color:red">template literal</span>!  
-원래 <u>String을 작성할 때 따옴표""</u>를 사용했지만, **back tick``**으로도 사용이 가능하다
+# forEach
 
-```javascript
-//""작성법
-const name = "정건희";
-//``작성법
-const name = `정건희`;
-```
-
-**back tick``**은 그 안에 <span style="color:blue">변수를 넣어서 표현</span>이 가능!
+<span style="color:red">forEach</span>는 <u>for 대신 사용하는</u> <span style="color:blue">반복문</span>이다  
+map과의 큰 차이는 **forEach** 함수 **자체가 return하는 것도 아무것도 없다는 것**이다  
+따라서 forEach <u>함수를 탈출하고 싶을 때 return을 사용</u>하면 된다  
+(map은 요소가 수정된 새로운 배열이 return되었다면, forEach는 아무것도 reture하는 것이 없다)
 
 ```javascript
-const hi = "안녕하세요. 저는 " + name + " 입니다.";
-const hi = `안녕하세요. 저는 ${name} 입니다`;
-```
+let startWithNames = [];
+let names = ["a", "ab", "cbb", "ada"];
 
-# string method
-
-그 동안 string에서 <u>특정 string을 찾기 위해</u> **indexOf**를 사용했고  
-ES6에서는 3가지의 method가 추가로 생겨났다  
-(<span style="color:red">startsWith</span>, <span style="color:red">endsWith</span>, <span style="color:red">includes</span>)
-
-```javascript
-const email = "kyle4619@naver.com";
-
-console.log(email.startsWith("ky")); //output == true
-console.log(email.endsWith("com")); //output == true
-console.log(email.includes("@naver")); //output == true
-```
-
-# assignment
-
-## 문제설명
-
-handleEdit 함수를 구현해주세요
-
-- 이 함수는 nickname, interests라는 두 string을 인자로 받습니다
-- nickname은 유저의 닉네임을, interests는 유저의 관심사를 의미한다
-- interests에는 여러 관심사를 적을 수 있습니다. 그때 그 관심사의 구분을 콤마를 이용합니다
-- 예를 들어서 입력 값이 nickname = "뚜비" , interests = "방탈출,테니스,멍 때리기"라고 할 때,  
-  아래와 같은 Object를 리턴해야 합니다
-
-  ```javascript
-  {
-  nickname: "뚜비",
-  interests: ["방탈출","테니스","멍 때리기"],
-  bio: "제 닉네임은 뚜비입니다. 취미는 방탈출,테니스,멍 때리기입니다."
+names.forEach((el) => {
+  if (el.startsWith("a")) {
+    startWithNames.push(el);
   }
-  ```
+});
 
-- 주어진 코드
+console.log(startWithNames); //output == ['a', 'ab', 'ada']
+```
+
+```javascript
+let hasC = false;
+let arr = ["a", "b", "c", "d"];
+
+arr.forEach((el) => {
+  if (el === "c") {
+    hasC = true;
+    return;
+  }
+});
+```
+
+- <u>forEach도 함수</u>이므로, **중간에 반복문을 탈출하고 싶다면** <span style="color:blue">return</span>을 사용하면 된다
+
+# Assignment
+
+## 1. moreThan100 함수를 구현하세요
+
+문제설명
+
+- 숫자로 구성된 배열을 인자로 받습니다
+- 100보다 크거나 같으면 true를 100보다 작으면 false로 요소를 변경하여, 새로운 배열을 retur하세요
 
   ```javascript
-  let nickname = "뚜비";
-  let interests = "방탈출,테니스,멍 때리기";
-
-  const handleEdit = (nickname, interests) => {};
+  [100, 9, 30, 7] -> [true, false, false, false]
   ```
 
-## 문제풀이
+- 주어진 함수
+
+  ```javascript
+  const moreThan100 = (nums) => {};
+  ```
+
+문제풀이
 
 - 나의 풀이
 
-  ```javascript
-  const handleEdit = (nickname, interests) => {
-    const result = {
-      nickname: nickname,
-      interests: interests.split(","),
-      bio: "제 닉네임은 뚜비입니다. 취미는 방탈출,테니스,멍 때리기입니다.",
-    };
+  ```java
+  let nums = [100, 9, 30, 7];
+
+  const moreThan100 = nums => {
+    let result = [];
+    nums.forEach(x => {
+      if (x < 100) {
+        result.push(false);
+      } else if(x >= 100) {
+        result.push(true);
+      }
+    });
     return result;
   };
+
+  console.log(moreThan100(nums));
   ```
+
+## 2. foramtDate 함수를 구현하세요
+
+문제설명
+
+- 날짜가 담긴 배열을 인자로 받습니다
+- 날짜의 data type은 string이며, 보내는 날짜 타입은 'YYYY-MM-DD'입니다
+- 해당 날짜의 형식을 'YYYY년 MM월 DD일'로 바꿔서 새로운 배열을 return하세요  
+  dates(input)가 ['2019-03-21', '2019-04-21', '2019-05-21']이라면  
+  return은 ['2019년 03월 21일', '2019년 04월 21일', '2019년 05월 21일']
+- 주어진 함수
+
+  ```java
+  const formatDate = dates => {};
+  ```
+
+  문제풀이
+
+- 나의 코드
+
+  ```java
+  let dates = ['2019-03-21', '2019-04-21', '2019-05-21'];
+
+  const formatDate = dates => {
+    return dates.map(x => `${x.split('-')[0]}년 ${x.split('-')[1]}월 ${x.split('-')[2]}일`)
+  };
+
+  console.log(formatDate(dates));
+  ```
+
+  - <u>dates는 기본적으로 array</u>이기 때문에 array method인 <span style="color:red">map</span>을 사용했다  
+    **x**에는 차례대로 <u>dates의 0~2번 index의 value가</u> 들어오는데  
+    ('2019-03-21' -> '2019-04-21' -> '2019-05-21')  
+    이 value들은 <span style="color:blue">string 타입</span>이다
+  - 이렇게 0번 index의 value인 <span style="color:green">'2019-03-21'</span>이 들어오고 이것은 **string 타입**이므로  
+    <span style="color:red">split method</span>를 사용하여 <u>'-'를 제거</u>하면서, <span style="color:blue">다시 array로 반환</span>하게 된다!  
+    **x.split('-')을 통해서 ['2019', '03', '21']**이라는 <span style="color:blue">array가 반환</span>되고 여기서 [0]을 통해서  
+    0번 index의 value를 가져오면서 각각 년, 월, 일을 추가하여  
+    최종적으로 map method의 반환 값은 ['2019년 03월 21일', '2019년 04월 21일', '2019년 05월 21일']이 된다!
 
 <!-- ### 2. Link 넣기
 
