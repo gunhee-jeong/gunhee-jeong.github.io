@@ -544,7 +544,7 @@
   font-size: $type-size-6; //toc 모바일 화면에서 소제목 font 크기
 
   @include breakpoint($large) {
-    font-size: $type-size-5; //toc 전체화면에서 소제목 font 크기
+    font-size: $type-size-6; //toc 전체화면에서 소제목 font 크기
   }
 
   a {
