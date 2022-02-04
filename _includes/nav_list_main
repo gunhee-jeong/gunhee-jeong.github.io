@@ -94,11 +94,11 @@
                 {% endfor %}
             </ul>
             <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "Terminal" %}
-                      <li><a href="/categories/terminal" class="">Terminal ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
+                {% for category in site.categories %}
+                    {% if category[0] == "Terminal" %}
+                        <li><a href="/categories/terminal" class="">Terminal ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
