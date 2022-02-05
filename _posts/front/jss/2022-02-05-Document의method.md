@@ -4,7 +4,7 @@ title: "다양한 Document.method"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [coding, javascript, document] #tag는 여러개 가능함
+tag: [document] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -47,7 +47,7 @@ function addElement () {
 ```
 
 - var <span style="color:green">newDiv</span> = document.createElement("div");  
-  newDiv에는
+  newDiv에는 createElement("div")를 사용하여
 
 # Document.createTextNode()
 

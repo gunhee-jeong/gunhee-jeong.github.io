@@ -4,7 +4,7 @@ title: "innerText 와 innerHTML의 차이점"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [coding, javascript, dom, innerText, innerHTML] #tag는 여러개 가능함
+tag: [dom, innerText, innerHTML, document] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
