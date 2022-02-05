@@ -24,6 +24,13 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 - sass > \_page.scss  
   .taxonomy\_\_index a(line 437)
 
+# posting
+
+## 본문 페이지
+
+- ``코드블록  
+  \_sass -> \_base.scss -> line 541~542
+
 <!-- ### 2. Link 넣기
 
 ```

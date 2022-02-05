@@ -436,7 +436,7 @@ body {
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    color: mix(#fff, #0692ca, 0%); //$primary-color, 60%
+    color: mix(#fff, #0692ca, 0%); //$primary-color -> #0692ca, 60%
     text-decoration: none;
     border-bottom: 1px solid $border-color;
   }
