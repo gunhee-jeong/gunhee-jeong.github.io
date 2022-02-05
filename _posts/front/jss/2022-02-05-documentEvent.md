@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "하샤드수"
+title: "event"
 # categories: Git
 categories:
-  - Programmers1 # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
-tag: [javascript, coding test, programmers 1단계] #tag는 여러개 가능함
+  - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [dom, document] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,61 +12,98 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# 문제설명
+# event란?
 
-- 설명  
-  양의 정수 x가 하샤드 수이려면 x의 자릿수의 합으로 x가 나누어져야 합니다.  
-  예를 들어 </span style="colr:blue">18</span>의 <u>자릿수 합은 1+8=9</u>이고,  
-  <u>18은 9로 나누어 떨어지므로</u> **18은 하샤드 수**입니다.  
-  자연수 x를 입력받아 x가 하샤드 수인지 아닌지 검사하는 함수, solution을 완성해주세요.
-- 입출력 예
+수많은 웹페이지들 중 쇼핑몰에서 사진 위에 마우스를 올리면 다른 각도의 제품 사진으로 바꿔서 보여주는 것들을  
+우리는 JavaScript를 이용하여 코딩한다.  
+이렇게 특정 요소에 <u>interactive한 반응</u>을 할 수 있게 하는 것을 `event`라고 한다.
 
-  | arr | return |
-  | :-: | :----: |
-  | 10  |  true  |
-  | 12  |  true  |
-  | 11  | false  |
-  | 13  | false  |
+- 클릭 이벤트
+- 마우스 이벤트
+- 스크롤 이벤트
+- 터치 이벤트
+- resize(화면 크기 변화) 이벤트
 
-  10의 모든 자릿수의 합은 1입니다. 10은 1로 나누어 떨어지므로 10은 하샤드 수입니다.  
-  12의 모든 자릿수의 합은 3입니다. 12는 3으로 나누어 떨어지므로 12는 하샤드 수입니다.  
-  11의 모든 자릿수의 합은 2입니다. 11은 2로 나누어 떨어지지 않으므로 11는 하샤드 수가 아닙니다.  
-  13의 모든 자릿수의 합은 4입니다. 13은 4로 나누어 떨어지지 않으므로 13은 하샤드 수가 아닙니다.
+## addEventListener
 
-- 주어진 코드
+이벤트를 달 때 사용하는 함수는 <span style="color:red">addEventListener</span>이다.  
+addEventListener는 특정 이벤트가 언제 발생하는지 듣고 있다가, 발생하면 인자로 받은 함수를 실행한다.
 
-  ```java
-  let arr = 10; //return true가 나와야 정답!
+```java
+요소.addEventListener(이벤트종류, function() {
+  //이벤트가 일어났을 때 실행될 내용
+})
+```
 
-  function solution(arr) {
+- <u>특정한 요소에 addEventListener 함수를 붙이고</u>, `argument`로 <u>이벤트 종류</u>와,  
+  이벤트가 발생했을 때 `실행할 함수를 전달`한다.
 
+## 이벤트 종류
+
+cllick, contextmenu, dblclick, mouseenter, mouseleave, mousemove, mouseout,  
+mouseup, pointerlockchange, pointerlockerror, select, wheel
+
+## 클릭 이벤트
+
+버튼, 사진, 글 등 웹사이트에서 이루어지는 이벤트 중 가장 많은 것은 클릭 이벤트이다.
+
+- 로그인 버튼 클릭 -> 로그인 API 호출
+- 상품 사진 클릭 -> 상품 상세 화면으로 이동
+- 자세히 보기 버튼 클릭 -> 팝업화면 출력
+
+### 예제
+
+html
+
+```html
+<body>
+  <div class="login-container">
+    <input type="password" id="password" placeholder="비밀번호" />
+    <input type="password" id="re-password" placeholder="비밀번호 확인" />
+    <button class="login-btn">로그인</button>
+    <p class="alert"></p>
+    <p>key code: <span id="code"></span></p>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+```
+
+javascript
+
+```java
+const thisIsButton = document.getElementsByClassName('login-btn')[0];
+
+thisIsButton.addEventListener('click', function() {
+  const password = document.getElementById('password').value;
+  const rePassword = document.getElementById('re-password').value;
+
+  if (!password) {
+    alert('비밀번호를 입력해주세요!');
+    return;
   }
-  ```
 
-# 문제풀이
-
-- 나의 코드
-
-  ```java
-  function solution(arr) {
-    let sum = (arr + "").split("").reduce((acc, x) => acc + Number(x), 0)
-    return arr % sum == 0? true : false
+  if (!rePassword) {
+    alert('비밀번호 확인을 입력해주세요!');
+    return;
   }
 
-  console.log(solution(arr));
-  ```
+  if (password !== rePassword) {
+    alert('비밀번호가 맞지 않습니다!');
+    return;
+  }
 
-  let arr의 value는 <u>10으로 number 타입</u>이다  
-  여기서 1 + 0을 해서 나온 값인 1을, 다시 10 % 1하여서 **나누어 떨어지는지** 확인하는  
-  로직이 필요하다!
+  alert('회원가입 성공!!');
+});
+```
 
-  - `number 10에 + ""`을 하여 우선 <u>string 타입으로</u> 바꾸었다  
-    그리고 <span style="color:blue">split method</span>를 사용하여 10 -> '10' -> `['1', '0']의 array` 형태로 바꾸었다
-  - <u>array의 0번 index 값과 1번 index의 값을 더해야하므로</u>, array에 사용할 수 있는 <span style="color:red">reduce method</span>를 사용했다  
-    `x에는 '1', '0'`이 차례로 들어가는데 여기서 **value들이 string**이기 때문에 <span style="color:blue">Number()</span>를 사용하여  
-    이를 **number 타입으로** 바꾸었다!
-  - <u>true와 false를 판별</u>하기 위한 `삼항 연산자`를 작성하였다  
-    10 % 1 = 0이므로 true이고 -> 삼항 연산자의 결과로 true가 반환된다!
+const thisIsButton = document.getElementsByClassName('login-btn')[0];
+
+- getElementsByClassName 함수로 'login-btn'라는 클래스 이름이 있는 요소를 찾는다.  
+  <u>class의 이름에는 여러 요소들에 중복해서 이름을 부여</u>할 수 있는데  
+  이때 'login-btn'라는 class 이름을 가진 요소들이 모두 배열로 반환되므로 `[0] 이렇게 index를 붙여`준다.
+
+## 키이벤트
 
 <!-- ### 2. Link 넣기
 
