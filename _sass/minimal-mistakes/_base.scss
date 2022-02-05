@@ -435,8 +435,8 @@ p {
 u,
 ins {
   text-decoration: none;
-  border-bottom: 1px solid $primary-color;
-  padding-bottom: 4.5px;
+  border-bottom: 2px solid $primary-color; //1px
+  padding-bottom: 0.5px; //4.5px;
   a {
     color: inherit;
   }
