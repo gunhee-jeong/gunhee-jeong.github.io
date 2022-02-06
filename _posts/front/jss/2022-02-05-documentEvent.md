@@ -37,6 +37,7 @@ addEventListener는 특정 이벤트가 언제 발생하는지 듣고 있다가,
 
 - <u>특정한 요소에 addEventListener 함수를 붙이고</u>, `argument`로 <u>이벤트 종류</u>와,  
   이벤트가 발생했을 때 `실행할 함수를 전달`한다.
+- <u>두 번째 argument로 들어오는 함수</u>에서 항상 `event와 관련된 정보를 argument로 받을 수` 있다.
 
 ## 이벤트 종류
 
@@ -51,7 +52,15 @@ mouseup, pointerlockchange, pointerlockerror, select, wheel
 - 상품 사진 클릭 -> 상품 상세 화면으로 이동
 - 자세히 보기 버튼 클릭 -> 팝업화면 출력
 
-### 예제
+## 키이벤트
+
+키 이벤트는 사람이 키보드를 누르면 발생되는 이벤트이다.
+
+- 키보드를 눌렀을 때 발생하는 keydown
+- 키보드를 누르고 떼는 순간 발생하는 keyup
+- 키보드를 눌러 어떤 텍스트가 작성되는 순간 발생하는 keypress
+
+## 실습
 
 html
 
@@ -69,7 +78,7 @@ html
 </body>
 ```
 
-javascript
+### 클릭 이벤트
 
 ```java
 const thisIsButton = document.getElementsByClassName('login-btn')[0];
@@ -103,7 +112,63 @@ const thisIsButton = document.getElementsByClassName('login-btn')[0];
   <u>class의 이름에는 여러 요소들에 중복해서 이름을 부여</u>할 수 있는데  
   이때 'login-btn'라는 class 이름을 가진 요소들이 모두 배열로 반환되므로 `[0] 이렇게 index를 붙여`준다.
 
-## 키이벤트
+### 키 이벤트
+
+```java
+const thisIsPw = document.getElementById('password');
+const thisIsCode = document.getElementById('code');
+
+thisIsPw.addEventListener('keydown', function(event) {
+  thisIsCode.innerHTML = event.code;
+});
+
+thisIsPw.addEventListener('keydown', function(e) {
+  if (e.code === 'Enter') {
+     //로그인 함수로 이동
+  }
+});
+```
+
+const thisIsPw = document.<span style="color:green">getElementById('password')</span>;
+
+- <u>id는 html 작성시 전체 페이지에서 중복될 수 없는 유일한 것</u>이기 때문에, array로 반환되지 않고  
+   그 요소가 return된다
+
+thisIsPw.addEventListener('keydown', function(e){}
+
+- input에 키보드로 뭔가를 누르면 두 번째 argument인 function이 실행되고 ->  
+  span #code의 내용에 e.code가 들어간다.(여기서 code는 입력된 키의 이름 정보를 의미함)
+
+### Assignment
+
+이벤트가 발생하면 실행될 함수에 아래의 기능을 만들어주세요.  
+input#re-password에 keyup 이벤트를 추가해주세요.  
+input#password 와 input#re-password의 value 속성을 통해 input에 작성된 값을 가져오고,  
+서로 같은지 아닌지 확인해서 같지 않다면  
+p태그의 .alert 클래스에 "비밀번호가 일치하지 않습니다" 라는 문구를 넣어주세요.
+
+나의 코드
+
+```java
+const thisIsPw = document.getElementById('password');
+const thisIsButton = document.getElementsByClassName('login-btn')[0];
+const thisIsRePw = document.getElementById('re-password');
+const pAlert = document.getElementsByClassName('alert')[0];
+
+thisIsRePw.addEventListener('keyup', function() {
+  const password = thisIsPw.value;
+  const rePassword = thisIsRePw.value;
+
+  if(password !== rePassword) {
+    pAlert.innerHTML = '비밀번호가 일치하지 않습니다';
+  } else if(password == rePassword) {
+    pAlert.innerHTML = '';
+  }
+
+})
+```
+
+<img src="https://user-images.githubusercontent.com/87808288/152669639-3a1ef2a7-6320-401d-b4d3-3628a98ccc8c.png" width="200" height="200">
 
 <!-- ### 2. Link 넣기
 
