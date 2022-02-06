@@ -337,7 +337,7 @@ body {
   padding: 3px 8px;
   text-decoration: none;
   border: 1px solid $background-color;
-  border-radius: $border-radius;
+  border-radius: 10px; //$border-radius;
   background-color: #60cffb; //#0692ca
   // font-family: $serif;
   color: rgb(0, 0, 0); //$primary-color
