@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "평균 구하기"
+title: "trnasform에 관하여"
 # categories: Git
 categories:
-  - Programmers1 # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
-tag: [javascript, coding test] #tag는 여러개 가능함
+  - CSS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [transform, translate] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,55 +12,16 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# 문제설명
+# transform
 
-## 문제
+CSS의 <span style="color:red">transform</span>은 속성은 <u>element의 회전, 크기, 조절, 기울이기, 이동</u> 등의 효과를 줄 수 있다.  
+transform은 CSS의 시각적 서식 모델의 `좌표 공간을 변형하는 역할`을 수행한다.
 
-정수를 담고 있는 배열 arr의 평균값을 return하는 함수, solution을 완성해보세요.
+## translate
 
-## 입출력 예
-
-|    arr    | return |
-| :-------: | :----: |
-| [1,2,3,4] |  2.5   |
-|   [5,5]   |   5    |
-
-## 주어진 코드
-
-```java
-let arr = [1,2,3,4];
-
-function solution(arr) {
-
-}
-
-console.log(solution(arr));
-```
-
-# 문제풀이
-
-## 나의 풀이
-
-```java
-let arr = [1,2,3,4];
-//return시 arr의 평균값인 2.5를 반환해야함
-
-function solution(arr) {
-  return arr.reduce((acc, x) => acc + x , 0) / arr.length;
-}
-
-console.log(solution(arr));
-```
-
-arr이라는 배열의 각 index의 value들을 차례로 더하고, 마지막에는 array의 lengt만큼을 나누는 코드를 작성했다.  
-우선 각 <u>index의 value들이 모두 합산</u>되어야 하므로 `reduce`를 사용하였다.  
-그리고 평균을 구해야하므로, let arr의 length로 나누어주었다.
-
-<!-- ## 좋아요가 가장 많은 풀이
-
-```java
-
-``` -->
+CSS의 translate는 transform 속성에서 사용할 수 있는 변형 함수 중 하나로, `이동 효과`를 담당한다.  
+<u>x축과 y축의 거리만큼 이동</u>하는데, 주어진 거리가 `양수이면 해당 축의 양 방향`으로  
+음수이면 해당 축의 음의 방향으로 이동한다.
 
 <!-- ### 2. Link 넣기
 
