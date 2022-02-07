@@ -121,6 +121,13 @@
                   {% endif %}
               {% endfor %}
             </ul>
+            <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "Memo" %}
+                      <li><a href="/categories/memo" class="">메모장 ({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+            </ul>
       </li>
       <li>
             <br>

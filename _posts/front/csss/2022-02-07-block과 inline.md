@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "K번째 수"
+title: "block과 inline에 관하여"
 # categories: Git
 categories:
-  - Programmers1 # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
-tag: [javascript, coding test] #tag는 여러개 가능함
+  - CSS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [inline, block] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,68 +12,34 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# 문제설명
+# Block과 Inline
 
-설명  
-배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하려 합니다.  
-예를 들어 array가 [1, 5, 2, 6, 3, 7, 4], i = 2, j = 5, k = 3이라면
+## Block
 
-1. array의 2번째부터 5번째까지 자르면 [5, 2, 6, 3]입니다.
-2. 1에서 나온 배열을 정렬하면 [2, 3, 5, 6]입니다.
-3. 2에서 나온 배열의 3번째 숫자는 5입니다.  
-   배열 array, [i, j, k]를 원소로 가진 2차원 배열 commands가 매개변수로 주어질 때,  
-   commands의 모든 원소에 대해 앞서 설명한 연산을 적용했을 때 나온 결과를 배열에 담아 return 하도록  
-   solution 함수를 작성해주세요.
+<span style="color:red">block</span>은 `content가 존재하지 않아도` <u>화면에는 box가 형성</u>된다.  
+`div 태그`가 대표적인 **block** 형식의 tag이다. 그래서 <u>한 줄에 하나씩 box</u>가 형성된다.  
+<img src="https://user-images.githubusercontent.com/87808288/152723573-52f7deca-9d2e-423e-9e1b-c0802c7c5cf1.png" width="300" height="200">
 
-입출력 예
+- <u>div 태그에 width 100%;를 부여하지 않도록</u> 주의해야한다!  
+  <span style="color:red">div 태그 자체가 block 형식</span>의 tag이므로, `한 칸 전체를 모두 자치`한다.  
+  때문에 *width 100%;를 주는 것*은 <span style="color:blue">중복하여 div 태그를 설정하는 것</span>이 된다.
 
-|         array         |             commands              |  return   |
-| :-------------------: | :-------------------------------: | :-------: |
-| [1, 5, 2, 6, 3, 7, 4] | [[2, 5, 3], [4, 4, 1], [1, 7, 3]] | [5, 6, 3] |
+## inline
 
-입출력 예 설명  
-[1, 5, 2, 6, 3, 7, 4]를 2번째부터 5번째까지 자른 후 정렬합니다.  
-[2, 3, 5, 6]의 세 번째 숫자는 5입니다.[1, 5, 2, 6, 3, 7, 4]를 4번째부터 4번째까지 자른 후 정렬합니다.  
-[6]의 첫 번째 숫자는 6입니다.[1, 5, 2, 6, 3, 7, 4]를 1번째부터 7번째까지 자릅니다.  
-[1, 2, 3, 4, 5, 6, 7]의 세 번째 숫자는 3입니다.
+tag가 <span style="color:red">inline</span>이라면, 그 `칸에 빈 공간만 있다면 같은 칸에 여러 개가` 만들어진다.  
+그리고 <u>content의 크기 만큼 공간을 형성</u>하므로 -> <span style="color:red">content를 담는 상자</span>라고 생각할 수 있다!
+<img src="https://user-images.githubusercontent.com/87808288/152724646-82a7284c-aafc-449d-83b6-0bf4056c36ed.png" width="500" height="200">  
+span 태그는 content를 담는 상자이기 때문에 -> `span 태그 안의 content가 없다면`, <span style="color:blue">span 태그는 화면에도 표시되지 않는다</span>.
 
-주어진 코드
+## inline-block
 
-```java
-let array = [1, 5, 2, 6, 3, 7, 4];
-let commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]];
+<img src="https://user-images.githubusercontent.com/87808288/152725325-a5a5c67a-990b-4c21-bc72-9516453085cd.png" width="350" height="200">  
+`div 태그 안에는 content가 존재하지 않는데`, display 설정을 <span style="color:red">display: inline-block;</span>으로  
+<u>inline의 특성과 block의 특성 두 가지를</u> 가질 수 있게 설정하였다.  
+inline이기 때문에 한 칸에도 여러 개의 상자를 가지고, 또한 block이기 때문에 content가 없지만  
+화면에 표현되고 있다.
 
-function solution(array, commands) {
-
-}
-
-console.log(solution(array, commands));
-```
-
-# 문제풀이
-
-나의 풀이
-
-```java
-let array = [1, 5, 2, 6, 3, 7, 4];
-let commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]];
-
-function solution(array, commands) {
-  return commands.map(x => {
-    const [sta, fin, sele] = x;
-    return array.slice(sta - 1, fin).sort((a, b) => a - b)[sele-1];
-  })
-}
-
-console.log(solution(array, commands));
-```
-
-const [sta, fin, sele] = x;
-
-- commands.map을 통해 x에는 [2, 5, 3] -> [4, 4, 1] -> [1, 7, 3] 이렇게 array가 순차적으로 담긴다.
-- `배열 destructuring`을 통해서 sta, fin, sele의 <u>변수마다 array 안의 value을 순차적으로 할당</u>했다.  
-  따라서 sta = 2, fin = 5, sele = 3을 담았다!
-
+<!-- tcp스쿨 -->
 <!-- ### 2. Link 넣기
 
 ```
