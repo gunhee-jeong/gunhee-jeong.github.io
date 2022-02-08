@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "가운데 정렬 맞추기"
+title: "Google Font 사용법"
 # categories: Git
 categories:
   - CSS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [가운데 정렬, position, transform] #tag는 여러개 가능함
+tag: [font, google font] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,33 +12,23 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-화면의 `정가운데로 정렬`을 하기 위해서 여러 방법이 존재하지만  
-w3school에서 참고한 'CSS Layout - Horizontal & Vertical Align'를 사용하였다.
+font를 적용시키기 위해선 Google Fonts 사이트를 이용할 수 있다.  
+원하는 font를 선택하고 ->  
+'To embed a font, copy the code into the <head> of your html'에서
+
+<link>와 <@import>... 이렇게 두 가지를 선택할 수 있었는데  
+link를 사용하면 font 적용이 완벽하게 되지 않았다.
+
+<span style="color:red">@import</span>를 사용해야 <u>font가 적용이 되는 것을</u> 확인할 수 있었다.
 
 ```css
-.center {
-  height: 200px;
-  position: relative;
-  border: 3px solid green;
+/* css */
+header {
+  @import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Poor+Story&family=Roboto&family=Source+Sans+Pro:wght@200&display=swap");
+  font-family: "Poor Story", cursive;
 }
-
-.center p {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 ```
 
-<img src="https://user-images.githubusercontent.com/87808288/152881608-130cf819-9264-4e6a-b903-6ee9a6135fe9.png" width="400" height="200">
-
-<u>부모 tag 중</u>에 **position이 relative, fixed, absolut** 하나라도 있다면  
-그 부모를 기준으로 절대적으로 움직이게 된다.
-그래서 .center p의 <u>부모가 되는 .center</u>에 `position: relative;`를 부여했다.
-
-.center p에는
-
-<!-- tcp스쿨 -->
 <!-- ### 2. Link 넣기
 
 ```
