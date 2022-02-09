@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "터미널 단축키"
+title: "git과 github 그리고 명령어"
 # categories: Git
 categories:
   - Github # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
@@ -12,7 +12,27 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# 단축키
+# Git 그리고 Github
+
+<u>git은 버전관리를 도와주는 시스템</u>이고,  
+`github`은 그런 <u>git을 통해서 server에 버전을 관리하는 호스팅 서비스</u>이다.
+
+## git?
+
+`local`에서 관리하는 <span style="color:red">버전 관리 시스템</span>(VCS: Version Control System)을 말한다.  
+git을 사용하면 <u>소스의 수정에 따라 버전을 관리</u>해준다!
+
+## github?
+
+<span style="color:red">클라우드 방식으로 관리</span>되는 버전 관리 시스템을 말한다.
+
+<u>Github는 단순히 코드를 백업하는 것에서 그 기능을 다하는 것이 아니라</u>,  
+`전세계의 오픈소스 프로젝트`들이 모두에게 공유되고  
+이를 바탕으로 개발자들의 세계를 확장시켜주는 커뮤니티의 공간이다.
+
+`다른 사람들과 협업하고`, 오픈소스를 `공유하고` 다른 사람들의 의견을 듣는 모든 과정의 중심에 Github가 위치한다.
+
+# 명령어
 
 ## ls
 
