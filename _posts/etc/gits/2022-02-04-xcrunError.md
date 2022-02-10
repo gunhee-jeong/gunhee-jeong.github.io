@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "Git과 Github 그리고 Terminal명령어"
+title: "xcrun: error: invalid active developer path (...)"
 # categories: Git
 categories:
-  - Github # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [git, github, terminal] #tag는 여러개 가능함
+  - Github # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog Terminal
+tag: [blog, coding, terminal] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,97 +12,27 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# Git 그리고 Github
+Mac 업그레이드 이후 개발 관련 도구 에러가 발생!
 
-<u>git은 버전관리를 도와주는 시스템</u>이고,  
-`github`은 그런 <u>git을 통해서 server에 버전을 관리하는 호스팅 서비스</u>이다.
+> xcrun: error: invalid active developer path...
 
-## Git?
-
-`local`에서 관리하는 <span style="color:red">버전 관리 시스템</span>(VCS: Version Control System)을 말한다.  
-git을 사용하면 <u>소스의 수정에 따라 버전을 관리</u>해준다!
-
-## Github?
-
-<span style="color:red">클라우드 방식으로 관리</span>되는 버전 관리 시스템을 말한다.
-
-<u>Github는 단순히 코드를 백업하는 것에서 그 기능을 다하는 것이 아니라</u>,  
-`전세계의 오픈소스 프로젝트`들이 모두에게 공유되고  
-이를 바탕으로 개발자들의 세계를 확장시켜주는 커뮤니티의 공간이다.
-
-`다른 사람들과 협업하고`, 오픈소스를 `공유하고` 다른 사람들의 의견을 듣는 모든 과정의 중심에 Github가 위치한다.
-
-# 명령어
-
-## ls
-
-현재 위치의 파일 및 디렉토리의 리스트를 보기위해서는
+이럴 때는
 
 ```bash
-ls
+xcode-select --install
 ```
 
-파일과 디렉토리의 목록을 보여준다. (d = 디렉토리, r = 파일)
+<u>위의 코드를 터미널창에 입력</u>해주자!  
+그러면 'xcode-selcet'를 설치하겠냐는 안내창이 뜨는데  
+**'install'을 눌러 설치**해주면 된다
+
+그 이후에
 
 ```bash
-- ls -l
+git --version
 ```
 
-숨겨진 파일과 디렉토리를 부여준다.
-
-```bash
-- ls -al
-```
-
-## pwd
-
-현재 위치하고 있는 디렉토리의 위치를 알려주는 명령어
-
-```bash
-pwd
-```
-
-## mkdir
-
-mkdir을 사용하면 파일을 만들 수 있음
-
-```bash
-mkdir
-```
-
-## cd
-
-디렉토리를 이동할 때 사용함
-
-```bash
-cd 파일의이름
-```
-
-이전 디렉토리로 이동하고 싶을 때
-
-```bash
-cd -
-```
-
-처음 디렉토리로 이동하고 싶을 때
-
-```bash
-cd ~
-```
-
-## rm
-
-파일을 삭제하고 싶을 때는
-
-```bash
-rm 파일의이름.txt
-```
-
-디렉토리를 삭제하고 싶을 때는
-
-```bash
-rm -r 파일의이름
-```
+를 입력해보면 정상적으로 작동하는 것을 볼 수 있다
 
 <!-- ### 2. Link 넣기
 
