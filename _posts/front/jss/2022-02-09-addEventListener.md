@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "xcrun: error: invalid active developer path (...)"
+title: "addEventListener에 관하여"
 # categories: Git
 categories:
-  - Terminal # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog Terminal
-tag: [blog, coding, terminal] #tag는 여러개 가능함
+  - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [dom, event, addEventListener] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,27 +12,48 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-Mac 업그레이드 이후 개발 관련 도구 에러가 발생!
+addEventListener의 구조를 살펴보면
 
-> xcrun: error: invalid active developer path...
-
-이럴 때는
-
-```bash
-xcode-select --install
+```java
+요소.addEventListener(이벤트종류, function() {
+  //이벤트가 일어났을 때 실행될 내용
+})
 ```
 
-<u>위의 코드를 터미널창에 입력</u>해주자!  
-그러면 'xcode-selcet'를 설치하겠냐는 안내창이 뜨는데  
-**'install'을 눌러 설치**해주면 된다
+기본적으로 이렇게 parameter에는 (<span style="color:red">이벤트 종류</span>, <span style="color:red">function</span>)이 들어간다.
 
-그 이후에
-
-```bash
-git --version
+```html
+<!-- html -->
+<main>
+  <input type="text" placeholder="전화번호, 사용자 이름 또는 이메일" />
+  <input type="password" placeholder="비밀번호" />
+  <button id="login_btn">로그인</button>
+</main>
 ```
 
-를 입력해보면 정상적으로 작동하는 것을 볼 수 있다
+```java
+idInput.addEventListener('keyup', function() {})
+```
+
+위의 코드처럼 addEventListener를 사용하면 <span style="color:green">idInput</span>에 해당하는 `input 태그`의 <u>property의 key인 value</u>에,  
+키보드에서 입력된 값이 전달된다.
+
+```java
+idInput.addEventListener('keyup', function(x) {
+  console.log(x); //output == KeyboardEvent {isTrusted: true, key: '1', code: 'Digit1', location: 0, ctrlKey: false, …}
+  console.log(x.key); //output == 1
+})
+```
+
+여기서 <u>x에 담긴 값</u>을 보자면 `object`로 <u>property의 key와 value가 반환</u>되는 것을 볼 수 있다.  
+그중에서 property의 키 이름 중 하나인 'key'를 x.key로 참조하면 -> 그 value인 1이 나오는 것을 볼 수 있다.
+
+그리고 여기서 키보드를 눌러 전달된 값은 input 태그에 존재하는 property의 키중 하나인 value에 전달되고 ->  
+아래의 코드를 통해서 rkqt
+
+```java
+console.log(idInput.value)
+```
 
 <!-- ### 2. Link 넣기
 
