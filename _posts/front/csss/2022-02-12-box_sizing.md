@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "Google Font 사용법"
+title: "box-sizing"
 # categories: Git
 categories:
   - CSS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [font, google font] #tag는 여러개 가능함
+tag: [box-sizing] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,22 +12,21 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-font를 적용시키기 위해선 Google Fonts 사이트를 이용할 수 있다.  
-원하는 font를 선택하고 ->  
-'To embed a font, copy the code into the <head> of your html'에서
-
-<link>와 <@import>... 이렇게 두 가지를 선택할 수 있었는데  
-link를 사용하면 font 적용이 완벽하게 되지 않았다.
-
-<span style="color:red">@import</span>를 사용해야 <u>font가 적용이 되는 것을</u> 확인할 수 있었다.
+`width와 heingt`를 설정하면 <span style="color:red">기본적으로 content의 width와 height로 설정</span>된다.
 
 ```css
-/* css */
-header {
-  @import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Poor+Story&family=Roboto&family=Source+Sans+Pro:wght@200&display=swap");
-  font-family: "Poor Story", cursive;
+* {
+  box-sizing: border-box;
 }
 ```
+
+그러나 위의 코드처럼 <span style="color:red">box-sizing</span>을 설정하면 `content + padding + border를 합한` 것으로 설정된다.  
+<img src="https://user-images.githubusercontent.com/87808288/153698843-3691a54d-f318-484a-9b36-ee26ace28194.png" width="1000" height="1200">  
+div 태그를 갖는 모든 박스들은 <u>width: 300px;을 공통적으로</u> 적용받도록 설정하였다.  
+그러나 <u>.second 는 혼자만 width가 다르다</u>.
+
+- box-sizing을 지정하지 않으면, width + padding + border으로 계산되기 떄문이다.  
+  이러한 경우 width에서 추가로 paddingr과 boder가 추가되기 때문에 크기를 맞추는 것이 불편해진다.
 
 <!-- ### 2. Link 넣기
 
