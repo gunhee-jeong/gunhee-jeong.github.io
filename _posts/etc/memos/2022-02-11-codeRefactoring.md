@@ -3,8 +3,8 @@ layout: single
 title: "Code Refactoring"
 # categories: Git
 categories:
-  - Inspiration # HTML CSS JavaScript Server Algorithm Wecode Programmers CS vsCode
-tag: [wecode, code refactoring, bottom-up] #tag는 여러개 가능함
+  - Memo # HTML CSS JavaScript Server Algorithm Wecode Programmers CS vsCode
+tag: [wecode, code refactoring, bottom-up, 회고록] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
