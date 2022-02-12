@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "마크다운에 이미지 간편하게 삽입하는 방법"
+title: "git blog, CSS 설정 정리"
 # categories: Git
 categories:
-  - Blog # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [blog, git] #tag는 여러개 가능함
+  - Tool # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
+tag: [blog] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,11 +12,24 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# 간편 이미지 삽입 방법
+# category
 
-**Github의 저장소**에 들어가 <span style="color:red">'Issues'</span> 탭을 클릭 ->  
-오른쪽 밑에 보이는 **'New Issues'**를 클릭 ->  
-이제 화면에 원하는 <u>이미지를 'drag'한 후 코드를 복사해 원하는 곳에서 사용</u> 가능함!!!
+## tag 박스 color
+
+- sass > \_page.scss  
+  .page\_\_taxonomy-item-tag {(line 333)
+
+## 상단 category 클릭시, 메인화면 글자 색상
+
+- sass > \_page.scss  
+  .taxonomy\_\_index a(line 437)
+
+# posting
+
+## 본문 페이지
+
+- ``코드블록  
+  \_sass -> \_base.scss -> line 541~542
 
 <!-- ### 2. Link 넣기
 

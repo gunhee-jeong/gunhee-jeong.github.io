@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "git blog, CSS 설정 정리"
+title: "find_longest_word 함수만들기"
 # categories: Git
 categories:
-  - Blog # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [blog, git] #tag는 여러개 가능함
+  - wecodes # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
+tag: [javascript, coding test] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,24 +12,53 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# category
+# 문제설명
 
-## tag 박스 color
+find_longest_word 함수를 만들어 주세요.  
+주어진 리스트안에 있는 단어중 가장 긴 단어를 찾을수 있도록 함수를 완성해주세요.
 
-- sass > \_page.scss  
-  .page\_\_taxonomy-item-tag {(line 333)
+주어진 코드
 
-## 상단 category 클릭시, 메인화면 글자 색상
+```java
+function find_longest_word(arr){
 
-- sass > \_page.scss  
-  .taxonomy\_\_index a(line 437)
+}
 
-# posting
+console.log(find_longest_word(["PHP", "Exercises", "Backend"]))
+```
 
-## 본문 페이지
+# 문제풀이
 
-- ``코드블록  
-  \_sass -> \_base.scss -> line 541~542
+나의 풀이1
+
+```java
+function find_longest_word(arr){
+  let x = arr[0];
+  for(let i=1; i < arr.length; i++){
+    if(arr[i].length > x.length){
+      x = arr[i];
+    }
+  }
+  return x;
+}
+```
+
+나의 풀이2
+
+```java
+function find_longest_word(arr){
+  let result = [arr[0]];
+  arr.filter((x, index) => {
+    if(result[0].length < x.length) {
+      result.pop();
+      result.push(x);
+    }
+  })
+  return result[0];
+}
+
+console.log(find_longest_word(["PHP", "Exercises", "Backend"]))
+```
 
 <!-- ### 2. Link 넣기
 

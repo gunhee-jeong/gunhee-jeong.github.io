@@ -101,27 +101,6 @@
                 {% endfor %}
             </ul>
             <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "Blog" %}
-                        <li><a href="/categories/blog" class="">Blog ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "vsCode" %}
-                      <li><a href="/categories/vsCode" class="">vsCode ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
-            </ul>
-            <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "Inspiration" %}
-                      <li><a href="/categories/inspiration" class="">Inspiration ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
-            </ul>
-            <ul>
               {% for category in site.categories %}
                   {% if category[0] == "Memo" %}
                       <li><a href="/categories/memo" class="">메모장 ({{category[1].size}})</a></li>
@@ -130,8 +109,8 @@
             </ul>
             <ul>
               {% for category in site.categories %}
-                  {% if category[0] == "DailyReport" %}
-                      <li><a href="/categories/dailyRe" class="">Daily Report ({{category[1].size}})</a></li>
+                  {% if category[0] == "Tool" %}
+                      <li><a href="/categories/tool" class="">tool ({{category[1].size}})</a></li>
                   {% endif %}
               {% endfor %}
             </ul>
