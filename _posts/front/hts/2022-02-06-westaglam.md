@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "block과 inline에 관하여"
+title: "JS를 사용한 instagram 클론 coding"
 # categories: Git
 categories:
-  - CSS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [inline, block] #tag는 여러개 가능함
+  - HTML # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [html, wecode, instagram] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,35 +12,52 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# Block과 Inline
+# HTML의 정의와 기능
 
-## Block
+- HTML은 웹 페이지를 만들기 위한 언어
+- HTML을 사용하여 `웹 페이지의 구조`를 잡을 수 있다.
+- 이미지, 텍스트, 비디오, 버튼 등 웹 사이트에 보여줄 내용을 구성하고 있다.
 
-<span style="color:red">block</span>은 `content가 존재하지 않아도` <u>화면에는 box가 형성</u>된다.  
-`div 태그`가 대표적인 **block** 형식의 tag이다. 그래서 <u>한 줄에 하나씩 box</u>가 형성된다.  
-<img src="https://user-images.githubusercontent.com/87808288/152723573-52f7deca-9d2e-423e-9e1b-c0802c7c5cf1.png" width="300" height="200">
+# HTML tag
 
-- <u>div 태그에 width 100%;를 부여하지 않도록</u> 주의해야한다!  
-  <span style="color:red">div 태그 자체가 block 형식</span>의 tag이므로, `한 칸 전체를 모두 자치`한다.  
-  때문에 *width 100%;를 주는 것*은 <span style="color:blue">중복하여 div 태그를 설정하는 것</span>이 된다.
+HTML 파일에 필요한 최소한의 tag는 다음과 같다.
 
-## inline
+```html
+<html></html>
+<head></head>
+<body></body>
+```
 
-tag가 <span style="color:red">inline</span>이라면, 그 `칸에 빈 공간만 있다면 같은 칸에 여러 개가` 만들어진다.  
-그리고 <u>content의 크기 만큼 공간을 형성</u>하므로 -> <span style="color:red">content를 담는 상자</span>라고 생각할 수 있다!
-<img src="https://user-images.githubusercontent.com/87808288/152724646-82a7284c-aafc-449d-83b6-0bf4056c36ed.png" width="500" height="200">  
-span 태그는 content를 담는 상자이기 때문에 -> `span 태그 안의 content가 없다면`,  
-<span style="color:blue">span 태그는 화면에도 표시되지 않는다</span>.
+## tag의 구성
 
-## inline-block
+HTML에서 이미지나 text를 그리려면 그에 맞는 <span style="color:red">tag</span>를 사용하여야한다.  
+tag는 기본적으로 `<>`로 감싸져서 사용된다.  
+<u>tag는 시작하면 꼭 끝맺음을</u> 하여야하는데, `시작과 동시에 종료되는 tag들도` 존재한다.
 
-<img src="https://user-images.githubusercontent.com/87808288/152725325-a5a5c67a-990b-4c21-bc72-9516453085cd.png" width="350" height="200">  
-`div 태그 안에는 content가 존재하지 않는데`, display 설정을 <span style="color:red">display: inline-block;</span>으로  
-<u>inline의 특성과 block의 특성 두 가지를</u> 가질 수 있게 설정하였다.  
-inline이기 때문에 한 칸에도 여러 개의 상자를 가지고, 또한 block이기 때문에 content가 없지만  
-화면에 표현되고 있다.
+```bash
+<img> <br>
+```
 
-<!-- tcp스쿨 -->
+## tag의 attribute(속성)
+
+```html
+<div class="title">시작!</div>
+<a href="https://naver.com">네이버로 이동</a>
+<img src="./me.png" alt="내사진" />
+```
+
+<img src="https://user-images.githubusercontent.com/87808288/152677335-5d01e2bf-0327-4d6f-ba00-a34c18b3888a.png" width="450" height="200">
+
+`attribute`는 <u>시작 tag에 위치</u>하고, <u>한 tag에 여러 attribute를 지정</u>할 수 있다.
+
+## tag의 element(요소)
+
+<img src="https://user-images.githubusercontent.com/87808288/152675115-dfa6c37f-4064-45b1-bb85-6a3b291e3d0b.png" width="200" height="200">
+
+`tag로 시작하여 tag로 끝나는 하나`를 <span style="color:red">element</span>라고 정의하고, 이를 <span style="color:red">node</span>라고도 부른다.
+
+- <u>element = node</u> > content
+
 <!-- ### 2. Link 넣기
 
 ```

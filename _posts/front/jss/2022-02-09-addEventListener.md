@@ -48,12 +48,12 @@ idInput.addEventListener('keyup', function(x) {
 여기서 <u>x에 담긴 값</u>을 보자면 `object`로 <u>property의 key와 value가 반환</u>되는 것을 볼 수 있다.  
 그중에서 property의 키 이름 중 하나인 'key'를 x.key로 참조하면 -> 그 value인 1이 나오는 것을 볼 수 있다.
 
-그리고 여기서 키보드를 눌러 전달된 값은 input 태그에 존재하는 property의 키중 하나인 value에 전달되고 ->  
-아래의 코드를 통해서 rkqt
-
 ```java
 console.log(idInput.value)
 ```
+
+그리고 여기서 키보드를 눌러 전달된 값은 input 태그에 존재하는 property의 키중 하나인 value에 전달되고 ->  
+위의 코드를 통해서 idInput.addEventListener로 전달된 키 이벤트의 값을 받을 수 있다.
 
 <!-- ### 2. Link 넣기
 

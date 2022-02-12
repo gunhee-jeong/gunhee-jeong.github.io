@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "block과 inline에 관하여"
+title: "getPrefix 함수만들기"
 # categories: Git
 categories:
-  - CSS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [inline, block] #tag는 여러개 가능함
+  - wecodes # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
+tag: [javascript, coding test] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,35 +12,32 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# Block과 Inline
+# 문제설명
 
-## Block
+문자열이 주어졌을 때, -를 기준으로 앞에 있는 문자열을 반환하세요.
 
-<span style="color:red">block</span>은 `content가 존재하지 않아도` <u>화면에는 box가 형성</u>된다.  
-`div 태그`가 대표적인 **block** 형식의 tag이다. 그래서 <u>한 줄에 하나씩 box</u>가 형성된다.  
-<img src="https://user-images.githubusercontent.com/87808288/152723573-52f7deca-9d2e-423e-9e1b-c0802c7c5cf1.png" width="300" height="200">
+주어진 코드
 
-- <u>div 태그에 width 100%;를 부여하지 않도록</u> 주의해야한다!  
-  <span style="color:red">div 태그 자체가 block 형식</span>의 tag이므로, `한 칸 전체를 모두 자치`한다.  
-  때문에 *width 100%;를 주는 것*은 <span style="color:blue">중복하여 div 태그를 설정하는 것</span>이 된다.
+```java
+function getPrefix(str) {
 
-## inline
+}
+console.log(getPrefix('BTC-KRW')) // --> BTC
+```
 
-tag가 <span style="color:red">inline</span>이라면, 그 `칸에 빈 공간만 있다면 같은 칸에 여러 개가` 만들어진다.  
-그리고 <u>content의 크기 만큼 공간을 형성</u>하므로 -> <span style="color:red">content를 담는 상자</span>라고 생각할 수 있다!
-<img src="https://user-images.githubusercontent.com/87808288/152724646-82a7284c-aafc-449d-83b6-0bf4056c36ed.png" width="500" height="200">  
-span 태그는 content를 담는 상자이기 때문에 -> `span 태그 안의 content가 없다면`,  
-<span style="color:blue">span 태그는 화면에도 표시되지 않는다</span>.
+# 문제풀이
 
-## inline-block
+나의 풀이
 
-<img src="https://user-images.githubusercontent.com/87808288/152725325-a5a5c67a-990b-4c21-bc72-9516453085cd.png" width="350" height="200">  
-`div 태그 안에는 content가 존재하지 않는데`, display 설정을 <span style="color:red">display: inline-block;</span>으로  
-<u>inline의 특성과 block의 특성 두 가지를</u> 가질 수 있게 설정하였다.  
-inline이기 때문에 한 칸에도 여러 개의 상자를 가지고, 또한 block이기 때문에 content가 없지만  
-화면에 표현되고 있다.
+```java
+function getPrefix(str) {
+  return str.split('-')[0]
+}
 
-<!-- tcp스쿨 -->
+console.log(getPrefix('BTC-KRW')) //output == 'BTC'
+
+```
+
 <!-- ### 2. Link 넣기
 
 ```
