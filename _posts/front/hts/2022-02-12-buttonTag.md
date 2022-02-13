@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "React 개발자 도구"
+title: "HTML button tag"
 # categories: Git
 categories:
-  - React #React  HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [react, 설명서, 기본, 개발자 도구] #tag는 여러개 가능함
+  - HTML # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [html, button, tag] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,16 +12,17 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# React 개발자 도구
+# button tag의 attribute
 
-## 설치방법
+## disabled
 
-크롬에서 개발자 도구를 사용하여 html의 element들을 살펴볼 수 있듯이  
-React에서도 간단한 설치를 통해 react 코드를 살펴볼 수 있다.  
-검색 엔진에 <span style="color:red">'react developer tools'</span> -> 그러면 chrome 웹 스토어와 연결된 url이 있는데 그것을 설치!
+해당 속성은 <u>해당 버튼이 비활성화됨을 명시</u>한다.  
+`disabled 속성이 명시`되면, <u>버튼은 사용할 수 없으며, 사용자가 클릭할 수도 없다</u>.  
+이 속성을 사용하면 특정 <span style="color:red">조건이 충족될 때까지 사용자가 버튼을 클릭할 수 없도록</span> 설정하고,  
+조건이 충족되면 JS를 통해 disabled 속성 값을 삭제하여 사용자가 버튼을 다시 사용할 수 있도록 조절할 수 있다.
 
-- 이 과정을 거치고 난 후, <u>'npm run start'</u>를 실행하고 -> opt + cmd + i를 눌러 개발자 모드를 실행해보면  
-  `components`와 `profiler`가 추가된 것을 확인할 수 있다.
+`disabled 속성은 boolean 속성`을 가지고 있다.  
+boolean 속성은 해당 <u>속성을 명시하지 않으면 속성값이 자동으로 false</u> 값을 가지며, <span style="color:red">명시하면 자동으로 true</span> 값을 가진다.
 
 <!-- ### 2. Link 넣기
 
