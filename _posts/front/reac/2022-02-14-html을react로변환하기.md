@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "React-JSX"
+title: "html을 React로 변환하기"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [JSX] #tag는 여러개 가능함
+tag: [component, index.js, index.html, App.js] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,109 +12,89 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# React? Library?
+# React 파일의 설명
 
-<span style="color:red">React.js</span>는 <u>JS 라이브러리</u>이다.
+## public 폴더
 
-> library라는 것의 의미를 간단히 비유해보자면  
-> `자동차 바퀴, 자동차 헤드라이트`와 같은 존재로 비유할 수 있다.  
-> 재사용이 필요한 기능으로 반복적인 코드 작성을 없애기 위해 언제든지 필요한 곳에서 호출되며  
-> 사용할 수 있도록 Class나 Function으로 만들어진 것을 말한다.
->
-> > (개발자스럽다) : [라이브러리, 프레임워크, 아키텍처, 플래폼이란?](https://blog.gaerae.com/2016/11/what-is-library-and-framework-and-architecture-and-platform.html)
+### index.html
 
-# JSX?
+public > `index.html` 파일에는 <span style="color:red">'root'</span>가 지정되어 있다
 
 ```java
-const hi = <p>Hi</p>;
+<div id="root"></div>
 ```
 
-위의 코드는 <u>js도 아니고 html도 아닌</u>, <span style="color:red">JSX</span>라고 하는 JavaScript 확장버전의 문법이다.  
-(javascript syntax extension)
+### public/ images
 
-## JSX element
+## src 폴더
 
-HTML 문법을 js 코드 내부에서 써주면 JSX이다.  
-<u>변수에 저장</u>할 수도 있고, <u>함수의 인자로 넘길 수도</u> 있다.
+### src/ pages/ Login/
+
+#### Login.js
+
+내가 <u>가지고 와야 할 html의 body 태그</u>를, `함수형 컴포넌트`를 사용하여 넣어준다.  
+&nbsp; 이때 <span style="color:red">JSX 형식</span>으로 입력해야한다!
+
+그리고 여기서 `css파일을 연결`할 수도 있다!
 
 ```java
-const hi = <p>Hi</p>;
+import React from 'react'
+import './Login.css'; //같은 폴더안에 css파일이 있다!
 
-const myFavorite = {
-    food: <li>샐러드</li>,
-    animal: <li>dog</li>,
-    hobby: <li>programming</li>};
+const Login = () => {
+  return (
+    <main id="main" class="loginContainer">
+        <div class="loginInner">
+          <h1>Westagram</h1>
+          <form class="loginForm" action="">
+            <input
+              id="id"
+              type="text"
+              placeholder="전화번호, 사용자 이름 또는 이메일"
+            />
+            <input id="pw" type="password" placeholder="비밀번호" />
+            <button id="loginBtn" type="button" disabled>로그인</button>
+          </form>
+          <span class="passwordContainer"><a href="#">비밀번호를 잊으셨나요?</a></span>
+        </div>
+      </main>
+  )
+};
+
+export default Login
 ```
 
-## JSX attribute
+그리고 마지막에는 export default `파일명`으로 마무리한다.
 
-<u>태그에 attribute</u>를 줄때는 항상 <span style="color:red">"" 쌍따옴표</span>로 감싸야한다.  
-JSX에서의 attribute는 실제 HTML의 속성명과 다를 수 있으므로 react공식문서를 참고하자!  
-(React 공식문서) : [react](https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes)
+### ./App.js
+
+- <u>App.js</u>의 내용이 `index.js`를 거쳐 `index.html`의 'root' div에 그려지게 되는 것
+- <u>import Login</u>을 설정하면서 `'Login'`에 Login.js의 위치를 할당했다.
 
 ```java
-const hi = <input readOnly={true} />;
+import React from "react";
+import Login from "./pages/Login/Login"
+// import "./App.css";
 
-const myFavorite = {
-    food: <li>샐러드</li>,
-    animal: <li>dog</li>,
-    hobby: <li className="list-item">programming</li>};
+function App() {
+    return <Login />
+}
+
+export default App;
 ```
 
-class를 주고 싶을 때 원래의 속성명은 그대로 `'class'`이지만 JSX에서는 <span style="color:red">className</span>으로 사용한다!
+### ./index.js
 
-## Self-Closing Tag
-
-JSX에서는 어떤 태그라도 self closing tag가 가능하다.  
-`<input>과 같이 하나의 태그가 요소인 경우`에는 <span style="color:red">\<input /\></span>과 같이 <u>항상 /으로 끝나야</u>한다.  
-따라서 `<div />`와 `<div><div/>`는 같은 표현이다.
-
-## Nested JSX
-
-### (필수) 소괄호로 감싸기
+- <u>브라우저에 보여주고자 할</u> 화면
+- index.js는 App.js(컴포넌트)와 index.html(화면)을 `연결해주는 다리 기능을` 해주는 파일이다.
 
 ```java
-const good = (
-<div>
-    <p>hi</p>
-</div>);
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));
 ```
-
-`증첩된 요소`를 만들려면 <span style="color:red">()소괄호로 감싸야</span>한다.
-
-### (필수) 항상 하나의 태그로 시작
-
-```java
-const wrong = (
-<p>list1</p><p>list2</p>);
-```
-
-위와 같이 <span style='color:red'>제일 처음의 요소가 sibling이면 안된다</span>. `무조건 하나의 tag로 감싸져야`한다!  
-아래의 코드를 살펴보자.
-
-```java
-const right = (
-  <div>
-    <p>list1</p>
-    <p>list2</p>
-  </div>
-);
-```
-
-# Rendering
-
-<u>html element, 또는 React 요소 등의 코드가 눈으로 볼 수 있도록 그려지는 것</u>을 `rendering`이라고 한다.  
-React 요소가 DOM node에 추가되어 화면에 render되려면 <span style="color:red">ReactDOM.render 함수를</span> 사용해야한다.
-
-```java
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
-```
-
-첫 번째 인자에는 <u>JSX로 React 요소를 인자로</u> 넘기고,  
-두 번째 인자는 <u>해당 요소를 render하고 싶은 container(부모요소)를</u> 전달한다.
 
 <!-- ### 2. Link 넣기
 
