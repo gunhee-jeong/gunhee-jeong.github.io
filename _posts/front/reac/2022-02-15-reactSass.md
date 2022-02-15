@@ -1,63 +1,16 @@
 ---
 layout: single
-title: "22 02 12(토) 데일리 리포트"
+title: "React-Sass"
 # categories: Git
 categories:
-  - Memo # HTML CSS JavaScript Server Algorithm Wecode Programmers CS vsCode
-tag: [daily report] #tag는 여러개 가능함
+  - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [Sass] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-
-1100~1157 개발 블로그 작성  
-1206~1255 개발 블로그 작성: HTTP 정리하기
-1308~1356 개발 블로그 작성: code 리팩토링  
-1405~1500 개발 블로그 작성: box-sizing  
-1600~1657 개발 블로그 작성: wecode, coding test  
-1704~1752 개발 블로그 작성: wecode, coding test  
-1812~1924 개발 블로그 작성: wecode, coding test  
-2035~2100 개발 블로그 작성: wecode, coding test  
-2207~2303 개발 블로그 작성: wecode, coding test
-
-<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
-
-다른 사람과 비교하지말고, 어제의 나와 비교하자.
-하루하루를 최대한 밀도있게 보내자. 힘내자!
-
-form 태그?(form 태그와 button의 연관성?)
-&nbsp; 타입을 버튼으로!
-
-vh와 %의 차이점 정리하기
-
-common.css에서 따로 flex를 모아서 사용??
-
-자바스크립트의 연결은 body 태그의 가장 마지막에 넣어주자
-&nbsp; 그런데 defer를 넣으면??
-어디든 들어가도 상곤이 없다?!
-
-'use strit'란??
-
-getElementsBy와 element의 차이?
-querySelector를 가장 많이 사용함
-&nbsp; 이걸 쓰면 document를 다 돌지 않기 때문에 이걸 선호함
-
-form 태그를 공부하자? id input을 쓰지 말고
-이벤트 위임에 관련해서 꼭 블로그 쓰기
-<span style="color:red">이벤트 버블링, 이벤트 </span>위임!
-
-input 이벤트는 뭔가요 ㅠㅠ
-input 내역이 달라지면?? 인지하는 그런 이벤트?
-이것도 블로그 써야할 듯...
-
-const boolena naming convention 사용하기 (isValidid)
-
-키코드와 코드의 차이?
-&nbsp; 근데 code를 쓰는 것이 좋다! 아마 키코드는 지원하지 않을 것이다
-
-inhtml와 innerText의 차이?
 
 <!-- ### 2. Link 넣기
 
@@ -177,8 +130,9 @@ _기울여서_ -> 이탤릭체
 [![이미지](https://gunhee-jeong.github.io/assets/images/blogLogo/blogLogo.png)](https://gunhee-jeong.github.io/)
 ```
 
-유형1: ('사이즈를 조절' -> HTML 태그 사용) :  링크 걸기)
-
+유형1: ('사이즈를 조절' -> HTML 태그 사용) : <img src="https://gunhee-jeong.github.io/assets/images/blogLogo.png" width="300" height="200">
+유형2: (이미지 삽입 후 -> 링크 걸기)
+[![이미지](https://gunhee-jeong.github.io/assets/images/blogLogo.png)](https://gunhee-jeong.github.io/)
 
 ### 9. 표 만들기
 
