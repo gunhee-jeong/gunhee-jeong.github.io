@@ -12,6 +12,20 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
+CSS의 전 처리기!
+
+```bash
+npm install sass --save
+```
+
+공식문서 확인하기!  
+변수, 반복문? 등을 사용할 수도 있음!!
+
+<u>nesting 기능</u>을 적용할 수 있음
+
+scss는 index.js에서 한번만 설정하면 됨  
+&nbsp; 하지만 순서도 중요함! 리셋부터? 이거 무슨말임....? 철진님...?
+
 <!-- ### 2. Link 넣기
 
 ```

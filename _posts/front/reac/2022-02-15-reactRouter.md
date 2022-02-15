@@ -39,10 +39,11 @@ router 컴포넌트도 내부적으로는 context 프로바이드이다.
 - Routes, Route
 
 **react router 설치하기**  
-패키지를 설치하기 위해서는 <u>package.json이 있는 폴더</u>에서 `terminal`을 실행하고 ->
+패키지를 설치하기 위해서는 <u>package.json이 있는 폴더</u>에서 `terminal`을 실행하고 ->  
+(package.json은 우리 프로젝트의 요약본!)
 
 ```bash
-npm install react-router-dom@6
+npm install react-router-dom --save
 ```
 
 위의 명령어에서 react-router-dom은 패키지의 이름이고,  
@@ -81,6 +82,10 @@ function Router() {
 export default Router;
 ```
 
+<u>path는 경로를 입력받는 곳</u>이다.  
+예를 들어 사이트의 'gunhee.github.io/main'  
+이런식으로 사이트 주소의 페이지 경로라고 이해하 수 있다.
+
 **index.js**  
 CRA로 만든 앱에 routing 기능을 적용하려면 <u>index.js를 수정</u>해야 한다.  
 `<App /> 컴포넌트` 대신에 routing을 설정한 컴포넌트<Router />로 변경해야 한다.
@@ -93,7 +98,12 @@ ReactDOM.render(<Router />, document.getElementById('root'));
 Route 이동하는 방법에는 2가지가 존재한다.  
 `<Link> 컴포넌트`와 `useNavigate로 구현`하는 방법!
 
-- `<Link> 컴포넌트`
+왜 방법을 구분해놓았을까?  
+&nbsp; Link는 단순 컴포넌트이므로 무조건 이동시킨다.  
+&nbsp; useNavigate는 <u>자바스크립트 코드</u>이므로 -> 조건문! `조건에 따라 이동`시킬 수 있다.
+
+- `<Link> 컴포넌트`  
+  a 태그는 외부사이트로!, Link태그는 우리가 구현한 프로젝트 내에서 페이지를 전환하는 경우!
 
 ```java
 import React from "react";
@@ -112,13 +122,6 @@ export default Login;
 
 Router.js에서 설정한 path로 이동하는 첫 번째 방법은 `<Link/> 컴포넌트`를 사용하는 방법이다.  
 react-router-dom 에서 제공하는 `<Link />` 컴포넌트는 DOM에서 `<a>`로 변환(compile) 된다.
-
-# router 컴포넌트 감싸기
-
-이제 프로젝트의 최상위 컴포넌트인 `Main.js` 파일에서 router 컴포넌트를 적용해야한다.  
-`BrowserRouter` 라는 컴포넌트를 불러와서 <u>컴포넌트 전체를 감싸주게</u>된다.  
-`<a> 태그`와 마찬가지로 `<Link/> 컴포넌트`도 <u>지정한 경로로 바로 이동시켜주는 기능</u>을 한다.  
-&nbsp; a 태그는 -> 외부 사이트로 이동하는 경우, Link 태그는 -> 프로젝트 내에서 페이지를 전환하는 경우!
 
 - useNavigate 로 구현하는 방법
 
@@ -160,6 +163,13 @@ export default Login;
 &nbsp; useNavigate 훅을 실행하면 페이지 이동을 할 수 있게 해주는 함수를 반환한다.  
 &nbsp; -> 해당 함수를 navigate라는 변수에 저장한다.
 
+# router 컴포넌트 감싸기
+
+이제 프로젝트의 최상위 컴포넌트인 `Main.js` 파일에서 router 컴포넌트를 적용해야한다.  
+`BrowserRouter` 라는 컴포넌트를 불러와서 <u>컴포넌트 전체를 감싸주게</u>된다.  
+`<a> 태그`와 마찬가지로 `<Link/> 컴포넌트`도 <u>지정한 경로로 바로 이동시켜주는 기능</u>을 한다.  
+&nbsp; a 태그는 -> 외부 사이트로 이동하는 경우, Link 태그는 -> 프로젝트 내에서 페이지를 전환하는 경우!
+
 ```java
 import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
@@ -182,6 +192,9 @@ export default Main;
 우선 Routes 컴포넌트로 Route들을 감싸고, 각 페이지마다 Route들을 배치하게 된다.  
 각 페이지의 경로는 path props로, 컴포넌트는 element props로 지정한다.  
 그리고 이때 element props에는 꼭 <span style="color:red">JSX로 설정</span>하여야 한다!
+
+요약  
+index.js에서 react DOM을 통해서
 
 <!-- ### 2. Link 넣기
 
