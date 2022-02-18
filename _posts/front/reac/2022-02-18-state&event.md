@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "JSX"
+title: "State & Event"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [JSX] #tag는 여러개 가능함
+tag: [state, event] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,99 +12,44 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# JSX?
+# State
+
+- 단어의 뜻 그대로 컴포넌트 내부에서 가지고 있는 `컴포넌트의 상태값`을 의미한다.
+- state는 화면에 보여줄 컴포넌트 UI 정보(상태)이다.
+- state는 컴포넌트 내에서 정의하고 사용하며 얼마든지 데이터가 변경될 수 있다.
+
+## state의 정의
+
+### Function component: state
 
 ```java
-const hi = <p>Hi</p>;
+import React, { useState } from 'react';
+
+function State() {
+  const [color, setColor] = useState('red');
+
+  return (
+    <div>
+      <h1>Function Component | State</h1>
+    </div>
+  );
+}
+
+export default State;
 ```
 
-위의 코드는 <u>js도 아니고 html도 아닌</u>, <span style="color:red">JSX</span>라고 하는 JavaScript 확장버전의 문법이다.  
-(javascript syntax extension)  
-JS 파일에서 HTML의 문법을 사용할 수 있도록한다.
+- 함수 컴포넌트에서 화면에 나타내고 싶은 JSX 요소가 return 문 안에 들어있다.
+- state를 설정할 때는 화면에 보이듯이 useState 함수를 import한 후 사용해야 한다.
+- useState 함수는 컴포넌트 선언문(function State())과 return 문 사이에 작성된다.
+- useState 함수에 초기값('red')을 인자로 넣어 호출하면 배열을 반환한다.
+- 배열의 첫 번째 요소는 상태값이 저장되는 변수이고, 두 번째 요소는 상태값을 갱신하는 함수이다.
+- 위 예제에서 state를 담는 변수를 color로, color의 값을 갱신하는 함수를 setColor로  
+  그리고 color의 초기값을 red로 정의했다.
 
-## JSX element
+## state 사용 예시
 
-HTML 문법을 js 코드 내부에서 써주면 JSX이다.  
-<u>변수에 저장</u>할 수도 있고, <u>함수의 인자로 넘길 수도</u> 있다.
-
-```java
-const hi = <p>Hi</p>;
-
-const myFavorite = {
-    food: <li>샐러드</li>,
-    animal: <li>dog</li>,
-    hobby: <li>programming</li>};
-```
-
-## JSX attribute
-
-<u>태그에 attribute</u>를 줄때는 항상 <span style="color:red">"" 쌍따옴표</span>로 감싸야한다.  
-JSX에서의 attribute는 실제 HTML의 속성명과 다를 수 있으므로 react공식문서를 참고하자!  
-(React 공식문서) : [react](https://reactjs.org/docs/dom-elements.html#all-supported-html-attributes)
-
-```java
-const hi = <input readOnly={true} />;
-
-const myFavorite = {
-    food: <li>샐러드</li>,
-    animal: <li>dog</li>,
-    hobby: <li className="list-item">programming</li>};
-```
-
-class를 주고 싶을 때 원래의 속성명은 그대로 `'class'`이지만 JSX에서는 <span style="color:red">className</span>으로 사용한다!
-
-## Self-Closing Tag
-
-JSX에서는 어떤 태그라도 self closing tag가 가능하다.  
-`<input>과 같이 하나의 태그가 요소인 경우`에는 <span style="color:red">\<input /\></span>과 같이 <u>항상 /으로 끝나야</u>한다.  
-따라서 `<div />`와 `<div><div/>`는 같은 표현이다.
-
-## Nested JSX
-
-### (필수) 소괄호로 감싸기
-
-```java
-const good = (
-<div>
-    <p>hi</p>
-</div>);
-```
-
-`증첩된 요소`를 만들려면 <span style="color:red">()소괄호로 감싸야</span>한다.
-
-### (필수) 항상 하나의 태그로 시작
-
-```java
-const wrong = (
-<p>list1</p><p>list2</p>);
-```
-
-위와 같이 <span style='color:red'>제일 처음의 요소가 sibling이면 안된다</span>. `무조건 하나의 tag로 감싸져야`한다!  
-아래의 코드를 살펴보자.
-
-```java
-const right = (
-  <div>
-    <p>list1</p>
-    <p>list2</p>
-  </div>
-);
-```
-
-# Rendering
-
-<u>html element, 또는 React 요소 등의 코드가 눈으로 볼 수 있도록 그려지는 것</u>을 `rendering`이라고 한다.  
-React 요소가 DOM node에 추가되어 화면에 render되려면 <span style="color:red">ReactDOM.render 함수를</span> 사용해야한다.
-
-```java
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
-```
-
-첫 번째 인자에는 <u>JSX로 React 요소를 인자로</u> 넘기고,  
-두 번째 인자는 <u>해당 요소를 render하고 싶은 container(부모요소)를</u> 전달한다.
+state에서 상태값을 설정하는 이유는 결국 컴포넌트 안의 요소에서 그 상태 값을 반영해서  
+데이터가 바뀔 때마다 효율적으로 화면(UI)에 나타내기 위함이다.
 
 <!-- ### 2. Link 넣기
 

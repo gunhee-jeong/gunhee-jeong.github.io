@@ -98,6 +98,10 @@ ReactDOM.render(<Router />, document.getElementById('root'));
 Route 이동하는 방법에는 2가지가 존재한다.  
 `<Link> 컴포넌트`와 `useNavigate로 구현`하는 방법!
 
+조건이 필요없을 때 그리고 데이터가? 넘어가야하는 상황??  
+-> 물건의 상세페이지로 넘어가야할 때는 a링크지만, 상품을 장바구니에  
+담는 행동들을 할 때는
+
 왜 방법을 구분해놓았을까?  
 &nbsp; Link는 단순 컴포넌트이므로 무조건 이동시킨다.  
 &nbsp; useNavigate는 <u>자바스크립트 코드</u>이므로 -> 조건문! `조건에 따라 이동`시킬 수 있다.
