@@ -22,6 +22,138 @@ props는 `부모 컴포넌트로부터 전달 받은 데이터를` 지니고 있
 
 props를 이용해 어떤 자바스크립트 값이든 <u>모두 자식 컴포넌트에 전달할 수</u> 있다.
 
+```java
+//parent component
+import React from "react";
+import Child from "./Child/Child";
+
+const Parent = () => {
+  return (
+    <>
+      <h1>Parent Component</h1>
+      <Child text="기 화이팅" / number={30}>
+    </>
+  );
+};
+
+export default Parent;
+
+```
+
+`Parent 컴포넌트` 안에 있는 <u>Child 컴포넌트의 attribute인 text에 30기 화이팅'</u>라는  
+`데이터를` 넣었고, 자식 컴포넌트인 <span style="color:red">Child에서 props</span>를 사용해 console.log로 찍어보면  
+<u>'30기 화이팅'가 아닌</u> <span style="color:red">object</span>로 출력된다!  
+왜냐하면 <span style="color:red">prop</span>는 `부모 컴포넌트로부터 전달받은 객체 타입의 데이터`이기 때문이다.
+
+```java
+//child component
+import React from "react";
+
+const Child = (props) => {
+  console.log(props); //{text: '기 화이팅', number: 30}
+  return <p>Child!</p>;
+};
+
+export default Child;
+
+```
+
+여기서 console.log가 아닌 view에서 '30기 화이팅'로 보이게 하기 위해서는  
+아래와 같은 방법으로 view를 직접 변경시킬 수 있다.
+
+```java
+import React from "react";
+
+const Child = (props) => {
+  console.log(props);
+  return (
+    <p>
+      {props.number}
+      {props.text}
+    </p>
+  );
+};
+
+export default Child;
+```
+
+아니면 아래와 같이 parent 컴포넌트 안에서, <u>변수를 할당</u>할 수도 있다.
+
+```java
+//parent component
+import React from "react";
+import Child from "./Child/Child";
+
+const Parent = () => {
+  const thirty = 30;
+  return (
+    <>
+      <h1>Parent Component</h1>
+      <Child text="기 화이팅" number={thirty}>
+    </>
+  );
+};
+
+export default Parent;
+
+//child component
+import React from "react";
+
+const Child = (props) => {
+  console.log(props);
+  return (
+    <p>
+      {props.number}
+      {props.text}
+    </p>
+  );
+};
+
+export default Child;
+```
+
+만약 부모 컴포넌트로부터 'red'라는 데이터를 전달받아 -> 자식 컴포넌트의 color를  
+red로 변경하고자 한다면 아래와 같이 코드를 만들 수 있다.
+
+```java
+//parent component
+import React from "react";
+import Child from "./Child/Child";
+
+const Parent = () => {
+  const thirty = 30;
+  return (
+    <>
+      <h1>Parent Component</h1>
+      <Child text="기 화이팅" number={thirty} color="red">
+    </>
+  );
+};
+
+export default Parent;
+
+//child component
+import React from "react";
+
+const Child = (props) => {
+  console.log(props);
+  return (
+    <p style={ { color: props.color } }>
+      {props.number}
+      {props.text}
+    </p>
+  );
+};
+
+export default Child;
+```
+
+Parent component에서 Child component에게 color='red'를 -> props를 통해  
+object 데이터로 물려주었고 -> Child Component에서는 p태그의 인라인 style을 주는  
+방법으로 Child Component의 color를 변경할 수 있다.  
+&nbsp; <span style="color:green"><p style={ { color: props.color } }></span>에서 `porps.color`를 사용하여  
+&nbsp; <u>Parent component에서 전달받은 데이터를 사용</u>할 수 있다.
+
 <!-- ### 2. Link 넣기
 
 ```
