@@ -4,7 +4,7 @@ title: "State & Event"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [state, event, props] #tag는 여러개 가능함
+tag: [state, event, props, useState] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -18,9 +18,12 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 - state는 화면에 보여줄 컴포넌트 UI 정보(상태)이다.
 - state는 컴포넌트 내에서 정의하고 사용하며 <u>얼마든지 데이터가 변경</u>될 수 있다.
 
-## state의 정의
+## 언제 state를 사용해야할까?
 
-### Function component: state
+<u>정적인 데이터를 사용하는 곳</u>에 `state를 사용하지 말아야`한다.  
+state는 오직 <span style="color:red">상호작용</span>이 이루어지는 -> <span style="color:red">시간이 지남에 따라 데이터가 바뀌는 것</span>에 이용해야한다.
+
+## state 살펴보기
 
 ```java
 //parent component
@@ -305,7 +308,144 @@ Parent Component에서는, Child Component에서 처럼 값을 전달해주고 p
 &nbsp; `Parent Compontent`에서는 <u>isSwitchOn에 직접 접근</u>할 수 있으므로 color: <span style="color:red">props.isSwitchOn</span>으로  
 &nbsp; isSwitchOn의 value에 접근할 수 있다.
 
-<!-- &nbsp; 그래서 버튼이 눌릴 때마다 isSwitchOn의 value가 바뀌게되고 ->  -->
+### useState의 작동
+
+위의 코드에서 <u>button 태그를 누르면</u> -> `toggleSwitch 함수가 작동`된다.  
+toggleSwitch가 작동하면 -> <span style="color:green">setSwitchOn(!isSwitchOn);</span>가 실행되는데  
+isSwitchOn의 값이 false라면 -> <u>!false은 true</u>이므로 `setSwitchOn(true)`가 작동된다.  
+&nbsp; 그런데 여기서 한 가지 중요한 점은 toggleSwitch 함수가 실행되면서 <span style="color:red">toggleSwitch 함수가 완전히  
+&nbsp; 종료되는 시점에</span> `setSwitchOn(true)가 실행`되어  
+&nbsp; <span style="color:red">isSwitchOn의 value가 false에서 true로 할당</span>된다는 것이다.
+
+```java
+const [isSwitchOn, setSwitchOn] = useState(false);
+
+const toggleSwitch = () => {
+  setSwitchOn(!isSwitchOn);
+  console.log(isSwitchOn); //output == false
+};
+```
+
+&nbsp; 이렇게 toggleSwitch 함수가 종료되기 전에 isSwitchOn의 값을 살펴보면  
+&nbsp; console.log에서도 `isSwitchOn의 값이 변하지 않고 false`인 것을 볼 수 있다.  
+&nbsp; <span style="color:red">함수가 완전히 종료되어야지만 isSwitchOn의 값도 true로 할당</span>될 수 있다!
+
+## state 끌어올리기
+
+React에서는 <span style="color:red">단방향 데이터</span> 흐름이라는 원칙에 따라 -> Child Component는  
+Parent Component로 부터 전달받은 데이터와 형태 혹은 타입이 무엇인지만 알 수 있다.
+
+Child Component에서의 어떤 event로 인해 Parent Component의 state가 바뀌는 것에  
+관하여 React에서 제시하는 방향은 -> <u>'Parent Component의 state를 변경하는 함수'</u>  
+`그 자체를 Child Component로 전달`하고, <u>이 함수를 Child Component가 실행</u>한다.  
+&nbsp; 이것은 여전히 단방향 데이터 흐름이라는 원칙에 부합하는 해결책이고 이를 <span style="color:red">state 끌어올리기</span>라 한다.
+
+### Parent Component의 버튼이 Child Component에 있다면?
+
+```java
+//Parent Component
+const Parent = () => {
+  const [color, setColor] = useState("red");
+  // console.log(color);
+  const [isSwitchOn, setSwitchOn] = useState(false);
+
+  const changeColor = () => {
+    setColor("blue");
+  };
+
+  const toggleSwitch = () => {
+    setSwitchOn(!isSwitchOn);
+  };
+  console.log(`isSwitchOn -->`, { isSwitchOn });
+
+  return (
+    <>
+      <h1 style={ { color: isSwitchOn ? "blue" : "red" } }>Parent Component</h1>
+      <Child
+        isSwitchOn={isSwitchOn}
+        text="기 화이팅"
+        number={30}
+        color={color}
+      />
+    </>
+  );
+};
+
+//Child Component
+const Child = (props) => {
+  // console.log(`child component props ->`, props.color);
+  console.log(props);
+  return (
+    <>
+      <p style={ { color: props.isSwitchOn ? "blue" : "red" } }>
+        {props.number}
+        {props.text}
+      </p>
+      <button onClick={toggleSwitch}>Click!</button>
+    </>
+  );
+};
+
+```
+
+위의 코드에서 처럼, <u>버튼 태그가 Child Component에 위치하게 된다면</u>  
+`'toggleSwitch' not defined error`가 발생한다.  
+&nbsp; 왜냐하면 toggleSwitch라는 함수는 Parent Component에 위치하고 있으므로  
+&nbsp; <u>Parent에서 전달</u>하고 <span style="color:red">Child에서 props로</span> 받지 않으면  
+&nbsp; Child에서는 toggleSwitch를 사용할 수 없다.  
+&nbsp; 그래서 이를 사용하기 위해서는
+
+```java
+//Parent Component
+const Parent = () => {
+  const [color, setColor] = useState("red");
+  // console.log(color);
+  const [isSwitchOn, setSwitchOn] = useState(false);
+
+  const changeColor = () => {
+    setColor("blue");
+  };
+
+  const toggleSwitch = () => {
+    setSwitchOn(!isSwitchOn);
+  };
+  console.log(`isSwitchOn -->`, { isSwitchOn });
+
+  return (
+    <>
+      <h1 style=>Parent Component</h1>
+      <Child
+        isSwitchOn={isSwitchOn}
+        text="기 화이팅"
+        number={30}
+        color={color}
+        toggleSwitch={toggleSwitch}
+      />
+    </>
+  );
+};
+
+//Child Component
+const Child = (props) => {
+  // console.log(`child component props ->`, props.color);
+  console.log(props);
+  return (
+    <>
+      <p style=>
+        {props.number}
+        {props.text}
+      </p>
+      <button onClick={props.toggleSwitch}>Click!</button>
+    </>
+  );
+};
+```
+
+&nbsp; <u>Parent에서 우선 toggleSwitch 함수를 전달</u>하기 위해서  
+&nbsp; Child Component에 <span style="color:green">isSwitchOn={isSwitchOn}</span>를 사용하여 전달하고  
+&nbsp; Child에서는 <u>전달받은 props 객체를 사용하기 위해서</u>  
+&nbsp; <span style="color:green"><button onClick={props.toggleSwitch}>Click!</button></span>을  
+&nbsp; 사용하여 toggleSwitch 함수를 사용할 수 있다.
 
 ## state 사용 예시
 
