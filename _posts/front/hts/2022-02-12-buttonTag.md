@@ -4,7 +4,7 @@ title: "HTML button tag"
 # categories: Git
 categories:
   - HTML # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [html, button, tag] #tag는 여러개 가능함
+tag: [button, tag, disabled] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -19,10 +19,12 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 해당 속성은 <u>해당 버튼이 비활성화됨을 명시</u>한다.  
 `disabled 속성이 명시`되면, <u>버튼은 사용할 수 없으며, 사용자가 클릭할 수도 없다</u>.  
 이 속성을 사용하면 특정 <span style="color:red">조건이 충족될 때까지 사용자가 버튼을 클릭할 수 없도록</span> 설정하고,  
-조건이 충족되면 JS를 통해 disabled 속성 값을 삭제하여 사용자가 버튼을 다시 사용할 수 있도록 조절할 수 있다.
+조건이 충족되면 JS를 통해 disabled 속성 값을 삭제하여  
+사용자가 버튼을 다시 사용할 수 있도록 조절할 수 있다.
 
 `disabled 속성은 boolean 속성`을 가지고 있다.  
-boolean 속성은 해당 <u>속성을 명시하지 않으면 속성값이 자동으로 false</u> 값을 가지며, <span style="color:red">명시하면 자동으로 true</span> 값을 가진다.
+boolean 속성은 해당 <u>속성을 명시하지 않으면 속성값이 자동으로 false</u> 값을 가지며,  
+<span style="color:red">명시하면 자동으로 true</span> 값을 가진다.
 
 <!-- ### 2. Link 넣기
 

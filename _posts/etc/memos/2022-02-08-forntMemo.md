@@ -225,6 +225,15 @@ let a = 1 + 2
 
 # React
 
+set 함수의 비동기화적인 문제를 발견함
+
+set 함수의 무한루프 error를 공부해야함  
+&nbsp; state가 변화할 때마다 -> 랜더링됨!  
+&nbsp; 그래서 loop error가 발생하는 것임
+
+set 함수를 사용하기 위해서 -> 함수 안에 변수 선언, 함수 밖에 변수 선언,  
+함수 밖에 return, method안에 method
+
 ## Router.js
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
