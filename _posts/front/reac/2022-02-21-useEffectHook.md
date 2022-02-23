@@ -14,7 +14,7 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 
 웹 사이트를 만들다 보면 화면에 보일 수 있는 데이터를 서버에서 받아오기도 해야 하고,  
 'state'가 바뀔 때마다 함수를 실행 시키거나, 이벤트 리스너를 달았다가 해제하는 등의  
-동작이 필요할 수 있다. -> 이때 useEffect Hook이 필요로하다.
+동작이 필요할 수 있다. -> 이때 useEffect Hook이 필요로하다!
 
 # 학습목표
 
