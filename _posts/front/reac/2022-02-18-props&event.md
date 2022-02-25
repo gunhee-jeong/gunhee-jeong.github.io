@@ -22,6 +22,68 @@ props는 `부모 컴포넌트로부터 전달 받은 데이터를` 지니고 있
 
 props를 이용해 어떤 자바스크립트 값이든 <u>모두 자식 컴포넌트에 전달할 수</u> 있다.
 
+App.js에서 Counter component을 사용하고 있는데
+
+```java
+//App.js
+function App() {
+  return (
+    <div className="App">
+      <MyHeader />
+      <Counter />
+    </div>
+  );
+}
+```
+
+Counter component는 아래의 모습을 하고 있다.
+
+```java
+//Counter component
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const onIncrese = () => {
+    setCount(count + 1);
+  };
+
+  const onDecrese = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <h2>{count}</h2> //버튼의 초기값을 const count의 0으로 지정함
+      <button onClick={onIncrese}>+</button> //+버튼을 누르면 onIncrese 실행
+      <button onClick={onDecrese}>-</button> //-버튼을 누르면 onDecrese 실행
+    </div>
+  );
+};
+```
+
+그런데 우리가 초기값으로 지정한 `<h2>{count}</h2>`을 Counter component의  
+<span style="color:red">Parent component</span>인 <u>App component에서</u> 받아올 수 있다.
+
+```java
+//App.js
+function App() {
+  return (
+    <div className="App">
+      <MyHeader />
+      <Counter a={1} b={2} c={3} d={4} e={5}/> //Parent에서 child로 props 전달
+    </div>
+  );
+}
+
+//Counter component
+const Counter = (props) => { //Parent에서 props를 받고
+  const [count, setCount] = useState(0);
+  console.log(props); //output == {a: 1, b: 2, c: 3, d: 4, e: 5}
+```
+
+Parent component에서 위와 같은 방법으로 <u>Child인 Counter에게 속성을 전달</u>하고  
+`Child component에서는 props를` 사용해 이를 <span style="color:red">object</span>로 받아올 수 있다.
+
 ```java
 //parent component
 import React from "react";

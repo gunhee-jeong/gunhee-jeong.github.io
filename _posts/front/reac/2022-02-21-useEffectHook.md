@@ -4,7 +4,7 @@ title: "useEffect Hook"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [useEffect, hook, sideEffect] #tag는 여러개 가능함
+tag: [useEffect, hook, setInterval, clearInterval] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -120,11 +120,13 @@ import { useEffect } from "react"
 useEffect( 실행시킬 동작, [ 타이밍 ] )
 document.addEventListener("타이밍", 실행시킬 동작) // 추상화 한 예시
 
+//1번
 // 매 렌더링마다 Side Effect가 실행되어야 하는 경우
 useEffect(() => {
   // Side Effect
 })
 
+//2번
 // Side Effect가 첫 번째 렌더링 이후 한번 실행 되고,
 // 이후 특정 값의 업데이트를 감지했을 때마다 실행되어야 하는 경우
 useEffect(() => {
@@ -137,6 +139,140 @@ useEffect(() => {
   // Side Effect
 }, [])
 ```
+
+1번: rendering이 될 때마다 실행  
+`component가 rendering될 때마다` 매번 call function이 실행됨  
+&nbsp; component가 처음 화면에 rendering될 때 그리고 다시 component가  
+&nbsp; 다시 rendering될 때 실행됨
+
+2번: component가 <u>처음 화면에 rendering될 때</u>, `array 안의 element의 값이 바뀔 때` 실행  
+&nbsp; <u>만약 빈 array라면</u> 화면에 <span style="color:red">처음 rendering될 때만</span> 실행됨
+
+## useEffect를 사용하여 버튼만들기
+
+```java
+//App component
+function App() {
+  const [count, setCount] = useState(1);
+  const [name, setName] = useState("");
+
+  const handleCountUpdate = () => {
+    setCount(count + 1);
+    // console.log(`rendering 했어요! 🍎`);
+  };
+
+  const handleInput = (e) => {
+    setName(e.target.value);
+  };
+
+  useEffect(() => {
+    console.log(`rendering 헀어요! 🌈`);
+  });
+
+  useEffect(() => {
+    console.log(`rendering 했어요! 🍎`);
+  }, [name]);
+
+  useEffect(() => {
+    console.log(`rendering 했어요! ⭐️`);
+  }, []);
+
+  return (
+    <div>
+      <button onClick={handleCountUpdate}>Update</button> //버튼
+      <span>Count: {count}</span>
+      <input onChange={handleInput} type="text" /> //이름을 입력하는 input
+      <span>name: {name}</span>
+    </div>
+  );
+}
+```
+
+<span style="color:green">useEffect(() => {console.log(\`rendering 했어요! 🍎\`);}, [name])</span>  
+이렇게 <span style="color:red">빈 array에 name</span>이 들어가면 -> useState를 통해 `name의 state가`  
+`변화하면` useEffect가 실행!  
+&nbsp; useState를 통해 name이 변하는 경우는 input에 onChange 이벤트가 발생하는 경우이다.
+
+<span style="color:green">useEffect(() => {console.log(`rendering 헀어요! 🌈`);});</span>  
+이렇게 useEffect에 <u>두번째 argument가 존재하지 않는다면</u> <span style="color:red">모든 state의 상태가 변경될 때마다  
+rendering</span>된다.
+
+<span style="color:green">useEffect(() => {console.log(`rendering 했어요! ⭐️`);}, []);</span>  
+이렇게 빈 배열로 useEffect를 이용하면 <u>맨처음 한 번만 rendering</u>되고 난 이후에는,  
+rendering되지 않는다.
+
+## cleanUp을 이용한 버튼 만들기
+
+```java
+//App.js
+const App = () => {
+  const [showTimer, setShowTimer] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setShowTimer(!showTimer)}>Toggle Timer</button>
+      {showTimer && <Timer />}
+    </div>
+  );
+};
+
+//Timer.js
+const Timer = () => {
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log(`타이머 실행중...`);
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+      console.log(`타이머가 종료되었습니다.`);
+    };
+  }, []);
+
+  return (
+    <div>
+      <span>타이머를 시작</span>
+    </div>
+  );
+};
+
+```
+
+### App.js
+
+<u>'Toggle Timer'라는 버튼</u>과 이 버튼을 누르면 -> <u>'타이머 실행중...'이라는 span 태그</u>가  
+toggle되도록 만든다.
+
+<span style="color:green">const [showTimer, setShowTimer] = useState(false);</span>  
+&nbsp; 버튼을 누르면 `<Timer />`가 <u>나왔다 사라졌다</u>를 반복하면서  
+&nbsp; <span style="color:red">상태가 계속해서 변하므로</span> 이를 `state`를 사용해 value를 담았다.
+
+<span style="color:green"><button onClick={() => setShowTimer(!showTimer)}>Toggle Timer</button></span>  
+&nbsp; <u>버튼을 누르는 이벤트가 감지</u>되면 -> `setShowTimer가 실행`되면서  
+&nbsp; showTimer의 state를 <span style="color:red">boolean 타입의 value</span>로 바꾸게된다.  
+&nbsp; showTimer의 값이 <u>false일 때 버튼</u>을 누르면 -> <span style="color:red">'!showTimer'</span>는  
+&nbsp; ture가 되므로 showTimer의 값은 `ture`가 되고  
+&nbsp; showTimer의 값이 <u>ture일 때 버튼</u>을 누르면 -> <span style="color:red">'!showTimer'</span>는  
+&nbsp; false가 되므로 showTimer의 값에는 `false`가 할당되게 된다.
+
+<span style="color:green">{showTimer && <Timer />}</span>  
+&nbsp; useState를 통해 showTimer의 값이 false일 경우에는 화면에 보이지 않지만,  
+&nbsp; <u>showTimer의 값이 ture</u>일 경우에는 `ture && ture` 이므로 <u>화면에 노출</u>된다!
+
+### Timer.js
+
+위에서 App.js에서 버튼을 눌렀을 때 showTimer의 값이 ture일 경우에는  
+`<Timer />`가 노출되도록 설정했다.  
+그리고 `<Timer />`는 <u>화면에 처음 노출</u>되었을 때 -> <span style="color:red">1초 단위로 setInterval()를 실행</span>하고,  
+버튼을 다시 눌러 <u>showTimer의 값이 false가 되어 화면에서 사라지면</u>  
+<span style="color:red">setInterval()를 종료</span>하도록 설정해야한다.
+
+useEffet를 사용하면서 2번째 argument에 [] 이렇게 빈 array를 사용하면서  
+화면에 처음 rendering되었을 때만 최초로 useEffect가 실행된다.  
+<span style="color:green">setInterval(() => {console.log(`타이머 실행중...`);}, 1000);</span>  
+&nbsp; <u>setInterval()</u>은 1초 단위로 반복하여 코드블록을 실행하고 이는 <u>화면에서 사라져도 계속</u>된다.  
+&nbsp; <u>그래서 setInterval()을 종료하도록</u>, useEffect의 return에 `clearInterval()`를 사용한다.  
+&nbsp;
 
 <!-- ### 2. Link 넣기
 
