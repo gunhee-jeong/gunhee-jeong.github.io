@@ -14,6 +14,10 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 
 # State
 
+State는 <u>계속해서 변화하는 특정상태</u>로, <span style="color:red">상태에 따라 각각 다른 동작</span>을 한다.  
+<u>state의 상태가 변할 때마다</u> <span style="color:red">rerendering</span>되면서  
+화면의 `UI 또한 state의 상태에 따라 변하게` 되는 것이다.
+
 - 단어의 뜻 그대로 컴포넌트 내부에서 가지고 있는 `컴포넌트의 상태값`을 의미한다.
 - state는 화면에 보여줄 컴포넌트 UI 정보(상태)이다.
 - state는 컴포넌트 내에서 정의하고 사용하며 <u>얼마든지 데이터가 변경</u>될 수 있다.
