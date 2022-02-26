@@ -75,35 +75,51 @@ function Login() {
 form 태그 안의 <u>id를 입력하는 input 태그</u> 안에는  
 attribute로 `name`과 `value`를 만들어준다.
 
-#### <span style="color:green">name="email"</span>
+###### <span style="color:green">name="email"</span>
 
-&nbsp; key name의 값으로는 `"email"`을 넣어주었다.
+key name의 값으로는 `"email"`을 넣어주었다.
 
-#### <span style="color:green">const [loginValues, setLoginValues] = useState({ email: '', password: '' });</span>
+###### <span style="color:green">const [loginValues, setLoginValues] = useState({ email: '', password: '' });</span>
 
 <u>ID의 input과 PW의 input의 값</u>을 저장하기 위해 `useState`를 사용했다.  
-&nbsp; useState를 통해 loginValues에 담기게 되는 값의 <u>data 타입은 object</u>임을  
-&nbsp; <u>useState({ email: ‘’, password: ‘’ })</u>에 나타냈다.
-
+화면이 rendering되면서 loginValues에 담기는 초기값은  
+{ email: ‘’, password: ‘’ }으로 <u>property의 키를 설정</u>하는 역할을 한다.  
 이제 <u>form 태그 안에 위치한 ID와 PW</u>에 `onChange 이벤트`가 감지되면 ->  
-<span style="color:red">handleInput 함수</span>가 작동된다.  
-<span style="color:green">const { name, value } = e.target;</span>  
-&nbsp; ID를 입력하면 그 키값이 e.target의 property 키인 value에 담기는데,  
-&nbsp; 이를 이용하여 <u>const { name, value }</u>에 <span style="color:red">분해구조할당</span>을 하게 된다.  
-&nbsp; e.target의 property 키에는 위에서 input 태그에 <u>직접 지정한 키 name</u>과  
-&nbsp; `키보드에서 입력한 value`가 담긴 <u>키 value</u>가 존재한다.  
-&nbsp; <span style="color:red">e.target은 object</span> 타입이고, object의 분해구조할당은 index가 아닌  
-&nbsp; `key name을 기준으로` 하기 때문에 정렬 순서와는 상관이 없다.  
-&nbsp; 그렇게 <u>const name에는 "email"</u>이 할당되고, <u>value에는 "입력값"</u>이 할당된다.  
-<span style="color:green">setLoginValues({ ...loginValues, [name]: value });</span>  
-&nbsp; 이제 위에서 정의된 const name과 value를 가지고 useState를 사용한다.  
-&nbsp; <span style="color:red">...loginValues</span>는 -> <u>ID와 PW모두가 loginValues에</u> object 타입으로  
-&nbsp; 할당되야하므로 이를 위해 사용된 코드이다.  
-&nbsp; ID를 입력하면 <u>loginValues에는 ID</u>가 -> `{email: 'hello'}`로 할당된다.  
-&nbsp; 그 다음에 PW를 입력하여 <u>setLoginValues({[name]: value})가 실행된다면</u>  
-&nbsp; 이미 저장된 {email: 'hello'}은 사라지고 `{password: 'bye'}만 저장되기 때문!`  
-&nbsp; 우리가 원하는 것은 <span style="color:red">{email: 'hello', password: 'bye'}</span>  
-&nbsp; 이므로 이를 위해서 `spread operator`를 사용하였다.
+<span style="color:red">handleInput 함수</span>가 작동된다.
+
+###### <span style="color:green">const { name, value } = e.target;</span>
+
+ID를 입력하면 그 키값이 e.target의 property 키인 value에 담기는데,  
+이를 이용하여 <u>const { name, value }</u>에 <span style="color:red">분해구조할당</span>을 하게 된다.  
+e.target의 property 키에는 위에서 input 태그에 <u>직접 지정한 키 name</u>과  
+`키보드에서 입력한 value`가 담긴 <u>키 value</u>가 존재한다.  
+<span style="color:red">e.target은 object</span> 타입이고, object의 분해구조할당은 index가 아닌  
+`key name을 기준으로` 하기 때문에 정렬 순서와는 상관이 없다.  
+그렇게 <u>const name에는 "email"</u>이 할당되고, <u>value에는 "입력값"</u>이 할당된다.
+
+###### <span style="color:green">setLoginValues({ ...loginValues, [name]: value });</span>
+
+이제 위에서 정의된 const **name**과 **value**를 가지고 useState를 사용한다.  
+<span style="color:red">...loginValues</span>는 -> <u>ID와 PW모두가 loginValues에</u> `중첩되지 않은`  
+`object 타입으로 할당되야하므로` 이를 위해 사용된 코드이다.  
+화면이 rendering되면서 loginValues에는 <span style="color:blue">{ email: "", password: "" }</span>이 할당된다.  
+<span style="color:red">전개 연산자</span>를 사용했으므로, 키보드로 ID를 입력하는 순간 ->  
+기존의 loginValues의 property들이 spread되고 ->  
+<u>{ email: “”, password: “”, email: "h" }</u>로 property의 키인 email이  
+중복되므로 `{email: ‘hello’, password: “”}`으로 할당된다.
+
+만약에 코드가 <span style="color:green">setLoginValues({ loginValues, [name]: value })</span> 였다면  
+loginValues는 `중첩된 object가 형성`된다.  
+&nbsp; ID input창에 "h"를 입력하는 순간 ->  
+&nbsp; <u>setLoginValues({ { email: “”, password: “” }, email: h })</u>으로  
+&nbsp; `중첩된 object`가 형성된다.
+
+그리고 <span style="color:red">[name]: value</span>이 사용된 이유는 const name의 값은 "email"로 ->  
+<span style="color:red">name이 변수</span>(식별자명)이기 때문이다!  
+&nbsp; 우리는 name의 문자 그 자체가 아닌, <u>변수 name에 저장된 "email"</u>이 필요하기 때문이다.  
+&nbsp; object의 `마침표 연산자`는, 객체의 property 키에 접근할 수 있지만  
+&nbsp; <u>일반 변수에는 접근할 수 없다</u>. 반면에 <span style="color:red">대괄호 연산자</span>는 `변수에도 접근할 수`  
+&nbsp; 있으므로 대괄호 연산자를 사용한 것이다.
 
 <!-- ### 2. Link 넣기
 
