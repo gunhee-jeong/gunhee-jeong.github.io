@@ -4,7 +4,7 @@ title: "Spread Operator를 이용한 Instagram 로그인 & 비밀번호 value �
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [회원가입, 로그인, instagram, spread Operator] #tag는 여러개 가능함
+tag: [회원가입, 로그인, instagram, 전개연산자] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -75,11 +75,11 @@ function Login() {
 form 태그 안의 <u>id를 입력하는 input 태그</u> 안에는  
 attribute로 `name`과 `value`를 만들어준다.
 
-###### <span style="color:green">name="email"</span>
+##### <span style="color:green">name="email"</span>
 
 key name의 값으로는 `"email"`을 넣어주었다.
 
-###### <span style="color:green">const [loginValues, setLoginValues] = useState({ email: '', password: '' });</span>
+##### <span style="color:green">const [loginValues, setLoginValues] = useState({ email: '', password: '' });</span>
 
 <u>ID의 input과 PW의 input의 값</u>을 저장하기 위해 `useState`를 사용했다.  
 화면이 rendering되면서 loginValues에 담기는 초기값은  
@@ -87,7 +87,7 @@ key name의 값으로는 `"email"`을 넣어주었다.
 이제 <u>form 태그 안에 위치한 ID와 PW</u>에 `onChange 이벤트`가 감지되면 ->  
 <span style="color:red">handleInput 함수</span>가 작동된다.
 
-###### <span style="color:green">const { name, value } = e.target;</span>
+##### <span style="color:green">const { name, value } = e.target;</span>
 
 ID를 입력하면 그 키값이 e.target의 property 키인 value에 담기는데,  
 이를 이용하여 <u>const { name, value }</u>에 <span style="color:red">분해구조할당</span>을 하게 된다.  
@@ -97,7 +97,7 @@ e.target의 property 키에는 위에서 input 태그에 <u>직접 지정한 키
 `key name을 기준으로` 하기 때문에 정렬 순서와는 상관이 없다.  
 그렇게 <u>const name에는 "email"</u>이 할당되고, <u>value에는 "입력값"</u>이 할당된다.
 
-###### <span style="color:green">setLoginValues({ ...loginValues, [name]: value });</span>
+##### <span style="color:green">setLoginValues({ ...loginValues, [name]: value });</span>
 
 이제 위에서 정의된 const **name**과 **value**를 가지고 useState를 사용한다.  
 <span style="color:red">...loginValues</span>는 -> <u>ID와 PW모두가 loginValues에</u> `중첩되지 않은`  
