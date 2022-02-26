@@ -12,12 +12,8 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-### 정의
-
 ECMAScript6(2015)에서 추가된 전개 연산자는 <u>object나 array의 값</u>을  
 하나씩 넘기는 용도로 사용할 수 있다.
-
-### 사용방법
 
 ```java
 //기존의 concat 메소드를 사용한 방법
@@ -64,7 +60,7 @@ arr1.push(...arr2);
 console.log(arr1); // [1, 2, 3, 4, 5]
 ```
 
-##### 객체의 경우에는
+## 객체의 경우에는
 
 ```java
 const obj1 = {
@@ -131,7 +127,7 @@ console.log(arr2); // [3, 2, 1]
 하지만 `전개 연산자`를 사용한 후에 reverse 메소드를 사용한 경우,  
 <span style="color:red">원본 배열은 유지</span>되는 것을 알 수 있다.
 
-##### 배열의 나머지 element를 할당할 수 있다
+##### 배열의 나머지 element를 할당할 수 있다(rest))
 
 ```java
 const [first, second, ...rest] = [1, 2, 3, 4, 5];
@@ -141,7 +137,22 @@ console.log(rest); // [3, 4, 5]
 ```
 
 const first와 const second에는 `각각의 index 값`에 맞게 <u>1과 2가 할당</u>된다.  
-그리고 <u>할당되지 못한 나머지 value</u>들은 const rest에 `배열의 형태로 할당`된다.
+그리고 <u>할당되지 못한 나머지 value</u>들은 const rest에 `배열의 형태로 할당`된다.  
+다른 예제를 더 살펴보면
+
+```java
+const obj = {
+  name: "gunhee",
+  age: 10,
+  print: "Hello",
+};
+const { name, ...rest } = obj;
+console.log(name); // "gunhee"
+console.log(rest); // { age10: 18, print: 'Hello' }
+```
+
+위 코드에서 <u>const name</u>에는 `obj의 property 키 name의 값인 "gunhee"`가 저장되고  
+<u>const rest</u>에는 `obj의 나머지 property들이 저장`된 것을 확인할 수 있다.
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
