@@ -54,7 +54,22 @@
                         <li><a href="/categories/server" class="">Server ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
-            </ul>   
+              </ul>   
+        <span class="nav__sub-title">Daily Life</span>
+            <ul>
+              {% for category in site.categories %}
+                    {% if category[0] == "Memoir" %}
+                        <li><a href="/categories/memoir" class="">회고록 ({{category[1].size}})</a></li>
+                    {% endif %}
+              {% endfor %}
+            </ul>
+            <ul>
+              {% for category in site.categories %}
+                  {% if category[0] == "Memo" %}
+                      <li><a href="/categories/memo" class="">메모장 ({{category[1].size}})</a></li>
+                  {% endif %}
+              {% endfor %}
+            </ul>
         <span class="nav__sub-title">Coding Test</span>
             <ul>
                 {% for category in site.categories %}
@@ -84,7 +99,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Computer Science</span>
+        <span class="nav__sub-title">ETC</span>
+            <ul>
+              {% for category in site.categories %}
+                    {% if category[0] == "Github" %}
+                        <li><a href="/categories/github" class="">Github ({{category[1].size}})</a></li>
+                    {% endif %}
+              {% endfor %}
+            </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "CS" %}
@@ -92,27 +114,12 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">etc</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Github" %}
-                        <li><a href="/categories/github" class="">Github ({{category[1].size}})</a></li>
+                    {% if category[0] == "Tool" %}
+                        <li><a href="/categories/tool" class="">tool ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
-            </ul>
-            <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "Memo" %}
-                      <li><a href="/categories/memo" class="">메모장 ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
-            </ul>
-            <ul>
-              {% for category in site.categories %}
-                  {% if category[0] == "Tool" %}
-                      <li><a href="/categories/tool" class="">tool ({{category[1].size}})</a></li>
-                  {% endif %}
-              {% endfor %}
             </ul>
       </li>
       <li>
