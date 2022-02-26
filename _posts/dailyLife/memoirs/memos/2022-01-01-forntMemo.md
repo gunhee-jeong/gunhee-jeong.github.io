@@ -240,8 +240,6 @@ back-end와의 연결 blog 작성하기
 
 ## westagram 리뷰
 
-리뷰 요청 달기
-
 공통 파일은 branch를 따로 만들자!
 
 login 컴포넌트 분리하지 말것
@@ -268,9 +266,6 @@ localhost 는 생략 가능합니다
 fetch에서!
 
 addClick! 같이
-
-push의 길이 반환!  
-console.log랑 또 다르다!
 
 get은 생략이 가능함  
 이것은 취사선택임(누그는)
