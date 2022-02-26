@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "Destructuring(구조분해할당)"
+title: "배열의 push method"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [구조분해할당, 전개연산자] #tag는 여러개 가능함
+tag: [배열, push, method] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,25 +12,7 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-<span style="color:red">Array Destructuring(배열 디스트럭처링)</span>의 할당을 통해 `각 element를 추출`하여 <span style="color:red">변수에 할당</span>할 수 있다.
-
-```java
-const arr = [1, 2, 3];
-
-const [one, two, three] = arr;
-
-console.log(two); //output == 2
-console.log(one, two, three); //output == 1 2 3
-```
-
-<u>변수 one, two, three를 선언</u>하고 -> 배열 `arr의 value를 하나씩 destructuring`하여 각 <span style="color:blue">변수마다 할당</span>한다.  
-결과적으로 <u>const one에는 1이 value</u>로 들어가고, <u>const two에는 2</u>, <u>const three에는 3</u>이 value로 assignment!
-
-```java
-const one = 1;
-const two = 2;
-const three = 3;
-```
+<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
 
