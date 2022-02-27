@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "Spread Operator를 이용한 Instagram 로그인 & 비밀번호 value 저장"
+title: "Instagram 로그인 & 비밀번호 value 저장"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [회원가입, 로그인, instagram, 전개연산자] #tag는 여러개 가능함
+tag: [전개연산자, 구조분해할당] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함

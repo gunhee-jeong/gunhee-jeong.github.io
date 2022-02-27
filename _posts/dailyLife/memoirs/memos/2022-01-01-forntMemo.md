@@ -234,6 +234,9 @@ set 함수의 무한루프 error를 공부해야함
 set 함수를 사용하기 위해서 -> 함수 안에 변수 선언, 함수 밖에 변수 선언,  
 함수 밖에 return, method안에 method
 
+error: Each child in a list should have a unique "key" prop.  
+&nbsp;
+
 ## Router.js
 
 back-end와의 연결 blog 작성하기
