@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "Instagram 댓글 기능"
+title: "e.preventDefault()"
 # categories: Git
 categories:
-  - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [배열, push, method, concat] #tag는 여러개 가능함
+  - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [preventDefault, enter, submit] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,56 +12,41 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
+<u>a 태그</u>나 `form 태그 안의 button 태그`를 통해 버튼을 누르면 화면이 <span style="color:red">새로고침</span>된다.  
+이때 이 <span style="color:red">새로고침을 막기 위해서</span> `preventDefault()가 사용`된다!  
+&nbsp; 나또한 form 태그 안의 submit 역할을 하는 button을 눌렀을때도 새로고침이 막고자  
+&nbsp; 이 기능을 찾아보게 되었다.
+
 ```java
-//Main Component
-const Main = () => {
-  ......
-  const [comment, setComment] = useState('');
-  const [commentList, setCommentList] = useState([]);
-
-  const getComment = e => {
-    //console.log(e);
-    setComment(e.target.value);
+const addComment = (e) => {
+    if (isCheckComment) {
+      setCommentList(
+        commentList.concat(
+          {
+            author: "gunhee_jeong",
+            comment: comment,
+          },
+        )
+      );
+      e.preventDefault();
+      setComment("");
+    } else {
+      e.preventDefault();
+    }
   };
-
-  const addComment = e => {
-    setCommentList(
-      commentList.concat([
-        {
-          author: 'sunghoon',
-          comment: comment,
-        },
-      ])
-    );
-    e.preventDefault();
-    setComment('');
-  };
-
-  return (
-    ......
-    <form className="comment_form" onSubmit={addComment}>
-      <input
-        type="text"
-        onChange={getComment}
-        //onChange값은 변화를 감지하면 어떤 것을 할지
-        // 그것이 getComment
-        // value={comment}
-        // -> 나중에 쓸지도 모름
-        placeholder="Add a comment"
-        id="comment_input"
-        value={comment}
-      />
-      <button id="post_button">
-        {/* form 안에있는 button은 default 로 submit 을 하는데 type 을 button 으로 주면 그 default가 작동 안함  */}
-        post
-      </button>
-    </form>
-    ......
-  )
-
-}
-//
 ```
+
+const `isCheckComment`는 <u>boolean 타입의 데이터를 갖는 변수</u>로  
+댓글이 1자 이상이면 true, 0자 이면 false를 갖는다.
+
+##### <span style="color:green">if (isCheckComment) {}</span>
+
+if문의 조건식이 true일 때 -> 코드블록이 실행된다.  
+&nbsp; const `commentList`에는 <u>배열의 형태로 댓글들이 저장</u>되어있고  
+&nbsp; commentList의 `배열 가장 마지막 index로 새로운 댓글이 추가`되어야하므로  
+&nbsp; <span style="color:red">concat 메소드</span>를 사용하여 const commentList에 추가한다.  
+그렇게 <u>추가된 commentList의 내용</u>이 `rendering되면서 UI로 반영`되고 -> 화면이  
+<u>새로고침되기 전에 <span style="color:red">e.preventDefault();</span>를 통해 새로고침을 막게</u>된다!
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
