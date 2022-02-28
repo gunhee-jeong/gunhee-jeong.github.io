@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "error: Each chld in a list should have a unique key prop."
+title: "filter를 사용한 monster 필터 기능"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [.id] #tag는 여러개 가능함
+tag: [wecode, 구조분해할당] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,31 +12,60 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-<span style="color:red">Each chld in a list should have a unique key prop.</span>이라는  
-error와 마주했다...... 누구냐 넌...
+## flow
+
+<span style="color:red">Monster.js</span>  
+&nbsp; <span style="color:orange">SearchBox.js</span>  
+&nbsp; <span style="color:orange">CardList.js</span> -> <span style="color:yellow">Card.js</span>
+
+### Monster.js
+
+<span style="color:red">Monster.js</span>에서 `fetch 함수`를 이용하여 const <u>monsters에 array를</u> 전달  
+&nbsp; 여기서 setMonsters를 통해 할당된 monsters를 ->  
+&nbsp; <span style="color:green"><CardList monsters={monsters} /></span>에 전달함
+
+### CardList.js
+
+##### <span style="color:green">function CardList({ monsters }) {}</span>
+
+Monster.js에서 전달받은 monsters={monsters}은  
+<span style="color:green">function CardList({ monsters }) {}</span>를 통해, props를  
+<u>구조분해할당</u>하여 const monsters에 props를 할당했다.  
+<span style="color:green">function CardList(props) {}</span>를 할 경우,  
+console.log(`props`);를 해보면 `{monsters: Array(10)}`가 담긴다.  
+&nbsp; `{monsters: [{...}, {...}, {...}......]}`  
+&nbsp; <span style="color:green">function CardList({ monsters }) {}</span>는 `const { monsters } = props;`  
+&nbsp; 라는 것이 <u>생략된 표현</u>이다.
 
 ```js
- </div>
-  {commentList.map((comments, index) => {
-    return (
-      <CommentList
-        key={comments.id}
-        num={index}
-        author={comments.author}
-        comment={comments.comment}
-      />
-    );
-  })}
+//CardList.js
+function CardList({ monsters }) {
+  // console.log(props); output == {monsters: Array(10)}
+  // {monsters: [{...}, {...}, {...}......]}
+  return (
+    <div className="cardList">
+      {monsters.map((monster) => {
+        return (
+          <Card
+            key={monster.id}
+            id={monster.id}
+            name={monster.name}
+            email={monster.email}
+          />
+        );
+      })}
+    </div>
+  );
+}
 ```
 
-react에서 <span style="color:red">map 메서드</span>를 사용할 때에는 <u>배열의 각 element마다</u> `독립적인 key`를  
-설정해야했다.
+##### <span style="color:green">{monsters.map((monster) =></span>
 
-처음에는 index 값으로 key를 주려고했지만, 공식 문서를 참고해보니  
-<u>index를 지양하라고</u> 나와있었다.  
-또한 공식문서에서는 `id라는 속성을 추가`해주는 것을 지향하고 있었다.  
-&nbsp; <span style="color:green">key={comments.id}</span> 이렇게 key라는 property key를 생성하고  
-&nbsp; id라는 속성을 추가하니 error가 사라졌다......
+<span style="color:red">Monster.js</span>에서 전달받은 monsters를 `map 함수`를 사용하면 ->  
+<u>monster</u>에는 몬스터의 정보가 담긴, <u>하나의 object 씩</u> 정보를 <span style="color:yellow">Card.js</span>에  
+보내주게된다.  
+&nbsp; 좀 더 정확히 말하면 -> array의 0번 index(object 타입)부터  
+&nbsp; 각각의 id, name, email의 정보를 Card.js에 넘겨준다.
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
