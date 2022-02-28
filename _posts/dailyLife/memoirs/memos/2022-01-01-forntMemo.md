@@ -234,8 +234,7 @@ set 함수의 무한루프 error를 공부해야함
 set 함수를 사용하기 위해서 -> 함수 안에 변수 선언, 함수 밖에 변수 선언,  
 함수 밖에 return, method안에 method
 
-error: Each child in a list should have a unique "key" prop.  
-&nbsp;
+react, key .id가 존재하는 이유는 무엇인가?
 
 ## Router.js
 
@@ -300,6 +299,36 @@ DOM은 무엇인가?
 react로 왜 개발공부를 선택하였는가?  
 back-end와의 협업을 하면서 느낀점?  
 HTTP 통신의 내용 심화하기
+
+## 2월 28일
+
+몬스터 과제: filter를 이용한 방법 정리하기
+
+## 얌얌제주
+
+원하는 것, 모든 것을 팔아도된다
+
+제일 중요한 것은 필수구현 사항  
+&nbsp; 네트워크 로딩은 필수적으로 처리하고 싶은 기능
+
+##### 필수구현
+
+<span style="color:red">로그인 회원가입</span>  
+메인페이지  
+<span style="color:red">장바구니</span>  
+&nbsp; 이 부분은 꼭 해보길!!!  
+<span style="color:red">상품리스트</span>  
+&nbsp;  
+<span style="color:red">상품 상세정보</span>  
+&nbsp;
+
+#### 추가구현 사항
+
+어드민 페이지  
+&nbsp; 중요한 부분이지만, 어드민은 이거 하나로 엄청난 작업임...  
+&nbsp; 하지만 이전의 작업들을 수행한다면 다 할 수 있기 때문에 생략을 추천함  
+결제  
+&nbsp; 이것은 따로 서비스가 나오기 때문에(외부 API) 이것은 제외함
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
