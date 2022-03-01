@@ -4,7 +4,7 @@ title: "Instagram 로그인 & 비밀번호 value 저장"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [전개연산자, 구조분해할당] #tag는 여러개 가능함
+tag: [전개연산자, 구조분해할당, fetch 함수] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -90,7 +90,7 @@ key name의 값으로는 `"email"`을 넣어주었다.
 ##### <span style="color:green">const { name, value } = e.target;</span>
 
 ID를 입력하면 그 키값이 e.target의 property 키인 value에 담기는데,  
-이를 이용하여 <u>const { name, value }</u>에 <span style="color:red">분해구조할당</span>을 하게 된다.  
+이를 이용하여 <u>const { name, value }</u>에 <span style="color:red">구조분해할당</span>을 하게 된다.  
 e.target의 property 키에는 위에서 input 태그에 <u>직접 지정한 키 name</u>과  
 `키보드에서 입력한 value`가 담긴 <u>키 value</u>가 존재한다.  
 <span style="color:red">e.target은 object</span> 타입이고, object의 분해구조할당은 index가 아닌  
