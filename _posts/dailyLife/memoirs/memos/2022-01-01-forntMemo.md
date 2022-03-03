@@ -304,7 +304,7 @@ HTTP 통신의 내용 심화하기
 
 몬스터 과제: filter를 이용한 방법 정리하기
 
-## 얌얌제주
+## 얌얌프룻
 
 원하는 것, 모든 것을 팔아도된다
 
@@ -329,6 +329,31 @@ HTTP 통신의 내용 심화하기
 &nbsp; 하지만 이전의 작업들을 수행한다면 다 할 수 있기 때문에 생략을 추천함  
 결제  
 &nbsp; 이것은 따로 서비스가 나오기 때문에(외부 API) 이것은 제외함
+
+##### 얌얌프룻 코드리뷰
+
+form 태그의 사용법을 알고있나?(form 태그 개념, 다시 잡기)
+
+img 태그에서 alt속성 꼭 넣자
+
+jsx 문법에서 content가 없는 element는 `</>` 이렇게 사용해야!
+
+bottom-up 방식  
+&nbsp; 어떤 <u>element를 감싸는 레이아웃</u>에서는 `고정 px로 height 값을`  
+&nbsp; `주지 않는다!` 그 이유는 추후에 해당 레이아웃 안에 element가 추가될 수 있고  
+&nbsp; <span style="color:red">크기 등이 충분히 바뀔 수 있기 때문</span>이다.  
+&nbsp; 그래서 레이아웃을 짤 때에는 <span style="color:red">bottom-up 방식</span>으로 `아래에 있는 element에`  
+&nbsp; `고정 값`을 주고 해당 element를 감싸는 요소에는 자식 요소로 인해 저절로  
+&nbsp; 레이아웃을 형성할 수 있도록 하는 방식으로 작성하는 것이 <span style="color:red">유지보수에 좋다</span>!
+
+22 03 03  
+&nbsp; mockData 먼저연결하기  
+&nbsp;
+
+##### 느낀 것
+
+백엔드와의 소통  
+&nbsp; get 요청, post 요청의 차이?
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
