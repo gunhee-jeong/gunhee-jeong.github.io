@@ -14,7 +14,7 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 
 ## fetch 함수를 이용한 instagram 피드 연결
 
-```js
+```java
 //Main.js
 import { useEffect, useState } from "react";
 import Nav from "../../../components/Nav/Nav";
@@ -90,7 +90,7 @@ feedsName={feed.userName}
 &nbsp; feedsContent={feed.content} /></span>  
 &nbsp; 이렇게 <u>key</u>, <u>num</u>, <u>feedsName</u>, <u>feedsContent</u>라는 <span style="color:blue">속성을 추가</span>해준다.
 
-```js
+```java
 //Feeds.js
 import { useState, useEffect } from "react";
 import CommentList from "./CommentList";
@@ -148,7 +148,7 @@ CommentList에 보내기 위해서는 `CommentList의 UI`를
 &nbsp; 댓글 tag들도 피드와 마찬가지로, 내용물만 바뀌기에  
 &nbsp; <span style="color:red">CommentList도 component로</span> 관리하는 것이 좋다.
 
-```js
+```java
 //Feeds.js
 import { useState, useEffect } from "react";
 import CommentList from "./CommentList";
@@ -217,7 +217,7 @@ const <u>commentList</u>에 댓글들이 `array 형태로` 담겨있기 때문�
 
 ##### <span style="color:green">const CommentList = (feedsProps) => {}</span>
 
-```js
+```java
 //CommentList.js
 const CommentList = (feedsProps) => {
   return (
