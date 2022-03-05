@@ -13,8 +13,8 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 ---
 
 ```java
-//Main Component
-const Main = () => {
+//Feeds.js
+const Feeds = (props) => {
   ......
   const [comment, setComment] = useState('');
   const [commentList, setCommentList] = useState([]);
@@ -49,7 +49,17 @@ const Main = () => {
 
   return (
     ......
-    <CommentList newCommentList={commentList} />
+      {commentList.map((comments, index) => {
+        return (
+          <CommentList
+            key={comments.id}
+            num={index}
+            author={comments.author}
+            comment={comments.comment}
+          />
+        );
+      })}
+      // <CommentList newCommentList={commentList} />
       <form id="chat-form" onSubmit={addComment}>
         <input
           onChange={getComment}
