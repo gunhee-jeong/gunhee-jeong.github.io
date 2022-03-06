@@ -356,6 +356,13 @@ bottom-up 방식
 &nbsp; get 요청, post 요청의 차이?  
 &nbsp; put 요청, PATCH 요청의 차이? -> 블로깅
 
+## 3월 6일
+
+##### 저녁 회의
+
+주문상세에서 보내줘야할 것  
+&nbsp; product_id, quantity, option(true, false)
+
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
