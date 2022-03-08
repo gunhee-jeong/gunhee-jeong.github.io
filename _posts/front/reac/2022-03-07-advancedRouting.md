@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Routing"
+title: "Advanced Router"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
@@ -11,6 +11,22 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+
+# 학습 목표
+
+&nbsp; 1.
+
+# Routing?
+
+## 경로에 따라 각기 다른 화면을 보여주는 것
+
+route + -ing: 경로(route)를 찾아가는 행위!  
+즉 라우팅이란 -> 다른 경로(url 주소)에 따라 다른 view를 보여주는 것을 말함
+
+## SPA(single Page Application, 단일 페이지 애플리케이션)
+
+SPA는 사용자가 웨 애플리케이션과 상호 작용하는 방식을 획기적으로 바꾼 기술  
+사용자가 다른 뷰로 이동할 때 애플리케이션은 뷰를 동적으로 다시 그림
 
 # 동적 라우팅
 
@@ -44,7 +60,7 @@ Path Parameter는 Router 컴포넌트에서 아래와 같이 정의된다.
 ```java
 <BrowserRouter>
   <Routes>
-    <Route path='/product/**:id**' element={<ProductDetail />} />
+    <Route path='/product/:id' element={<ProductDetail />} />
   </Routes>
 </BrowserRouter>
 ```
@@ -58,8 +74,8 @@ Path Parameter는 Router 컴포넌트에서 아래와 같이 정의된다.
 ### 동적 라우팅의 흐름
 
 <img src="https://user-images.githubusercontent.com/87808288/156949745-466c02c9-3c37-467f-9119-6f1a51bd9a6b.png" width="800" height="500">  
-리스트 페이지에서 상품을 클릭하면, onClick 이벤트시 발생하는  
-<u>navigate 함수</u>를 통하여 `/product/1`로 이동한다.  
+리스트 페이지에서 상품을 클릭하면, <u>onClick 이벤트</u>시 발생하는  
+<span style="color:red">navigate 함수</span>를 통하여 `/product/1`로 이동한다.  
 &nbsp; 리스트 페이지의 개별 상품을 클릭 -> <span style="color:green">navigate("/product/1")</span>로  
 &nbsp; 상세 페이지로 이동한다.  
 &nbsp; 상세 페이지로 이동하면 url은 <span style="color:red">"http://localhost:3000/product/1"</span>과  
@@ -93,9 +109,9 @@ return (
 
 ### useNavigate, useLocation, useParams Hook
 
-useNavigate 훅은 url을 변경하는 <span style="color:red">함수를 반환</span>하고,
-useLocation 훅은 현재 정보를 담고 있는 <span style="color:red">객체를 반환</span>하고,
-useParams 훅은 Router에 등록해준 path parameter 정보를 담고 있는
+`useNavigate` 훅은 url을 변경하는 <span style="color:red">함수를 반환</span>하고,  
+`useLocation` 훅은 현재 정보를 담고 있는 <span style="color:red">객체를 반환</span>하고,  
+`useParams` 훅은 Router에 등록해준 path parameter 정보를 담고 있는  
 <span style="color:red">객체를 반환</span>한다.
 
 ##### useNavigate Hook
