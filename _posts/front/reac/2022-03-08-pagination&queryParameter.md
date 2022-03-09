@@ -64,7 +64,7 @@ search 프로퍼티에 담긴다.
 ```java
 // current url -> localhost:3000/products?offset=10&limit=10
 
-function ProductList() {
+function ProductList(b) {
   const location = useLocation();
 
   console.log(location.search) // ?offset=10&limit=10
