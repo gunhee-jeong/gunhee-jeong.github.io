@@ -18,8 +18,8 @@ minimal_mistakes_skin: "air" # "air", "aqua", "contrast", "dark", "dirt", "neon"
 locale: "ko-KR"
 title: "gunhee's coding blog"
 title_separator: "|"
-subtitle: "꾸준히, 하루 한 줄"
 # subtitle: "꾸준히, 하루 한 줄"
+subtitle: "매일 한 걸음의 꾸준함을 사랑하고 냉정함보다는, 냉정한 이타주의가 세상을 발전시킨다고 여깁니다."
 name: "gunhee Jeong"
 description: "평생 공부"
 url: "https://gunhee-jeong.github.io"
@@ -105,10 +105,7 @@ author:
   name: "gunhee"
   avatar: "/assets/images/blogMe1.jpeg" # 프로필 이미지
   # bio: "배움을 즐기는 개발자"
-  bio: "매일 한 걸음의 꾸준함을 사랑하고  
-  냉정함보다는, 냉정한 이타주의가  
-  세상을 발전시킨다고 여깁니다.
-  개발자의 가치는 사람과 사람을 이해하고,  
+  bio: "개발자의 가치는 사람과 사람을 이해하고,  
   이를 연결하는 것에서 시작한다고 믿습니다."
   location: "South Korea"
   email:
