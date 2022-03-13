@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "git blog, CSS 설정 정리"
+title: "git blog 환경설정"
 # categories: Git
 categories:
   - Tool # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
@@ -11,6 +11,11 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+
+# config.yml
+
+blog title 설정  
+blog logo image
 
 # category
 
