@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "스타폴리오 1차 회의"
+title: "Software Testing"
 # categories: Git
 categories:
-  - Memo # HTML CSS JavaScript Server Algorithm Wecode Programmers CS vsCode
-tag: [wecode, starfolio, 회의] #tag는 여러개 가능함
+  - CS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [테스팅, 유닛테스트, 테스트] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,13 +12,49 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-2차의 목적 -> 앞으로 2주 동안 어떤 기능을 구현하고 싶은지?
+# Software Testing
 
-# Flow
+## What is Software Testing?
 
-Main ->  
-&nbsp; <u>메인에서 api?</u>를 통해서 `data`를 받고  
-&nbsp; .map을 통해서
+제대로 된 소프트웨어를 개발했는가 and 소프웨어를 제대로 개발했는가
+
+## Why Test?
+
+결함 확인  
+사전 방지  
+시간 절약  
+구조 개선  
+품질 개선  
+확장성
+
+# Manual Testing
+
+사람이 Manual Testing을 진행하면 `불안정성이 올라`간다.  
+&nbsp; 그리고 <u u>인력소모</u>가 커지면서 <u>비용이 증가</u>함
+
+## Automation Testing
+
+자동화로 인해 안정성이 올라간다.
+
+# 시스템 테스트 전략
+
+복잡도  
+&nbsp; Unit Tests -> Integration Tests -> End-to-End  
+<img src="https://user-images.githubusercontent.com/87808288/158722551-47745eae-e274-4730-aa1d-bbd059a63405.png" width="500" height="200">
+
+## End-to-End(E2E) Tests
+
+전체적인 Flow(브라우저상 클릭 후 생기는 변화에 대한 검증)
+
+## Integration Tests(통합 테스트)
+
+모듈 간의 호환성 검증  
+&nbsp; 웹페이지 혹은 postman을 통한 API 호출 시 올바르게 동작하는지 확인함
+
+## Unit Tests(단위 테스트)
+
+독립적으로 진행되는 가장 작은 단위의 테스트  
+&nbsp; 하나의 기능 또는 메소드
 
 <!-- ### 2. Link 넣기
 
@@ -133,12 +169,12 @@ _기울여서_ -> 이탤릭체
 ### 8. 이미지 삽입
 
 ```
-유형1: ('사이즈를 조절' -> HTML 태그 사용) : <img src="https://gunhee-jeong.github.io/assets/images/blogLogo.png" width="300" height="200">
+유형1: ('사이즈를 조절' -> HTML 태그 사용) : <img src="https://gunhee-jeong.github.io/assets/images/blogLogo.png" width="500" height="200">
 유형2: (이미지 삽입 후 -> 링크 걸기)
 [![이미지](https://gunhee-jeong.github.io/assets/images/blogLogo/blogLogo.png)](https://gunhee-jeong.github.io/)
 ```
 
-유형1: ('사이즈를 조절' -> HTML 태그 사용) : <img src="https://gunhee-jeong.github.io/assets/images/blogLogo.png" width="300" height="200">
+유형1: ('사이즈를 조절' -> HTML 태그 사용) : <img src="https://gunhee-jeong.github.io/assets/images/blogLogo.png" width="500" height="200">
 유형2: (이미지 삽입 후 -> 링크 걸기)
 [![이미지](https://gunhee-jeong.github.io/assets/images/blogLogo.png)](https://gunhee-jeong.github.io/)
 
