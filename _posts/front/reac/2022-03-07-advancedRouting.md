@@ -148,7 +148,7 @@ function ProductDetail(props) {
 }
 ```
 
-`useLocation` 훅을 실행하면 경로 정보를 담고 있는 <span style="color:blue">객체를 반환</span>한다.  
+`useLocation` 훅을 실행하면 <u>경로 정보를 담고 있는</u> <span  style="color:blue">객체를 반환</span>한다.  
 위 코드에서는 <u>해당 객체를 location 이라는 변수에 할당</u>했다.  
 location 변수를 콘솔로 출력해 보면 다음과 같은 로그가 출력된다.
 
@@ -182,7 +182,7 @@ function ProductDetail(props) {
 }
 ```
 
-`useParams` 훅을 실행하면 path parameter 정보를 담고 있는 <span style="color:blue">객체를 반환</span>한다.  
+`useParams` 훅을 실행하면 <u>path parameter 정보</u>를 담고 있는 <span   style="color:blue">객체를 반환</span>!  
 위 코드에서 해당 <u>객체를 params라는 변수에 할당</u>해주었다.  
 params 변수를 콘솔로 출력해 보면 다음과 같은 로그가 출력된다.
 
