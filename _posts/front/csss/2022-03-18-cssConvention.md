@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "스타폴리오 1차 회의"
+title: "CSS Convention"
 # categories: Git
 categories:
-  - Memo # HTML CSS JavaScript Server Algorithm Wecode Programmers CS vsCode
-tag: [wecode, starfolio, 회의] #tag는 여러개 가능함
+  - CSS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [컨벤션] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,21 +12,20 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-2차의 목적 -> 앞으로 2주 동안 어떤 기능을 구현하고 싶은지?
+<u>하나의 요소에 여러가지 속성을 부여</u>하는 경우 -> `중요도`, `관련도`에 따라서  
+<span style="color:red">convention을 지켜주는 것</span>이 좋다!
 
-# Flow
-
-Main ->  
-&nbsp; <u>메인에서 api?</u>를 통해서 `data`를 받고  
-&nbsp; .map을 통해서
-
-# 3월 19일
-
-페이지네이션  
-&nbsp; http://localhost:3000/itemslist?limit=4&offset=8
-필터  
-&nbsp; http://localhost:3000/itemslist?sort=new  
-&nbsp; http://localhost:3000/itemslist/planets?sort=new
+CSS Property의 순서  
+Layout Properties  
+&nbsp; (position, float, clear, display)  
+Box Model Properties  
+&nbsp; (width, height, margin, padding)  
+Visual Properties  
+&nbsp; (color, background, border, box-shadow)  
+Typography Properties  
+&nbsp; (font-size, font-family, text-align, text-transform)  
+Misc Properties  
+&nbsp; (cursor, overflow, z-index)
 
 <!-- ### 2. Link 넣기
 
