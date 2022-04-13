@@ -18,11 +18,11 @@ blog title 설정
 blog logo image  
 blog bio 수정
 
-# category
+# category(blog 상단의 Home Category Search)
 
 ## tag 박스 color
 
-- sass > \_page.scss  
+- sass 폴더 -> page.scss  
   .page\_\_taxonomy-item-tag {(line 333)
 
 ## 상단 category 클릭시, 메인화면 글자 색상
@@ -31,6 +31,19 @@ blog bio 수정
   .taxonomy\_\_index a(line 437)
 
 # posting
+
+## Posting 좌측 메뉴바 만들기  
+pages 폴더 -> categories 폴더 -> 여기서 좌측 메뉴에 새로 <u>추가할 이름</u>으로 <span style="color:blue">폴더</span>를 만든다.   
+```java
+title: "Programmers 1단계" //좌측 메뉴바에 보이게 될 메뉴의 이름
+layout: archive
+permalink: categories/programmers1 //pages 폴더 -> categories 폴더 -> 에서 만든 파일의 이름
+author_profile: true
+sidebar_main: true
+
+% assign posts = site.categories.Programmers1 % //-> post 글 작성시 categories에서 사용하게 될 메뉴 이름
+```
+includes 폴더 -> <u>nav_list_main 파일</u>로 이동하여 `위의 메뉴 이름을 추가`한다.  
 
 ## 본문 페이지
 
