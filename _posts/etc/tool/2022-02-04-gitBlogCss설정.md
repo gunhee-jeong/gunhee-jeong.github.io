@@ -15,7 +15,8 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # config.yml
 
 blog title 설정  
-blog logo image
+blog logo image  
+blog bio 수정
 
 # category
 
