@@ -29,7 +29,7 @@ git remote set-head origin -a
 <!-- ### 2. Link 넣기
 
 ```
-
+ 
 유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
 유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)

@@ -17,6 +17,7 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 blog title 설정  
 blog logo image  
 blog bio 수정
+blog main 페이지의 최근 포스트 노출 개수 설정 -> `paginate`
 
 # category(blog 상단의 Home Category Search)
 
