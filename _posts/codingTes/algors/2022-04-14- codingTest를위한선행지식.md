@@ -23,7 +23,7 @@ heap
 hash table  
 
 [알고리즘]  
-big-o  
+big-o -> 22/04/14
 sorting  
 brute force  
 recursion  
