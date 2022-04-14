@@ -1,20 +1,42 @@
 ---
 layout: single
-title: "merge 후 "
+title: "Coding Test를 위한 선행지식"
 # categories: Git
 categories:
-  - reactNative # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [커스텀훅] #tag는 여러개 가능함
+  - Algorithm # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
+tag: [코딩테스트, 알고리즘] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+[자료구조]  
+array  
+linked list  
+stack  
+queue  
+tree  
+graph  
+BST  
+heap  
+hash table  
 
+[알고리즘]  
+big-o -> 22/04/14   
+sorting   
+brute force  
+recursion  
+iteration  
+binary search  
+BFS/DFS  
+backtracking  
+divide and conquer  
+bit manipulation  
+two pointers  
+sliding window  
+dynamic programming  
 
-
-<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
 
