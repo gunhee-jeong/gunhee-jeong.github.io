@@ -128,6 +128,13 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "마음가짐" %}
+                        <li><a href="/categories/mindSet" class="">mindSet ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
       </li>
       <li>
             <br>
