@@ -130,8 +130,8 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "마음가짐" %}
-                        <li><a href="/categories/mindSet" class="">mindSet ({{category[1].size}})</a></li>
+                    {% if category[0] == "mindSet" %}
+                        <li><a href="/categories/mindSet" class="">마음가짐 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
