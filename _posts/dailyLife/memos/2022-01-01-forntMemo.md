@@ -11,105 +11,12 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-
-# 코드잇 진도
-
-- React
-
-웹 프론트엔드 스쿨 -> react 프론트엔드 개발 -> react 웹 개발 시작하기
-&nbsp; 인덱스 파일에서 하는 일,
-
-웹 프론트엔드 개발 -> react로 웹사이트 만들기:  
-리액트 라우터 v6 소개, 리액트 라우터 설치하기, Routes로 페이지 나누기
-
-# westudy
-
-## React
-
-React 0. 시작하기 전에 -> 9번 시청해야함!!!
-
-```java
-ReactDom.render(<h1>안녕 리액트!<h1>, document.getElementById('root'));
-```
-
-ReactDom.render 메소드는 첫번째 argument 값을 활용해서 HTML 요소를 만들고,
-두번째 argumnet 값에 -> 그 요소를 넣어주는 역할을 한다.
-
-JSX에서는 태그 안에 class를 넣을 때 `className=""으로 사용`해야한다.
-<u>JS에서 class는 이미 객체지향의 의미를 갖는 class 선언에 사용</u>되기 때문이다.
-그리고 HTML에서 form 태그 안에는 label 태그와 form 태그가 사용되는데
-label 태그 안에는 'for' 속성이 있는데, 이것또한 JS에서 이미 for문에 사용되고 있으므로
-`htmlFor`로 작성해서 사용해야한다.
-
-```java
-ReactDom.render(
-  <form>
-    <label htmlFor="name">이름</label>
-    <input id="name" type="text" />
-  </form>,
-document.getElementByID('root'))
-```
-
-# fragment
-
-react는 render를 하기위해서 여러 태그들을 하나의 태그로 감싸주어야 error가 발생하지 않는다.
-아래의 코드처럼 여러 태그들이 하나의 태그로 감싸지지 못하면 error가 발생한다.
-
-```java
-//error 발생
-ReactDom.render(
-  <p>안녕</p>
-  <p>리액트</p>,
-document.getElementByID('root'))
-
-//하나의 태그로 감싼 모습
-ReactDom.render(
-  <div>
-    <p>안녕</p>
-    <p>리액트</p>,
-  </div>
-document.getElementByID('root'))
-```
-
-이렇게 하나의 태그로 감싸기 위해서 만들어진 것이 fragment이다.
-
-```java
-ReactDom.render(
-  <Fragment>
-    <p>안녕</p>
-    <p>리액트</p>,
-  </Fragment>,
-document.getElementByID('root'))
-
-//축약형
-ReactDom.render(
-  <>
-    <p>안녕</p>
-    <p>리액트</p>,
-  </>,
-document.getElementByID('root'))
-```
-
-```java
-ReactDom.render(
-  <>
-    <h1 id="title">가위바위보</h1>
-    <button className="hand">가위</button>
-    <button className="hand">바위</button>
-    <button className="hand">보</button>
-  </>,
-document.getElementByID('root'));
-```
-
-다른 사람과 비교하지말고, 어제의 나와 비교하자.
-하루하루를 최대한 밀도있게 보내자. 힘내자!
-
-input 태그 속성의 outline은 무엇인가?
-form 태그?(form 태그와 button의 연관성?)
-&nbsp; 타입을 버튼으로!
-&nbsp; button 태그의 속성 중 type은 아무것도 쓰지 않을 때 기본 속성이 submit이다.
-&nbsp; 그래서 form 태그 안에 button을 눌렀을 때 -> 제출이 되면서 우리가 원하는 결과를 얻지 못할 수 있으므로
-&nbsp; type=button으로 설정해주어야 한다.
+input 태그 속성의 outline은 무엇인가?  
+form 태그?(form 태그와 button의 연관성?)  
+&nbsp; 타입을 버튼으로!  
+&nbsp; button 태그의 속성 중 type은 아무것도 쓰지 않을 때 기본 속성이 submit이다.  
+&nbsp; 그래서 form 태그 안에 button을 눌렀을 때 -> 제출이 되면서 우리가 원하는 결과를 얻지 못할 수 있으므로  
+&nbsp; type=button으로 설정해주어야 한다.  
 
 - html 파일에서 script 태그를 바디 속 가장 아래에 사용하는 이유?
 
@@ -346,10 +253,6 @@ bottom-up 방식
 &nbsp; `고정 값`을 주고 해당 element를 감싸는 요소에는 자식 요소로 인해 저절로  
 &nbsp; 레이아웃을 형성할 수 있도록 하는 방식으로 작성하는 것이 <span style="color:red">유지보수에 좋다</span>!
 
-22 03 03  
-&nbsp; mockData 먼저연결하기  
-&nbsp;
-
 ##### 느낀 것
 
 백엔드와의 소통  
@@ -391,14 +294,10 @@ config.url??? baseUrl ㅠㅠ 이거 뭐냥...ㅠㅠ
 104번 고유한 className 사용하자!!!! (고유한 컴포넌트 이름!)
 
 # 3월 12일
-
-## wecode 1차 프로젝트 후기
-
 ### forwardRef
 
 이건 뭐지?? 새로운 react hook으로 추정함
 
-###
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
