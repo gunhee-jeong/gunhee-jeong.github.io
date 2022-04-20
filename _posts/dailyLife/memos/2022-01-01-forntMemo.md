@@ -24,12 +24,6 @@ script 태그를 바디 속 가장 위에 놓고 실행해보면
 &nbsp; error가 발생하는 것을 볼 수 있다. 그 이유는 js에서 addEvnetListener가 dom에 접근하여 값을 가져와야하는데
 &nbsp; html이 구성되기 전에 js파일이 읽어지면 js파일에서 설정한 변수들의 값이 'undefined'되기 때문에 error가 발생하게 된다.
 
-- 'use strit'란??
-
-엄격모드를 사용하는 것을 말하는데,
-사람으로 발생하는 error를 방지하기 위해 사용한다.
-좀더 찾아보자... 부족하다!!!
-
 - '이벤트 버블링' 기억해야할 키워드! 검색해보자
 
 - getElementsByClassName와 getElementById의 차이?
