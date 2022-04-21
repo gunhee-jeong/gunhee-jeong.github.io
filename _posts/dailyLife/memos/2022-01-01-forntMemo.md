@@ -11,8 +11,6 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-input 태그 속성의 outline은 무엇인가?  
-form 태그?(form 태그와 button의 연관성?)  
 &nbsp; 타입을 버튼으로!  
 &nbsp; button 태그의 속성 중 type은 아무것도 쓰지 않을 때 기본 속성이 submit이다.  
 &nbsp; 그래서 form 태그 안에 button을 눌렀을 때 -> 제출이 되면서 우리가 원하는 결과를 얻지 못할 수 있으므로  
