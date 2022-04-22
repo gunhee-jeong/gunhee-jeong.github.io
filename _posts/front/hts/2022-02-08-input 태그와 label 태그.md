@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "input 태그와 label 태그"
+title: "input 태그, label 태그, select 태그"
 # categories: Git
 categories:
   - CSS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
@@ -30,8 +30,38 @@ submit, reset 등을 지정할 수 있다.
 
 [value]  
 전달될 값이 담긴다.  
+
+#### required  
+<span style="color:blue">필수 입력 필드의 지정</span>으로 -> input 칸의 내용이 `빈칸이면 넘어가지 않도록 설정`할 수 있다.  
+
+#### email  
+
+#### range  
+
+#### text  
+한 줄짜리 텍스트를 입력할 수 있는 텍스트 상자이다.  
+
+#### submit  
+
+#### reset  
+사용자가 입력한 모든 정보를 지울 수 있다.  
+
+#### file  
+<u>파일을 첨부</u>할 수 있는 버튼으로, <span style="color:blue">accept 속성</span>을 사용하여 <u>제출 가능한 파일의 양식을 지정</u>할 수 있다.  
+```html
+<input type="file" accept=".doc, .docx">
+```  
+
+#### number  
+```html
+<input type="number" name="quantity" min="2" max="10" step="2" value="2">
+```  
+<img src="https://user-images.githubusercontent.com/87808288/164394446-360f7b50-4da9-4754-b502-f5be0b721036.png" width="100" height="200">   
+
 ## input 태그와 관련된 문제해결  
+
 ### input 테두리 색상 변경하기  
+
 
 <img src="https://user-images.githubusercontent.com/87808288/152899593-19485d54-fddd-4fb7-a4be-d88330a4ff9d.png" width="300" height="200">  
 위의 사진에서 전화번호와 비밀번호에 해당하는 것은 `input 태그`이다.  
@@ -63,7 +93,7 @@ input:focus {
 label 태그의 사용으로 -> `텍스트까지 선택영역의 범위가 넓어`지게된다.  
 
 ## input 태그와 label 태그의 연결  
-input 태그와 label 태그의 연결은 크게 2가지로 나눌 수 이다.  
+input 태그와 label 태그의 연결은 크게 2가지로 나눌 수 있다.  
 <span style="color:blue">명시적</span>(explicit) 연결과 <span style="color:blue">암시적</span>(implicit) 연결로 나뉜다.  
 
 ### 명시적 연결  
@@ -78,8 +108,33 @@ input 태그와 label 태그의 연결은 크게 2가지로 나눌 수 이다.
 암시적 연결은 input 요소를 label 요소로 감싸 연결하는 방법이다.  
 ```html
 <label>아이디 <input type="text" /></label>
-```
+```  
 
+# select 태그  
+select 태그는 항목을 선택할 수 있는 태그다.  
+<img src="https://user-images.githubusercontent.com/87808288/164389244-c18ab2a5-0c6b-4931-bd8c-7de99a881a96.png" width = "250" height = "200">  
+
+```html
+<form>
+  <select name = 'city'>
+    <optgroup label = '서울'>
+      <option value = "songpa-gu">송파구</option>
+      <option value = "gangnam-gu">강남구</option>
+      <option value = "seocho-gu">서초구</option>
+      <option value = "junggu-gu">중구</option>
+    </optgroup>
+  </select>
+    <optgroup label = '경기도'>
+    </optgroup>
+  </select>
+</form>
+```  
+## select 태그의 속성   
+### size  
+size 속성은 한 번에 표시할 수 있는 <span style="color:blue">항목의 수</span>를 나타낸다.  
+
+### multiple  
+multiple 속성은 <span style="color:blue">다중선택을 허용할 것인지</span>를 지정하는 속성이다.  
 
 <!-- ### 2. Link 넣기
 
