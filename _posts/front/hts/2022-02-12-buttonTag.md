@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "HTML button tag"
+title: "button tag"
 # categories: Git
 categories:
   - HTML # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [button, tag, disabled] #tag는 여러개 가능함
+tag: [button, tag, disabled,type] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,7 +12,20 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# button tag의 attribute
+# button tag의 attribute  
+## type -> submit, reset, button  
+button 태그의 <span style="color:blue">type 속성</span>으로는 `submit`, `reset`, `button`이 존재한다.  
+button 태그를 사용할 때 -> <u>type 속성을 아무것도 지정하지 않는다면</u> <span style="color:red">기본값은 'submit'</span>이 선택된다.  
+```html
+<button></button> === <button type="submit"></button>
+```  
+
+<u>form 안에서</u> 버튼을 클릭했을 때 <span style="color:blue">새로고침</span>이 되어 고생한 적이 있었다.  
+바로 button 태그의 <span style="color:red">기본값으로 설정된 'submit'</span>때문인 것이다.  
+특정 영역을 form 태그로 감싸고 -> 그 안에 type이 명시되지 않은 <u>button은 모두 submit 버튼으로 동작</u>했기 때문이다.  
+
+<u>button 태그의 type</u>은 <span style="color:blue">시멘틱적인 부분</span>에서 기본적으로 작성해주면 좋을 것 같다고 개인적으로 생각이 들었다.  
+단순 버튼에는 type="submit"을 명시한다면 한 눈에 알아볼 수 있을 것 같다!  
 
 ## disabled
 
