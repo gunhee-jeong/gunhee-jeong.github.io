@@ -10,12 +10,7 @@ toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
----
-&nbsp; 타입을 버튼으로!  
-&nbsp; button 태그의 속성 중 type은 아무것도 쓰지 않을 때 기본 속성이 submit이다.  
-&nbsp; 그래서 form 태그 안에 button을 눌렀을 때 -> 제출이 되면서 우리가 원하는 결과를 얻지 못할 수 있으므로  
-&nbsp; type=button으로 설정해주어야 한다.  
-
+--- 
 - html 파일에서 script 태그를 바디 속 가장 아래에 사용하는 이유?
 
 script 태그를 바디 속 가장 위에 놓고 실행해보면
@@ -288,7 +283,15 @@ config.url??? baseUrl ㅠㅠ 이거 뭐냥...ㅠㅠ
 # 3월 12일
 ### forwardRef
 
-이건 뭐지?? 새로운 react hook으로 추정함
+이건 뭐지?? 새로운 react hook으로 추정함  
+
+왜 router를 사용했는가  
+
+react 상태관리 변수에 관하여  
+
+react 함수형과 클래스형의 차이점  
+
+react 
 
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
