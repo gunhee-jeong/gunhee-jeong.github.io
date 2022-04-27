@@ -1,61 +1,837 @@
----
-layout: null
----
-
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {% for post in site.posts %}
-    <url>
-        <loc>{{ site.url }}{{ post.url }}</loc>
-        {% if post.lastmod == null %}
-        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-        {% else %}
-        <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
-        {% endif %}
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-        {% if post.sitemap.changefreq == null %}
-        <changefreq>weekly</changefreq>
-        {% else %}
-        <changefreq>{{ post.sitemap.changefreq }}</changefreq>
-        {% endif %}
 
-        {% if post.sitemap.priority == null %}
-        <priority>0.5</priority>
-        {% else %}
-        <priority>{{ post.sitemap.priority }}</priority>
-        {% endif %}
+<url>
+  <loc>https://gunhee-jeong.github.io/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/index.html</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/search/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/html</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/css</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/javascript</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/react</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/reactNative</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/memoir</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/memo</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/algorithm</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/wecodes</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/programmers1</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/github</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/network</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/web</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/cs</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/tool</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/categories/mindSet</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/network/%EC%BC%80%EC%9D%B4%EB%B8%94%EC%9D%98-%EC%A2%85%EB%A5%98%EC%99%80-%EA%B5%AC%EC%A1%B0-&amp;&amp;-%EB%A6%AC%ED%94%BC%ED%84%B0%EC%99%80-%ED%97%88%EB%B8%8C%EC%9D%98-%EA%B5%AC%EC%A1%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/tags/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/network/%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%A7%81%ED%81%AC-%EA%B3%84%EC%B8%B5%EC%9D%98-%EC%97%AD%ED%95%A0%EA%B3%BC-%EC%9D%B4%EB%8D%94%EB%84%B7-&amp;&amp;-MAC-%EC%A3%BC%EC%86%8C%EC%9D%98-%EA%B5%AC%EC%A1%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/network/%EC%8A%A4%EC%9C%84%EC%B9%98%EC%9D%98-%EA%B5%AC%EC%A1%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%EB%AA%A8%EB%8D%98%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-4%EC%9E%A5-%EB%B3%80%EC%88%98/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/mindset/%EB%B6%80%EC%9E%90%EA%B0%80-%EB%90%98%EA%B8%B0-%EC%9C%84%ED%95%B4-%ED%95%84%EC%9A%94%ED%95%9C-1%EA%B0%80%EC%A7%80-%EB%8D%95%EB%AA%A9/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/network/%EB%9E%9C%EA%B3%BC-%EC%99%A0-&amp;&amp;-%EA%B0%80%EC%A0%95%EC%97%90%EC%84%9C-%ED%95%98%EB%8A%94-%EB%9E%9C-%EA%B5%AC%EC%84%B1-&amp;&amp;-%ED%9A%8C%EC%82%AC%EC%97%90%EC%84%9C-%ED%95%98%EB%8A%94-%EB%9E%9C-%EA%B5%AC%EC%84%B1/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/network/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EC%9D%98-%EA%B7%9C%EC%B9%99-&amp;&amp;-%EC%BA%A1%EC%8A%90%ED%99%94%EC%99%80-%EC%97%AD%EC%BA%A1%EC%8A%90%ED%99%94/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/network/%EB%AC%BC%EB%A6%AC-%EA%B3%84%EC%B8%B5%EC%9D%98-%EC%97%AD%ED%95%A0%EA%B3%BC-%EB%9E%9C-%EC%B9%B4%EB%93%9C%EC%9D%98-%EA%B5%AC%EC%A1%B0-&amp;&amp;-%EB%9E%9C%EC%B9%B4%EB%93%9C/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/network/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC%EC%9D%98-%EA%B5%AC%EC%A1%B0-&amp;&amp;-%EC%A0%95%EB%B3%B4%EC%9D%98-%EC%96%91%EC%9D%84-%EB%82%98%ED%83%80%EB%82%B4%EB%8A%94-%EB%8B%A8%EC%9C%84/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/web/Front-end%EC%9D%98-%EC%97%AD%EC%82%AC%EC%99%80-%EB%AF%B8%EB%9E%98/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/html/form-%ED%83%9C%EA%B7%B8/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/strict-mode/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/web/Ajax/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/mindset/%ED%95%9C-%EC%82%B4%EC%9D%B4%EB%9D%BC%EB%8F%84-%EB%B9%A8%EB%A6%AC-%EA%B9%A8%EB%8B%AC%EC%9C%BC%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EA%B2%83%EB%93%A4/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memo/%EC%83%9D%ED%99%9C%EC%BD%94%EB%94%A9-%EA%B0%95%EC%9D%98-%ED%95%99%EC%8A%B5-%EA%B8%B0%EB%A1%9D/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/css/outline-%EC%86%8D%EC%84%B1/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/mindset/%EC%A7%81%EC%9E%A5-%EB%82%B4-%EC%9D%B8%EA%B4%80%EA%B4%80%EA%B3%84-%EB%95%8C%EB%AC%B8%EC%97%90-%ED%9E%98%EB%93%A4%EB%8B%A4%EB%A9%B4/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/NPM-NPX-Yarn/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/DesignPattern/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/mindset/%EB%82%A8%EB%93%A4%EB%B3%B4%EB%8B%A4-%EB%92%A4%EC%B2%98%EC%A7%84-%EA%B2%83-%EA%B0%99%EC%95%84-%EB%B6%88%EC%95%88%ED%95%9C-%EB%8B%B9%EC%8B%A0%EC%97%90%EA%B2%8C-copy/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/page2/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/page3/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/page7/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%EC%A0%84%EA%B0%9C-%EC%97%B0%EC%82%B0%EC%9E%90(Spread-Operator)/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/pushMethod/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/console.dir/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/document.value/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/addEventListener/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/event-key/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%EC%A1%B0%EA%B1%B4%EB%AC%B8/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%EB%B0%98%EB%B3%B5%EB%AC%B8/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%EA%B5%AC%EC%A1%B0%EB%B6%84%ED%95%B4%ED%95%A0%EB%8B%B9/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%EB%8B%A4%EC%96%91%ED%95%9C_Document.method/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/function1/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/dom-innerText%EC%99%80innerHTML/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/documentEvent/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/Document-appendChild()/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/javascript%ED%8C%8C%EC%9D%BC/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/dom/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/template-literals,-string-method/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/arrowFunction/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/arrayMethods/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/scope/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/class/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%EB%82%A0%EC%A7%9C%EC%99%80%EC%8B%9C%EA%B0%84/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%EA%B0%9D%EC%B2%B4object/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/number%EC%97%90%EA%B4%80%ED%95%98%EC%97%AC/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%ED%98%95%EB%B3%80%ED%99%98/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%EB%B0%B0%EC%97%B4split%EC%99%80join/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%EB%B0%B0%EC%97%B4slice%EC%99%80splice/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%83%80%EC%9E%85/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/javascript/string%EC%97%90%EA%B4%80%ED%95%98%EC%97%AC/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/%EC%BB%A4%EC%8A%A4%ED%85%80hook/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/styledComponent/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/pagination&amp;queryParameter/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/advancedRouting/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/filter%EB%A5%BC%EC%82%AC%EC%9A%A9%ED%95%9Cmonster%ED%95%84%ED%84%B0%EA%B8%B0%EB%8A%A5/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/preventDefault/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/fetch%ED%95%A8%EC%88%98%EB%A5%BC%EC%82%AC%EC%9A%A9%ED%95%9CmockData/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/error-EachChild_in_aListShouldHave_a_UniqueKey/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/instagram%EB%8C%93%EA%B8%80%EA%B8%B0%EB%8A%A5/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/instagram%EB%A1%9C%EA%B7%B8%EC%9D%B8&amp;%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8value%EC%A0%80%EC%9E%A5/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/fetch%ED%95%A8%EC%88%98%EB%A5%BC%EC%9D%B4%EC%9A%A9%ED%95%9C%EB%A1%9C%EA%B7%B8%EC%9D%B8%EA%B5%AC%ED%98%84/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/useEffectHook/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/mockData/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/target/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/state&amp;event/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/props&amp;event/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/hooks/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/%EC%99%9Creact%EC%9D%B8%EA%B0%80/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/reactSass/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/reactRouter/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/state/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/react%EC%9D%98%ED%8C%8C%EC%9D%BC%EB%93%A4%EC%9D%98%EC%97%AD%ED%95%A0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/props/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/react1JSX/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/react/react%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/cs/C%EC%96%B8%EC%96%B4-%EA%B8%B0%EC%B4%88/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/cs/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/cs/%EC%A0%95%EB%B3%B4%EC%9D%98%ED%91%9C%ED%98%84/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/cs/2%EC%A7%84%EB%B2%95/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/cs/softwareTesting/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/cs/AWS/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/cs/RESTfulAPI-copy/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/cs/%EC%9D%B8%EC%A6%9D%EA%B3%BC%EC%9D%B8%EA%B3%BC/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/cs/http%EC%97%90%EA%B4%80%ED%95%98%EC%97%AC/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/cs/database/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/github/masterBranch%EC%9D%B4%EB%A6%84main%EC%9C%BC%EB%A1%9C/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/github/%EC%8A%AC%EB%9E%99%EA%B3%BCgithub%EC%97%B0%EB%8F%99/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/github/rebase/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/github/local%EC%97%90%EC%84%9Ccommit%EA%B3%BCadd%EC%B7%A8%EC%86%8C/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/github/push%EC%99%80pull/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/github/git%EA%B3%BCgithub%EC%97%90%EA%B4%80%ED%95%98%EC%97%AC/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/github/xcrunError/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/github/gitBlog%EC%88%9C%EC%84%9C/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/github/first/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/css/cssConvention/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/css/box_sizing/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/css/input-%ED%83%9C%EA%B7%B8%EC%99%80-label-%ED%83%9C%EA%B7%B8/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/css/%EA%B0%80%EC%9A%B4%EB%8D%B0%EC%A0%95%EB%A0%AC%EB%A7%9E%EC%B6%94%EA%B8%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/css/transform/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/css/block%EA%B3%BC-inline/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/css/cssTextStyle/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memo/%EC%8A%A4%ED%83%80%ED%8F%B4%EB%A6%AC%EC%98%A41%EC%B0%A8%ED%9A%8C%EC%9D%98/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memo/codeRefactoring/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memo/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%9D%98-%EA%B3%B5%EB%B6%80%EB%B2%95%EC%97%90-%EA%B4%80%ED%95%98%EC%97%AC/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memo/%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%97%90-%EA%B4%80%ED%95%98%EC%97%AC/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memo/%EB%8B%B9%EA%B7%BC%EB%A7%88%EC%BC%93%EA%B0%9C%EB%B0%9C%EC%9E%90%EC%99%80%EC%9D%98%EB%A7%8C%EB%82%A8/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memo/forntMemo/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/tool/vsCode%EB%8B%A8%EC%B6%95%ED%82%A4/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/tool/%EC%9E%91%EC%97%85%EC%98%81%EC%97%AD%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/tool/gitBlogCss%EC%84%A4%EC%A0%95/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/tool/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%98%AC%EB%A6%AC%EB%8A%94%EB%B2%95/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/tool/%EB%A7%88%ED%81%AC%EC%97%85%EA%B3%B5%EB%B6%80/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/tool/%EC%B2%AD%EB%85%84%EC%88%98%EB%8B%B9-%EC%A0%95%EB%A6%AC/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/tool/bootCamp%EC%A0%95%EB%A6%AC/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/programmers1/%ED%96%89%EB%A0%AC%EC%9D%98%EB%8D%A7%EC%85%88/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/programmers1/%ED%8F%89%EA%B7%A0%EA%B5%AC%ED%95%98%EA%B8%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/programmers1/x%EB%A7%8C%ED%81%BC%EA%B0%84%EA%B2%A9%EC%9D%B4%EC%9E%88%EB%8A%94n%EA%B0%9C%EC%9D%98%EC%88%AB%EC%9E%90/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/programmers1/k%EB%B2%88%EC%A7%B8%EC%88%98/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/programmers1/%ED%95%98%EC%83%A4%EB%93%9C%EC%88%98/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/programmers1/%EC%9E%90%EB%A6%BF%EC%88%98%EB%8D%94%ED%95%98%EA%B8%B0-copy/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/html/buttonTag/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/html/htmlTag/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/html/attribute/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/html/semantic/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memoir/wecode2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%ED%9A%8C%EA%B3%A0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memoir/wecode2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%ED%9B%84%EA%B8%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memoir/wecode1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%ED%9A%8C%EA%B3%A0%EB%A1%9D/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memoir/wecode%ED%95%9C%EB%8B%AC%EC%B0%A8%ED%9A%8C%EA%B3%A0%EB%A1%9D/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/memoir/%EA%B8%B0%EB%A1%9D%EC%9D%98%EC%A4%91%EC%9A%94%EC%84%B1/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/mindset/%ED%8F%AC%EA%B8%B0%ED%95%98%EC%A7%80%EC%95%8A%EA%B3%A0%EA%BE%B8%EC%A4%80%ED%9E%88%ED%95%B4%EB%82%B4%EB%8A%94%EB%B9%84%EA%B2%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/wecodes/getPrefix/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/wecodes/getFind-%ED%95%A8%EC%88%98-%EB%A7%8C%EB%93%A4%EA%B8%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/wecodes/findLongest_word%ED%95%A8%EC%88%98%EB%A7%8C%EB%93%A4%EA%B8%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/wecodes/%EC%9B%90%EC%B9%98%EC%95%8A%EB%8A%94%EC%A3%BC%EC%86%8C%EC%A0%9C%EA%B1%B0%ED%95%98%EA%B8%B0/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/algorithm/codingTest%EB%A5%BC-%EC%9C%84%ED%95%9C%EC%84%A0%ED%96%89%EC%A7%80%EC%8B%9D-copy/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/algorithm/bigO/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/reactnative/%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EC%84%A4%EC%B9%98%ED%9B%84Native%EC%9E%AC%EC%84%A4%EC%A0%95/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/reactnative/%EC%8B%9C%EB%8B%88%EC%96%B4%EB%86%80%EC%9D%B4%ED%84%B0file%EC%A0%95%EB%A6%AC/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/page4/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/page5/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/page6/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://gunhee-jeong.github.io/cssFont/</loc>
+  <lastmod>2022-04-27T02:08:26+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
 
-    </url>
-    {% endfor %}
+
 </urlset>
-
-<!-- ---
----
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  {% for post in site.posts %}
-    <url>
-      <loc>{{ site.url }}{{ post.url }}</loc>
-      {% if post.lastmod == null %}
-        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-      {% else %}
-        <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
-      {% endif %}
-
-      {% if post.sitemap.changefreq == null %}
-        <changefreq>daily</changefreq>
-      {% else %}
-        <changefreq>{{ post.sitemap.changefreq }}</changefreq>
-      {% endif %}
-
-      {% if post.sitemap.priority == null %}
-          <priority>0.5</priority>
-      {% else %}
-        <priority>{{ post.sitemap.priority }}</priority>
-      {% endif %}
-
-    </url>
-  {% endfor %}
-</urlset> -->
