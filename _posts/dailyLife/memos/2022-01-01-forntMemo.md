@@ -291,8 +291,9 @@ react 상태관리 변수에 관하여
 
 react 함수형과 클래스형의 차이점  
 
-react 
+react   
 
+git -> rebert와 reset의 차이점  
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
@@ -300,7 +301,7 @@ react
 
 ```
 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
+유형 1: 정원희님의 이력서 : [데이터로 일하는 개발자](https://wonny.oopy.io/)
 유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
