@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "blog commit 순서"
+title: "github 블로그 관련 git 정보"
 # categories: Git
 categories:
   - Github # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [blog, git] #tag는 여러개 가능함
+tag: [blog, git, 커밋 메세지, commit] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -15,7 +15,13 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # git 순서
 
 git branch a -> add . -> commit -m -> push origin a ->  
-github -> PR -> git switch -> pull -> git switch a
+github -> PR -> git switch -> pull -> git switch a  
+
+# 2. Github 블로그 관련 commmit 컨벤션  
+## (1) feature/makeCatefory  
+### Add  
+[Add] 20xx 0x xx -> 개발서적 Category 추가  
+
 
 <!-- ### 2. Link 넣기
 
