@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "네트워크의 규칙 && 캡슐화와 역캡슐화"   
+title: "6장 네트워크의 규칙, 7장 OSI모델과 TCP/IP모델, 8장 캡슐화와 역캡슐화"   
 # categories: Git
 categories:
   - network # HTML CSS JavaScript Server Algorithm Wecode Programmers CS vsCode
