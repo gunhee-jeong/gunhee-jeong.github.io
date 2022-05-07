@@ -4,7 +4,7 @@ title: "배열 slice와 splice"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [array] #tag는 여러개 가능함
+tag: [array method] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -26,7 +26,7 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 > @param end The end index of the specified portion of the array. This is exclusive of the element at the index 'end'.
 > If end is undefined, then the slice extends to the end of the array.
 
-- **splice method** 와는 다르게 <span style="color:red">slice method</span>는 **원본 배열을 변형시키지 않음**
+- **splice method** 와는 다르게 <span style="color:red">slice method</span>는 <span style="color:blue">원본 배열을 변형시키지 않음</span>  
 
   ```javascript
   const array = [1, 2, 3, 4, 5];
@@ -49,7 +49,7 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 > (배열에서 요소를 제거하고 필요한 경우 그 자리에 새 요소를 삽입하여 삭제된 요소를 반환합니다.)
 > @param start The zero-based location in the array from which to start removing elements.
 
-- slice method 와는 다르게 <span style="color:red">원본 배열을 변형</span>시킴!
+- slice method 와는 다르게 <span style="color:red">splice</span>는 <span style="color:blue">원본 배열을 변형</span>시킴!
 
   ```javascript
   const fruits = ["🍎", "🍌", "🍓", "🍑", "🍋"];
