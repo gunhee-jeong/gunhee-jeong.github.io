@@ -4,7 +4,7 @@ title: "배열 split와 join"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [array] #tag는 여러개 가능함
+tag: [array method] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -20,20 +20,27 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 > @param separator A string used to separate one element of the array from the next in the resulting string.  
 > If omitted, the array elements are separated with a comma
 
-- <u>array를</u> <span style="color:red">문자열로 만들고</span> 이를 반환한다(array -> string)
+[<u>array를</u> <span style="color:red">문자열로 만들고</span> 이를 반환한다(array -> string)]
 
   ```javascript
   const fruits = ["apple", "banana", "orange"];
   console.log(fruits.join("")); //output == applebananaorange
 
-  const result = fruits.join("*");
-  console.log(result); //output == "apple*banana*orange"
-
   const adress = ["경기도", "분당구", "중앙공원로", "53"];
   console.log(adress.join(" ")); //output == "경기도 분당구 중앙공원로 53"
   ```
 
-  **join**을 사용하면 이렇게 <u>array로 반환되는 것이 아니라</u>, <span style="color:red">String 타입</span>으로 결과물이 반환된다!!
+  **join**을 사용하면 이렇게 <u>array로 반환되는 것이 아니라</u>, <span style="color:red">String 타입</span>으로 결과물이 반환된다!!  
+  
+[.join(<span style="color:red">*</span>)]  
+join을 사용하면서 괄호() 안에 구분 기호 문자를 넣어서 사용하면  
+
+```js
+  const result = fruits.join("*");
+  console.log(result); //output == "apple*banana*orange"
+```  
+<u>콤마(,)</u> 대신에 해당 <span style="color:blue">구분 기호 문자가</span> 결과로 들어가게 된다.  
+
 
 # split
 
@@ -41,38 +48,52 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 > (지정된 구분 기호를 사용하여 문자열을 부분 문자열로 분할하고 배열로 반환합니다.)
 > @param splitter An object that can split a string.
 
-- **split**는 <span style="color:red">String을 array로</span> 만드는 것으로 join과 split는 반대적인 개념이다
-- 문자열이 하나로 연결된 <span style="color:red">'문자열'</span> 형태라면 *.split("")*를 사용해서 **['문', '자', '열']**로 만들 수 있음
+<span style="color:red">split</span>는 <span style="color:blue">String을 array로</span> 만드는 것으로 `join과 split는 반대적인` 개념이다.  
 
-  - 문자열이 <span style="color:red">'문, 자, 열'</span>의 형태라면 *.split(",")*를 사용해서 **['문', '자', '열']**로 만들 수 있음
+문자열이 하나로 연결된 <span style="color:blue">'문자열'</span> 형태라면 `.split('')`를 사용해서 <span style="color:red">['문', '자', '열']</span>로 만들 수 있다.  
 
-    ```javascript
-    const numbers = "1234";
-    console.log(numbers.split("")); //output == ['1', '2', '3', '4']
+```js
+const x = '문자열';
+x.splice('') //[ '문', '자', '열' ]
+```
 
-    //예시
-    const fruits = "🍎, 🥝, 🍌, 🍒";
+문자열이 <span style="color:blue">'문, 자, 열'</span>의 형태라면 `.split(',')`를 사용해서 <span style="color:red">['문', '자', '열']</span>로 만들 수 있다.  
+그런데 이때 <span style="color:blue">.split('')</span>를 사용하면 -> [ '문', ',', &nbsp;'자', ',', '열' ]이 되므로  
+<u>','</u>을 제거하기 위해 <span style="color:red">.split(',')</span>를 사용해야하는 것이다.  
 
-    console.log(fruits.split(",")); //output == ['🍎', ' 🥝', ' 🍌', ' 🍒']
+```js
+const y = '문,자,열';
+y.split(''); //[ '문', ',', '자', ',', '열' ]
+y.split(','); //[ '문', '자', '열' ]
+```
 
-    const result = fruits.split(",", 2);
-    console.log(result); //output == ["🍎", " 🥝"]
+```javascript
+const numbers = "1234";
+console.log(numbers.split("")); //output == ['1', '2', '3', '4']
 
-    const result = fruits.split(",", 3);
-    console.log(result); //output == ["🍎", " 🥝", "🍌"]
-    ```
+//예시
+const fruits = "🍎, 🥝, 🍌, 🍒";
 
-- <u>지정된 구분 기호나 문자를 입력</u>하면, <span style="color:red">해당하는 문자열은 제거하고 분할</span>하여 **배열로 반환**한다!
+console.log(fruits.split(",")); //output == ['🍎', ' 🥝', ' 🍌', ' 🍒']
 
-  ```javascript
-  const fruits = "one4seveneight";
-  let arr = fruits.split("seven");
-  console.log(arr); //output == ['one4', 'eight']
+const result = fruits.split(",", 2);
+console.log(result); //output == ["🍎", " 🥝"]
 
-  const fruits = "one4seveneight";
-  let arr = fruits.split("one");
-  console.log(arr); //output == [ '', '4seveneight' ]
-  ```
+const result = fruits.split(",", 3);
+console.log(result); //output == ["🍎", " 🥝", "🍌"]
+```
+
+[<u>지정된 구분 기호나 문자를 입력</u>하면, <span style="color:red">해당하는 문자열은 제거하고 분할</span>하여 **배열로 반환**한다!]
+
+```javascript
+const fruits = "one4seveneight";
+let arr = fruits.split("seven");
+console.log(arr); //output == ['one4', 'eight']
+
+const fruits = "one4seveneight";
+let arr = fruits.split("one");
+console.log(arr); //output == [ '', '4seveneight' ]
+```
 
 <!-- ### 2. Link 넣기
 
