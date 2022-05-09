@@ -1,9 +1,9 @@
 ---
 layout: single
-title: "원치않는 주소 제거하기"
+title: "find_longest_word 함수만들기"
 # categories: Git
 categories:
-  - wecodes # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
+  - codingTest # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
 tag: [javascript, coding test] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
@@ -14,40 +14,51 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 
 # 문제설명
 
-- 주어진 주소가 어느 도시 인지를 찾아 해당 주소에서 도시 부분만 삭제하여 새로운 주소를 리턴해주세요!
-- '도'와 '시'는 주소에 한번 밖에 포함되어 있지 않습니다
-- 예를 들어, "경기도 성남시 분당구 중앙공원로 53" -> "경기도 분당구 중앙공원로 53" 이렇게 반환되어야 합니다!
-- 주어진 코드
+find_longest_word 함수를 만들어 주세요.  
+주어진 리스트안에 있는 단어중 가장 긴 단어를 찾을수 있도록 함수를 완성해주세요.
 
-  ```javascript
-  const address = "경기도 성남시 분당구 중앙공원로 53";
+주어진 코드
 
-  function sliceCityFromAddress(address) {
-    return result;
-  }
-  ㅇ;
-  console.log(sliceCityFromAddress(address));
-  ```
+```java
+function find_longest_word(arr){
+
+}
+
+console.log(find_longest_word(["PHP", "Exercises", "Backend"]))
+```
 
 # 문제풀이
 
-- 나의 풀이
+나의 풀이1
 
-  ```javascript
-  const address = "경기도 성남시 분당구 중앙공원로 53";
-  function sliceCityFromAddress(address) {
-    return address
-      .split(" ")
-      .filter((x) => (x[2] == "시" ? false : true))
-      .join(" ");
+```java
+function find_longest_word(arr){
+  let x = arr[0];
+  for(let i=1; i < arr.length; i++){
+    if(arr[i].length > x.length){
+      x = arr[i];
+    }
   }
-  console.log(sliceCityFromAddress(address));
-  ```
+  return x;
+}
+```
 
-  - <span style="color:red">address.split(" ")</span>을 사용하여 <u>String을 array로 변환</u>하였다!
-  - ['경기도', '성남시', '분당구', '중앙공원로', '53']<span style="color:red">.filter</span>를 사용하여 0번 index의 String에서 2번째 index가 '시'와 같지 않다면  
-    true를 반환하고, '시'와 같지 않다면 false를 반환하여 해당 index의 value를 array에서 제거하도록 설계했다!
-  - ['경기도', '분당구', '중앙공원로', '53']<span style="color:red">.join(" ")</span>을 사용하여 array에서 **String의 형태로 변환**되도록 마무리하였다
+나의 풀이2
+
+```java
+function find_longest_word(arr){
+  let result = [arr[0]];
+  arr.filter((x, index) => {
+    if(result[0].length < x.length) {
+      result.pop();
+      result.push(x);
+    }
+  })
+  return result[0];
+}
+
+console.log(find_longest_word(["PHP", "Exercises", "Backend"]))
+```
 
 <!-- ### 2. Link 넣기
 

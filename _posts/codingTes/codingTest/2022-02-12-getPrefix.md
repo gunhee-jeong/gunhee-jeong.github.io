@@ -1,36 +1,42 @@
 ---
 layout: single
-title: "2022년 05월 10일 (화) 데일리 리포트"  
+title: "getPrefix 함수만들기"
 # categories: Git
 categories:
-  - dailyReport # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [데일리 리포트] #tag는 여러개 가능함
+  - codingTest # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
+tag: [javascript, coding test] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-05-10T05:10:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 오전
-0500: 기상  
-0540 ~ 0550: 어제 데일리 리포트 관련 소감 작성  
-0550 ~ 0630: Hello coding -> <span style="color:red">집중도 하</span>  
-0630 ~ 0640: 휴식  
-0640 ~ 
 
-# 오후
+# 문제설명
 
+문자열이 주어졌을 때, -를 기준으로 앞에 있는 문자열을 반환하세요.
 
-# 결산
-어제의 수면: <span style="color:blue">6시간</span> -> <span style="color:red">집중도 하</span>  
-오늘의 순수 `생산성`: <span style="color:red">시간 40분</span>  
+주어진 코드
 
-# 소감
+```java
+function getPrefix(str) {
 
+}
+console.log(getPrefix('BTC-KRW')) // --> BTC
+```
 
+# 문제풀이
 
-<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
+나의 풀이
+
+```java
+function getPrefix(str) {
+  return str.split('-')[0]
+}
+
+console.log(getPrefix('BTC-KRW')) //output == 'BTC'
+
+```
 
 <!-- ### 2. Link 넣기
 
