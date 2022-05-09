@@ -101,8 +101,8 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "wecodes" %}
-                        <li><a href="/categories/wecodes" class="">wecode ({{category[1].size}})</a></li>
+                    {% if category[0] == "codingTest" %}
+                        <li><a href="/categories/codingTest" class="">코딩 테스트 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
