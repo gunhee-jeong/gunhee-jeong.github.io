@@ -4,7 +4,7 @@ title: "Hello Coding-> 2장 이진 탐색, 3장 빅오 표기법"
 # categories: Git
 categories:
   - Algorithm # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
-tag: [] #tag는 여러개 가능함
+tag: [Hello Coding] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
