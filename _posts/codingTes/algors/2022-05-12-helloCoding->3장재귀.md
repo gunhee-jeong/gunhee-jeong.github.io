@@ -1,36 +1,27 @@
 ---
 layout: single
-title: "2022년 05월 12일 (목) 데일리 리포트"  
+title: "Hello Coding-> 3장 재귀"
 # categories: Git
 categories:
-  - dailyReport # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [데일리 리포트] #tag는 여러개 가능함
+  - Algorithm # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
+tag: [Hello Coding] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-05-12T08:10:00+09:00
+date: 2022-05-12T12:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 오전
-0950 ~ 1040: 모두의 네트워크(32장 랜 카드에서의 데이터 전달과 처리) -> <span style="color:blue">집중도 중</span>  
-1040 ~ 1105: 휴식  
-1105 ~ 1145: 모두의 네트워크(33장 스위치와 라우테에서의 데이터 전달과 처리) -> <span style="color:blue">집중도 중</span>  
-1150 ~ 1240: Hello Coding(3장 재귀함수) -> <span style="color:blue">집중도 중</span>  
+# 3장 재귀
 
-# 오후
-1240 ~ 1245: 휴식  
-1245 ~ 1325: 프로그래머스 -> <span style="color:red">집중도 하</span>  
-1325 ~ 1405: 점심식사  
-1405 ~ 
+## (4) 스택
+재귀는 함수가 스스로를 호출하는 것을 말한다.  
+모든 재귀 함수는 기본 단계와 재귀 단계라는 두 부분으로 나누어져 있다.  
+스택에는 push와 pop이라는 두 가지 연산이 존재한다.  
+모든 함수 호출은 호출 스택을 사용한다.  
+호출 스택은 너무 커져서 메모리를 엄청나게 소비할 수도 있다.  
 
-# 결산
-<!-- 어제의 `수면`: <span style="color:purple">6시간</span> -> <span style="color:blue">집중도 중</span>   -->
-오늘의 `순 생산성 시간`: <span style="color:purple"> 2시간 50분</span>  
 
-# 소감
-
-<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
 
