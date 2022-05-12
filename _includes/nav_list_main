@@ -120,6 +120,13 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Programmers3" %}
+                        <li><a href="/categories/programmers3" class="">Programmers 3단계 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         <span class="nav__sub-title">ETC</span>
             <ul>
               {% for category in site.categories %}
