@@ -1,54 +1,30 @@
 ---
 layout: single
-title: "2022년 05월 16일 (월) 데일리 리포트"  
+title: "Github repository 생성"
 # categories: Git
 categories:
-  - dailyReport # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [데일리 리포트] #tag는 여러개 가능함
+  - Github # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
+tag: [Github Tutorial] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
-author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-05-16T08:30:00+09:00
+author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함  
+date: 2022-05-17T09:50:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 오전
-0840 ~ 0915: 모던 자바스크립트(14장 전역 변수의 문제점) -> <span style="color:royalblue">집중도 중</span>  
-0915 ~ 0920: 휴식  
-0920 ~ 0945: 모던 자바스크립트(15장 let, const 키워드) -> <span style="color:royalblue">집중도 중</span>  
-0945 ~ 1000: 아침 식사  
-1000 ~ 1020: 모던 자바스크립트(15장 let, const 키워드) -> <span style="color:royalblue">집중도 중</span>  
-1020 ~ 1030: 휴식  
-1030 ~ 1140: 모던 자바스크립트(15장 let, const 키워드) -> <span style="color:royalblue">집중도 중</span>  
+# local 프로젝트를 github 서버로
+우선 Github에 접속해서 <u>repository를 생성</u>한다 ->  
+아래로 내리다보면 페이지에 <span style="color:royalblue">...or create a new repository</span>가 있는데  
+거기서 <span style="color:tomato">git remote add origin 주소</span>로 되어있는 것을 <u>복사하여 터미널에 붙여넣는다</u> ->  
+정상적으로 등록이 되었는지 확인하기 위해 터미널에서 <span style="color:tomato">git remote</span>를 입력해서 <u>origin이 나오면 성공</u> ->  
+git hist로 살펴보면 아직 server로는 올라가있지 않기 때문에   
+git push를 통해 local의 commit들을 server로 올려야 한다.  
 
-# 오후
-1140 ~ 1250: 휴식 및 개인일정  
-1250 ~ 1320: 모던 자바스크립트(15장 let, const 키워드) -> <span style="color:royalblue">집중도 중</span>  
-1320 ~ 1350: 휴식 및 점심식사  
-1350 ~ 1420: 모던 자바스크립트(16장 프로퍼티 어트리뷰트) -> <span style="color:royalblue">집중도 중</span>  
-1420 ~ 1530: 휴식 및 개인일정  
-1530 ~ 1420: 모던 자바스크립트(16장 프로퍼티 어트리뷰트) -> <span style="color:royalblue">집중도 중</span>  
-1420 ~ 1430: 휴식  
-1430 ~ 1720: 모던 자바스크립트(16장 프로퍼티 어트리뷰트) -> <span style="color:royalblue">집중도 중</span>  
-1720 ~ 1730: 휴식  
-1730 ~ 1850: 모던 자바스크립트(16장 프로퍼티 어트리뷰트) -> <span style="color:green">집중도 상</span>  
-1850 ~ 1920: 휴식  
-1920 ~ 2000: 모던 자바스크립트(17장 생성자 함수에 의한 객체 생성) -> <span style="color:royalblue">집중도 중</span>  
-2000 ~ 2015: 휴식  
-2015 ~ 2025: Hello Coding -> 
-
-# 결산
-<!-- 어제의 `수면`: <span style="color:purple">6시간</span> -> <span style="color:blue">집중도 중</span>   -->
-오늘의 `순 생산성 시간`: <span style="color:blue"> 7시간 10분</span>  
-
-# 소감
-
-<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
 
 ```
-
+ 
 유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
 유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
