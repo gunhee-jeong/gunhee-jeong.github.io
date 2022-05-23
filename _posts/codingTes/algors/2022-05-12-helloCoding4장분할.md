@@ -1,52 +1,57 @@
 ---
 layout: single
-title: "2022년 05월 23일 (월) 데일리 리포트"  
+title: "Hello Coding-> 4장 분할 정복"
 # categories: Git
 categories:
-  - dailyReport # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [데일리 리포트] #tag는 여러개 가능함
+  - Algorithm # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
+tag: [Hello Coding] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-05-23T08:00:00+09:00
+date: 2022-05-23T20:50:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 오전
-0910 ~ 1010: 모던 자바스크립트(19장 프로토타입 복습) -> <span style="color:green">집중도 상</span>  
-1010 ~ 1020: 휴식
-1020 ~ 1110: 모던 자바스크립트(21장 빌트인 객체) -> <span style="color:royalblue">집중도 중</span>  
-1110 ~ 1130: 휴식  
-1130 ~ 1225: 모던 자바스크립트(21장 빌트인 객체) -> <span style="color:royalblue">집중도 중</span>  
+# 4장 퀵 정렬
+## 1. 분할 정복
+## 2. 퀵 정렬
+```js
+function quickSort (array) {
+  if (array.length < 2) {
+    return array;
+  }
+  
+  const pivot = [array[0]];
+  const left = [];
+  const right = [];
+  
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < pivot) {
+      left.push(array[i]);
+    } else if (array[i] > pivot) {
+      right.push(array[i]);
+    } else {
+      pivot.push(array[i]);
+    }
+  }
+  console.log(`left: ${left}, pivot: ${pivot}, right: ${right}`);
+  return quickSort(left).concat(pivot, quickSort(right));
+}
 
-# 오후
-1225 ~ 1320: 점심식사  
-1320 ~ 1420: 모던 자바스크립트(22장 this) -> <span style="color:royalblue">집중도 중</span>  
-1420 ~ 1440: 휴식  
-1440 ~ 1530: 모던 자바스크립트(22장 this) -> <span style="color:royalblue">집중도 중</span>  
-1530 ~ 1600: 개인일정  
-1600 ~ 1700: 모던 자바스크립트(22장 this) -> <span style="color:royalblue">집중도 중</span>  
-1700 ~ 1715: 휴식  
-1715 ~ 1810: 모던 자바스크립트(24장 클로저) -> <span style="color:royalblue">집중도 중</span>  
-1810 ~ 1840: 저녁식사  
-1840 ~ 2020: 세션 수업 -> <span style="color:royalblue">집중도 중</span>  
-2020 ~ 2050: 개인일정  
-2050 ~ 2200: Hello Coding(4장 분할) -> <span style="color:royalblue">집중도 중</span>  
+const sorted = quickSort([5, 3, 7, 1, 9]);
+console.log(sorted);
+```
 
-# 결산
-<!-- 어제의 `수면`: <span style="color:purple">6시간</span> -> <span style="color:blue">집중도 중</span>   -->
-오늘의 `순 생산성 시간`: <span style="color:blue"> 9시간 20분</span>  
+<img src="https://user-images.githubusercontent.com/87808288/169823347-8612951b-23d6-4781-b942-3060682a25eb.png" width="400">  
 
-# 소감
 
-<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
 
 ```
 
 유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/> 
+유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
 ```
