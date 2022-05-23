@@ -20,7 +20,7 @@ function quickSort (array) {
   if (array.length < 2) {
     return array;
   }
-  
+   
   const pivot = [array[0]];
   const left = [];
   const right = [];
