@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "배열 Searching -> find method"
+title: "배열 Searching -> 'find' and findIndex"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
@@ -12,7 +12,7 @@ date: 2022-05-26T21:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 1. 설명
+# 1. find
 <span style="color:red">find</span> method는 <u>주어진 판별 함수를 만족하는</u> <span style="color:blue">첫 번째 요소의 값을 반환</span>한다.  
 
 ```js
@@ -61,6 +61,23 @@ const result = students.find((student, index) => student.score == 90)
 
 console.log(result); //output == Student {name: 'C', age: 30, enrolled: true, score: 90}
 ```
+
+# 2. findIndex
+`findIndex()`는 주어진 <span style="color:tomato">판별 함수의 결과가 true</span>인 -> <span style="color:red">첫 번째 element의 index를 반환</span>한다.  
+
+```js
+let array = [1, 3, 5, 4, 4, 8];
+
+console.log(array.findIndex((element, index) => element == 4)); //output == 3
+```
+
+`find` 메서드와 `findIndex` 메서드는 -> <span style="color:tomato">판별 함수가 true</span>인 경우 <span style="color:red">더이상 진행하지 않는다</span>!  
+
+<u>find 메서드와 다른 점</u>이라고 할 수 있는 것은, <span style="color:royalblue">판별 함수가 false일 경우</span>이다.  
+판별 함수가 <span style="color:blue">false</span>일 경우 `find`는 -> <span style="color:tomato">undefined</span>를 반환하고  
+`findIndex`의 경우에는 -> <span style="color:red">-1</span>을 반환한다.  
+
+callback(element, index, array)를 사용할 수 있다.  
 
 <!-- <span style="color:royalblue"> -->
 
