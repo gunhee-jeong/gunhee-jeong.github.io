@@ -1,39 +1,76 @@
 ---
 layout: single
-title: "2022년 05월 27일 (금) 데일리 리포트"  
+title: "배열 Searching -> 'indexOf' and 'lastIndexOf'"
 # categories: Git
 categories:
-  - dailyReport # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [데일리 리포트] #tag는 여러개 가능함
+  - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [배열] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-05-27T04:00:00+09:00
+date: 2022-05-27T06:20:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 오전
-0500 ~ 0550: array method 정리 -> <span style="color:tomato">집중도 하</span>  
-0550 ~ 0555: 휴식(기상 소감 작성)  
-0555 ~ 0650: array method 정리 -> <span style="color:tomato">집중도 하</span>  
-0830 ~ : 
+# 1. indexOf
+`indexOf`는 <span style="color:tomato">searchValue가 처음으로 탐색되는 index를 반환</span>하고 <span style="color:red">존재하지 않으면 -1을 반환</span>한다.  
 
-# 오후
+<u>findIndex와의 차이점</u>으로는 <span style="color:royalblue">find, findIndex</span> 메서드는 <span style="color:blue">판별 함수가 true이냐 false이냐</span>로 판단한다면  
+<u>indexOf와 includes</u>는 <span style="color:blue">searchValue</span>를 갖는다는 것이다.  
 
-# 결산
-<!-- 어제의 `수면`: <span style="color:purple">6시간</span> -> <span style="color:blue">집중도 중</span>   -->
-오늘의 `순 생산성 시간`: <span style="color:blue"> 1시간 45분</span>  
+```js
+let hi = 'Hello world';
 
-# 소감
-## 기상에 관하여
-새벽 3시에 일어나기 시작한 첫 날...  
-아직 너무 힘들다. 전체적으로 컨디션이 좋지는 못한 것 같다.  
-우선 새벽 3시에 일어나는 것에 있어서는 적응이 많이 필요할 것 같다.  
-몸이 부서지는 느낌이라 무섭기는 하지만, 일주일 정도는 노력을 하다보면 그래도 또 적응을 할 수 있을 것 같다.  
-기상 직후 -> 정신이 조금은 아득하여 비몽사몽했다.  
-잘못하면 바로 잠들어버릴 것 같아, 내일부터는 바로 화장실에 들어가 양치를 해야겠다.  
+console.log(hi.indexOf('e')); //output == 1
+console.log(hi.indexOf('Z')); //output == -1
+console.log(hi.indexOf('l')); //output == 2
+```
 
+문자열에서 <span style="color:royalblue">탐색을 시작하는 위치는 기본적으로 0</span>으로 설정된다.  
+fromIndex가 4이기 때문에 -> 변수 'hi'에서 4번째 indexdls 'o world'에서 부터 'l'을 탐색하기 시작한다.  
 
+```js
+let hi = 'Hello world';
+
+console.log(hi.indexOf('l', 4)); //output == 9
+```
+
+[Quiz]  
+변수 'array1'의 값과 변수 'array2'의 값에서 중복되는 숫자는 제거하여 array로 반환해라.  
+
+```js
+let array1 =  [1,2,3,4,5];
+
+let array2 = [3,4,5,6,7];
+
+let result = array1.concat(array2);
+console.log(result); //output == [1, 2, 3, 4, 5, 3, 4, 5, 6, 7]    
+
+let eraseDuplicates = result.filter((el,index)=> 
+result.indexOf(el)===index); //첫번째 3은 index가 2임, 두번째 3은 index가 5임
+
+console.log(eraseDuplicates); //output == [1, 2, 3, 4, 5, 6, 7]
+
+//3을 보면 3은 중복된 값으로 result.indexOf(3)은 2가 나온다.
+//처음 3은 index[2]로 조건을 만족하지만 두번째 3은 index[5]로 조건을 만족하지 않아서 통과되지 못한다. 
+//그래서 두번째 3은 지워지게 되는 것이다. 이런식으로 중복된 3, 4,5가 지워지고 하나만 남게된 것입니다!
+```
+
+# 2. lastIndexOf
+```js
+const fruits = ['🍎', '🍏', '🍉', '🍑', '🍋'];
+
+fruits.push('🍎');
+
+console.log(fruits);//outcome = (6) ['🍎', '🍏', '🍉', '🍑', '🍋', '🍎']
+
+console.log(fruits.indexOf('🍎'));//outcome = 0
+
+console.log(fruits.lastIndexOf('🍎'));//outcome = 5
+```
+
+<span style="color:green">fruits.push</span>로 인해서 <u>🍎가 fruits의 앞과 뒤에 중복</u>되어 생성되었다.  
+`indexOf`는 <span style="color:blue">맨 앞의 index를</span> 알려주고, `lastIndexOf`는 <span style="color:blue">가장 마지막에 있는 index를</span> 알려주게 된다.  
 
 <!-- <span style="color:royalblue"> -->
 
@@ -44,7 +81,7 @@ date: 2022-05-27T04:00:00+09:00
 ```
 
 유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/> 
+유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
 ```
