@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "배열 push method와 concat method"
+title: "배열 -> 'push' and 'concat'"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [배열, push, method, concat] #tag는 여러개 가능함
+tag: [배열] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,8 +12,7 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-### push
-
+# 1. push
 > push(...items: T[]): number;
 > Appends new elements to the end of an array, and returns the new length of the array.
 > @param items New elements to add to the array.
@@ -31,8 +30,7 @@ console.log(addFruits); //output == 4
 console.log(fruits); //outcome == (4) ['🍎', '🍌', '🍓', '🍑']
 ```
 
-### concat
-
+# 2. concat
 push 메소드와 concat 메소드는 유사하게 동작하지만 <u>미묘한 차이</u>가 발생한다.
 
 <u>push 메소드는 원본 배열을 직접 변경</u>하지만,  
