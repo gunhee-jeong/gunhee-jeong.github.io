@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "배열 slice와 splice"
+title: "배열 -> 'slice' and 'splice'"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [array method] #tag는 여러개 가능함
+tag: [배열] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,7 +12,7 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# slice
+# 1. slice
 
 > slice(start?: number, end?: number): T[];  
 > Returns a copy of a section of an array.
@@ -42,7 +42,7 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
   <span style="color:green">array.slice(2, 5)</span>는 **array에서 3번째 value인 3부터 5까지**를 반환한다  
   그리고 <span style="color:green">array.slice(-2)</span>에서 **-2**는 <u>배열의 마지막에서 두 번째 요소를</u> 나타내고 4, 5를 반환한다
 
-# splice
+# 2. splice
 
 > splice(start: number, deleteCount?: number): T[];
 > Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
