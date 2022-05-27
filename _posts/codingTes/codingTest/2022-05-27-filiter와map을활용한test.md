@@ -38,7 +38,50 @@ const result = students.filter(student => student.score >= 50).map(student => st
 console.log(result); //'66,80,88,90'
 ```
 
+# 2. 문제
+[level이 'hard'인 과목들로만 이루어진 새로운 배열을, 해당과목만으로 이루어진 문자열로 반환하시오.]  
 
+```js
+let courses = [
+  {level:'easy', subject: "English" }, 
+  {level:'hard', subject: "Mathmatic" }, 
+  {level:'medium', subject: "Literature" }, 
+  {level:'hard', subject: "Science" }, 
+  {level:'medium', subject: "Socialogy" }
+  ];
+```
+
+```js
+const result = courses.filter(x => x.level === 'hard').map(ele => ele.subject).join(',');
+result; //'Mathmatic,Science'
+```
+
+# 3. 중복된 재료를 뺀 전체 재료 반환하기
+
+```js
+// 중복된 재료를 뺀 전체 재료 
+// [ 'tomato', 'basil', 'onion', 'chicken', 'cheese', 'olive', 'beef' ]
+
+// Assignment
+let pasta = ['tomato', 'basil', 'onion','chicken'];
+
+let pizza = ['tomato', 'cheese', 'onion','olive','beef'];
+
+// 아래 함수를 작성해주세요. 
+function totalIngredients () {
+}
+```
+
+```js
+// 아래 함수를 작성해주세요. 
+function totalIngredients () {
+  const total = pasta.concat(pizza);
+  const result = total.filter((ele, ind) => total.indexOf(ele) === ind);
+  return result;
+}
+
+totalIngredients();
+```
 
 <!-- <span style="color:royalblue"> -->
 
