@@ -1,48 +1,17 @@
 ---
 layout: single
-title: "배열 split와 join"
+title: "배열 -> 'split' and 'join'"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [array method] #tag는 여러개 가능함
+tag: [배열] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-
-# join
-
-> oin(separator?: string): string;
-> Adds all the elements of an array into a string, separated by the specified separator string.
-> (배열의 모든 요소를 지정된 구분 기호 문자열로 구분하여 문자열에 추가합니다.)
-> @param separator A string used to separate one element of the array from the next in the resulting string.  
-> If omitted, the array elements are separated with a comma
-
-[<u>array를</u> <span style="color:red">문자열로 만들고</span> 이를 반환한다(array -> string)]
-
-  ```javascript
-  const fruits = ["apple", "banana", "orange"];
-  console.log(fruits.join("")); //output == applebananaorange
-
-  const adress = ["경기도", "분당구", "중앙공원로", "53"];
-  console.log(adress.join(" ")); //output == "경기도 분당구 중앙공원로 53"
-  ```
-
-  **join**을 사용하면 이렇게 <u>array로 반환되는 것이 아니라</u>, <span style="color:red">String 타입</span>으로 결과물이 반환된다!!  
-  
-[.join(<span style="color:red">*</span>)]  
-join을 사용하면서 괄호() 안에 구분 기호 문자를 넣어서 사용하면  
-
-```js
-  const result = fruits.join("*");
-  console.log(result); //output == "apple*banana*orange"
-```  
-<u>콤마(,)</u> 대신에 해당 <span style="color:blue">구분 기호 문자가</span> 결과로 들어가게 된다.  
-
-
-# split
+# 1. split
 
 > Split a string into substrings using the specified separator and return them as an array.
 > (지정된 구분 기호를 사용하여 문자열을 부분 문자열로 분할하고 배열로 반환합니다.)
@@ -94,6 +63,36 @@ const fruits = "one4seveneight";
 let arr = fruits.split("one");
 console.log(arr); //output == [ '', '4seveneight' ]
 ```
+
+
+# 2. join
+
+> oin(separator?: string): string;
+> Adds all the elements of an array into a string, separated by the specified separator string.
+> (배열의 모든 요소를 지정된 구분 기호 문자열로 구분하여 문자열에 추가합니다.)
+> @param separator A string used to separate one element of the array from the next in the resulting string.  
+> If omitted, the array elements are separated with a comma
+
+[<u>array를</u> <span style="color:red">문자열로 만들고</span> 이를 반환한다(array -> string)]
+
+  ```javascript
+  const fruits = ["apple", "banana", "orange"];
+  console.log(fruits.join("")); //output == applebananaorange
+
+  const adress = ["경기도", "분당구", "중앙공원로", "53"];
+  console.log(adress.join(" ")); //output == "경기도 분당구 중앙공원로 53"
+  ```
+
+  **join**을 사용하면 이렇게 <u>array로 반환되는 것이 아니라</u>, <span style="color:red">String 타입</span>으로 결과물이 반환된다!!  
+  
+[.join(<span style="color:red">*</span>)]  
+join을 사용하면서 괄호() 안에 구분 기호 문자를 넣어서 사용하면  
+
+```js
+  const result = fruits.join("*");
+  console.log(result); //output == "apple*banana*orange"
+```  
+<u>콤마(,)</u> 대신에 해당 <span style="color:blue">구분 기호 문자가</span> 결과로 들어가게 된다.  
 
 <!-- ### 2. Link 넣기
 
