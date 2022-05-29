@@ -31,6 +31,17 @@ let win_nums = [20, 9, 3, 45, 4, 35];
 let minNum = lottos.filter(number => win_nums.includes(number)).length;
 ```
 
+```js
+const foods = ['apple', 'banana', 'orange'];
+
+//foods 배열에 'orange' 요소가 존재하는지 확인한다.
+if (!foods.includes('orange')) {
+  foods.push('orange');
+}
+
+console.log(foods); //['apple', 'banana', 'orange']
+```
+
 <!-- <span style="color:royalblue"> -->
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
