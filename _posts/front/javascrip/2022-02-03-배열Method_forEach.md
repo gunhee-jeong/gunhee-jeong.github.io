@@ -1,20 +1,119 @@
 ---
 layout: single
-title: "map"
+title: "배열-> 'forEach'"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [array method] #tag는 여러개 가능함
+tag: [배열] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-
-# map 메서드
-
 # forEach
+함수형 프로그래밍은 순수 함수와 보조 함수의 조합을 통해  
+로직 내에 존재하는 <span style="color:red">조건문과 반복문을 제거</span>하여 복잡성을 해결하고 <span style="color:red">변수의 사용을 억제</span>하여  
+상태 변경을 피히려는 프로그래밍 패러다임이다.  
+
+조건문이나 반복문은 로직의 흐름을 이해하기 어렵게 한다.  
+특히 `for문`은 <u>반복을 위한 변수를 선언해야</u> 하며,  
+<span style="color:royalblue">조건식과 증감식으로 이루어져 있어서 함수형 프로그래밍이 추구하는 바와 맞지 않는다</span>.  
+
+```js
+const numbers = [1, 2, 3];
+const pows = [];
+
+//for문으로 배열 순회
+for (let i = 0; i < numbers.length; i++) {
+  pows.push(numbers[i] ** 2);
+}
+
+console.log(pows); //[1, 4, 9]
+```
+
+`forEach 메서드`는 <u>for문을 대체할 수 있는 고차 함수</u>다.  
+forEach 메서드는 자신의 내부에서 반복문을 실행한다.  
+즉, forEach 메서드는 반복문을 추상화한 고차 함수로서 내부에서 반복문을 통해 자신을 호출한 배열을  
+순회하면서 수행해야 할 처리를 콜백 함수로 전달받아 반복 호출한다.  
+위의 예제를 forEach 메서드로 구현하면 아래와 같다.  
+
+```js
+const numbers = [1, 2, 3];
+const pows = [];
+
+//forEach 메서드는 numbers 배열의 모든 요소를 순회하면서 콜백 함수를 반복 호출한다.
+numbers.forEach(item => pows.push(item ** 2));
+console.log(pows); //[1, 4, 9]
+```
+
+위 예제의 경우 forEach 메서드는 numbers 배열의 모든 요소를 순회하며 콜백 함수를 반복 호출한다.  
+<span style="color:royalblue">numbers 배열의 요소가 3개이므로 콜백 함수도 3번 호출</span>된다.  
+다시 말해, forEach 메서드는 콜백 함수를 호출할 때 3개의 인수,  
+즉 forEach 메서드를 호출한 <span style="color:blue">배열의 요소값</span>과 <span style="color:blue">인덱스</span>, forEach 메서드를 <span style="color:blue">호출한 배열(this)</span>을 순차적으로 전달한다.  
+
+```js
+[1, 2, 3].forEach((item, index, arr) => {
+  console.log(`요소값: ${item}, 인덱스: ${index}, this: ${JSON.stringify(arr)}`);
+});
+// '요소값: 1, 인덱스: 0, this: [1,2,3]'
+// '요소값: 2, 인덱스: 1, this: [1,2,3]'
+// '요소값: 3, 인덱스: 2, this: [1,2,3]'
+```
+
+forEach 메서드는 원본 배열을 변경하지 않는다. 하지만 콜백 함수를 통해 원본 배열을 변경할 수는 있다.  
+
+```js
+const numbers = [1, 2, 3];
+
+numbers.forEach((item, index, arr) => { arr[index] = item ** 2; });
+console.log(numbers); //[1, 4, 9]
+```
+
+forEach 메서드의 콜백 함수는 일반 함수로 호출되므로 콜백 함수 내부의 this는 undefined를 가리킨다.  
+<u>this가 전역 객체가 아닌 undefined를 가리키는</u> 이유는  
+<span style="color:royalblue">클래스 내부의 모든 코드에는 암묵적으로 strict mode</span>가 적용되기 때문이다.  
+
+forEach 메서드의 콜백 함수 내부의 this와 multiply 메서드 내부의 this를 일치시키려면  
+forEach 메서드의 두 번째 인수로 forEach 메서드의 콜백 함수 내부에서 this로 사용할 객체를 전달한다.  
+아래 예제의 경우 forEach 메서드의 두 번째 인수로 multiply 메서드 내부의 this를 전달하고 있다.  
+
+```js
+class Numbers {
+  numberArray = [];
+
+  multiply(arr) {
+    arr.forEach(function (item) {
+      this.numberArray.push(item * item);
+    }, this); //forEach 메서드의 콜백 함수 내부에서 this로 사용할 객체를 전달
+  }
+}
+
+const numbers = new Numbers();
+numbers.multiply([1, 2, 3]);
+console.log(numbers.numberArray); //[1, 4, 9]
+```
+
+더 나은 방법은 `화살표 함수`를 사용하는 것이다.  
+<span style="color:royalblue">화살표 함수는 함수 자체의 this 바인딩을 갖지 않는다</span>.  
+따라서 화살표 함수 내부에서 <span style="color:blue">this를 참조하면 상위 스코프</span>, 즉 multiply 메서드 내부의 this를 그래도 참조한다.  
+
+```js
+class Numbers {
+  numberArray = [];
+
+  multiply(arr) {
+    arr.forEach(item => this.numberArray.push(item * item));
+  }
+}
+
+const numbers = new Numbers();
+numbers.multiply([1, 2, 3]);
+console.log(numbers.numberArray); //[1, 4, 9]
+```
+
+`forEach 메서드`는 <span style="color:royalblue">for문과는 달리 break, continue 문을 사용할 수 없다</span>.  
+다시 말해, 배열의 <span style="color:blue">모든 요소를 빠짐없이 모두 순회하며 중간 순회를 중단할 수 없다</span>.  
 
 <span style="color:red">forEach</span>는 <u>for 대신 사용하는</u> <span style="color:blue">반복문</span>이다  
 map과의 큰 차이는 **forEach** 함수 **자체가 return하는 것도 아무것도 없다는 것**이다  
