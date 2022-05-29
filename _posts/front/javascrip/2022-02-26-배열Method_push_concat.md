@@ -36,9 +36,9 @@ push 메소드와 concat 메소드는 유사하게 동작하지만 <u>미묘한 
 <u>push 메소드는 원본 배열을 직접 변경</u>하지만,  
 `concat 메소드`는 <u>원본 배열을 변경하지 않고</u> <span style="color:red">새로운 배열을 반환</span>한다.
 
-argument로 <u>전달받은 값이 배열</u>인 경우  
+argument로 <span style="color:royalblue">전달받은 값이 배열</span>인 경우  
 &nbsp; `push 메소드`는 <u>배열을 그대로 원본 배열의 마지막 요소에 추가</u>하지만  
-&nbsp; <span style="color:red">concat 메소드</span>는 `배열을 해체하여 새로운 배열의 마지막 element로` 추가한다.
+&nbsp; <span style="color:red">concat 메소드</span>는 <span style="color:blue">배열을 해체하여 새로운 배열의 마지막 element로</span> 추가한다.
 
 ```java
 const arr1 = [1, 2];
@@ -51,6 +51,8 @@ const arr2 = [1, 2];
 const result = arr2.concat([3, 4]);
 console.log(result); // [1, 2, 3, 4]
 ```
+
+<!-- <span style="color:royalblue"> -->
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
