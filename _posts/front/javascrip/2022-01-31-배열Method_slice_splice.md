@@ -13,42 +13,23 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
 ---
 
 # 1. slice
+**splice method** 와는 다르게 <span style="color:red">slice method</span>는 <span style="color:blue">원본 배열을 변형시키지 않음</span>  
 
-> slice(start?: number, end?: number): T[];  
-> Returns a copy of a section of an array.
-> (배열 섹션의 복사본을 반환합니다.)
-> For both start and end, a negative index can be used to indicate an offset from the end of the array.
-> (시작과 끝 모두에 대해 음수 인덱스를 사용하여 배열 끝에서 오프셋을 나타낼 수 있습니다.)
-> For example, -2 refers to the second to last element of the array.
-> (예를 들어, -2는 배열의 마지막에서 두 번째 요소를 나타냅니다.)
-> @param start The beginning index of the specified portion of the array.
-> If start is undefined, then the slice begins at index 0.
-> @param end The end index of the specified portion of the array. This is exclusive of the element at the index 'end'.
-> If end is undefined, then the slice extends to the end of the array.
+```javascript
+const array = [1, 2, 3, 4, 5];
 
-- **splice method** 와는 다르게 <span style="color:red">slice method</span>는 <span style="color:blue">원본 배열을 변형시키지 않음</span>  
+const result = array.slice(2, 5); //outcome = (3) [3, 4, 5]
 
-  ```javascript
-  const array = [1, 2, 3, 4, 5];
+const result2 = array.slice(-2); //output == [4, 5]
 
-  const result = array.slice(2, 5); //outcome = (3) [3, 4, 5]
-
-  const result2 = array.slice(-2); //output == [4, 5]
-
-  console.log(array); //outcome = (5) [1, 2, 3, 4, 5]
-  ```
+console.log(array); //outcome = (5) [1, 2, 3, 4, 5]
+```
 
   위의 코드에서 보는 것과 같이 const **array의 배열**은 <span style="color:red">변형되지 않았다</span>!  
   <span style="color:green">array.slice(2, 5)</span>는 **array에서 3번째 value인 3부터 5까지**를 반환한다  
   그리고 <span style="color:green">array.slice(-2)</span>에서 **-2**는 <u>배열의 마지막에서 두 번째 요소를</u> 나타내고 4, 5를 반환한다
 
 # 2. splice
-
-> splice(start: number, deleteCount?: number): T[];
-> Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.
-> (배열에서 요소를 제거하고 필요한 경우 그 자리에 새 요소를 삽입하여 삭제된 요소를 반환합니다.)
-> @param start The zero-based location in the array from which to start removing elements.
-
 - slice method 와는 다르게 <span style="color:red">splice</span>는 <span style="color:blue">원본 배열을 변형</span>시킴!
 
   ```javascript
@@ -69,6 +50,30 @@ author_profile: true #blog 글안에서는 author_profile이 따라다니지 않
   splice(1, 1)을 통해 <u>🍌를 삭제한 것 까지는 다른 것들과 비슷</u>하지만,  
   그 이후에 **"🍏", "🍉"**은 <span style="color:red">삭제한 value의 자리에 새롭게 추가</span>한 것을 볼 수 있다
 - **댓글 삭제 기능**을 구현할 때 splice 메서드를 사용하게됨!
+
+<span style="color:red">원본 배열</span>의 <span style="color:tomato">중간에 요소를 추가하거나 중간에 있는 요소를 제거</span>하는 경우 splice 메서드를 사용한다.  
+splice 메서드는 <span style="color:blue">3개의 매개변수</span>가 있으며 <span style="color:royalblue">원본 배열을 직접 변경</span>한다.  
+- `start`: 원본 배열의 요소를 제거하기 시작할 인덱스이다.  
+start만 지정하면 원본 배열의 start부터 모든 요소를 제거한다.  
+start가 음수인 경우 배열의 끝에서의 인덱스를 나타낸다.  
+만약 -1이면 마지막 요소를 가리키고 -n이면 마지막에서 n번째 요소를 가리킨다.  
+- `deleteCount`: 원본 배열의 요소를 제거하기 시작할 인덱스인 start부터 제거할 요소의 개수다.  
+deleteCount가 0인 경우 아무런 요소도 제거되지 않는다.  
+- `item`: 제거한 위치에 삽입할 요소들의 목록이다. 생략할 경우 원본 배열에서 요소들을 제거하기만 한다.  
+
+```js
+const arr = [1, 2, 3, 4];
+
+//원본 배열의 인덱스 1부터 2개의 요소를 제거하고 그 자리에 새로운 요소 20, 30을 삽입한다.
+const result = arr.splice(1, 2, 20, 30);
+
+//제거한 요소가 배열로 반환된다.
+console.log(result); //[2, 3]
+//splice 메서드는 원본 배열을 직접 변경한다.
+console.log(arr); //[1, 20, 30, 4]
+```
+
+<img src="https://user-images.githubusercontent.com/87808288/170851398-60d09f26-2ea3-4f39-a89f-acb7c1367592.png" width="500">  
 
 <!-- ### 2. Link 넣기
 
