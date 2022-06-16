@@ -1,5 +1,5 @@
 ---
-title: "Algorithm"
+title: "알고리즘 & 자료구조"
 layout: archive
 permalink: categories/algorithm
 author_profile: true
