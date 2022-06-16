@@ -1,47 +1,33 @@
 ---
 layout: single
-title: "2022년 06월 16일 (목) 데일리 리포트"  
+title: "Linked List"
 # categories: Git
 categories:
-  - dailyReport # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [데일리 리포트] #tag는 여러개 가능함
+  - Algorithm # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
+tag: [자료구조] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-06-16T07:00:00+09:00
+date: 2022-06-16T12:40:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 오전
-0705 ~ 0740: 자소서 작업-> <span style="color:tomato">집중도 하</span>  
-0740 ~ 0755: 휴식  
-0755 ~ 0820: 자소서 작업-> <span style="color:royalblue">집중도 중</span>  
-0820 ~ 0830: 휴식  
-0830 ~ 0900: 자소서 작업-> <span style="color:royalblue">집중도 중</span>  
-1130 ~ 1210: 코딩 알고리즘-> <span style="color:royalblue">집중도 중</span>   
+# Linked List
+`링크드 리스트`는 <span style="color:blue">길이가 정해져 있지 않은 데이터의 연결된 집합</span>이라 할 수 있다.  
 
-# 오후
-1245 ~ 1235: 코딩 알고리즘-> <span style="color:royalblue">집중도 중</span>   
 
-# 결산
-<!-- 어제의 `수면`: <span style="color:purple">6시간</span> -> <span style="color:blue">집중도 중</span>   -->
-오늘의 `순 생산성 시간`: <span style=" color:blue"> 3시간 00분</span>   
 
-# 소감
-## 기상에 관하여
 
 
 
 <!-- <span style="color:royalblue"> -->
-
-<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
 
 ```
 
 유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/> 
+유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
 ```
