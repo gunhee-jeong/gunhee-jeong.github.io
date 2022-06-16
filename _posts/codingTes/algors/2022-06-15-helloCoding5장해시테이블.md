@@ -78,7 +78,19 @@ Apples가 이미 공간을 차지해버렸다. 이런 것을 우리는 <span sty
 충돌을 해결하는 가장 간단한 방법은 <span style="color:tomato">같은 공간에 여러 개의 키를 연결 리스트로</span> 만들어 넣는 것이다.  
 그러나 여기서 Apples와 Avocados가 같은 공간에 할당이 되어 있으므로  
 Bananas의 가격을 알고 싶다면 빨리 알 수 있지만, Apples의 가격을 알고 싶다면 시간이 더 걸리게 된다.  
+(연결 리스트가 3~4개 정도면 큰 문제가 아니지만, 식료품 가게에서 A자로 시작하는 모든 상품이 들어가있다면?  
+<span style="color:royalblue">결국 이렇게 해시 테이블이 느려지게</span> 된다.)  
 
+## 5. 성능
+<img src="https://user-images.githubusercontent.com/87808288/173979315-5eb79a42-90a8-4fc6-980f-ad59fa994db6.png" width="400">  
+`해시 테이블`의 속도는 빠른데,  
+평균적인 경우 모든 항목에 <span style="color:blue">O(1) 시간</span>이 걸린다. 이를 <span style="color:blue">상수 시간</span> constant time이라고 부르다.  
+
+예를 들어, <u>단순 탐색</u>은 <span style="color:royalblue">선형 시간: O(n)</span>이 걸리고, <u>이진 탐색</u>은 더 빠른 <span style="color:royalblue">로그 시간: O(Logn)</span>이 걸린다.  
+
+해시 테이블이 <u>평평한 선 모양</u>을 가질 수 있었던 이유는  
+해시 테이블이 <span style="color:royalblue">하나의 항목을 가지든 10억 개의 항목을 가지든</span>  
+해시 테이블에서 <span style="color:blue">무언가를 찾는 데 걸리는 시간은 항상 똑같기 때문</span>이다.  
 
 
 <!-- <span style="color:royalblue"> -->
