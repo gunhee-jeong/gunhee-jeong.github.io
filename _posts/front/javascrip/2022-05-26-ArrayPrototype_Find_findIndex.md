@@ -1,79 +1,87 @@
 ---
 layout: single
-title: "반복문(제어문 > 반복문)"
+title: "Array.prototype -> 'find' and findIndex"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [반복문, 제어문, break문] #tag는 여러개 가능함
+tag: [Array.prototype] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
+date: 2022-05-26T21:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+# 1. find
+<span style="color:red">find</span> method는 <u>주어진 판별 함수를 만족하는</u> <span style="color:blue">첫 번째 요소의 값을 반환</span>한다.  
 
-# 반복문
+```js
+const array1 = [5, 12, 8, 130, 44];
+const found = array1.find(element => element > 10);
 
-반복문은 <u>조건식의 평가 결과가 true일 경우 코드 블록을 실행</u>한다.  
-그후 <span style="color:red">조건식을 다시 평가하여 여전히 참인 경우 코드 블록을 재실행</span>하고 -> 이는 `조건식이 true일 때까지 반복`된다.
-
-## for문
-
-for문은 조건식이 `false로 평가될 때까지 코드 블록을 반복` 실행한다.
-
-```java
-for (let i = 0; i < 2; i++) {
-	console.log(i); //output == 0, 1
-}
+console.log(found); //output == 12
 ```
 
-<img src="https://user-images.githubusercontent.com/87808288/152665619-7298d6d9-ce0a-4f21-90ca-83550a7044b6.png" width="250" height="200">  
-for문 내에 `for문을 중첩하여 사용`할 수 있고, 이를 <u>중첩 for문</u>이라고 부른다.  
-다음은 두 개의 주사위를 던졌을 때 두 눈의 합이 6이 되는 모든 경우의 수를 출력하기 위해 이중 for문을 사용한 예이다.
+<u>10보다 큰 element로는 12, 130, 44</u>가 있지만 <span style="color:tomato">10을 넘는 첫 번째 element 만을 바로 반환</span>한다.  
+그렇게 <span style="color:blue">element를 찾았다면 메서드를 종료</span>하게 된다.  
 
-```java
-for (let i = 1; i <= 6; i++) {
-  for(let j = 1; j <= 6; i++) {
-    if(i + j === 6) console.log(`[${i}, ${j}]`); //output == [1, 5] [2, 4] [3, 3], [4, 2], [5, 1]
-  }
-}
+find method는 주어진 <span style="color:royalblue">판별 함수를 만족하는 -> true가 없다면</span> <span style="color:red">undefined</span>를 반환한다.  
+
+[callback(<u>element</u>, <u>array</u>, <u>index</u>)를 사용할 수 있다.]  
+
+```js
+let array = [1, 3, 5, 4, 4, 8];
+
+console.log(array.find((element, index) => index == 2)); //output == 5
 ```
 
-for문과 <span style="color:red">break문</span>은 뗄 수 없는 관계를 가진다.
+[Quiz]  
+find student with the score 90  
 
-## break문
-
-<u>break문은 코드 블록을 탈출</u>하는데, 이를 자세히 말해보자면 `코드 블록을 탈출하는 것이 아니라`  
-레이블 문, <span style="color:red">반복문</span>(for, for...in, for...of, while, do...while) 또는 <span style="color:red">switch문</span>의 `코드 블록을 탈출하는 것`이다.
-
-```java
-for(let i = 0; i < moves.length; i++) {
-  let now = moves[i] - 1;
-  for(let j = 0; j < board.length; j++) {
-    if(board[j][now] != 0) { //0이 아니라면 == true라면(인형이 들어있다면)
-      if(stack[stack.length - 1] === board[j][now]) {
-        stack.pop();
-        count += 2;
-      }
-      else{
-        stack.push(board[j][now])
-        //console.log(stack);
-      }
-      board[j][now] = 0;
-      break;
-    }
-  }
+```js
+function Student (name, age, enrolled, score) {
+  this.name = name;
+  this.age = age;
+  this.enrolled = enrolled;
+  this.score = score;
 }
+
+const students = [
+  new Student('A', 29, true, 45),
+  new Student('B', 28, false, 80),
+  new Student('C', 30, true, 90),
+  new Student('D', 40, false, 66),
+  new Student('E', 18, true, 88),
+];
+
+const result = students.find((student, index) => student.score == 90)
+
+//const result = students.find(function (student, index) {
+//	return student.score == 90;})
+
+console.log(result); //output == Student {name: 'C', age: 30, enrolled: true, score: 90}
 ```
 
-위의 코드에서 for문의 조건식이 ture라면 코드 블록이 실행되고, 중첩 for문도 마찬가지로 동작한다.  
-중첩 for문 안의 if<span style="color:green">(board[j][now] != 0)</span>가 <u>false라면 if문이 중지</u>되고 ->  
-해당 if문이 속한 <u>중첩 for문이 실행</u>된다.
+# 2. findIndex
+`findIndex()`는 주어진 <span style="color:tomato">판별 함수의 결과가 true</span>인 -> <span style="color:red">첫 번째 element의 index를 반환</span>한다.  
 
-- if문의 <u>조건식이 ture</u>였다면 코드 블록이 샐행되고 ->  
-  if문 안에 중첩 if문이 존재하므로 조건에 따라 중첩 if문이나 else문의 코드 블록이 실행된다 ->  
-  그 이후에는 <span style="color:green">board[j][now] = 0;</span> 코드가 `if문 안에 존재`하므로 <span style="color:red">무조건 만나서 -> 실행</span>되며  
-  <span style="color:red">break문</span>을 만나므로 <span style="color:red">중첩 for문을 탈출</span>하여 `for문을 실행`하게 된다!
+```js
+let array = [1, 3, 5, 4, 4, 8];
+
+console.log(array.findIndex((element, index) => element == 4)); //output == 3
+```
+
+`find` 메서드와 `findIndex` 메서드는 -> <span style="color:tomato">판별 함수가 true</span>인 경우 <span style="color:red">더이상 진행하지 않는다</span>!  
+
+<u>find 메서드와 다른 점</u>이라고 할 수 있는 것은, <span style="color:royalblue">판별 함수가 false일 경우</span>이다.  
+판별 함수가 <span style="color:blue">false</span>일 경우 `find`는 -> <span style="color:tomato">undefined</span>를 반환하고  
+`findIndex`의 경우에는 -> <span style="color:red">-1</span>을 반환한다.  
+
+callback(element, index, array)를 사용할 수 있다.  
+
+<!-- <span style="color:royalblue"> -->
+
+<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
 

@@ -1,95 +1,50 @@
 ---
 layout: single
-title: "형변환에 관하여"
+title: "Array.prototype -> includes"
 # categories: Git
 categories:
-  - JavaScript # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [형변환] #tag는 여러개 가능함
+  - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [Array.prototype] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
+date: 2022-05-27T06:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+# includes
+includes를 사용하면 array 안에 <span style="color:blue">해당하는 value의 element</span>가 <span style="color:red">있다면 true</span>를, <span style="color:red">없다면 false</span>를 반환한다.  
 
-# 형변환
-
-자바스크립트 언어의 가장 큰 특징 중 하나가 **바로 데이터 타입을 신경쓰지 않는다**는 것이다!  
-이는 다른 언어보다 <u>편하다고 할 수는 있지만</u>, 코드에서 **쉽게 오류가 발생**할 수 있다는 의미!
-
-```javascript
-let a = 10; // Number
-a = "나는 String인데.."; // String
-
-console.log(a); //output == 나는 String인데..
+```js
+const fruits = ['🍎', '🍏', '🍉', '🍑', '🍋'];
+	
+console.log(fruits.includes('🍉'));//outcome = true
+console.log(fruits.includes('🥥'));//outcome = false
 ```
 
-```javascript
-let a = "900"; //output == string
-let b = 350; //output == number
-let c = Math.random(); //output == number
-let d = "5" + 5; //output == string
+filter와 함께 사용하면 두 가지의 array를 비교하는 것도 가능한다.  
+
+```js
+let lottos = [45, 7, 35, 2, 3, 9];
+let win_nums = [20, 9, 3, 45, 4, 35];
+
+let minNum = lottos.filter(number => win_nums.includes(number)).length;
 ```
 
-```javascript
-console.log("200" + "10"); //output == '20010'
-console.log("200" - "10"); //output == 190
-console.log(200 + "11"); //output == '20011'
-console.log("200" + 11); //output == '20011'
-console.log("200" - "안녕"); //output == NaN
+```js
+const foods = ['apple', 'banana', 'orange'];
+
+//foods 배열에 'orange' 요소가 존재하는지 확인한다.
+if (!foods.includes('orange')) {
+  foods.push('orange');
+}
+
+console.log(foods); //['apple', 'banana', 'orange']
 ```
 
-```javascript
-console.log(2019 + "2000"); //output == '20192000'
-console.log(2019 - "2000"); //output == 19
-```
+<!-- <span style="color:royalblue"> -->
 
-컴퓨터는 **+의 양쪽을 확인**하고 -> <span style="color:red">하나라도 String이 있다면 문자열</span>로 만들어준다!  
-그런데 <span style="color:red">-라면</span>, <u>String의 마이너스는 존재하지 않으므로</u> 양쪽의 **값을 모두 숫자로 변환**해서 계산!
-
-## String -> Number로!
-
-- Number 함수
-
-  ```javascript
-  var birthYearInput = "2000";
-  console.log(typeof birthYearInput); //output == string
-
-  var numberBirthYear = Number(birthYearInput);
-  console.log(typeof numberBirthYear); //output == number
-  ```
-
-  Number 함수 외에도 **parseInt**, **parseFloat** 등이 있음!
-
-- -연산의 특성을 활용한 변환
-
-  ```javascript
-  var numberAsNumber = "1234";
-  var numberAsString = numberAsNumber - 0;
-
-  console.log(numberAsNumber, typeof numberAsNumber); //output == 1234 string
-  console.log(numberAsString, typeof numberAsString); //output == 1234 'number'
-  ```
-
-## Number -> String
-
-```javascript
-var numberAsNumber = 1234;
-var numberAsString = numberAsNumber.toString();
-
-console.log(numberAsNumber, typeof numberAsNumber); //output == 1234 'number'
-console.log(numberAsString, typeof numberAsString); //output == 1234 string
-```
-
-- +연산의 특성을 활용한 변환
-
-  ```javascript
-  var numberAsNumber = 1234;
-  var numberAsString = 1234 + "";
-
-  console.log(numberAsNumber, typeof numberAsNumber); //output == 1234 'number'
-  console.log(numberAsString, typeof numberAsString); //output == 1234 string
-  ```
+<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
 

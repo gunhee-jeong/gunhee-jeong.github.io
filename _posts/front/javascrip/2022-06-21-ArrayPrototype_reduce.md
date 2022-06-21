@@ -1,56 +1,19 @@
 ---
 layout: single
-title: "배열 -> 'push' and 'concat'"
+title: "Array.prototype -> reduce"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [배열] #tag는 여러개 가능함
+tag: [Array.prototype] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
+date: 2022-06-21T22:51:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 
-# 1. push
-> push(...items: T[]): number;
-> Appends new elements to the end of an array, and returns the new length of the array.
-> @param items New elements to add to the array.
 
-<span style="color:red">push 메소드</span>는 <u>배열의 마지막 부분</u>, 즉 꼬리에 element를 `추가한다`.
-
-그리고 push는 <u>argument로 전달받은 모든 값</u>을 <span style="color:red">원본 배열의 마지막 element로 추가</span>하고  
-`변경된 length 값을 반환`한다. push 메소드를 <u>원본 배열을 직접 변경</u>한다.
-
-```java
-const fruits = ['🍎', '🍌'];
-let addFruits = fruits.push('🍓', '🍑');
-
-console.log(addFruits); //output == 4
-console.log(fruits); //outcome == (4) ['🍎', '🍌', '🍓', '🍑']
-```
-
-# 2. concat
-push 메소드와 concat 메소드는 유사하게 동작하지만 <u>미묘한 차이</u>가 발생한다.
-
-<u>push 메소드는 원본 배열을 직접 변경</u>하지만,  
-`concat 메소드`는 <u>원본 배열을 변경하지 않고</u> <span style="color:red">새로운 배열을 반환</span>한다.
-
-argument로 <span style="color:royalblue">전달받은 값이 배열</span>인 경우  
-&nbsp; `push 메소드`는 <u>배열을 그대로 원본 배열의 마지막 요소에 추가</u>하지만  
-&nbsp; <span style="color:red">concat 메소드</span>는 <span style="color:blue">배열을 해체하여 새로운 배열의 마지막 element로</span> 추가한다.
-
-```java
-const arr1 = [1, 2];
-
-arr1.push([3, 4]);
-console.log(arr1); // [1, 2, [3, 4]]
-
-const arr2 = [1, 2];
-// 인수로 전달받은 배열을 해체하여 새로운 배열의 마지막 요소로 추가한다
-const result = arr2.concat([3, 4]);
-console.log(result); // [1, 2, 3, 4]
-```
 
 <!-- <span style="color:royalblue"> -->
 
