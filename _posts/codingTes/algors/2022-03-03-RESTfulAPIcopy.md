@@ -3,7 +3,7 @@ layout: single
 title: "REST"
 # categories: Git
 categories:
-  - CS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+  - Algorithm # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
 tag: [REST, API] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true

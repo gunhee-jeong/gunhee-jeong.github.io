@@ -95,7 +95,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Algorithm" %}
-                        <li><a href="/categories/algorithm" class="">알고리즘 & 자료구조 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/algorithm" class="">CS & 알고리즘 & 자료구조 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -148,13 +148,6 @@
                         <li><a href="/categories/web" class="">Web ({{category[1].size}})</a></li>
                     {% endif %}
               {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "CS" %}
-                        <li><a href="/categories/cs" class="">CS ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}

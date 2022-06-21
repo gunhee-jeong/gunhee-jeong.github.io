@@ -3,7 +3,7 @@ layout: single
 title: "Software Testing"
 # categories: Git
 categories:
-  - CS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+  - Algorithm # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
 tag: [테스팅, 유닛테스트, 테스트] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
