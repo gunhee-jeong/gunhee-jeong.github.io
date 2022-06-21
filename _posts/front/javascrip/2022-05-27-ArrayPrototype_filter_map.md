@@ -1,59 +1,110 @@
 ---
 layout: single
-title: "2022년 06월 21일 (화) 데일리 리포트"  
+title: "Array.prototype -> 'filter' and 'map'"
 # categories: Git
 categories:
-  - dailyReport # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [데일리 리포트] #tag는 여러개 가능함
+  - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [Array.prototype] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-06-21T05:00:00+09:00
+date: 2022-05-27T09:20:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 오전
-0640 ~ 0730: 공부 -> <span style="color:royalblue">집중도 중</span>  
-0730 ~ 0750: 휴식  
-0750 ~ 0850: 공부 -> <span style="color:royalblue">집중도 중</span>  
-0850 ~ 1020: 아침식사 및 휴식  
-1020 ~ 1110: 공부 -> <span style="color:tomato">집중도 하</span>  
-1135 ~ 1150: 휴식  
+# 1. filter
+`fiter` 메서드는 배열 각 요소에 대하여 주어진 <span style="color:royalblue">함수의 결과값이이 true인 요소를 모아</span> <span style="color:tomato">새로운 array를 반환</span>하는 메서드이다.  
+<span style="color:red">true일 경우</span>에만 filter 메서드의 element를 <span style="color:tomato">새로운 array의 index에 값으로 추가</span>한다.  
+<span style="color:royalblue">false일 경우에는 새로운 array의 index에 추가되지 않는다</span>.  
+(이때 기존의 array를 변형시키지 않고, 새로운 array를 반환한다.)  
 
-# 오후
-1150 ~ 1240: 공부 -> <span style="color:royalblue">집중도 중</span>  
-1240 ~ 1255: 휴식  
-1255 ~ 1345: 공부 -> <span style="color:green">집중도 상</span>  
-1420 ~ 1515: 공부 -> <span style="color:royalblue">집중도 중</span>  
-1515 ~ 1530: 휴식  
-1530 ~ 1610: 공부 -> <span style="color:royalblue">집중도 중</span>  
-1610 ~ 1650: 무산소 운동  
-1710 ~ 1835: 공부 -> <span style="color:royalblue">집중도 중</span>  
-1835 ~ 1850: 휴식  
-1850 ~ 1940: 공부 -> <span style="color:royalblue">집중도 중</span>  
-1940 ~ 2015: 휴식  
-2015 ~ 2050: 공부 -> <span style="color:royalblue">집중도 중</span>  
-2050 ~ 2115: 휴식  
-2115 ~ 2205: 공부 -> <span style="color:tomato">집중도 하</span>  
-2240 ~ 2330: 공부 -> <span style="color:royalblue">집중도 중</span>  
+`map`이 <u>내부 함수</u>의 <span style="color:royalblue">리턴 값에 문자, 숫자, 배열 등으로 다양한 타입</span>이 가능하다면  
+`filter`는 <span style="color:tomato">오직 boolean 타입만 반환</span>이 가능하다.  
 
-# 결산
-오늘의 `순 생산성 시간`: <span style=" color:blue"> 11시간 05분</span>   
+filter 메서드와 map 메서드는 크게 filter(callbackFunc, thisArg) 2개의 인자를 가진다.  
+callbackfunc 안에서 3개의 인자 -> element, index, array를 가지는데  
+첫 번째 부분인 element 인수만 필수로 지정되어야하고 나머지는 선택적이다.  
 
-# 소감
+## Quiz
+make an array of enrolled students
+
+```js
+function Student (name, age, enrolled, score) {
+  this.name = name;
+  this.age = age;
+  this.enrolled = enrolled;
+  this.score = score;
+}
+
+const students = [
+  new Student('A', 29, true, 45),
+  new Student('B', 28, false, 80),
+  new Student('C', 30, true, 90),
+  new Student('D', 40, false, 66),
+  new Student('E', 18, true, 88),
+];
+```
+
+```js
+const result = students.filter(student => student.enrolled);
+console.log(result);
+
+//const result = students.filter(function(student) {
+//	return student.enrolled;
+//})
+```
+
+# 2. map
+`map` 메서드는 <u>내부 함수의 리턴 값</u>이 <span style="color:red">문자, 숫자, 배열 등으로 다양한 타입이 가능</span>하다.  
+
+```js
+let list = [1, 2, 3, 4, 5, 6, 7];
+
+console.log(list.filter(a => a > 4)); //output == [5, 6, 7]
+console.log(list.map(a => a > 4)); //output == [false, false, false, false, true, true, true]
+```
+
+## Quiz
+make an array containing only the student's score(result should be: [45, 80, 90, 66, 88])
+
+```js
+function Student (name, age, enrolled, score) {
+  this.name = name;
+  this.age = age;
+  this.enrolled = enrolled;
+  this.score = score;
+}
+
+const students = [
+  new Student('A', 29, true, 45),
+  new Student('B', 28, false, 80),
+  new Student('C', 30, true, 90),
+  new Student('D', 40, false, 66),
+  new Student('E', 18, true, 88),
+];
+```
+
+```js
+//const result = students.map(function(student) {
+//	return student.score
+//	})
+
+const result = students.map(student => student.score);
+console.log(student) //output == A and B and C .......
+
+console.log(result)
+```
 
 <!-- <span style="color:royalblue"> -->
 
-<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ Ω-->
-
-<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 --> 
+<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
 
 ```
 
 유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/> 
+유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
 ```
