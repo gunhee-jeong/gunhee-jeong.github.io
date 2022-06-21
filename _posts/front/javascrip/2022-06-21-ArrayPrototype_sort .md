@@ -78,11 +78,12 @@ numbers.sort(compare); //output == [1, 3, 4, 8, 10]
 //numbers.sort((a, b) => a - b);
 ```
 
-<u>10 - 3</u> 의 <span style="color:tomato">값은 7</span>로, sort 함수에게 7을 return한다.  
-<span style="color:red">반환 값이 0보다 크기</span> 때문에, <u>b가 a보다 앞에</u> 있어야 한다.  
+<u>a 에는 3</u>이 들어가고, <u>b에는 10</u>이 할당된다.  
+그래서 3 - 10 은 <span style="color:royalblue">-7 이라는 결과</span>가 나오고 ->  
+<span style="color:blue">0보다 작을 경우</span> <span style="color:red">a 가 b 보다 앞에</span> 있어야 하기 때문에 3 이 10 보다 앞으로 정렬된다.  
 
 ### (3) sort의 응용
-#### [Object 정렬]
+#### [<span style="color:red">Object 정렬</span>]
 ```js
 const market = {
   name: "이마트",
@@ -103,6 +104,58 @@ const market = {
 market.fruits.sort((a, b) => a.price - b.price)
 
 console.log(market);
+```
+
+#### [<span style="color:red">조건부 정렬</span>]
+compareFunction 내부에 if 문을 사용하여 정렬 조건을 직접 정의할 수 있다.  
+
+```js
+const numbers = [0, 0, 0, 3, 2, 1];
+numbers.sort(function(a, b) {
+	if(a === 0) {
+		return 1;
+	} else if(b === 0) {
+		return -1;
+	} else {
+		return a - b
+	}
+})
+
+console.log(numbers) //output == [1, 2, 3, 0, 0, 0]
+```
+
+#### [<span style="color:red">다중 조건 정렬</span>]
+비교 함수에 조건을 추가하여 다중 조건으로 sort를 사용할 수 있다.  
+
+```js
+// 번호, 몸무게, 승률, 우승횟수
+const list = [
+  [1, 60, 33.333333, 3],
+  [2, 80, 33.333333, 1],
+  [3, 60, 66.666666, 3],
+  [4, 80, 66.666666, 2],
+  [5, 70, 66.666666, 2],
+  [6, 70, 66.666666, 2],
+];
+
+// 정렬 : 승률 높은 순 > 우승횟수 높은 순 > 몸무게 높은순 > 번호 낮은 순
+list.sort((a, b) => {
+  if(a[2] > b[2]) return -1;
+  else if(a[2] < b[2]) return 1;
+  else if(a[3] > b[3]) return -1;
+  else if(a[3] < b[3]) return 1;
+  else if(a[1] > b[1]) return -1;
+  else if(a[1] < b[1]) return 1;
+  else if(a[0] > b[0]) return 1;
+  else if(a[0] < b[0]) return -1;
+})
+console.log(list);
+// 0: [3, 60, 66.666666, 3]
+// 1: [4, 80, 66.666666, 2]
+// 2: [5, 70, 66.666666, 2]
+// 3: [6, 70, 66.666666, 2]
+// 4: [1, 60, 33.333333, 3]
+// 5: [2, 80, 33.333333, 1]
 ```
 
 <!-- <span style="color:royalblue"> -->
