@@ -49,6 +49,10 @@ console.log(array); //outcome = (5) [1, 2, 3, 4, 5]
   ```
   splice(1, 1)을 통해 <u>🍌를 삭제한 것 까지는 다른 것들과 비슷</u>하지만,  
   그 이후에 **"🍏", "🍉"**은 <span style="color:red">삭제한 value의 자리에 새롭게 추가</span>한 것을 볼 수 있다
+  
+  <span style="color:green">splice(4, 2)</span> 라고 한다면 -> <span style="color:red">index 번호 4부터 시작</span>하여 <span style="color:red">2개를 원본에서 삭제</span>하고  
+  빼낸 2개의 원소를 반환하게 된다.  
+
 - **댓글 삭제 기능**을 구현할 때 splice 메서드를 사용하게됨!
 
 <span style="color:red">원본 배열</span>의 <span style="color:tomato">중간에 요소를 추가하거나 중간에 있는 요소를 제거</span>하는 경우 splice 메서드를 사용한다.  
