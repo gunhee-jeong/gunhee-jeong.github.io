@@ -12,8 +12,84 @@ date: 2022-06-21T22:51:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+# 1장 reduce
+```bash
+arr.reduce(callback[, initialValue])
+```
+
+`reduce 메서드`는 parameter로  
+<u>previousValue: T</u>, <u>currentValue: T</u>, currentIndex: number, array를 받을 수 있다.  
+
+reduce 메서드를 사용하면서 <u>currentIndex</u>를 이용해 for 문 처럼 사용이 가능하다.  
+
+```js
+const score = [1, 2, 3, 4, 5, 6, 7];
+
+score.reduce((pre, cur, arr) => {
+	console.log(`pre-> ${pre}`) // 0 1 3 6 10 15 21
+  console.log(`cur-> ${cur}`) // 1 2 3 4 5 6 7
+  return pre + cur;
+}, 0);
+```
+
+## 1. 활용
+### (1) 평균 구하기
+```js
+class Student {
+  constructor(name, age, enrolled, score) {
+    this.name = name;
+    this.age = age;
+    this.enrolled = enrolled;
+    this.score = score;
+  }
+}
+const students = [
+  new Student('A', 29, true, 45),
+  new Student('B', 28, false, 80),
+  new Student('C', 30, true, 90),
+  new Student('D', 40, false, 66),
+  new Student('E', 18, true, 88),
+];
+```
+
+```js
+const result = students.reduce((prev, curr) => {
+console.log('-----------');
+console.log(prev);
+console.log(curr);
+return prev + curr.score;
+}, 0);
+  // console.log(result); // outcome = 369
+  console.log(result/ students.length); //outcome = 73.8 
+```
+
+### (2) 음양 더하기
+```js
+let absolutes = [4,7,12];
+let signs = [true,false,true];
 
 
+function solution(absolutes, signs) {
+	let result = absolutes.reduce((pre, cur, ind) => {
+    if (signs[ind] === true) return pre + cur;
+    else return pre - cur;
+  }, 0);
+  return result;
+}
+
+solution(absolutes, signs);
+```
+
+```js
+let absolutes = [4,7,12];
+let signs = [true,false,true];
+
+function solution(absolutes, signs) {
+  console.log(absolutes.reduce((acc, val, i) => acc + (val * (signs[i] ? 1 : -1)), 0));
+}
+
+solution(absolutes, signs);
+```
 
 <!-- <span style="color:royalblue"> -->
 
