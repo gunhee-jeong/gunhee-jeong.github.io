@@ -1,55 +1,63 @@
 ---
 layout: single
-title: "2022년 06월 22일 (수) 데일리 리포트"  
+title: "Array.prototype -> from & fill"
 # categories: Git
 categories:
-  - dailyReport # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [데일리 리포트] #tag는 여러개 가능함
+  - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [Array.prototype] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-06-22T08:00:00+09:00
+date: 2022-06-22T16:50:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 오전
-0800 ~ 0850: 공부 -> <span style="color:royalblue">집중도 중</span>  
-0850 ~ 0900: 휴식  
-0900 ~ 0950: 공부 -> <span style="color:royalblue">집중도 중</span>  
-1140 ~ 1220: 공부 -> <span style="color:royalblue">집중도 중</span>  
+# 1장 Array.prototype.from()
+`from 메서드`는 유사 배열 객체나 반복 가능한 객체(iterable object)를  
+얕게 복사해 새로운 Array 객체를 만든다.  
 
-# 오후
-1245 ~ 1335: 공부 -> <span style="color:royalblue">집중도 중</span>  
-1400 ~ 1450: 공부 -> <span style="color:royalblue">집중도 중</span>  
-1450 ~ 1500: 휴식  
-1500 ~ 1600: 공부 -> <span style="color:green">집중도 상</span>  
-1635 ~ 1730: 공부 -> <span style="color:green">집중도 상</span>  
-1730 ~ 1745: 휴식  
-1745 ~ 1855: 공부 -> <span style="color:green">집중도 상</span>  
-1900 ~ 2000: 유산소 운동  
-2010 ~ 2050: 공부 -> <span style="color:tomato">집중도 하</span>  
-2050 ~ 2110: 휴식  
-2110 ~ 2225: 공부 -> <span style="color:royalblue">집중도 중</span>  
-2225 ~ 2240: 휴식  
-2240 ~ 2350: 공부 -> <span style="color:royalblue">집중도 중</span>  
+```js
+let from = Array.from({length: 5}, () => 1);
+console.log(from); // [ 1, 1, 1, 1, 1 ]
+```
 
-# 결산
-오늘의 `순 생산성 시간`: <span style="color:blue"> 11시간 10분</span>   
+```js
+let from = Array.from([1, 2, 3], x => x + x);
+console.log(from); // [ 2, 4, 6 ]
+```
 
-# 소감
+# 2장 Array.prototype.fill()
+`fill 메서드`는 <u>배열의 시작 인덱스부터 끝 인덱스의 이전까지</u> <span style="color:tomato">하나의 값으로 채워 생성</span>한다.  
+원본 배열을 직접 변경하며, 반환값은 변경된 배열이 된다.  
+
+fill 메서드는 <u>value, start, end</u>의 3가지 인자를 가진다.  
+(start, end는 선택사항이 된다.)  
+
+```js
+[1, 2, 3].fill(4); //output == [4, 4, 4]
+[1, 2, 3].fill(4, 1); //output == [1, 4, 4]
+[1, 2, 3].fill(4, 1, 2); //output == [1, 4, 3]
+[1, 2, 3].fill(4, 1, 1); //output == [1, 2, 3]
+[1, 2, 3].fill(4, 3, 3); //output == [1, 2, 3]
+```
+
+## 1. 응용
+[length가 100이고 모두 3으로 채워진 배열을 만들어라.]  
+
+```js
+const arr = Array(100).fill(3);
+```
 
 <!-- <span style="color:royalblue"> -->
 
-<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ Ω-->
-
-<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 --> 
+<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
 
 ```
 
 유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/> 
+유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
 ```
