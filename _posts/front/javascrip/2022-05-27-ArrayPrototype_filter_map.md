@@ -17,6 +17,8 @@ date: 2022-05-27T09:20:00+09:00
 <span style="color:red">true일 경우</span>에만 filter 메서드의 element를 <span style="color:tomato">새로운 array의 index에 값으로 추가</span>한다.  
 <span style="color:royalblue">false일 경우에는 새로운 array의 index에 추가되지 않는다</span>.  
 (이때 기존의 array를 변형시키지 않고, 새로운 array를 반환한다.)  
+이를 이용해서 배열에 filter 메서드를 사용하면서,  
+<u>콜백 함수의 반환값으로 false</u>를 주어 <span style="color:red">제거하고 싶은 배열의 element를 제거</span>할 수 있다.  
 
 `map`이 <u>내부 함수</u>의 <span style="color:royalblue">리턴 값에 문자, 숫자, 배열 등으로 다양한 타입</span>이 가능하다면  
 `filter`는 <span style="color:tomato">오직 boolean 타입만 반환</span>이 가능하다.  
@@ -63,6 +65,9 @@ let list = [1, 2, 3, 4, 5, 6, 7];
 console.log(list.filter(a => a > 4)); //output == [5, 6, 7]
 console.log(list.map(a => a > 4)); //output == [false, false, false, false, true, true, true]
 ```
+
+filter 메서드는 콜백 함수의 반환값으로 false를 주어서 원하지 않는 element를 제거할 수 있고,  
+`map 메서드`는 콜백 함수를 사용하여 <u>배열의 element의 값을</u> <span style="color:red">기존의 값에서 다른 값으로 새로이 할당</span>할 수 있다.  
 
 ## Quiz
 make an array containing only the student's score(result should be: [45, 80, 90, 66, 88])
