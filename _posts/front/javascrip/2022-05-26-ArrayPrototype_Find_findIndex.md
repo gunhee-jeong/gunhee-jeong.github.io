@@ -62,6 +62,31 @@ const result = students.find((student, index) => student.score == 90)
 console.log(result); //output == Student {name: 'C', age: 30, enrolled: true, score: 90}
 ```
 
+`find 메서드`는 <u>filter 메서드와 같이</u> <span style="color:tomato">배열의 모든 인덱스를 순회</span>하면서  
+<u>판별함수를 만족하는 element를 찾으면</u> <span style="color:red">배열의 순회를 그 자리에서 중지</span>한다.  
+"<span style="color:blue">includes</span>"와 "<span style="color:blue">indexOf</span>" <span style="color:royalblue">와는 다르게</span> filter 함수와 같이 배열을 순회하는 것이 큰 특징이다.  
+
+위의 <u>find 메서드의 특징</u>을 살려,  
+배열을 순회하면서 <span style="color:royalblue">판별 함수의 조건</span>에 해당하는 <span style="color:tomato">element를 변수로 선언</span>하고  
+find로 순회한 배열을 <span style="color:blue">filter 함수</span>를 사용하여 <u>false를 주어서</u> <span style="color:red">배열에서 해당 element를 제거할 수도</span> 있다.  
+활용의 예시는 아래의 코드와 같다.  
+
+```js
+let n = 5;
+let lost = [2, 4];
+let reserve = [3];
+
+function solution(n, lost, reserve) {      
+  return n - lost.filter(a => {
+    const b = reserve.find(r => Math.abs(r-a) <= 1); // 판별 함수의 조건에 맞는 element를 변수에 할당함
+    if(!b) return true; // 판별 함수의 조건에 맞는 element가 없다면 'undefined'가 변수에 할당됨
+    reserve = reserve.filter(r => r !== b); // 판별 함수의 조건에 맞는 element가 있었다면 if문을 뛰어 넘어간다.
+  }).length; // find 메서드로 element를 변수로 지정하고 -> filter 메서드로 배열에서 해당 element를 지운다.
+}
+
+solution(n, lost, reserve );
+```
+
 # 2. findIndex
 `findIndex()`는 주어진 <span style="color:tomato">판별 함수의 결과가 true</span>인 -> <span style="color:red">첫 번째 element의 index를 반환</span>한다.  
 
