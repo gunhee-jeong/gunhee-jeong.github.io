@@ -1,13 +1,14 @@
 ---
 layout: single
-title: "HTML Tag"
+title: "The Web Developer -> HTML 기초"
 # categories: Git
 categories:
   - HTML # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [태그] #tag는 여러개 가능함
+tag: [태그, tag] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
+date: 2022-06-28T09:40:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
@@ -95,6 +96,69 @@ title 태그는 웹페이지의 타이틀을 설정해준다.
 
 <u>기본적인 html 태그의 구성</u>을 불러오고 싶다면 <span style="color:red">! + Tab</span>을 입력하면 된다.  
 그러면 기본적으로 <span style="color:royalblue">DOCTYPE 부터 body 태그까지 자동으로 생성</span>시켜준다.  
+
+### (5) 목록 요소
+```html
+<body>
+  <ul>
+    <li>Silkie</li>
+    <li>Polish</li>
+    <li>Easter Egger</li>
+    <li>Rhode Island Red</li>
+  </ul>
+
+  <ol>
+    <li>Silkie</li>
+    <li>Polish</li>
+    <li>Easter Egger</li>
+    <li>Rhode Island Red</li>
+  </ol>
+</body>
+```
+
+```html
+<body>
+  <ul>
+    <li>Bantam
+      <ul>
+        <li>Silkie</li>
+        <li>Polish</li>
+      </ul>
+    </li>
+    <li>standard
+      <ul>
+        <li>Easter Egger</li>
+        <li>Rhode Island Red</li>
+      </ul>
+    </li>
+  </ul>
+</body>
+```
+
+### (6) 앵커 태그
+HTML의 속성이란 태그에 부여할 수 있는 작은 정보를 의미한다.  
+
+```html
+<body>
+  <a href="목적지site주소"></a>
+</body>
+```
+
+## 2. 이미지
+이미지 태그는 열고 닫는 태그가 없는 요소이다.  
+이미지 태그의 열고 닫는 태그가 없는 것은 생각해보면 당연한 것이다.  
+왜냐하면 위의 다양한 요소들은 사실 모두 텍스트들로 채워져 있었다.  
+하지만 이미지 태그는 이미지가 있는 URL만을 제공하는 것이 목적이기 때문에 위의 태그들이 없어도 되는 것이다.  
+
+```html
+<body>
+  <img src="pictures/stevie_chicks.jpg" alt="My pet chicken, Stevie">
+</body>
+```
+
+pictures 폴더 안에 들어있는 "stevie_chicks.jpg" 이미지 파일을 img 태그를 사용하여 화면에 나타냈다.  
+
+
 
 <!-- <span style="color:royalblue"> -->
 
