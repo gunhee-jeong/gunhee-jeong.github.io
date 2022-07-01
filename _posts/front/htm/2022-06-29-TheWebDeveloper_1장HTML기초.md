@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "The Web Developer -> HTML 기초"
+title: "The Web Developer -> 1장 HTML 기초"
 # categories: Git
 categories:
   - HTML # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "The Web Developer -> HTML 시맨틱(Semantics)"
+title: "The Web Developer -> 2장 HTML 시맨틱(Semantics)"
 # categories: Git
 categories:
   - HTML # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
