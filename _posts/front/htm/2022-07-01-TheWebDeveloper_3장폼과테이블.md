@@ -175,13 +175,222 @@ tr은 table row의 줄인 말로
 (조금 더 정확하게 말해보면 -> 현재 폼 태그가 있는 곳이 reddit.com이라면 <u>reddit.com</u><span style="color:royalblue">/search</span>로 전송된다.)  
 
 ## 6. 일반적인 입력 형식
+### (1) &lt;input&gt;
+&lt;input&gt; 안의 속성인 type이 &lt;input&gt;의 작동 방식을 바꾸는 역할을 한다.  
+또한 &lt;input&gt;는 닫는 태그가 존재하지 않으며 그래서 두 태그 사이에 내용을 넣지 않는다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms Demo</title>
+</head>
+
+<body>
+  <h1>Forms Demo</h1>
+
+  <form action="/tacos">
+    <input type="text" placeholder="user Id">
+    <input type="password" placeholder="passoword">
+    <input type="color">
+    <input type="number">
+  </form>
+</body>
+```
+
+위의 코드와 같이 &lt;input&gt;의 type 속성으로 다양한 속성을 사용할 수 있다.  
+
+`placeholder 속성`은 입력란의 <u>임시 텍스트를 지정하는 속성</u>이다.  
+원래의 입력란은 뭔가를 입력하기 전이라 비워져 있지만,  
+placeholder를 사용하는 순간 비어져있는 공간에 text를 입력할 수 있게 된다.  
+그렇다고해서 placeholder가 모든 type에서 사용할 수 있는 것은 아니다.  
+이렇게 placeholder는 <span style="color:blue">무엇을 입력하는지 알려준다는 점에서 중요</span>하다.  
+
 ## 7. 가장 중요한 레이블
+&lt;`label`&gt;은 <span style="color:blue">접근성</span>과 <span style="color:blue">폼을 쓰기 편하게 한다는 점</span>에서 중요한 태그이다.  
+&lt;label&gt;은 <u>시각적으로 텍스트를 보여주는 것 이상의 기능을</u> 한다.  
+
+보이지 않지만 <span style="color:tomato">체크박스와 연결</span>되어 있기 때문이다.  
+또한 <u>Form control 및 텍스트와 직접적으로 연결</u>되어 있고,  
+두 요소를 연결 시 <span style="color:royalblue">레이블 자체를 클릭할 수 있게도</span> 해준다.  
+&lt;label&gt;을 통해 질문을 만들고 이를 체크박스와 연결했다면,  
+&lt;label&gt;을 클릭하더라도 체크박스를 동작하게 만들 수 있다.  
+
+&lt;label&gt;를 사용하기 위해서는  
+<u>&lt;input&gt;</u>안에 <span style="color:blue">id 속성</span>을 추가해야한다.  
+그리고 <u>똑같은 id의 값</u>을 <span style="color:blue">&lt;label&gt;의 for 속성</span>으로 지정해주어야한다.  
+아래의 코드를 보면, &lt;input&gt;의 id 속성(cheese)와 &lt;label&gt;의 for 속성(cheese)가 같은 것을 알 수 있다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms Demo</title>
+</head>
+
+<body>
+  <h1>Forms Demo</h1>
+
+  <div>
+    <label for="cheese">Do you like cheese?</label>
+    <input type="checkbox" name="cheese" id="cheese">
+  </div>
+</body>
+```
+
+위의 코드와 같은 결과를 만들 수 있는 방법이 하나 더 있는데,  
+그것은 &lt;label&gt;안에 &lt;input&gt;를 중첩하여 넣어주는 것이다.  
+이렇게 구성하면 for 속성과 id 속성이 없더라도 위와 같은 결과를 만들 수 있으나, 자주 쓰이지는 않고 있다.  
+개인적으로도 가독성적인 측면에서 아래의 코드보다는 위의 코드가 보기 좋은 것 같다.  
+그리고 CSS를 통해 스타일을 주더라도 태그들이 따로따로 분리되어있어야 편리하기 떄문인 것 같다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms Demo</title>
+</head>
+
+<body>
+  <h1>Forms Demo</h1>
+
+  <div>
+    <label>Do you like cheese?
+      <input type="checkbox" name="cheese">
+    </label>
+  </div>
+</body>
+```
+
 ## 8. HTML 버튼
+&lt;button&gt;는 여는 태그와 닫는 태그로 구성된다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms Demo</title>
+</head>
+
+<body>
+  <h1>Forms Demo</h1>
+  <button>Outside form</button>
+
+  <form action="/tacos">
+    <button type="button">Please do not submit the form</button>
+    <input type="text" placeholder="user Id">
+    <input type="password" placeholder="passoword">
+    <button>In the middle</button>
+    <input type="color">
+    <input type="number">
+
+    <button>Submit</button>
+  </form>
+</body>
+```
+
+폼에 버튼이 포함되어 있는데 이때 버튼을 누르면  
+폼을 제출하지 않겠다고 따로 명시해놓지 않았다면 폼이 제출된다.  
+
+"Outside form" 버튼을 클릭해도 해당 버튼은 &lt;form&gt; 밖에 위치하기 때문에 아무일도 일어나지 않는다.  
+&lt;form&gt;안에 버튼이 있다면 기본값으로 -> 해당 폼을 제출하게 된다.  
+
+&lt;input&gt; 처럼 &lt;button&gt;도 type이라는 속성을 가진다.  
+&lt;form&gt; 안에 있는 "Please do not submit the form" 버튼의 속성 type을 "button"으로 주게되면  
+&lt;button&gt;를 클릭해도 폼을 제출하지 않고 button으로만 사용된다.  
+반대로 &lt;button&gt;의 type을 "submit"으로 설정하면 다시 폼을 제출한다.  
+
 ## 9. 이름 속성 
+&lt;`input`&gt; 안의 <span style="color:blue">name이라는 속성</span>의 값은 &lt;form&gt;가 제출되었을 때  
+<u>&lt;form&gt;의 action 속성</u>에 저장되어있는 <span style="color:royalblue">url로 보내지는 값</span>이다.  
+이렇게 name 속성은 중요한 역할을 한다.  
+결국 <span style="color:blue">서버로 데이터를 전송할 때 사용</span>하게 된다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms Demo</title>
+</head>
+
+<body>
+  <h1>Forms Demo</h1>
+
+  <form action="/tacos">
+    <p>
+      <label for="username">Enter a UserName</label>
+      <input id="username" type="text" placeholder="user Id" name="username">
+    </p>
+    <button>Submit</button>
+  </form>
+</body>
+```
+
+## 10. 구글과 레딧 검색하기
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- google form -->
+  <form action="https://www.google.com/search">
+    <label for="userName">Searching</label>
+    <input type="text" id="userName" name="q" placeholder="무엇이든 입력하세요">
+    <button>Search Google</button>
+  </form>
+  <!-- https://www.google.com/search?q=tocos -->
+
+  <!-- youtube form -->
+  <!-- https://www.youtube.com/results?search_query=dog -->
+  <form action="https://www.youtube.com/results">
+    <label for="youtubeSearch">Searching</label>
+    <input type="text" id="youtubeSearch" name="search_query" placeholder="무엇이든 입력하세요">
+    <button>Search Youtube</button>
+  </form>
+</body>
+</html>
+```
+
+<u>&lt;form&gt;, &lt;label&gt;, &lt;input&gt;, &lt;button&gt;</u>등을 사용하여 구글과 유튜브 등과 연결하여 검색할 수 있다.  
+&lt;<span style="color:royalblue">form</span>&gt;의 <span style="color:blue">action 속성</span>에는, 폼이 제출되었을 때 <span style="color:tomato">데이터를 보낼 위치와 시간등을 지정</span>하게 된다.  
+&lt;<span style="color:blue">label</span>&gt;와 &lt;<span style="color:blue">input</span>&gt;는 <span style="color:tomato">id 속성</span>과 <span style="color:tomato">for 속성</span>으로 연결하였고  
+&lt;input&gt;의 <span style="color:red">name 속성</span>은 폼이 제출되었을 때 -> <u>&lt;form&gt;의 action 속성에 저장되어있는 url로 보내지는 값</u>인데  
+"q"와 "search_query"로 저장하여 사용할 수 있다.  
+
+## 11. 라디오 버튼, 체크박스와 선택창
+## 12. HTML5 폼의 유효성 검사
 
 <!-- <span style="color:royalblue"> -->
 
 <!-- ### 2. Link 넣기
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+</body>
+```
 
 ```
 
