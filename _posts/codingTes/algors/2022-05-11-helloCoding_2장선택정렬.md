@@ -62,6 +62,69 @@ date: 2022-05-11T06:00:00+09:00
 배열은 배열 안의 <span style="color:tomato">어떤 원소든 바로 이동할 수</span> 있다.  
 <img src="https://user-images.githubusercontent.com/87808288/176627350-0ff7c3ac-04b3-47f6-b8a0-2305adbf97e6.png" width="500">  
 
+### (3) 리스트의 가운데에 삽입하기
+<u>원소를 배열이나 리스트의 중앙에 삽입</u>한다면,  
+<span style="color:blue">리스트는 이전 원소가 무엇을 가리키는지 바꾸기만 하면</span> 되므로 <span style="color:tomato">리스트에 삽입하는 것이 훨씬 쉽다</span>.  
+<img src="https://user-images.githubusercontent.com/87808288/176989120-3ed9ac00-7572-4ec8-bae5-9303be6c656e.png" width="700">  
+하지만 배열에서는 다음에 오는 모든 원소의 위치를 바꾸어야 한다.  
+<img src="https://user-images.githubusercontent.com/87808288/176989175-9d7300e5-d576-4304-9854-a1cbad00ebb1.png" width="400">  
+<u>만약 공간이 부족하면</u> <span style="color:tomato">모든 원소를 새로운 장소로 복사해야</span> 한다.  
+그래서 중간에 원소를 삽입하려면 <span style="color:red">리스트가 훨씬 좋은 선택</span> 방법이다.  
+
+### (4) 삭제하기
+이 경우에도 <span style="color:tomato">이전 원소가 가리키는 위치만 바꾸면</span> 되기 때문에 <span style="color:red">리스트가 더 좋은</span> 선택이다.  
+아래는 배열과 연결 리스트의 연산에 대한 실행 시간표이다.  
+<img src="https://user-images.githubusercontent.com/87808288/176989332-6f85dbca-b16e-4244-be42-578db9d0e7d3.png" width="350">  
+
+자료에 접근하는 방식에는 `임의 접근`과 `순차 접근`이 있다.  
+<span style="color:red">순차 접근</span>은 <u>원소를 첫 번째부터 하나씩</u> 읽는 것을 뜻한다.  
+<span style="color:tomato">연결 리스트</span>는 순차 접근밖에 할 수 없다.  
+연결 리스트에 있는 10번 째 원소를 읽으려면 그 앞의 9개의 원소를 모두 읽어서 10번 째 원소로 가는 길을 찾아야 한다.  
+
+## 3. 선택 정렬
+<img src="https://user-images.githubusercontent.com/87808288/176989490-02ba148b-3518-4de2-8cf7-ab4d1e47e911.png" width="400">  
+위의 그림에서 가장 많이 들은 음악 목록과 가장 적게 들은 것 순서로 정렬하고자 한다.  
+
+한 가지 방법은 <span style="color:blue">리스트의 모든 항목을 살펴보고</span> 가장 많이 연주된 가수를 찾아 <u>새로운 리스트에 기록하는</u> 것이다.  
+<u>모든 원소를 한 번씩 건드린다</u>는 것은 <span style="color:tomato">O(n)</span>의 시간이 걸린다는 것이다.  
+연주 횟수가 가장 많은 가수를 찾기 위해서는 <span style="color:blue">목록의 모든 항목을 점검해야</span> 한다.  
+그렇게 <u>O(n) 실행 시간이 걸리는 연산을 n번 해야</u>한다.  
+모두 합해서 O(n * n), 즉 <span style="color:red">O(n<sup>2</sup>)</span> 시간이 걸린다.  
+<img src="https://user-images.githubusercontent.com/87808288/176989756-8610249a-0970-47c3-a418-16b9067a06a8.png" width="550">  
+
+```js
+let arr = [5, 3, 6, 2, 10];
+let length = arr.length;
+let smallest = arr[0];
+let numIndex = 0;
+
+function findSmallest(arr) {
+  smallest = arr[0];
+  numIndex = 0;
+  
+  for (let i = 0; i < arr.length; i++) {
+    if (smallest > arr[i]) {
+      smallest = arr[i]
+      numIndex = i;
+    }
+  }
+  return smallest;
+}
+
+function selectionSort(arr) {
+  let newArr = [];
+  
+  for (let i = 0; i < length; i++) {
+    findSmallest(arr);
+    newArr.push(smallest);
+    arr.splice(numIndex, 1);
+  }
+  return newArr;
+}
+
+selectionSort(arr);
+```
+
 <!-- <span style="color:royalblue"> -->
 
 <!-- ### 2. Link 넣기
