@@ -52,10 +52,7 @@
               {% endfor %}
             </ul>
         <span class="nav__sub-title">Back-end</span>
-            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
             <ul>
-                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
-                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
                 {% for category in site.categories %}
                     {% if category[0] == "Server" %}
                         <li><a href="/categories/server" class="">Server ({{category[1].size}})</a></li>
@@ -124,6 +121,13 @@
                 {% for category in site.categories %}
                     {% if category[0] == "Programmers3" %}
                         <li><a href="/categories/programmers3" class="">Programmers 3단계 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "leetCode_easy" %}
+                        <li><a href="/categories/leetCode_easy" class="">leetCode_easy 단계 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
