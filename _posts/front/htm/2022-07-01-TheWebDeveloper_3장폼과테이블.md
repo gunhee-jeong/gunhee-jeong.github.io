@@ -373,7 +373,248 @@ placeholder를 사용하는 순간 비어져있는 공간에 text를 입력할 �
 "q"와 "search_query"로 저장하여 사용할 수 있다.  
 
 ## 11. 라디오 버튼, 체크박스와 선택창
-## 12. HTML5 폼의 유효성 검사
+### (1) 체크박스
+`체크박스`는 꼭 <u>&lt;label&gt; 처리를</u> 해야한다.  
+&lt;label&gt;로 관리하지 않으면 나중에 checkbox의 설정이 점점 복잡해진다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <form action="/birds">
+    <input type="checkbox" name="agree_tos" id="agree">
+    <label for="agree">I agree to everything</label>
+  </form>
+</body>
+```
+
+그리고 <u>체크박스가 처음부터 체크되어 있도록</u> 만들 수도 있다.  
+그럴때는 <span style="color:royalblue">&lt;input&gt;의 속성</span>으로 <span style="color:blue">checked</span>를 넣어주면 된다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <form action="/birds">
+    <input type="checkbox" name="agree_tos" id="agree" checked>
+    <label for="agree">I agree to everything</label>
+    <button>Submit</button>
+  </form>
+</body>
+```
+
+위 코드에서 Submit 버튼을 누르면 -> &lt;input&gt;의 속성으로 checked가 되어있으므로 체크박스가 체크되어있고  
+따라서 /birds?agree_tos=on으로 이동한다.  
+체크가 해지되어있다면  /birds로 이동한다.  
+
+### (2) 라디오 버튼
+라디오 버튼이 체크박스와 다른 것은 그룹에서 딱 하나만 선택이 가능하다는 것이다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <form action="/birds">
+    <label for="xs">XS</label>
+    <input type="radio" name="size" id="xs">
+    <label for="s">S</label>
+    <input type="radio" name="size" id="s">
+    <label for="m">M</label>
+    <input type="radio" name="size" id="m">
+    <button>Submit</button>
+  </form>
+</body>
+```
+
+위의 코드에서 <u>라디오 버튼을 클릭하고 Submit 버튼을 누르면</u> <span style="color:royalblue">size=on이 제출</span>된다.  
+우리는 사용자가 어떤 사이즈를 선택했는지 알고 싶은 것인데 -> <span style="color:royalblue">on이라는 정보가 제출된 것</span>이다.  
+그래서 아래의 코드와 같이 &lt;input&gt;의 <span style="color:red">속성으로 value를 추가</span>하여 작성해주어야 한다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <form action="/birds">
+    <label for="xs">XS</label>
+    <input type="radio" name="size" id="xs" value="xs">
+    <label for="s">S</label>
+    <input type="radio" name="size" id="s" value="s">
+    <label for="m">M</label>
+    <input type="radio" name="size" id="m" value="m">
+    <button>Submit</button>
+  </form>
+</body>
+```
+
+<span style="color:red">value라는 속성</span>은 form을 제출했을 때 <u>서버에 전송되는 값</u>인 것이다.  
+&lt;label&gt;의 텍스트로 작성한 것은 사용자에게 보여지는 용도이며,  
+이 <span style="color:blue">값을 전달하는 유일한 수단</span>은 &lt;input&gt;의 <span style="color:tomato">value 속성</span>인 것이다.  
+
+### (3) &lt;select&gt;
+&lt;`select`&gt;는 &lt;<span style="color:blue">option</span>&gt;와 함께 사용하여 드롭박스를 만들 수 있다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+  <label for="meal">Please Select an Entree</label>
+  <select name="meal" id="meal">
+    <option value="fish">Fish</option>
+    <option value="veg">Vegetarian</option>
+    <option value="steak">Steak</option>
+  </select>
+<body>
+</body>
+```
+
+체크박스와 마찬가지로 특정 &lt;option&gt;의 속성으로 <span style="color:blue">selected</span>를 주면 -> 드롭박스에서 자동으로 선택되도록 한다.  
+
+## 12. 범위 및 텍스트 영역
+### (1) range 속성
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <p>
+    <label for="cheese"">Amount of Cheese:</label>
+    <input type="ragne" id="cheese" min="1" max="100" value="50" step="7" name="cheese_level">
+  </p>
+</body>
+```
+
+위의 코드에서 &lt;input&gt;의 type 속성으로 range를 설정하면 -> 범위 선택을 할 수 있다.  
+&lt;input&gt; range의 value 속성은, 체크박스에서 checked와 비슷한 역할을 한다.  
+value를 미리 설정해두면 초기값으로 사용된다.  
+step 속성은 설정한 값의 크기만큼 value가 조정된다.  
+
+### (2) num 속성
+아래의 코드와 같이 &lt;input&gt;의 속성으로 number를 주면 커머스에서 자주 사용되는 개수 선택 기능을 만들 수 있다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <label for="num">개수 선택</label>
+  <input type="number" id="num" name="numbers" min="1" max="10" step="2">
+</body>
+```
+
+### (3) &lt;textarea&gt;
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <p>
+    <label for="requests">Any Special Requests?</label>
+    <br>
+    <textarea id="requests" name="requests" placeholder="Type something here" rows="10" cols="40"></textarea>
+  </p>
+</body>
+```
+
+&lt;textarea&gt;는 기본적으로 2줄을 제공하지만  
+rows 속성을 사용하면 원하는 기본값으로 줄을 제공할 수 있다.  
+
+<!-- ## 13. HTML5 폼의 유효성 검사 -->
+
+<img src="https://user-images.githubusercontent.com/87808288/177025447-1835b031-d35c-48ea-a0a5-bcf7e9ee6741.png" width="500">  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Race Registration!</h1>
+  <form action="">
+    <div>
+      <label for="firstN">First Name</label>
+      <input type="text" id="firstN" name="firstName" required>
+      <label for="lastN">Last Name</label>
+      <input type="text" id="lastN" name="lastName" required>
+    </div>
+    <p>Select a Race:</p>
+    <div>
+      <input type="radio" id="fun" name="marathon" value="fun">
+      <label for="fun">Fun Run 5K</label>
+    </div>
+    <div>
+      <input type="radio" id="half" name="marathon" value="half">
+      <label for="half">Half Marathon</label>
+    </div>
+    <div>
+      <input type="radio" id="full" name="marathon" value="full">
+      <label for="full">Full Marathon</label>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+      <label for="password">password</label>
+      <input type="password" id="password" required>
+    </div>
+    <div>
+      <label for="age">Select Age Group</label>
+      <select id="age" name="ageGroup">
+        <option value="18">18 이하</option>
+        <option value="35">18 ~ 35</option>
+        <option value="60">36 ~ 60</option>
+      </select>
+    </div>
+    <button>Register!</button>
+  </form>
+</body>
+</html>
+```
 
 <!-- <span style="color:royalblue"> -->
 
