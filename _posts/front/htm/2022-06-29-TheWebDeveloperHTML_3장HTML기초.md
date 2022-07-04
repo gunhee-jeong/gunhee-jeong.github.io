@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "The Web Developer -> 1장 HTML 기초"
+title: "The Web Developer HTML -> 3장 HTML 기초"
 # categories: Git
 categories:
   - HTML # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [The Web Developer, 태그, tag] #tag는 여러개 가능함
+tag: [The Web Developer HTML, 태그, tag] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,7 +12,7 @@ date: 2022-06-28T09:40:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 1장 HTML 기초
+# 3장 HTML 기초
 
 # HTML의 정의와 기능
 
@@ -60,7 +60,7 @@ tag는 기본적으로 `<>`로 감싸져서 사용된다.
 
 - <u>element = node</u> > content
 
-# 1장 HTML의 기초
+# 3장 HTML의 기초
 ## 1. 태그
 ### (1) p 태그
 p 태그를 사용하여 앞 단락과 뒷 단락을 명확히 구분해줄 수 있다.  
