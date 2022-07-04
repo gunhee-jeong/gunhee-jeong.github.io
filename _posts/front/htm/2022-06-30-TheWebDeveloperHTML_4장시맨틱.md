@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "The Web Developer -> 2장 HTML 시맨틱(Semantics)"
+title: "The Web Developer HTML -> 4장 시맨틱(Semantics)"
 # categories: Git
 categories:
   - HTML # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [The Web Developer] #tag는 여러개 가능함
+tag: [The Web Developer HTML] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,7 +12,7 @@ date: 2022-06-30T12:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 2장 HTML 시맨틱
+# 4장 HTML 시맨틱
 ## 1. HTML5?
 DOCTYPE의 역할은 브라우저에 이 문서가 HTML5 구문 또는 HTML5 버전 표준을 쓴다는 것을 알려주는 것이다.  
 
