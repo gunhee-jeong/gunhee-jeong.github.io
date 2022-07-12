@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Github repository 생성"
+title: "Github repository(저장소) 생성"
 # categories: Git
 categories:
   - Github # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
@@ -15,10 +15,11 @@ date: 2022-05-17T09:50:00+09:00
 # local 프로젝트를 github 서버로
 우선 Github에 접속해서 <u>repository를 생성</u>한다 ->  
 아래로 내리다보면 페이지에 <span style="color:royalblue">...or create a new repository</span>가 있는데  
-거기서 <span style="color:tomato">git remote add origin 주소</span>로 되어있는 것을 <u>복사하여 터미널에 붙여넣는다</u> ->  
+거기서 "<span style="color:tomato">git remote add origin 주소</span>"로 되어있는 것을 <u>복사하여 터미널에 붙여넣는다</u> ->  
+
 정상적으로 등록이 되었는지 확인하기 위해 터미널에서 <span style="color:tomato">git remote</span>를 입력해서 <u>origin이 나오면 성공</u> ->  
 git hist로 살펴보면 아직 server로는 올라가있지 않기 때문에   
-git push를 통해 local의 commit들을 server로 올려야 한다.  
+"<span style="color:tomato">git push</span>"를 통해 local의 commit들을 server로 올려야 한다.  
 
 
 <!-- ### 2. Link 넣기
