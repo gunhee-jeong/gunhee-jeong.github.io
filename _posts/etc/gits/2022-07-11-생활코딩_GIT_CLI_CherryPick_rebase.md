@@ -14,7 +14,7 @@ date: 2022-07-11T12:00:00+09:00
 ---
 # 1장 Cherry-pick
 <img src="https://user-images.githubusercontent.com/87808288/178238484-7fa1f656-d156-4e41-a0aa-6a2554b8ba1d.png" width="500">  
-현재 상황을 살펴보면  
+현재 상황을 살펴보면   
 `topic branch`에는 <u>t1, t2, t3</u>라고 하는 파일들을 가지고 있고  
 `main branch`에는 <u>m1, m2</u> 파일을 가지고 있다.  
 그런데 여기서 main branch에 t2라는 파일만을 merge 하고 싶다면 어떤 방법을 사용해야할까?  
