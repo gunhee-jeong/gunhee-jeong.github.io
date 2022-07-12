@@ -32,7 +32,6 @@ git cherry-pick 235b762
 
 ## 1. Cherry-pick 충돌
 
-
 # 2장 rebase
 `base`는 기본적으로 <span style="color:blue">버전이 갈라지는 뿌리가 되는 commit</span>을 나타내는 git의 용어이다.  
 <img src="https://user-images.githubusercontent.com/87808288/178281413-ee317cbf-866d-4511-bac0-746a67464351.png" width="500">  
