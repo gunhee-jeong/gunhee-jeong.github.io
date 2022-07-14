@@ -256,8 +256,304 @@ h2 {
 
 이렇게 block 디스플레이 속성은 한줄의 공간 밖에 영향을 주지 않는 inline 디스플레이 속성과 다른점이 존재한다.  
 
+## 6. CSS 단위
+### (1) Absolute
+#### []
 
-<!-- <span style="color:royalblue"> -->
+### (2) Relative
+#### [percentages]
+`퍼센티지`는 <span style="color:tomato">부모의 특성에 상대적</span>이다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <h1>CSS Units</h1>
+  <section>
+    <div></div>
+  </section>
+</body>
+```
+
+```css
+section {
+  background-color: red;
+  width: 800px;
+  height: 800px;
+}
+
+div {
+  background-color: blue;
+  width: 50%;
+  height: 50%;
+}
+```
+
+CSS 코드의  <u>50% 라는 것의 의미</u>는 <span style="color:red">부모 요소(section) 너비의 50%</span>를 말한다.  
+CSS 코드에서 div와 관련된 50%는 변화가 수정사항이 없더라도, <u>div의 부모인 section의 크기가 변한다면</u>  
+<span style="color:blue">&lt;div&gt;의 크기는 상대적으로 변하는</span> 것이다.  
+
+```css
+section {
+  background-color: red;
+  width: 800px;
+  height: 800px;
+}
+
+div {
+  background-color: blue;
+  width: 50%;
+  height: 50%;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 200%;
+}
+```
+
+위의 CSS 코드처럼 <span style="color:royalblue">&lt;h1&gt;</span>의 <u>fonts-size를 40px</u>로 지정하고  
+그 바로 아래줄에 <u>line-height는 200%</u>로 percentage를 사용했다.  
+이럴경우는 <span style="color:blue">line-height는 부모와는 상관이 없다</span>.  
+<span style="color:tomato">같은 h1 태그의 font-size 크기의 200%를</span> 말하기 때문이다.  
+이렇게 <u>percentage를 사용한다고해서</u> <span style="color:red">무조건 부모 태그에 상대적으로 사용되는 것은 아니다</span>.  
+
+#### [em]
+em은 rem과 같이 상대적 단위이며 다른 값에 영향을 받는다.  
+
+<u>글꼴의 크기를 1em</u>으로 설정하면 <span style="color:blue">부모 요소와 똑같은 크기</span>가 된다.  
+그러니깐 <span style="color:royalblue">2em</span>은 <u>부모 요소보다 2배 더 큰</u> 것이다.  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <h1>CSS Units</h1>
+
+  <article>
+    <h2>I am h2</h2>
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos, quasi! Corporis, doloremque cumque repellendus similiqueanimi optio commodi    quoconsectetur excepturi delectus magnam? Eos illo maiores eligendi cum.
+    </p>
+  </article>
+  <section>
+    <div></div>
+  </section>
+</body>
+```
+
+```css
+section {
+  background-color: red;
+  width: 800px;
+  height: 800px;
+}
+
+div {
+  background-color: blue;
+  width: 50%;
+  height: 50%;
+}
+
+article {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+p {
+  font-size: 1em;
+}
+```
+
+<u>h2 태그의 부모 요소는 article</u>로,  
+<u>&lt;article&gt;의 font-size는 30px</u>로 <span style="color:royalblue">h2의 font-size는 2em</span>이기때문에 <span style="color:blue">2배인 60px</span>이 된다.  
+&lt;p&gt;도 article 태그가 부모이므로 30px의 font-size를 가지게 된다.  
+
+```css
+section {
+  background-color: red;
+  width: 800px;
+  height: 800px;
+}
+
+div {
+  background-color: blue;
+  width: 50%;
+  height: 50%;
+}
+
+article {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 2em;
+  margin-left: 1em;
+}
+
+p {
+  font-size: 1em;
+}
+```
+
+`percentage`에서는 <u>width와 height 속성</u>일 경우에는 <span style="color:tomato">부모에 상대적으로 표현</span>되고  
+<u>line-height 속성</u>일 경우에는 <span style="color:red">같은 태그 안의 font-size 크기에 상대적</span>이었다.  
+`em`에서도 <u>&lt;article&gt; font-size는 30px</u>로 -> <span style="color:blue">&lt;h2&gt; font-size가 2em</span>이기 때문에 <span style="color:royalblue">2배인 60px</span>이 된다.  
+그리고 <span style="color:tomato">추가적으로 margin-left</span>를 <u>1em</u>을 준다면, 여기서 1em은 <u>부모 요소가 아닌</u>  
+같은 <span style="color:red">&lt;h2&gt;의 font-size가 60px</span>로 정해졌기 때문에 -> <span style="color:red">이것에 상대적인 1em</span>, 즉 <u>60px로 margin-left가</u> 설정된다.  
+
+#### [rem]
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+
+<body>
+  <h1>CSS Units</h1>
+
+  <article>
+    <h2>I am h2</h2>
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos, quasi! Corporis, doloremque cumque repellendus similiqueanimi optio commodi    quoconsectetur excepturi delectus magnam? Eos illo maiores eligendi cum.
+    </p>
+    <ul>
+      <li>
+        Pasta
+        <ul>
+          <li>
+            Ravioli
+            <ul>
+              <li>Spinach Ricotta</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Salad</li>
+      <li>Gelato</li>
+    </ul>
+  </article>
+  <section>
+    <div></div>
+  </section>
+</body>
+```
+
+```css
+section {
+  background-color: red;
+  width: 800px;
+  height: 800px;
+}
+
+div {
+  background-color: blue;
+  width: 50%;
+  height: 50%;
+}
+
+article {
+  font-size: 15px;
+}
+
+h2 {
+  font-size: 2em;
+  margin-left: 1em;
+}
+
+p {
+  font-size: 1em;
+}
+
+ul {
+  font-size: 1.5em;
+}
+```
+
+<u>&lt;article&gt; 안에는 자식 관계로</u> <span style="color:royalblue">&lt;ul&gt;</span>가 들어있고 <span style="color:tomato">&lt;ul&gt;는 중첩</span>되어있다.  
+그리고 위의 CSS 코드에서 볼 수 있듯이, <span style="color:royalblue">&lt;ul&gt;의 font-size는 1.5em</span>으로 설정되어있어서  
+&lt;ul&gt;의 부모 태그인 article의 font-size가 15px이므로 -> <u>50% 더 커지게</u> 설정되었다.  
+<img src="https://user-images.githubusercontent.com/87808288/178713067-bb79d888-c5c5-4585-a67b-ba22a2c7c699.png" width="400">  
+그런데 위의 사진과 같이 em의 문제점이 들어나는데 -> &lt;ul&gt;가 &lt;article&gt; 안에 3번 중첩되어있으므로  
+<span style="color:red">단계별로 누적</span>되어 <u>font-size가 커지게</u> 된 것이다.  
+`em`의 <span style="color:tomato">글꼴 크기는 부모 항목의 글꼴 크기를 기반으로</span> 하기 때문이다.  
+
+`rem`은 <u>글꼴의 크기를 부모 요소의 크기에 따라 바꾸지 않는다</u>.  
+<span style="color:red">root HTML 요소의 글씨 크기에 따라 바꾼다</span>는 것이 다른점이다.  
+즉, <span style="color:red">문서 전체에서 하나의 글꼴 크기에 비례하여 바뀐다</span>는 것이다.  
+
+```html
+<body>
+  <h1>CSS Units</h1>
+
+  <article id="rems">
+    <h2>I am h2</h2>
+    <h3>I am h3</h3>
+    <button>Click Me</button>
+    <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos, quasi! Corporis, doloremque cumque repellendus similiqueanimi optio commodi    quoconsectetur excepturi delectus magnam? Eos illo maiores eligendi cum.
+    </p>
+    <ul>
+      <li>
+        Pasta
+        <ul>
+          <li>
+            Ravioli
+            <ul>
+              <li>Spinach Ricotta</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Salad</li>
+      <li>Gelato</li>
+    </ul>
+  </article>
+  <section>
+    <div></div>
+  </section>
+</body>
+```
+
+```css
+html {
+  font-size: 10px;
+}
+
+#rems h2{
+  font-size: 3rem;
+}
+
+#rems h3{
+  font-size: 2rem;
+}
+
+#rems ul{
+  font-size: 0.8rem;
+}
+```
+
+그리고 루트 요소란 &lt;html lang="en"&gt; 바로 이것을 가리킨다.  
+rem 단위를 사용하면 &lt;ul&gt;이 중첩되어 있다해도 누적되어서 font-size가 정해지지 않는다.  
+루트 요소에 상대적으로 결정될 뿐이다.  
 
 <!-- ```html
 <!DOCTYPE html>
