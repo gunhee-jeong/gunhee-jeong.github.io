@@ -390,8 +390,98 @@ ease-out은 빠르게 시작하지만 점점 속도가 느려진다.
 ## 4. transform
 transform으로는 사물을 회전시키거나 왜곡 등의 효과를 줄 수 있다.  
 
+
 ### (1) rotate
+```css
+section:first-of-type h1:nth-of-type(1) {
+  transform-origin: bottom right;
+  transform: rotate(45deg);
+}
+```
+
+오른쪽 아래를 기준으로 45도 회전시킬 수 있다.  
+
 ### (2) scale
+요소의 크기를 변화시킬 때 사용한다.  
+
+```css
+section:first-of-type h1:nth-of-type(2) {
+  transform: scale(0.5);
+}
+```
+
+위의 코드는 전체 크기가 절반으로 줄어들게 된다.  
+
+```css
+section:first-of-type h1:nth-of-type(2) {
+  transform: scale(2, 1);
+}
+```
+
+위의 코드는 높이는 동일하지만(1), 넓이는 두배가 된다.  
+
+```css
+section:first-of-type h1:nth-of-type(2) {
+  transform: scaleY(2);
+}
+```
+
+이렇게 scaleY로 표현하면 높이가 2배가 된다.  
+
+### (3) translate
+```css
+section:first-of-type h1:nth-of-type(3) {
+  transform: translateX(200px);
+}
+```
+
+translateX를 사용하면 가로축 오른쪽으로 200px 이동시킬 수 있다.  
+
+```css
+section:first-of-type h1:nth-of-type(4) {
+  transform: translateX(-200px);
+}
+```
+
+translateX를 사용하고 그 값으로 음수가 들어가면 왼쪽으로 이동시킨다.  
+
+### (4) skew
+skew는 요소를 2차원 평면상에서 기울이는 기능이다.  
+
+```css
+section:nth-of-type(2) h1:nth-of-type(1) {
+  transform: skew(30deg);
+}
+```
+
+transform의 여러 속성을 한번에 표기할 수도 있는데  
+
+```css
+section:nth-of-type(2) h1:nth-of-type(2) {
+  transform: rotate(20deg) scale(1.3);
+}
+```
+
+## 5. background
+
+## 6. google font
+
+구글 폰트는 무료이다.  
+google font로 이동하여 사용하고자 하는 글꼴을 클릭하여 이동하면 font-weight를 선택해야한다.  
+그후에 임베딩하여 나오는 코드를 복사하여 html 코드에 붙여넣어준다.(head에 넣어준다.)  
+그리고 CSS 코드도 수정한다.  
+
+```css
+body {
+  font-family: Montserrat, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: Roboto, sans-serif;
+  font-weight: 100;
+}
+```
+
 
 <!-- ### 2. Link 넣기
 
