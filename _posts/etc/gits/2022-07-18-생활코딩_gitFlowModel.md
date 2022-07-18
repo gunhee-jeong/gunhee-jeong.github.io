@@ -1,53 +1,84 @@
 ---
 layout: single
-title: "2022년 07월 18일 (일) 데일리 리포트"  
+title: "생활코딩 -> git flow model"
 # categories: Git
 categories:
-  - dailyReport # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [데일리 리포트] #tag는 여러개 가능함
+  - Github # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
+tag: [생활코딩, git] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-07-18T06:00:00+09:00
+date: 2022-07-18T20:40:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 오전
-0630 ~ 0750: 코딩테스트 -> <span style="color:royalblue">집중도 중</span>  
-1100 ~ 1200: 코딩테스트 정리 및 영단어 -> <span style="color:royalblue">집중도 중</span>  
+<img src="https://user-images.githubusercontent.com/87808288/179507525-46031d8d-518e-4749-8184-ccc5845ce5e6.png" width="700">  
+`main branch`는 <span style="color:blue">언제나 실행 가능한 환경</span>이어야 한다.  
+그리고 이런 <u>언제나 실행 가능한 main을 위해</u> <span style="color:tomato">develop branch</span>에서 작업을 하게 된다.  
 
-# 오후
-1230 ~ 1315: 독서 -> <span style="color:royalblue">집중도 중</span>  
-1315 ~ 1330: 휴식  
-1330 ~ 1430: CSS -> <span style="color:royalblue">집중도 중</span>  
-1430 ~ 1440: 휴식  
-1440 ~ 1530: CSS -> <span style="color:royalblue">집중도 중</span>  
-1550 ~ 1655: CSS -> <span style="color:royalblue">집중도 중</span>  
-1655 ~ 1715: 휴식  
-1715 ~ 1810: 모던자바스크립트 -> <span style="color:royalblue">집중도 중</span>  
-1810 ~ 1830: 휴식  
-1830 ~ 1930: 모던자바스크립트 -> <span style="color:royalblue">집중도 중</span>  
-1930 ~ 2010: 모던자바스크립트 -> <span style="color:royalblue">집중도 중</span>  
-2100 ~ 2150: git flow -> <span style="color:royalblue">집중도 중</span>  
-2240 ~ 
+feature/short branch에서 작업 중인 추가 사항을 1.0이라는 이름으로 출시하고자 한다면  
+feature/short을 develop branch와 merge해야한다.  
 
-# 결산
-오늘의 `순 생산성 시간`: <span style="color:blue"> 9시간 25분</span>  
+```bash
+git checkout develop
+git merge --no --ff feature/short
+```
 
-# 소감
+fast foward merge를 하면 commit 기록이 남지 않으므로  
+--no --ff 옵션을 사용해 commit message를 일부로 만들어주게 된다.  
+그리고 merge 했기 때문에 feature/short branch는 삭제한다.  
 
-<!-- <span style="color:royalblue"> -->
+```bash
+git branch -d feature/short
+```
 
-<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ Ω-->
+그리고 이제 release/1.0 branch를 만들고 버그 등을 수정하며 commit 하게 된다.   
 
-<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 --> 
+```bash
+git checkout -b release/1.0
+```
+
+develop branch에서는 계속해서 개발을 진행해야하므로 우선 merge해줘야 한다.  
+그리고 main branch에서도 merge 해야한다.  
+
+```bash
+git checkout develop
+git merge --no --ff release/1.0
+git checkout main
+git merge --no --ff release/1.0
+git tag 1.0
+```
+
+그리고 이제 더이상 release/1.0 branch는 필요하지 않기 때문에 삭제한다.  
+
+```bash
+git branch -d release/1.0
+```
+
+그러다가 긴급한 것이 발생하면 hotfixes branch를 만들어 급하게 작업해야한다.  
+버그를 수정하고 commit 까지 진행한다.  
+
+```bash
+git checkout -b hotfixes/1.1
+git add hotfix1_1.txt
+git commit -am "hotfix 1.1"
+```
+
+```bash
+git checkout develop
+git merge --no --ff hotfixes/1.1
+git checkout main
+git merge --no --ff hotfixes/1.1
+git tag 1.1
+git branch -d hotfixes/1.1
+```
 
 <!-- ### 2. Link 넣기
 
 ```
 
 유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/> 
+유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
 ```
