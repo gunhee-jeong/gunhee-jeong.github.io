@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "reset 제대로 알기"
+title: "checkout & reset & revert"
 # categories: Git
 categories:
   - Github # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [Github Tutorial] #tag는 여러개 가능함
+tag: [생활코딩] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함  
@@ -12,7 +12,21 @@ date: 2022-05-21T16:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 트리
+# 1장 checkout
+`checkout`은 <span style="color:red">HEAD를 직접적으로</span> 바꾸게 된다.  
+checkout은 <span style="color:blue">master branch가 가리키는 commit은 바꾸지 않았고</span>, HEAD가 가리키는 것만 바꾸었다.  
+<!-- 그렇기 때문에 우리의 <span style="color:tomato">working directory</span>는 <span style="color:blue">B commit을 기반</span>으로 하게 된다.   -->
+<img src="https://user-images.githubusercontent.com/87808288/179531585-1524d76b-b8e5-46b0-b4e2-0feb3448a555.png" width="300">
+<img src="https://user-images.githubusercontent.com/87808288/179532034-6c34a923-2d57-4ba4-80c4-7f254958892e.png" width="310">  
+
+`reset`은 <u>HEAD는 바꾸지 않고</u> <span style="color:tomato">branch가 가리키는 것을 바꾸게</span> 된다.  
+reset의 결과로는 HEAD와 branch 모두 C commit을 가리키지 않고 있어  
+"git log"를 해보면 결과적으로 마치 삭제된 것처럼 보이게 된다.  
+<img src="https://user-images.githubusercontent.com/87808288/179532362-5659964e-88bb-4593-a1ec-eaf613f67c20.png" width="300">
+<img src="https://user-images.githubusercontent.com/87808288/179532627-a59bd53e-987f-46ed-a588-ab33e5af5b80.png" width="315">  
+
+# 2장 reset
+## 1. 트리
 `Git`을 <span style="color:blue">서로 다른 세 트리를 관리하는 컨텐츠 관리자</span>로 생각하면 reset을 좀 더 쉽게 이해할 수 있다.  
 '<span style="color:blue">트리</span>'라는 말은 '<span style="color:royalblue">파일의 묶음</span>'을 개념적으로 이르는 말이다.  
 
@@ -21,12 +35,12 @@ Git은 일반적으로 세 가지의 트리를 관리하는 시스템이다.
 - Index: 다음에 커밋할 스냅샷
 - 워킹 디렉토리: 샌드박스
 
-## (1) HEAD
+### (1) HEAD
 <span style="color:red">HEAD</span>는 <span style="color:tomato">현재 브랜치를 가리키는 포인터</span>이며, 브랜치에 담긴 커밋 중 <span style="color:tomato">가장 마지막 커밋</span>을 가리킨다.  
 
-## (2) Index
+### (2) Index
 Index는 <span style="color:tomato">바로 다음에 커밋할 것들</span>이다.  
-<span style="color:royalblue">Staging Area</span>는 사용자가 git commit 명령을 실행했을 때 Git이 처리할 것들이 있는 공간이다.  
+<span style="color:red">Staging Area</span>는 사용자가 git commit 명령을 실행했을 때 Git이 처리할 것들이 있는 공간이다.  
 
 Index는 워킹 디렉토리에서 마지막으로 checkout 한 브랜치의 파일 목록과 파일 내용으로 채워진다.  
 이후 파일 변경작업을 하고 변경한 내용으로 Index를 업데이트할 수 있다.  
@@ -34,14 +48,14 @@ Index는 워킹 디렉토리에서 마지막으로 checkout 한 브랜치의 파
 
 Index는 엄밀히 말해 트리구조는 아니다. 사실 Index는 평평한 구조로 구현되어 있다.  
 
-## (3) 워킹 디렉토리
+### (3) 워킹 디렉토리
 위의 두 트리(HEAD, Index)는 파일과 그 내용을 효율적인 형태로 .git 디렉토리에 저장한다.  
 하지만, 사람이 알아보기 어렵다.  
 `워킹 디렉토리`는 실제 파일로 존재한다. <span style="color:royalblue">바로 눈에 보이기 때문에 사용자가 편집하기 수월</span>하다.  
 워킹 디렉토리는 <span style="color:blue">샌드박스</span>로 생각하자.  
 커밋하기 전에는 Index(Staging Area)에 올려놓고 얼마든지 변경할 수 있다.  
 
-# 워크플로우
+## 2. 워크플로우
 Git의 주목적은 프로젝트의 스냅샷을 지속적으로 저장하는 것이다.  
 <img src="https://user-images.githubusercontent.com/87808288/169641987-fdcf1178-4904-479d-bfc1-b1e9991783dd.png" width="500">  
 
@@ -49,7 +63,7 @@ Git의 주목적은 프로젝트의 스냅샷을 지속적으로 저장하는 �
 이것을 <u>파일의 v1이라고 하고 파란색으로</u> 표시한다.  
 <span style="color:green">git init</span> 명령을 실행하면 Git 저장소가 생기고 HEAD는 아직 없는 브랜치를 가리킨다.  
 <img src="https://user-images.githubusercontent.com/87808288/169642084-94d77ef0-6ac3-40c1-a235-6b783549f215.png" width="500">  
-이 시점에는 워킹 디렉토리 트리에만 데이터가 있다.  
+이 시점에는 `워킹 디렉토리` 트리에만 데이터가 있다.  
 이제 <span style="color:green">git add</span> 명령으로 <u>워킹 디렉토리의 내용을</u> <span style="color:blue">Index(staging area)로 복사</span>한다.  
 
 <img src="https://user-images.githubusercontent.com/87808288/169642199-98570a4f-1539-4f0e-ad6c-ab6506de33e0.png" width="500">  
@@ -85,8 +99,8 @@ Index와 HEAD의 다른 파일들이 여기에서 표시된다.
 `브랜치를 Checkout` 하면, <u>HEAD가 새로운 브랜치를 가리키도록</u> 바뀌고, 새로운 커밋의 스냅샷을 Index에 놓는다.  
 그리고 Index의 내용을 워킹 디렉토리로 복사한다.  
 
-# Reset
-## Reest의 역할
+## 3. Reset 알아보기
+### (1) Reest의 역할
 예를 들어 file.txt 파일 하나를 수정하고 커밋한다. -> 이것을 세 번 반복한다.  
 <img src="https://user-images.githubusercontent.com/87808288/169646158-49719a13-6734-4114-ac61-22b6a4216c32.png" width="500">  
 
@@ -141,10 +155,18 @@ Git에는 데이터를 실제로 삭제하는 방법은 많이 없는데, 위의
 HEAD의 브랜치를 옮기는 것은 건너뛰고, <span style="color:tomato">Index를 HEAD가 가리키는 상태로</span> 만든다.  
 <img src="https://user-images.githubusercontent.com/87808288/169648087-07eeeb4a-2185-4c06-a0c4-1a67b87b101d.png" width="500">  
 
+
+
+
+
+
+
+
+
 <!-- ### 2. Link 넣기
 
 ```
- 
+
 유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
 유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
