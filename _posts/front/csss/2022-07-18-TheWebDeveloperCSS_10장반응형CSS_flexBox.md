@@ -56,11 +56,290 @@ align-items를 `baseline`으로 설정하면 <span style="color:tomato">텍스�
 각 <span style="color:blue">element의 글자를 잇는 밑줄</span>을 긋는다고 할 수 있다.  
 
 ## 5. align content
+<img src="https://user-images.githubusercontent.com/87808288/179644916-e233776a-d0d6-4149-bc7b-9cb2ffaaa1d0.png" width="700">  
 <u>행이나 열이</u> <span style="color:tomato">여러 개</span>일 때 <span style="color:blue">cross axis를 기준으로 정렬</span>한다.  
 align content는 여러 행, 여러 열이 있을 때에만 사용하는 정렬 방법이다.  
+즉 wrap이나 wrap-reverse가 적용되어있는 경우에 사용할 수 있다.  
 
 <u>main axis가 수직</u>으로 되어있을 때 `align-content`는 <span style="color:tomato">열 사이의 공간을 조정</span>하게 된다.  
 반대로 <u>수평을 주축으로 한다면</u> cross axis는 수직이므로 `aling-content`는 <span style="color:tomato">행 사이의 공간을 조정</span>한다.  
+
+## 6. align self
+align-self는 align-items와 비슷하지만  
+<span style="color:blue">단일 요소에 사용</span>하거나 플렉스 컨테이너에서 두 개 요소에 개별로 사용한다.  
+
+cross-axis를 기준으로 배열된 단일 요소의 위치를 바꿀 수 있다.  
+flex container에서 한 element만 옮길 때 이 방법을 사용할 수 있다.  
+
+```css
+div:nth-of-type(3) {
+  align-self: flex-end;
+}
+```
+
+### (1) stretch
+### (2) center
+### (3) start
+### (4) end
+
+## 7. flex sizing
+### (1) flex-basis
+요소가 한 줄로 늘어서 있을 때 flex-basis가 너비의 기준이 된다.  
+flex-basis는 main axis인 가로에 걸쳐있기 때문이다.  
+flex-basis는 요소가 배치될 때의 최초 크기이다.  
+main axis의 방향에 따라 width이기도 하고 height이기도 하다.  
+
+<img src="https://user-images.githubusercontent.com/87808288/179656704-043c3a49-6b9d-457a-a666-234a6a103faa.png" width="500">  
+
+```css
+item1 {
+  background: #ef9a9a;
+  flex-basis: 60%;
+}
+
+item2 {
+  background: #ce93d8;
+  flex-basis: 30%;
+}
+
+item3 {
+  background: #90caf9;
+  flex-basis: 10%;
+}
+```
+
+### (2) flex-grow
+`flex-grow`는 <span style="color:blue">공간이 남아 있을 때</span>, 요소가 그 공간을 얼마나 차지할지 정하게 된다.  
+flex-grow와 flex-shrink는 단위가 없다.  
+
+<img src="https://user-images.githubusercontent.com/87808288/179657635-d4fa7489-0b00-4d53-ba29-b81099315e4c.png" width="600">  
+
+```css
+#container {
+  background-color: #003049;
+  width: 90%;
+  height: 500px;
+  margin: 0 auto;
+  border: 5px solid #003049;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#container div {
+  width: 100px;
+  height: 100px;
+}
+```
+
+<img src="https://user-images.githubusercontent.com/87808288/179657864-5f151300-ad2f-4871-ad06-05662074e29b.png" width="600">  
+
+```css
+#container {
+  background-color: #003049;
+  width: 90%;
+  height: 500px;
+  margin: 0 auto;
+  border: 5px solid #003049;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#container div {
+  width: 100px;
+  height: 100px;
+}
+
+#container div:nth-of-type(1) {
+  flex-grow: 1;
+}
+```
+
+위의 이미지와 같이 div:nth-of-type(1)을 사용하여 flex-grow를 사용하면  
+첫 번째 &lt;div&gt;의 크기를 늘려 화면을 꽉 채울 수 있게 된다.  
+
+<img src="https://user-images.githubusercontent.com/87808288/179658206-c44f25fb-f568-4618-b8cc-8997bde935e4.png" width="600">  
+
+```css
+#container {
+  background-color: #003049;
+  width: 90%;
+  height: 500px;
+  margin: 0 auto;
+  border: 5px solid #003049;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#container div {
+  width: 100px;
+  height: 100px;
+  flex-grow: 1;
+}
+```
+
+<u>모든 &lt;div&gt;에게 flex-grow를 1</u>을 설정하면 공간을 <span style="color:tomato">균등하게 차지하게</span> 된다.  
+창을 줄이더라도 <u>비율은 유지된다</u>.  
+
+하지만 이렇게 무한정으로 늘어나는 것도 좋은 것은 아니다.  
+그래서 <span style="color:red">최대 넓이</span>와 <span style="color:red">최소 넓이</span>를 설정할 수 있다.  
+
+```css
+#container {
+  background-color: #003049;
+  width: 90%;
+  height: 500px;
+  margin: 0 auto;
+  border: 5px solid #003049;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#container div {
+  width: 100px;
+  height: 100px;
+  max-width: 200px;
+  min-width: 100px;
+  flex-grow: 1;
+}
+```
+
+<img src="https://user-images.githubusercontent.com/87808288/179659259-21cd3b85-7813-4074-8112-859865cdea6e.png" width="500">  
+
+```css
+#container {
+  background-color: #003049;
+  width: 90%;
+  height: 500px;
+  margin: 0 auto;
+  border: 5px solid #003049;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#container div {
+  width: 100px;
+  height: 100px;
+}
+
+#container div:nth-of-type(1) {
+  flex-grow: 1;
+}
+
+#container div:nth-of-type(5) {
+  flex-grow: 2;
+}
+```
+
+flex-grow는 다른 element에 여러 숫자를 부여할 수 있다.  
+첫 번째 div에는 1을 부여하고 두 번째 div에는 2를 부여하면  
+위의 이미지와 같이 1 : 2의 비율로 나타내지는 것을 볼 수 있다.  
+
+### (3) flex-shrink
+flex-shrink의 값이 크다면, 화면이 줄어들 때 더 빠른 속도로 크기가 줄어들게 된다.  
+
+## 8. flex shorthand
+flex라는 속기법이 있다.  
+flex는 위의 3가지 방법을 한 번에 표기하는 방법이다.  
+
+```css
+main .sidebar {
+  background-color: purple;
+  /* flex-grow, shrink, basis */
+  flex: 1 2 300px;
+  border: 2px solid white;
+}
+```
+
+## 9. midea queries
+midea queries를 사용하다보면 `view port`라는 것을 알아야한다.  
+view port는 컴퓨터 그래픽에 있는 polygonal 영역을 말한다.  
+이는 <u>브라우저에서 우리가 보고 있는 문서</u>나 윈도우 화면을 통해서 보고 있는 문서를 말한다.  
+즉 <span style="color:royalblue">화면 전체를 말하는 것이 아니라</span> <span style="color:tomato">브라우저의 width</span>를 말한다는 것이다.  
+
+```css
+@media (min-width: 800px) {
+  h1 {
+    color:purple;
+  }
+}
+```
+
+위의 media queries는 width가 800px 이상이면 &lt;h1&gt;의 color를 보라색으로 바꾸도록 설정했다.  
+
+```css
+@media (min-width: 600px) and (max-width: 800px) {
+  h1 {
+    color:purple;
+  }
+}
+```
+
+위의 CSS 코드는 600px 이상이고 800px 이하일 때 &lt;h1&gt;의 color를 보라색으로 바꾸게 된다.  
+
+```css
+@media (max-width: 500px) {
+  h1 {
+    color:red;
+  }
+}
+
+@media (max-width: 1000px) {
+  h1 {
+    color:orange;
+  }
+}
+```
+
+위의 코드를 저장하고 실행해보면 브라우저가 300px일 때도 color는 orange이다.  
+왜냐하면 media queries의 조건문의 순서에서 max-width가 1000px이기 때문이다.  
+
+```css
+@media (max-width: 1000px) {
+  h1 {
+    color:orange;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    color:red;
+  }
+}
+```
+
+위의 코드와 같이 max-width: 500px이 코드의 가장 아래에 있으면  
+화면의 width가 최대 500px까지는 red color이고 500px이 넘고 1000px 이하에서는 orange color로 나온다.  
+
+이렇게 CSS 코드를 역방향으로 사용하지 않기 위해서는 아래의 코드와 같이 min-width를 사용할 수 있다.  
+
+```css
+h1 {
+  color:red;
+}
+
+@media (min-width: 500px) {
+  h1 {
+    color:orange;
+  }
+}
+
+@media (min-width: 1000px) {
+  h1 {
+    color:yellow;
+  }
+}
+
+@media (min-width: 1500px) {
+  h1 {
+    color:green;
+  }
+}
+```
 
 <!-- ### 2. Link 넣기
 
