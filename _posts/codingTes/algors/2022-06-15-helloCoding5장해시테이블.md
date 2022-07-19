@@ -169,6 +169,17 @@ Bananas의 가격을 알고 싶다면 빨리 알 수 있지만, Apples의 가격
 아래의 해시 테이블은 리사이징을 할 필요가 있다.  
 <img src="https://user-images.githubusercontent.com/87808288/179393640-81b3ad40-9135-4177-acbe-a7ee32fe8385.png" width="200">  
 우선 더 큰 배열을 생성해야하는데, 대략 두 배 정도의 크기로 배열을 만드는 것이 보통이다.  
+이제 새로 만들어진 해시 테이블에 해시 함수를 사용해서 모든 항목을 다시 넣어야 한다.  
+<img src="https://user-images.githubusercontent.com/87808288/179679386-76680ff1-9ff4-4abd-88c4-d1b95120931a.png" width="300">  
+새로 만들어진 해시 테이블의 사용률은 3/8이다.  
+사용률이 낮을수록 충돌이 적게 일어나며 해시 테이블의 성능도 좋아진다.  
+보통은 사용률이 0.7보다 커지면 리사이징을 실시한다.  
+
+### (2) 좋은 해시 함수란
+좋은 해시 함수란 배열에 값을 고루 분포시키는 함수이다.  
+<img src="https://user-images.githubusercontent.com/87808288/179680892-2d74771e-0b07-43f7-8709-4fe3fe23de57.png" width="300">  
+나쁜 해시 함수는 값들이 뭉쳐져 있어서 충돌이 자주 발생한다.  
+<img src="https://user-images.githubusercontent.com/87808288/179680920-7a6e5870-e115-44e7-9ef0-95804c6d0f8c.png" width="300">  
 
 <!-- <span style="color:royalblue"> -->
 
