@@ -1,49 +1,26 @@
 ---
 layout: single
-title: "2022년 07월 20일 (수) 데일리 리포트"
+title: "The Web Developer CSS -> 11장 가격표 만들기 프로젝트"
 # categories: Git
 categories:
-  - dailyReport # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [데일리 리포트] #tag는 여러개 가능함
+  - CSS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [The Web Developer CSS] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-07-20T06:50:00+09:00
+date: 2022-07-20T13:50:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 오전
-0700 ~ 0805: coding test -> <span style="color:royalblue">집중도 중</span>  
-0850 ~ 0915: 영어단어 -> <span style="color:royalblue">집중도 중</span>  
-0950 ~ 1030: 독석 -> <span style="color:royalblue">집중도 중</span>  
-1030 ~ 1100: CSS -> <span style="color:royalblue">집중도 중</span>
-1125 ~ 1200: CSS -> <span style="color:royalblue">집중도 중</span>  
-
-# 오후
-1320 ~ 1450: CSS -> <span style="color:royalblue">집중도 중</span>  
-1520 ~ 1540: CSS -> <span style="color:royalblue">집중도 중</span>  
-1600 ~ 1640: 무산소 운동  
-1650 ~ 1740: 모던자바스크립트 2회독 -> <span style="color:royalblue">집중도 중</span>  
-1755 ~ 1820: 모던자바스크립트 2회독 -> <span style="color:tomato">집중도 하</span>  
-1830 ~ :
-
-# 결산
-오늘의 `순 생산성 시간`: <span style="color:blue"> 6시간 55분</span>  
-
-# 소감
-
-<!-- <span style="color:royalblue"> -->
-
-<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ Ω-->
-
-<!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 --> 
+# 11장 가격표 만들기 프로젝트
+## 1. 
 
 <!-- ### 2. Link 넣기
 
 ```
 
 유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/> 
+유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
 ```
