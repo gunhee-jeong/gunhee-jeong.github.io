@@ -109,7 +109,7 @@ item3 {
 ```
 
 ### (2) flex-grow
-`flex-grow`는 <span style="color:blue">공간이 남아 있을 때</span>, 요소가 그 공간을 얼마나 차지할지 정하게 된다.  
+`flex-grow`는 <span style="color:blue">공간이 남아 있을 때</span>, 요소가 <span style="color:tomato">그 공간을 얼마나 차지할지</span> 정하게 된다.  
 flex-grow와 flex-shrink는 단위가 없다.  
 
 <img src="https://user-images.githubusercontent.com/87808288/179657635-d4fa7489-0b00-4d53-ba29-b81099315e4c.png" width="600">  
@@ -340,6 +340,126 @@ h1 {
   }
 }
 ```
+
+아래의 코드와 같이 orientation을 설정하여 가로 모드를 지원할 수도 있다.  
+
+```css
+@media(orientation: landscape) {
+  body {
+    background-color: magenta;
+  }
+}
+```
+
+## 10. 반응형 내비게이션 바 만들기
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex-basis, grow, shrink</title>
+  <link rel="stylesheet" href="app.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav>
+    <a href="#home">Home</a>
+    <ul>
+      <li>
+        <a href="#Home">Learn More</a>
+      </li>
+      <li>
+        <a href="#Home">About</a>
+      </li>
+      <li>
+        <a href="#Home">Contact</a>
+      </li>
+    </ul>
+    <a href="#signup">Sign Up</a>
+  </nav>
+  <h1>Media Queries</h1>
+</body>
+```
+
+```css
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 6em;
+  text-align: center;
+}
+
+nav {
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul, li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  border: 1px solid black;
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+```
+
+CSS 코드의 <span style="color:green">ul {}</span>에서 <span style="color:green">flex: 1</span>을 사용하면 -> flex-grow를 1로 사용한다는 것이다.  
+`grow`는 <span style="color:tomato">공간이 남아 있을 때</span>, 요소가 <u>그 공간을 얼마나 차지할지 정하게</u> 된다.  
+그렇게 ul 태그는 남은 공간을 다 사용하게 되고, 아래의 이미지와 같이 보이게 된다.  
+<img src="https://user-images.githubusercontent.com/87808288/179898245-25fa0fd4-6ab1-4aaa-8311-c0da2f6a5cd9.png" width="100%">  
+<span style="color:green">max-width: 50%</span>를 지정하면 <span style="color:blue">ul 태그는 1의 공간에서 50%를 차지</span>하여 아래의 이미지와 같이 공간을 할당하게 된다.  
+<img src="https://user-images.githubusercontent.com/87808288/179897542-15c04940-f5bf-414c-9327-1ca03e28f064.png" width="100%">  
+
+```css
+@media(max-width: 768px) {
+  h1 {
+    color: red;
+    font-size: 4em;
+  }
+  
+  nav, nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+} *
+```
+
+그리고 위의 CSS 코드를 추가하면  
+브라우저가 <u>0px에서 max-width가 768px</u> 까지는 <span style="color:green">color:red</span>,  
+&lt;nav&gt;와 &lt;ul&gt;는 flex-direction이 column과 align-items: center로 설정한다.  
+<img src="https://user-images.githubusercontent.com/87808288/179899152-feefe6a4-bb52-4b82-878b-832c4b195f1d.png" width="50%">  
+
+위의 CSS 코드가 아닌 아래의 CSS 코드를 사용하면
+
+```css
+@media(max-width: 768px) {
+  body {
+    width: 768px;
+  }
+
+  h1 {
+    color: red;
+    font-size: 4em;
+  }
+}
+```
+
+브라우저가 0 ~ 768px일 때 화면이 더 이상 줄어들지 않고  
+고정될 수 있도록 설정할 수 있다.  
+<img src="https://user-images.githubusercontent.com/87808288/179899658-d8ca91e8-cf27-45ae-8550-340e21f24c47.png" width="70%">  
 
 <!-- ### 2. Link 넣기
 
