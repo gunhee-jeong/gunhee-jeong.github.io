@@ -100,7 +100,7 @@ Index와 HEAD의 다른 파일들이 여기에서 표시된다.
 그리고 Index의 내용을 워킹 디렉토리로 복사한다.  
 
 ## 3. Reset 알아보기
-### (1) Reest의 역할
+### (1) reset --soft
 예를 들어 file.txt 파일 하나를 수정하고 커밋한다. -> 이것을 세 번 반복한다.  
 <img src="https://user-images.githubusercontent.com/87808288/169646158-49719a13-6734-4114-ac61-22b6a4216c32.png" width="500">  
 
@@ -155,12 +155,40 @@ Git에는 데이터를 실제로 삭제하는 방법은 많이 없는데, 위의
 HEAD의 브랜치를 옮기는 것은 건너뛰고, <span style="color:tomato">Index를 HEAD가 가리키는 상태로</span> 만든다.  
 <img src="https://user-images.githubusercontent.com/87808288/169648087-07eeeb4a-2185-4c06-a0c4-1a67b87b101d.png" width="500">  
 
+# 3장 revert
+<img src="https://user-images.githubusercontent.com/87808288/179989610-a31c4932-635f-41bc-85c0-12fdfa2e0bcf.png" width="35%">
+<img src="https://user-images.githubusercontent.com/87808288/179988388-6362cedb-1f5f-4db5-ac7f-acb379c5df9b.png" width="30%">
+<img src="https://user-images.githubusercontent.com/87808288/179990353-9554b847-b6d7-4c73-8a6f-4c70e30273ca.png" width="30%">  
+<span style="color:green">git reset --hard A</span>의 경우에는 HEAD, staging area, working directory 모두를 A로 바꾸는 작업이고,  
+<span style="color:green">git revert B</span>는 <span style="color:blue">B commit 내용만을 제거</span>하는 작업이다.  
+결과적으로 `reset`은 <u>history를 삭제</u>하는 효과를 가져오고  
+`revert`는 <span style="color:tomato">history를 기록</span>하며 reset과 같은 결과를 가져오는 것이다.  
 
+<img src="https://user-images.githubusercontent.com/87808288/179992875-3c18763e-8d8f-4dd4-8409-3a0e0f67ff24.png" width="60%">  
+위의 상태에서 <span style="color:green">git reset --hard bbb1ded</span>를 하면 아래의 이미지와 같은 결과가 나온다.  
+<u>work 2 - fail</u> commit이 <span style="color:blue">삭제된 것처럼</span> 결과가 나온다.  
+<img src="https://user-images.githubusercontent.com/87808288/179993396-9a41ee85-1fb5-4fe7-98fe-2370d39cf41b.png" width="50%">  
 
+다시 아래의 상태에서 이제 <span style="color:green">git revert bbb1ded</span>를 실행하면  
+<img src="https://user-images.githubusercontent.com/87808288/179992875-3c18763e-8d8f-4dd4-8409-3a0e0f67ff24.png" width="60%">  
+이렇게 아래의 이미지처럼 <u>Revert "work 2 - fail"</u>이라는 commit이 남았다.  
+<img src="https://user-images.githubusercontent.com/87808288/179994206-1d4d9f5b-65ea-4349-adb3-735c3a46115c.png" width="60%">  
+<u>Revert "work 2 - fail"</u> commit의 내용을 살펴보면 -> "2 - fail"이라는 내용은 삭제되고  
+<span style="color:royalblue">work 1 commit의 기록만</span>이 존재하는 것을 확인할 수 있다.  
 
+하지만 아래와 이미지와 같은 조금은 복잡한 상황이 있다.  
+<img src="https://user-images.githubusercontent.com/87808288/180004338-bae85cc8-9f8b-42c3-87e9-5ffbd409d9ce.png" width="60%">  
+<u>B commit</u>의 코드에서 <span style="color:tomato">fail이라고 하는 버그</span>가 있었는데  
+이를 확인하지 못하고 C commit이 진행되었고  
+B commit의 내용에 <span style="color:blue">추가적으로 success라는 코드까지 추가</span>되어 commit 되었고 <u>D commit이 완성</u>되었다.  
+현재 상황에서 우리는 "2 fail"은 삭제해야하지만 "success"는 살려두어야하는 것이다.  
 
-
-
+위의 복잡한 상황을 해결하기 위해서 "<span style="color:red">3 way merge</span>"라는 개념을 알고있어야 한다.  
+<img src="https://user-images.githubusercontent.com/87808288/180007514-a10c4d22-6520-49bb-a152-6af2819fe702.png" width="60%">  
+git은 merge를 진행할 때 -> <span style="color:tomato">base를 포함</span>하여 3 way merge를 진행한다.  
+<span style="color:blue">3개의 commit을 비교</span>하여 <span style="color:tomato">3자가 모두 다를 때</span> git은 merge 중에 <span style="color:red">conflict을 발생</span>시켜  
+merge의 결과를 <u>사용자가 지정하도록 설정</u>하는 것ㄹ이다.  
+<!-- git revert -> 3번째 강의 6분 50초 부터...... -->
 
 
 <!-- ### 2. Link 넣기
