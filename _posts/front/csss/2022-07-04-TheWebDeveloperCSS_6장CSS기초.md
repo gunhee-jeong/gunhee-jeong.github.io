@@ -30,7 +30,62 @@ date: 2022-07-04T08:20:00+09:00
 
 stylesheet가 들어가는 자리는 언제나 &lt;head&gt;에 &lt;link&gt;로 연결한다.  
 
-## 2. 일반 텍스트 속성
+## 2. CSS layout
+### (1) display
+#### [block]
+<img src="https://user-images.githubusercontent.com/87808288/180231807-9f3de22c-67a2-47ca-926b-57ad8e0b8c0c.png" width="100%">  
+
+```css
+span.c {
+  display: block;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid blue;    
+  background-color: yellow; 
+}
+```
+
+display: `block`;에서는 <span style="color:tomato">width와 height를 줄 수</span> 있지만 <span style="color:red">element가 한 줄을 모두 차지</span>하게 된다.  
+<u>padding 속성도 넣어줄 수</u> 있다.  
+#### [inline]
+<img src="https://user-images.githubusercontent.com/87808288/180230117-f63b2af8-282b-4b65-af0a-5e7be1d61f94.png" width="100%">  
+
+```css
+span.a {
+  display: inline; /* the default for span */
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid blue;  
+  background-color: yellow; 
+}
+```
+
+display:`inline`;은 &lt;span&gt;의 기본적인 display 속성이다.  
+
+상하좌우에 <span style="color:blue">padding</span>을 주어도 <span style="color:tomato">상하에만 padding이 적용</span>된다.  
+또한 <span style="color:red">width</span>와 <span style="color:red">height</span>가 <u>적용되지 않는다</u>.  
+
+
+#### [inline-block]
+<img src="https://user-images.githubusercontent.com/87808288/180242329-d36d1d5a-a96d-443f-8d86-a6092c1b3a51.png" width="100%">  
+
+```css
+span.b {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border: 1px solid blue;    
+  background-color: yellow; 
+}
+```
+
+display: inline;과 비교하여 차이점은 element의 <span style="color:blue">width</span>와 <span style="color:blue">height</span>를 <u>설정할 수 있다는 것</u>이다.  
+또한 `inline-block`을 사용하면 <span style="color:tomato">상하의 margin과 padding을 사용할 수</span> 있지만 inline에서는 사용할 수 없다.  
+
+## 3. 일반 텍스트 속성
 ### (1) text-align
 텍스트의 정렬  
 
@@ -49,7 +104,19 @@ stylesheet가 들어가는 자리는 언제나 &lt;head&gt;에 &lt;link&gt;로 �
 픽셀(px)은 가장 흔히 사용되는 <span style="color:royalblue">절대 단위</span>이다.  
 픽셀로 font가 지정되면 어느곳이든 <span style="color:blue">동일한 크기</span>를 유지하게 된다.  
 
-## 3. font family
+### (6) letter-spacing
+```css
+div {
+  letter-spacing: 1px;
+}
+```
+
+letter-spacing은 <span style="color:blue">글자 간의 간격을 전체적으로 늘려주는</span> 역할을 한다.  
+<img src="https://user-images.githubusercontent.com/87808288/180222324-481e0a67-2e9d-4479-9348-c5b6c77fc8c4.png" width="40%">
+<img src="https://user-images.githubusercontent.com/87808288/180222392-18e5efe6-df47-4a00-b53f-80465351271a.png" width="34%">  
+
+
+## 4. font family
 
 <!-- <span style="color:royalblue"> -->
 

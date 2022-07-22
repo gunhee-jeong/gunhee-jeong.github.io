@@ -308,7 +308,14 @@ button:active {
 }
 ```
 
-## 9. 가상 요소 Pseudo Elements
+## 9. 가상 선택자 Pseudo class
+### (1) last-child
+`last-child`는 <u>형제 요소 그룹 중</u> <span style="color:tomato">마지막 요소</span>를 선택한다.  
+
+web 버전에서는 문제가 되지 않다가  
+mobile 환경에서는 column으로 변경되면서 <u>가장 마지막 element</u>이 <span style="color:royalblue">border를 제거</span>할 때 자주 사용된다.  
+
+## 10. 가상 요소 Pseudo Elements
 ### (1) ::first-letter
 &lt;section&gt; 안에 모든 &lt;h2&gt; 안의 요소 중 첫 글자를 선택하고자 한다.  
 
@@ -402,7 +409,7 @@ p::selection {
 }
 ```
 
-## 10. 우선순위 CSS
+## 11. 우선순위 CSS
 주어진 선택자가 구체적일수록 그 우선순위가 높아지게 된다.  
 기본적으로 id 선택자(#)가 그 우선순위에 있어서 100점으로 가장 높고
 그 이후는 class 선택자(*)이다.  
@@ -410,11 +417,11 @@ p::selection {
 - Classes, attributes and pseudo-classes
 - Elements and pseudo-elements
 
-## 11. 인라인 스타일과 중요도
+## 12. 인라인 스타일과 중요도
 인라인 스타일 방식의 CSS는 id 선택자보다도 우선순위가 높다.  
 따라서 인라인 스타일 방식의 CSS를 사용하는 것은 바람직하지 못하다.  
 
-## 12. 상속 CSS
+## 13. 상속 CSS
 CSS 상속이란 구체적인 특성을 지정하지 않은 하위 요소에 상위 항목 특성이 적용되는 것을 말한다.  
 
 
