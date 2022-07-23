@@ -21,7 +21,7 @@ checkout은 <span style="color:blue">master branch가 가리키는 commit은 바
 
 `reset`은 <u>HEAD는 바꾸지 않고</u> <span style="color:tomato">branch가 가리키는 것을 바꾸게</span> 된다.  
 reset의 결과로는 HEAD와 branch 모두 C commit을 가리키지 않고 있어  
-"git log"를 해보면 결과적으로 마치 삭제된 것처럼 보이게 된다.  
+"git log"를 해보면 결과적으로 마치 <span style="color:blue">삭제된 것처럼 보이게</span> 된다.  
 <img src="https://user-images.githubusercontent.com/87808288/179532362-5659964e-88bb-4593-a1ec-eaf613f67c20.png" width="300">
 <img src="https://user-images.githubusercontent.com/87808288/179532627-a59bd53e-987f-46ed-a588-ab33e5af5b80.png" width="315">  
 
@@ -187,8 +187,12 @@ B commit의 내용에 <span style="color:blue">추가적으로 success라는 코
 <img src="https://user-images.githubusercontent.com/87808288/180007514-a10c4d22-6520-49bb-a152-6af2819fe702.png" width="60%">  
 git은 merge를 진행할 때 -> <span style="color:tomato">base를 포함</span>하여 3 way merge를 진행한다.  
 <span style="color:blue">3개의 commit을 비교</span>하여 <span style="color:tomato">3자가 모두 다를 때</span> git은 merge 중에 <span style="color:red">conflict을 발생</span>시켜  
-merge의 결과를 <u>사용자가 지정하도록 설정</u>하는 것ㄹ이다.  
-<!-- git revert -> 3번째 강의 6분 50초 부터...... -->
+merge의 결과를 <u>사용자가 지정하도록 설정</u>하는 것이다.  
+
+<img src="https://user-images.githubusercontent.com/87808288/180004338-bae85cc8-9f8b-42c3-87e9-5ffbd409d9ce.png" width="40%">
+<img src="https://user-images.githubusercontent.com/87808288/180604627-d6520b5c-1497-4f44-bb84-f1df9de53835.png" width="50%">  
+
+<img src="https://user-images.githubusercontent.com/87808288/180604749-e3397dde-3cdd-4996-9152-243e38cbfeb1.png" width="60%">  
 
 
 <!-- ### 2. Link 넣기
