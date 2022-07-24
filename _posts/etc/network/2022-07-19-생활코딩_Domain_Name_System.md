@@ -70,6 +70,23 @@ Top-level 도메인을 담당하는 서버는 example.com.으로 끝나기 때�
 그렇게 최종적으로는 sub 도메인을 담당하고 있는 네임 서버에 접속하게 된다.  
 <img src="https://user-images.githubusercontent.com/87808288/179777415-aef12414-052a-41f2-a37b-1bac88e30bb4.png" width="80%">  
 
+## 5. 도메인 이름 등록 과정과 원리
+<img src="https://user-images.githubusercontent.com/87808288/180649240-6ba2af2e-3971-4f75-8687-1e36f115916f.png" width="100%">  
+실제로 <u>사이트의 도메인을 등록</u>하고 싶다면 ICANN에 바로 요청하는 것이 아니라 <span style="color:white; background:royalblue">등록대행자에게 요청</span>하게 된다.  
+
+<span style="color:white; background:tomato">Root name server</span>가 해야하는 가장 중요한 일은, 바로 <span style="color:white; background:blue">Top-level domain의 주소를 기억하는 것</span>이다.  
+
+사용자의 컴퓨터가 <u>example.com의 IP 주소가 무엇인지</u> <span style="color:white; background:royalblue">DNS Server</span>에게 물어보게 되고  
+DNS Server는 이것을 <span style="color:white; background:royalblue">Root Name Server에게 물어</span>본다.  
+하지만 Root Name Server는 example.com의 <span style="color:white; background:royalblue">IP 주소는 모르는 상태</span>이다.  
+그러나 <span style="color:white; background:blue">.com을 Top-level domain에서 관리하고 있다는 사실은 알고 있는</span> 것이다.  
+그리고 DNS Server에게 <span style="color:white; background:tomato">Top-level domain의 주소를 전달</span>한다.  
+그러면 다시 DNS Server는 Top-level domain에게 example.com의 IP 주소를 물어본다.  
+
+## 6. nslookup
+
+<!-- <span style="color:white; background:royalblue"> -->
+
 <!-- ### 2. Link 넣기
 
 ```
