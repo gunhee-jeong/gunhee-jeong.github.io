@@ -117,25 +117,25 @@ const list = {
 let queue = [...list.you];
 
 function searchM(x) {
-	if (x[x.length - 1] === 'm') return true;
+  if (x[x.length - 1] === 'm') return true;
   else return false;
 }
 
 while (queue.length) {
-	if (searchM(queue[0])) {
-		console.log(`${queue[0]} is a mango seller!`);
-	break;
-	} else {
+  if (searchM(queue[0])) {
+    console.log(`${queue[0]} is a mango seller!`);
+    break;
+  } else {
     if (list[queue[0]] !== undefined) {
-			queue.push(...list[queue[0]]);
-			queue = queue.filter(ele => queue[0] !== ele);
-    	queue = [...new Set(queue)];
+      queue.push(...list[queue[0]]);
+      queue = queue.filter(ele => queue[0] !== ele);
+      queue = [...new Set(queue)];
     } else queue = queue.filter(ele => queue[0] !== ele);
-	}
+  }
 }
 ```
 
-<!-- <span style="color:royalblue"> -->
+<!-- <span style="color:white;background:royalblue;"> -->
 
 <!-- ### 2. Link 넣기
 
