@@ -69,13 +69,6 @@
             </ul>
             <ul>
               {% for category in site.categories %}
-                    {% if category[0] == "developmentBook" %}
-                        <li><a href="/categories/developmentBook" class="">개발서적 ({{category[1].size}})</a></li>
-                    {% endif %}
-              {% endfor %}
-            </ul>
-            <ul>
-              {% for category in site.categories %}
                     {% if category[0] == "Memoir" %}
                         <li><a href="/categories/memoir" class="">회고록 ({{category[1].size}})</a></li>
                     {% endif %}
@@ -128,6 +121,42 @@
                 {% for category in site.categories %}
                     {% if category[0] == "leetCode_easy" %}
                         <li><a href="/categories/leetCode_easy" class="">leetCode_easy 단계 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        <span class="nav__sub-title">BOOKS</span>
+            <ul>
+              {% for category in site.categories %}
+                    {% if category[0] == "developmentBook" %}
+                        <li><a href="/categories/developmentBook" class="">coding ({{category[1].size}})</a></li>
+                    {% endif %}
+              {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "selfDevelopment" %}
+                        <li><a href="/categories/selfDevelopment" class="">자기개발 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "economy" %}
+                        <li><a href="/categories/economy" class="">경제 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "health" %}
+                        <li><a href="/categories/health" class="">건강 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "leterature" %}
+                        <li><a href="/categories/leterature" class="">문학 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
