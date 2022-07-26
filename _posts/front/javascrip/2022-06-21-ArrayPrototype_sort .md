@@ -18,7 +18,7 @@ sort 를 사용하기 전 기본적인 용어를 우선 살펴보자면
 - 내림차순: 9, 8, 7, 6, 5......
 
 ## 1. 정렬 알고리즘: Stable & In-Place(안정 & 불안정)
-"<span style="color:tomato">안정 정렬</span>"과 "<span style="color:tomato">불안정 정렬</span>"은 중복된 키를 순서대로 정렬하는 정렬 알고리즘을 말한다.  
+<span style="color:ivory;background:tomato">안정 정렬</span>과 <span style="color:ivory;background:tomato">불안정 정렬</span>은 중복된 키를 순서대로 정렬하는 정렬 알고리즘을 말한다.  
 
 `안정 정렬`이란 <span style="color:royalblue">중복된 값</span>을 <span style="color:tomato">입력 순서와 동일하게 정렬하는 것</span>을 말하는데,  
 기존의 정렬 형태를 유지한 상태에서 정렬한다는 것을 의미한다.  

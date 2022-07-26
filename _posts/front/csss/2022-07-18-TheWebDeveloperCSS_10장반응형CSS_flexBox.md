@@ -295,8 +295,8 @@ view port는 컴퓨터 그래픽에 있는 polygonal 영역을 말한다.
 }
 ```
 
-위의 코드를 저장하고 실행해보면 브라우저가 300px일 때도 color는 orange이다.  
-왜냐하면 media queries의 조건문의 순서에서 max-width가 1000px이기 때문이다.  
+<u>위의 코드</u>를 저장하고 실행해보면 <span style="color:ivory;background:royalblue">브라우저가 300px일 때도 color는 orange</span>이다.  
+왜냐하면 media queries의 <span style="color:ivory;background:tomato">조건문의 순서</span>에서 max-width가 1000px이기 때문이다.  
 
 ```css
 @media (max-width: 1000px) {
@@ -315,7 +315,7 @@ view port는 컴퓨터 그래픽에 있는 polygonal 영역을 말한다.
 위의 코드와 같이 max-width: 500px이 코드의 가장 아래에 있으면  
 화면의 width가 최대 500px까지는 red color이고 500px이 넘고 1000px 이하에서는 orange color로 나온다.  
 
-이렇게 CSS 코드를 역방향으로 사용하지 않기 위해서는 아래의 코드와 같이 min-width를 사용할 수 있다.  
+이렇게 CSS 코드를 <span style="color:ivory;background:blue">역방향으로 사용하지 않기 위해</span>서는 아래의 코드와 같이 <span style="color:ivory;background:red">min-width</span>를 사용할 수 있다.  
 
 ```css
 h1 {

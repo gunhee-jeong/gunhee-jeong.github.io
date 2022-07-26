@@ -155,8 +155,8 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "leterature" %}
-                        <li><a href="/categories/leterature" class="">문학 ({{category[1].size}})</a></li>
+                    {% if category[0] == "literature" %}
+                        <li><a href="/categories/literature" class="">문학 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
