@@ -62,7 +62,37 @@ date: 2022-07-24T21:00:00+09:00
 
 
 
+<style>
+.red {
+  color: ivory;
+  background-color: red;
+}
 
+.tomato {
+  color: ivory;
+  background-color: tomato;
+}
+
+.blue {
+  color: ivory;
+  background-color: blue;
+}
+
+.royalblue {
+  color: ivory;
+  background-color: royalblue;
+}
+
+.forestgreen {
+  color: ivory;
+  background-color: forestgreen;
+}
+
+.darkorange {
+  color: ivory;
+  background-color: darkorange;
+}
+</style>
 
 <!-- <span style="color:white;background:royalblue;"> -->
 
