@@ -73,6 +73,38 @@ git tag 1.1
 git branch -d hotfixes/1.1
 ```
 
+<style>
+.red {
+  color: ivory;
+  background-color: red;
+}
+
+.tomato {
+  color: ivory;
+  background-color: tomato;
+}
+
+.blue {
+  color: ivory;
+  background-color: blue;
+}
+
+.royalblue {
+  color: ivory;
+  background-color: royalblue;
+}
+
+.forestgreen {
+  color: ivory;
+  background-color: forestgreen;
+}
+
+.darkorange {
+  color: ivory;
+  background-color: darkorange;
+}
+</style>
+
 <!-- ### 2. Link 넣기
 
 ```

@@ -227,6 +227,38 @@ arr.forEach((el) => {
     0번 index의 value를 가져오면서 각각 년, 월, 일을 추가하여  
     최종적으로 map method의 반환 값은 ['2019년 03월 21일', '2019년 04월 21일', '2019년 05월 21일']이 된다!
 
+<style>
+.red {
+  color: ivory;
+  background-color: red;
+}
+
+.tomato {
+  color: ivory;
+  background-color: tomato;
+}
+
+.blue {
+  color: ivory;
+  background-color: blue;
+}
+
+.royalblue {
+  color: ivory;
+  background-color: royalblue;
+}
+
+.forestgreen {
+  color: ivory;
+  background-color: forestgreen;
+}
+
+.darkorange {
+  color: ivory;
+  background-color: darkorange;
+}
+</style>
+
 <!-- ### 2. Link 넣기
 
 ```

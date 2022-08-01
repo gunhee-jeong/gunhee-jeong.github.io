@@ -94,6 +94,38 @@ join을 사용하면서 괄호() 안에 구분 기호 문자를 넣어서 사용
 ```  
 <u>콤마(,)</u> 대신에 해당 <span style="color:blue">구분 기호 문자가</span> 결과로 들어가게 된다.  
 
+<style>
+.red {
+  color: ivory;
+  background-color: red;
+}
+
+.tomato {
+  color: ivory;
+  background-color: tomato;
+}
+
+.blue {
+  color: ivory;
+  background-color: blue;
+}
+
+.royalblue {
+  color: ivory;
+  background-color: royalblue;
+}
+
+.forestgreen {
+  color: ivory;
+  background-color: forestgreen;
+}
+
+.darkorange {
+  color: ivory;
+  background-color: darkorange;
+}
+</style>
+
 <!-- ### 2. Link 넣기
 
 ```
