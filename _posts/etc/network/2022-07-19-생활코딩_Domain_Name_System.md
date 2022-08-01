@@ -85,6 +85,38 @@ DNS Server는 이것을 <span style="color:white; background:royalblue">Root Nam
 
 ## 6. nslookup
 
+<style>
+.red {
+  color: ivory;
+  background-color: red;
+}
+
+.tomato {
+  color: ivory;
+  background-color: tomato;
+}
+
+.blue {
+  color: ivory;
+  background-color: blue;
+}
+
+.royalblue {
+  color: ivory;
+  background-color: royalblue;
+}
+
+.forestgreen {
+  color: ivory;
+  background-color: forestgreen;
+}
+
+.darkorange {
+  color: ivory;
+  background-color: darkorange;
+}
+</style>
+
 <!-- <span style="color:white; background:royalblue"> -->
 
 <!-- ### 2. Link 넣기

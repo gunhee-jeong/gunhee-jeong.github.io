@@ -77,6 +77,38 @@ var getDecimalValue = function(head) {
 
 <img src="https://user-images.githubusercontent.com/87808288/176981090-a89b5c9f-31fa-47bf-b89d-6c241c29be4c.png" width="600">  
 
+<style>
+.red {
+  color: ivory;
+  background-color: red;
+}
+
+.tomato {
+  color: ivory;
+  background-color: tomato;
+}
+
+.blue {
+  color: ivory;
+  background-color: blue;
+}
+
+.royalblue {
+  color: ivory;
+  background-color: royalblue;
+}
+
+.forestgreen {
+  color: ivory;
+  background-color: forestgreen;
+}
+
+.darkorange {
+  color: ivory;
+  background-color: darkorange;
+}
+</style>
+
 <!-- <span style="color:royalblue"> -->
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->

@@ -79,6 +79,38 @@ console.log(arr); //[1, 20, 30, 4]
 
 <img src="https://user-images.githubusercontent.com/87808288/170851398-60d09f26-2ea3-4f39-a89f-acb7c1367592.png" width="500">  
 
+<style>
+.red {
+  color: ivory;
+  background-color: red;
+}
+
+.tomato {
+  color: ivory;
+  background-color: tomato;
+}
+
+.blue {
+  color: ivory;
+  background-color: blue;
+}
+
+.royalblue {
+  color: ivory;
+  background-color: royalblue;
+}
+
+.forestgreen {
+  color: ivory;
+  background-color: forestgreen;
+}
+
+.darkorange {
+  color: ivory;
+  background-color: darkorange;
+}
+</style>
+
 <!-- ### 2. Link 넣기
 
 ```

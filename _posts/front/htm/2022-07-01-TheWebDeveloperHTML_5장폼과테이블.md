@@ -616,6 +616,38 @@ rows 속성을 사용하면 원하는 기본값으로 줄을 제공할 수 있�
 </html>
 ```
 
+<style>
+.red {
+  color: ivory;
+  background-color: red;
+}
+
+.tomato {
+  color: ivory;
+  background-color: tomato;
+}
+
+.blue {
+  color: ivory;
+  background-color: blue;
+}
+
+.royalblue {
+  color: ivory;
+  background-color: royalblue;
+}
+
+.forestgreen {
+  color: ivory;
+  background-color: forestgreen;
+}
+
+.darkorange {
+  color: ivory;
+  background-color: darkorange;
+}
+</style>
+
 <!-- <span style="color:royalblue"> -->
 
 <!-- ### 2. Link 넣기
