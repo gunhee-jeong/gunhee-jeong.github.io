@@ -1,48 +1,49 @@
 ---
 layout: single
-title: "String.prototype"
+title: "Guard Clause"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [String.prototype] #tag는 여러개 가능함
+tag: [클린코드] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-06-21T09:40:00+09:00
+date: 2022-08-05T19:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 1. String.prototype.toUpperCase()
-`toUpperCase()` 메서드는 문자열을 <span style="color:red">대문자로 변환</span>해준다.  
+# 1. Guard Clause?
+<span class="tomato">if/ else 문</span>이 복잡하고 <span class="red">중첩될수록 가독성을 해치게</span> 된다.  
 
 ```js
-const words = 'hello world';
-const result = words.toUpperCase();
-console.log(result); //'HELLO WORLD'
+// Guard Clause 사용전
+function getPayAmount() {
+  let result;
+  if (isDead)
+    result = deadAmount();
+  else {
+    if (isSeparated)
+      result = separatedAmount();
+    else {
+      if (isRetired)
+        result = retiredAmount();
+      else
+        result = normalPayAmount();
+    }
+  }
+  return result;
+}
 ```
-
-# 2. String.prototype.toLowerCase()
-`toLowerCase()` 메서드는 문자열을 <span style="color:red">소문자로 변환</span>해준다.  
 
 ```js
-const words = 'HELLO WORLD';
-const result = words.toLowerCase();
-console.log(result); //'hello world'
+// Guard Clause 사용후
+function getPayAmount() {
+  if (isDead) return deadAmount();
+  if (isSeparated) return separatedAmount();
+  if (isRetired) return retiredAmount();
+  return normalPayAmount();
+}
 ```
-
-# 3. String.prototype.charCodeAt()
-`charCodeAt()` 메서드는 주어진 인덱스에 대한 <span style="color:red">UTF-16 코드</span>를 나타내는 65535 사이의 <u>정수를 반환</u>한다.  
-알파벳 등의 string을 <span style="color:tomato">아스키 코드의 정수로 반환</span>해준다.  
-
-# 4. String.prototype.substring()
-`substring 메서드`는 string 객체의 <u>시작 인덱스부터</u> <span style="color:blue">종료 인덱스 전까지 문자열</span>의 부분 문자열을 반환한다.  
-
-```js
-const testString = "Apple";
-console.log(testString.substring(3, 4));  //'l'
-```
-
-substring(3, 4)를 하게 되면 -> 3번 인덱스부터 4번 인덱스 전까지인 'l'을 반환하게 된다.  
 
 <style>
 .red {

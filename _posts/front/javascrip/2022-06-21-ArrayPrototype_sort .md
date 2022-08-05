@@ -158,6 +158,38 @@ console.log(list);
 // 5: [2, 80, 33.333333, 1]
 ```
 
+<style>
+.red {
+  color: red;
+  font-weight: bold;
+}
+
+.tomato {
+  color: tomato;
+  font-weight: bold;
+}
+
+.blue {
+  color: blue;
+  font-weight: bold;
+}
+
+.royalblue {
+  color: royalblue;
+  font-weight: bold;
+}
+
+.forestgreen {
+  color: foresgreen;
+  font-weight: bold;
+}
+
+.darkorange {
+  color: darkorange;
+  font-weight: bold;
+}
+</style>
+
 <!-- <span style="color:royalblue"> -->
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->

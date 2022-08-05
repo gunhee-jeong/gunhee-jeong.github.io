@@ -1,48 +1,55 @@
 ---
 layout: single
-title: "String.prototype"
+title: "vsCode settings 파일 설정"
 # categories: Git
 categories:
-  - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [String.prototype] #tag는 여러개 가능함
+  - Tool # HTML CSS JavaScript Server Algorithm Wecode Programmers CS vsCode
+tag: [vsCode, 단축키] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-06-21T09:40:00+09:00
+date: 2022-08-05T12:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 1. String.prototype.toUpperCase()
-`toUpperCase()` 메서드는 문자열을 <span style="color:red">대문자로 변환</span>해준다.  
+# 1장 settings.json
 
-```js
-const words = 'hello world';
-const result = words.toUpperCase();
-console.log(result); //'HELLO WORLD'
+```json
+{
+  "workbench.colorTheme": "Material Theme Darker High Contrast",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.tokenColorCustomizations": {
+    "variables": "#56B37F",
+    "comments": "#ffc2c2"
+  },
+  "launch": {
+    "configurations": [],
+    "compounds": []
+  },
+  "json.schemas": [],
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "bracket-pair-colorizer-2.depreciation-notice": false,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "files.eol": "\n",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  "terminal.external.osxExec": "iTerm.app",
+  "editor.fontFamily": "MesloLGS NF, Menlo, Monaco, 'Courier New', monospace",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+  },
+  "editor.formatOnSave": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false
+}
+
 ```
-
-# 2. String.prototype.toLowerCase()
-`toLowerCase()` 메서드는 문자열을 <span style="color:red">소문자로 변환</span>해준다.  
-
-```js
-const words = 'HELLO WORLD';
-const result = words.toLowerCase();
-console.log(result); //'hello world'
-```
-
-# 3. String.prototype.charCodeAt()
-`charCodeAt()` 메서드는 주어진 인덱스에 대한 <span style="color:red">UTF-16 코드</span>를 나타내는 65535 사이의 <u>정수를 반환</u>한다.  
-알파벳 등의 string을 <span style="color:tomato">아스키 코드의 정수로 반환</span>해준다.  
-
-# 4. String.prototype.substring()
-`substring 메서드`는 string 객체의 <u>시작 인덱스부터</u> <span style="color:blue">종료 인덱스 전까지 문자열</span>의 부분 문자열을 반환한다.  
-
-```js
-const testString = "Apple";
-console.log(testString.substring(3, 4));  //'l'
-```
-
-substring(3, 4)를 하게 되면 -> 3번 인덱스부터 4번 인덱스 전까지인 'l'을 반환하게 된다.  
 
 <style>
 .red {
@@ -76,17 +83,11 @@ substring(3, 4)를 하게 되면 -> 3번 인덱스부터 4번 인덱스 전까�
 }
 </style>
 
-<!-- <span style="color:royalblue"> -->
-
-<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
-
-<!-- 메소드 위에 변수 선언, 메소드  안에 메소드, 메소드 끝나고 리턴 -->
-
 <!-- ### 2. Link 넣기
 
 ```
- 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github. io/)
+
+유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
 유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
@@ -101,7 +102,7 @@ substring(3, 4)를 하게 되면 -> 3번 인덱스부터 4번 인덱스 전까�
 2. 스페이스는 -로 바꾸고
 3. 대문자는 소문자로!
    그래서 ### 1. Header -> #1-header
- 
+
 ## Link: [google][https://www.google.com/]
 
 ### 3. 수평선
@@ -235,4 +236,5 @@ _기울여서_ -> 이탤릭체
 <summary>여기를 누르세요</summary>
 <div markdown="1">
 숨겨진 내용
+</div>
 </details> -->
