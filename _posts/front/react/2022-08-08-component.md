@@ -1,18 +1,101 @@
 ---
 layout: single
-title: "props"
+title: "components 컴포넌트"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [component, props] #tag는 여러개 가능함
+tag: [유데미 리액트 완벽 가이드] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
+date: 2022-08-08T10:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+# 1장 컴포넌트
+## 1. 컴포넌트 트리
+<span class="red">컴포넌트 트리</span>의 가장 맨 위에 중요한 컴포넌트인 <span class="tomato">App 컴포넌트</span>가 존재한다.  
+맨 위에 있는 컴포넌트만이 <span class="blue">리액트 돔 렌더의 지시로 HTML 페이지에 직접 렌더링</span>된다.  
 
-# Component
+<img src="https://user-images.githubusercontent.com/87808288/183323241-135a4c59-dd49-40ae-969e-86fd1ae6dbdd.png" width="30%">  
+이렇게 <span class="tomato">컴포넌트 트리의 가장 상위</span> 위치로 존재하는 <span class="blue">App.js는 src 폴더에</span> 존재하게 되고  
+<span class="royalblue">다른 컴포넌트 파일</span>들은 <span class="blue">components 폴더</span> 내에 위치하게 된다.  
+또한 컴포넌트가 되는 <span class="blue">파일들의 이름은 대문자</span>로 시작하는 단어로 생성하게 된다.  
+
+리액트에서 <span class="red">컴포넌트</span>는 결국 <span class="red">함수</span> 일뿐이다.  
+
+```jsx
+// ExpenseItem.js
+function ExpenseItem() {
+  return <h2>Expense item!</h2>
+}
+
+export default ExpenseItem;
+```
+
+그리고 이 <span class="royalblue">ExpenseItem 컴포넌트</span>를 App.js에 연결하여  
+<span class="blue">하나의 HTML 태그와 같이</span> ExpenseItem 컴포넌트를 사용할 수 있다.  
+
+```jsx
+// App.js
+import ExpenseItem from './components/ExpenseItem';
+
+function App() {
+  return (
+    <div>
+      <h2>Let's get started!</h2>
+      <ExpenseItem></ExpenseItem>
+    </div>
+  );
+}
+
+export default App;
+```
+
+## 2. CSS 파일 연결하기
+```jsx
+// ExpenseItem.js
+import './ExpenseItem.css';
+
+function ExpenseItem() {
+  return (
+    <div className='expense-item'>
+      <div>March 28th 2022</div>
+      <div className='expense-item__description'>
+        <h2>Car Insurance</h2>
+      </div>
+      <div className='expense-item__price'>$294.67</div>
+    </div>
+  )
+}
+
+export default ExpenseItem;
+```
+
+```css
+/* ExpenseItem.css */
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border-radius: 12px;
+  background-color: #4b4b4b;
+}
+
+/* ...... */
+```
+
+이렇게 css 파일을 만들고, <span class="blue">ExpenseItem.js 파일에 import</span>하는 방식으로 CSS 파일과 연결할 수 있다.  
+
+
+
+
+
+
+
 
 `Component`란 <span style="color:red">재사용이 가능한 UI 단위</span>를 말한다.
 
@@ -36,27 +119,6 @@ React는 component를 만들고 관리하기 좋은 라이브러리이다.
 
 React에서는 component를 class나 함수로 만들 수 있다.  
 어떤 경우에는 함수로 만들면 좋고, 어떤 경우에는 class로 만들어야만 한다.
-
-## 함수로 Welcome 컴포넌트 구현
-
-```java
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
-}
-```
-
-## class로 Wecome 컴포넌트 구현
-
-class로 컴포넌트를 만들려면 <span style="color:red">React.Component</span>를 extends해서 생성해야한다.  
-컴포넌트를 생성할 때 <span style="color:red">render() 메서드는 무조건 정의</span>해야하고, return도 해야한다.
-
-```java
-class Welcome extends React.Component {
-  render() {
-    return <h1>Hello, {this.props.name}</h1>;
-  }
-}
-```
 
 # Component 사용
 
@@ -188,6 +250,38 @@ function Comment(props) {
 ```
 
 ## reference
+
+<style>
+.red {
+  color: red;
+  font-weight: bold;
+}
+
+.tomato {
+  color: tomato;
+  font-weight: bold;
+}
+
+.blue {
+  color: blue;
+  font-weight: bold;
+}
+
+.royalblue {
+  color: royalblue;
+  font-weight: bold;
+}
+
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.darkorange {
+  color: darkorange;
+  font-weight: bold;
+}
+</style>
 
 <!-- ### 2. Link 넣기
 
