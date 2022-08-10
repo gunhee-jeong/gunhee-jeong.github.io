@@ -90,8 +90,126 @@ export default ExpenseItem;
 
 이렇게 css 파일을 만들고, <span class="blue">ExpenseItem.js 파일에 import</span>하는 방식으로 CSS 파일과 연결할 수 있다.  
 
+## 3. 컴포넌트 나누기
+```jsx
+// App.js
+import ExpenseItem from './components/ExpenseItem';
 
+const { log } = console;
 
+function App() {
+  const expenses = [
+    {
+      id: 'e1',
+      title: 'Toilet Paper',
+      amount: 94.12,
+      date: new Date(2020, 7, 14),
+    },
+    { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
+    {
+      id: 'e3',
+      title: 'Car Insurance',
+      amount: 294.67,
+      date: new Date(2021, 2, 28),
+    },
+    {
+      id: 'e4',
+      title: 'New Desk (Wooden)',
+      amount: 450,
+      date: new Date(2021, 5, 12),
+    },
+  ];
+
+  return (
+    <div>
+      <h2>Let's get started!</h2>
+      {expenses.map((listObj) => (
+        <ExpenseItem 
+          key={listObj.id}
+          title={listObj.title} 
+          amount={listObj.amount}
+          date={listObj}>
+        </ExpenseItem>
+      ))}
+    </div>
+  );
+}
+
+export default App; 
+```
+
+```jsx
+// ExpenseItem.js
+import './ExpenseItem.css';
+
+const {log} = console;
+
+function ExpenseItem({ title, amount, date }) {
+  const MONTH = date.date.toLocaleString('en-US', { month: 'long' });
+  const DAY = date.date.toLocaleString('en-US', { day: '2-digit' });
+  const YEAR = date.date.getFullYear();
+
+  return (
+    <div className='expense-item'>
+      <div>
+        <div>{MONTH}</div>
+        <div>{YEAR}</div>
+        <div>{DAY}</div>
+      </div>
+      <div className='expense-item__description'>
+        <h2>{title}</h2>
+        <div className='expense-item__price'>{amount}</div>
+      </div>
+    </div>
+  )
+}
+
+export default ExpenseItem;
+```
+
+위의 <span class="blue">ExpenseItem 컴포넌트</span>는 여러가지 태그들이 결합하여 조금은 <span class="royalblue">복잡한 형태의 컴포넌트</span>가 되었다.  
+그래서 이 ExpenseItem 컴포넌트를 조금 더 나누어주는 것이 좋다.  
+
+```jsx
+// ExpenseItem.js
+import './ExpenseItem.css';
+import ExpenseDate from './ExpenseDate'
+
+const {log} = console;
+
+export default function ExpenseItem({ title, amount, date }) {
+  return (
+    <div className='expense-item'>
+      <ExpenseDate
+        date={date}
+      />
+      <div className='expense-item__description'>
+        <h2>{title}</h2>
+        <div className='expense-item__price'>{amount}</div>
+      </div>
+    </div>
+  )
+}
+```
+
+```jsx
+// ExpenseDate.js
+export default function ExpenseDate({ date }) {
+  const { log } = console;
+
+  const MONTH = date.date.toLocaleString('en-US', { month: 'long' });
+  const DAY = date.date.toLocaleString('en-US', { day: '2-digit' });
+  const YEAR = date.date.getFullYear();
+
+  return (
+    <div>
+      <div>{MONTH}</div>
+      <div>{YEAR}</div>
+      <div>{DAY}</div>
+    </div>
+  );
+}
+```
 
 
 
