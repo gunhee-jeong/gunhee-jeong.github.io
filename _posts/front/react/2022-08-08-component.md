@@ -4,7 +4,7 @@ title: "components 컴포넌트"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [유데미 리액트 완벽 가이드] #tag는 여러개 가능함
+tag: [리액트 기초] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -208,6 +208,204 @@ export default function ExpenseDate({ date }) {
       <div>{DAY}</div>
     </div>
   );
+}
+```
+
+# 2장 컴포지션
+우리가 만든 <span class="royalblue">리액트 컴포넌트</span>에서도 구조적으로 <span class="tomato">중복되는 것</span>들이 발생한다.  
+<span class="blue">CSS</span>적인 것일 수도 있고, 컴포넌트의 <span class="blue">HTML 구조</span>가 중복될 수 있다.  
+
+아래의 이미지를 보면 전체 ExpenseItem을 감싸는 컨테이너(Expenses.js)가 보인다.  
+<img src="https://user-images.githubusercontent.com/87808288/183823502-8ec80c81-bbff-478a-9cf9-443de8c6fb7e.png" width="80%">  
+이렇게 expenseItem 자체를 감싸는 박스와 전체 expenseItem을 감싸는 컨테이너의 구조가 중복된다.  
+이런 모든 <span class="royalblue">컴포넌트</span>에서, <span class="blue">다시 재사용 가능한 블럭</span>을 갖도록 만들어 <span class="tomato">코드의 중복을 없애는 것</span>이 <span class="red">컴포지션</span>인 것이다.  
+
+이제 컴포지션을 만들기 위해 <span class="darkorange">Card 컴포넌트(Card.js)</span>를 생성한다. 그리고 Card.css를 연결한다.  
+<span class="blue">Expenses</span>와 <span class="blue">ExpenseItem</span>은 CSS적으로 <span class="forestgreen">border-radius</span>와 <span class="forestgreen">box-shadow</span>를 중복해서 스타일하고 있었다.  
+그래서 Expenses와 ExpenItem의 CSS 파일에서 위 두가지 CSS 스타일을 삭제하고  
+Card.css 파일에 추가할 수 있다.  
+
+```jsx
+// Card.js
+import './Card.css';
+
+export default function Card() {
+  return (
+    <div className='card'></div>
+  );
+}
+```
+
+```css
+/* card.css */
+.card {
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+```
+
+이렇게 <span class="tomato">Card 컨테이너 컴포넌트</span>를 만들고나면 Expenses 컴포넌트나 ExpenseItem 컴포넌트에  
+<span class="red">쉘과 같은 역할</span>을 할 수 있는 것이다.  
+기존의 Expenses 컴포넌트와 ExpenseItem 컴포넌트의 코드는 아래와 같다.  
+
+```jsx
+// Expenses.js
+import './Expenses.css';
+import ExpenseItem from './ExpenseItem';
+
+export default function Expenses({ data }) {
+
+  return (
+    <div className='expenses'>
+      {data.map((listObj) => (
+        <ExpenseItem 
+          key={listObj.id}
+          title={listObj.title} 
+          amount={listObj.amount}
+          date={listObj}>
+        </ExpenseItem>
+      ))}
+    </div>
+  );
+}
+```
+```jsx
+// ExpenseItem.js
+import './ExpenseItem.css';
+import ExpenseDate from './ExpenseDate';
+
+export default function ExpenseItem({ title, amount, date }) {
+  return (
+    <div className='expense-item'>
+      <ExpenseDate
+        date={date}
+      />
+      <div className='expense-item__description'>
+        <h2>{title}</h2>
+        <div className='expense-item__price'>{amount}</div>
+      </div>
+    </div>
+  )
+}
+```
+
+<span class="royalblue">Expenses 컴포넌트</span>와 <span class="royalblue">ExpenseItem 컴포넌트</span>의 <span class="blue">div 태그</span>를 <span class="tomato">Card 컴포넌트가 대체</span>할 수 있다.  
+실제로는 아래와 같이 사용된다.  
+
+```jsx
+// ExpenseItem.js
+import './ExpenseItem.css';
+import ExpenseDate from './ExpenseDate';
+import Card from './Card';
+
+export default function ExpenseItem({ title, amount, date }) {
+  return (
+    <Card className='expense-item'>
+      <ExpenseDate
+        date={date}
+      />
+      <div className='expense-item__description'>
+        <h2>{title}</h2>
+        <div className='expense-item__price'>{amount}</div>
+      </div>
+    </Card>
+  )
+}
+```
+
+<img src="https://user-images.githubusercontent.com/87808288/184049920-99edf69f-c6c6-42e3-81c4-80337bbb2590.png" width="100%">  
+그런데 위의 이미지와 같이 <span class="royalblue">.expenses의 div 태그만이 출력</span>되는 것을 확인할 수 있다.  
+그 이유는 ExpenseItem.js의 Card 컴포넌트 안에 <span class="blue">&lt;ExpenseDate&gt;와 다른 div 태그들이 들어가지 못했기 때문</span>이다.  
+사용자가 만든 사용자 지정 컴포넌트를 일종의 컨텐츠를 감싸는 래퍼로 사용할 수 없기 때문이다.  
+열고 닫는 태그 사이에 위의 코드와 같이 컨텐츠가 있으면 작동하지 않게 된다.  
+
+그리고 리액트에는 <span class="tomato">사용자 지정 컴포넌트</span>를 열고 닫는 태그 사이에 컨텐츠를 넣을 수 있도록 도와주고 있다.  
+그 방법은 Card.js에서 <span class="red">props</span>를 받아서 사용하는 것이다.  
+사용자 지정 컴포넌트에 매개변수로 props를 넣어 확인해보면  
+어트리뷰트로 지정한 <span class="blue">className</span>과 <u>태그 사이에 컨텐츠로 넣은 태그들</u>이 <span class="red">children</span>이라는 이름의 객체로 들어가 있다.  
+
+```jsx
+// Card.js
+import './Card.css';
+
+export default function Card(props) {
+  console.log(porps); // {className: 'expense-item', children: Array(2)}
+
+  const classes = `card ${props.className}`;
+
+  return (
+    <div className={classes}>
+      {props.children}
+    </div>
+  );
+}
+```
+
+또한 ExpenseItem.js에서 &lt;Card&gt; 대신 &lt;div&gt;로 className 어트리뷰트를 설정했는데  
+`사용자 지정 컴포넌트`를 사용하면 이것이 <span class="blue">class 어트리뷰트로 사용되는 것이 아니라</span>  
+<span class="tomato">props 객체의 프로퍼티 키로 전달</span>되는 용도로 사용되기 때문에 <u>Card.js에서 className을 다시 설정해야</u> 한다.  
+이렇게 Card 컴포넌트의 class를 설정하면,  
+<span class="blue">.card 스타일을 기본으로</span> Card 컴포넌트를 사용한 <span class="blue">다른 파일에서 지정한 스타일을 같이 받을 수</span> 있게 된다.  
+
+최종적으로 파일들을 보면 아래와 같다.  
+
+```jsx
+// Card.js
+import './Card.css';
+
+export default function Card(props) {
+  const classes = `card ${props.className}`;
+
+  return (
+    <div className={classes}>
+      {props.children}
+    </div>
+  );
+}
+```
+
+```jsx
+// Expenses.js
+import './Expenses.css';
+import ExpenseItem from './ExpenseItem';
+import Card from './Card';
+
+export default function Expenses({ data }) {
+  const { log } = console;
+
+  return (
+    <Card className='expenses'>
+      {data.map((listObj) => (
+        <ExpenseItem 
+          key={listObj.id}
+          title={listObj.title} 
+          amount={listObj.amount}
+          date={listObj}>
+        </ExpenseItem>
+      ))}
+    </Card>
+  );
+}
+```
+
+```jsx
+// ExpenseItem.js
+import './ExpenseItem.css';
+import ExpenseDate from './ExpenseDate';
+import Card from './Card';
+
+export default function ExpenseItem({ title, amount, date }) {
+  return (
+    <Card className='expense-item'>
+      <ExpenseDate
+        date={date}
+      />
+      <div className='expense-item__description'>
+        <h2>{title}</h2>
+        <div className='expense-item__price'>{amount}</div>
+      </div>
+    </Card>
+  )
 }
 ```
 
