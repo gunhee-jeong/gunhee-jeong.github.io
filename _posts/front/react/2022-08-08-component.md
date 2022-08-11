@@ -142,8 +142,6 @@ export default App;
 // ExpenseItem.js
 import './ExpenseItem.css';
 
-const {log} = console;
-
 function ExpenseItem({ title, amount, date }) {
   const MONTH = date.date.toLocaleString('en-US', { month: 'long' });
   const DAY = date.date.toLocaleString('en-US', { day: '2-digit' });
@@ -168,7 +166,7 @@ export default ExpenseItem;
 ```
 
 위의 <span class="blue">ExpenseItem 컴포넌트</span>는 여러가지 태그들이 결합하여 조금은 <span class="royalblue">복잡한 형태의 컴포넌트</span>가 되었다.  
-그래서 이 ExpenseItem 컴포넌트를 조금 더 나누어주는 것이 좋다.  
+그래서 이 ExpenseItem 컴포넌트를 조금 더 나누어 줄 수 있다.  
 
 ```jsx
 // ExpenseItem.js
@@ -210,6 +208,14 @@ export default function ExpenseDate({ date }) {
   );
 }
 ```
+
+### (1) 파일 나누기
+<img src="https://user-images.githubusercontent.com/87808288/184250445-24bc4621-608d-455f-9dc6-e42377aedfbd.png" width="35%">  
+하나의 프로젝트를 수행하다보면 굉장히 <span class="royalblue">많은 컴포넌트</span>를 나누게 될 것이다.  
+그런데 이것들을 <u>모두 src 폴더에 보관한다면</u> 그 구조가 복잡하게 느껴지게 한다.  
+
+그래서 아래의 이미지와 같이 폴더를 만들어 프로젝트를 관리할 수 있다.  
+<img src="https://user-images.githubusercontent.com/87808288/184251220-e601e967-3d27-42cd-8297-c24110ae459a.png" width="35%">  
 
 # 2장 컴포지션
 우리가 만든 <span class="royalblue">리액트 컴포넌트</span>에서도 구조적으로 <span class="tomato">중복되는 것</span>들이 발생한다.  
