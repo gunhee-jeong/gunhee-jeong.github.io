@@ -209,12 +209,12 @@ placeholder를 사용하는 순간 비어져있는 공간에 text를 입력할 �
 이렇게 placeholder는 <span style="color:blue">무엇을 입력하는지 알려준다는 점에서 중요</span>하다.  
 
 ## 7. 가장 중요한 레이블
-&lt;`label`&gt;은 <span style="color:blue">접근성</span>과 <span style="color:blue">폼을 쓰기 편하게 한다는 점</span>에서 중요한 태그이다.  
+&lt;<span class="red">label</span>&gt;은 <span class="tomato">접근성</span>과 <span class="blue">폼을 쓰기 편하게 한다는 점</span>에서 중요한 태그이다.  
 &lt;label&gt;은 <u>시각적으로 텍스트를 보여주는 것 이상의 기능을</u> 한다.  
 
-보이지 않지만 <span style="color:tomato">체크박스와 연결</span>되어 있기 때문이다.  
+보이지 않지만 <span class="tomato">체크박스와 연결</span>되어 있기 때문이다.  
 또한 <u>Form control 및 텍스트와 직접적으로 연결</u>되어 있고,  
-두 요소를 연결 시 <span style="color:royalblue">레이블 자체를 클릭할 수 있게도</span> 해준다.  
+두 요소를 연결 시 <span class="blue">레이블 자체를 클릭할 수 있게도</span> 해준다.  
 &lt;label&gt;을 통해 질문을 만들고 이를 체크박스와 연결했다면,  
 &lt;label&gt;을 클릭하더라도 체크박스를 동작하게 만들 수 있다.  
 
@@ -268,7 +268,7 @@ placeholder를 사용하는 순간 비어져있는 공간에 text를 입력할 �
 </body>
 ```
 
-## 8. HTML 버튼
+## 8. &lt;button&gt;
 &lt;button&gt;는 여는 태그와 닫는 태그로 구성된다.  
 
 ```html
@@ -297,16 +297,40 @@ placeholder를 사용하는 순간 비어져있는 공간에 text를 입력할 �
 </body>
 ```
 
-폼에 버튼이 포함되어 있는데 이때 버튼을 누르면  
-폼을 제출하지 않겠다고 따로 명시해놓지 않았다면 폼이 제출된다.  
+<span class="blue">폼에 버튼이 포함되어</span> 있는데 <u>이때 버튼을 누르면</u>  
+폼을 제출하지 않겠다고 <span class="tomato">따로 명시해놓지 않았다면 폼이 제출</span>된다.  
 
-"Outside form" 버튼을 클릭해도 해당 버튼은 &lt;form&gt; 밖에 위치하기 때문에 아무일도 일어나지 않는다.  
-&lt;form&gt;안에 버튼이 있다면 기본값으로 -> 해당 폼을 제출하게 된다.  
+<u>"Outside form" 버튼</u>을 클릭해도 해당 버튼은 <span class="blue"><form> 밖에 위치하기 때문에 아무일도 일어나지 않는다</span>.  
+<span class="tomato">&lt;form&gt;안에 버튼</span>이 있다면 <span class="red">기본값으로 해당 폼을 제출</span>하게 된다.  
 
-&lt;input&gt; 처럼 &lt;button&gt;도 type이라는 속성을 가진다.  
-&lt;form&gt; 안에 있는 "Please do not submit the form" 버튼의 속성 type을 "button"으로 주게되면  
-&lt;button&gt;를 클릭해도 폼을 제출하지 않고 button으로만 사용된다.  
+### (1) button type
+(TCP SCHOOL) : [button 태그의 type 속성](http://www.tcpschool.com/html-tag-attrs/button-type)
+
+&lt;input&gt; 처럼 <span class="blue">&lt;button&gt;도 type이라는 속성을</span> 가진다.  
+&lt;form&gt; 안에 있는 "Please do not submit the form" <span class="tomato">버튼의 속성 type을 "button"으로</span> 주게되면  
+&lt;button&gt;를 클릭해도 <span class="red">폼을 제출하지 않고 button으로만</span> 사용된다.  
 반대로 &lt;button&gt;의 type을 "submit"으로 설정하면 다시 폼을 제출한다.  
+
+button 태그의 `type 속성`으로는 <span class="blue">submit</span>, <span class="blue">reset</span>, <span class="blue">button</span>이 존재한다.  
+button 태그를 사용할 때 <u>type 속성을 아무것도 지정하지 않는다면</u> <span class="tomato">기본값은 'submit'</span>이 선택된다.  
+
+```html
+<button></button> === <button type="submit"></button>
+```  
+
+이럴 경우, <u>form 안에 위치한 버튼을 클릭</u>했을 때 <span class="blue">새로고침</span>이 되면서 <span class="blue">Form 태그에 submit이 진행</span>된다.  
+특정 영역을 form 태그로 감싸고 그 안에 type이 명시되지 않은 <u>button은 모두 submit 버튼으로 동작</u>했기 때문이다.  
+
+### (2) disabled
+해당 속성은 해당 <span class="red">버튼이 비활성화됨을 명시</span>한다.  
+<span class="royalblue">disabled 속성이 명시</span>되면, <span class="blue">버튼은 사용할 수 없으며, 사용자가 클릭할 수도 없다</span>.  
+
+이 속성을 사용하면 특정 조건이 충족될 때까지 사용자가 버튼을 클릭할 수 없도록 설정하고,  
+조건이 충족되면 JS를 통해 disabled 속성 값을 삭제하여 사용자가 버튼을 다시 사용할 수 있도록 조절할 수 있다.
+
+disabled 속성은 <span class="red">boolean 속성</span>을 가지고 있다.  
+boolean 속성은 해당 <span class="blue">속성을 명시하지 않으면 속성값이 자동으로 false</span> 값을 가지며,  
+<span class="red">명시하면 자동으로 true</span> 값을 가진다.
 
 ## 9. 이름 속성 
 &lt;`input`&gt; 안의 <span style="color:blue">name이라는 속성</span>의 값은 &lt;form&gt;가 제출되었을 때  
@@ -618,33 +642,33 @@ rows 속성을 사용하면 원하는 기본값으로 줄을 제공할 수 있�
 
 <style>
 .red {
-  color: ivory;
-  background-color: red;
+  color: red;
+  font-weight: bold;
 }
 
 .tomato {
-  color: ivory;
-  background-color: tomato;
+  color: tomato;
+  font-weight: bold;
 }
 
 .blue {
-  color: ivory;
-  background-color: blue;
+  color: blue;
+  font-weight: bold;
 }
 
 .royalblue {
-  color: ivory;
-  background-color: royalblue;
+  color: royalblue;
+  font-weight: bold;
 }
 
 .forestgreen {
-  color: ivory;
-  background-color: forestgreen;
+  color: forestgreen;
+  font-weight: bold;
 }
 
 .darkorange {
-  color: ivory;
-  background-color: darkorange;
+  color: darkorange;
+  font-weight: bold;
 }
 </style>
 
