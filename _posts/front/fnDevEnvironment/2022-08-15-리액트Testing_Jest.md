@@ -427,6 +427,76 @@ describe("pow", function() {
 
 <img src="https://user-images.githubusercontent.com/87808288/184849615-7cb3d223-9c50-455f-bfbc-e2c6fd4979db.png" width="70%">  
 
+### (5) 중첩 describe
+아래의 코드에서 `헬퍼 함수 makeTest`와 `for 문`이 <span class="blue">중첩 describe 안에 함께 묶여있는 것</span>에 주목해야한다.  
+<span class="tomato">makeTest는 오직 for 문에서만 사용</span>되고, 다른 데선 사용되지 않기 때문에 이렇게 묶어놓게 된다.  
+아래 스펙에서 makeTest와 for문은 함께 어우러져 pow가 제대로 동작하는지 확인해주는 역할을 한다.  
+이렇게 <u>중첩 describe를 사용</u>하면 <span class="blue">그룹을 만들 수 있게</span> 된다.  
+
+```jsx
+describe("pow", function() {
+
+  describe("x를 세 번 곱합니다.", function() {
+
+    function makeTest(x) {
+      let expected = x * x * x;
+      it(`${x}을/를 세 번 곱하면 ${expected}입니다.`, function() {
+        assert.equal(pow(x, 3), expected);
+      });
+    }
+
+    for (let x = 1; x <= 5; x++) {
+      makeTest(x);
+    }
+
+  });
+
+  // describe와 it을 사용해 이 아래에 더 많은 테스트를 추가할 수 있습니다.
+});
+```
+
+`중첩 describe`는 새로운 테스트 <span class="blue">"하위 그룹(subgroup)"을 정의</span>할 때 사용된다.  
+이렇게 새로 정의된 테스트 하위 그룹은 테스트 결과 보고서에 들여쓰기 된 상태로 출력된다.  
+<img src="https://user-images.githubusercontent.com/87808288/184851849-db0251f9-54f3-4632-8938-4fd34c8e870b.png" width="70%">  
+
+#### [before/after와 beforeEach/afterEach]
+함수 before는 (전체) 테스트가 실행되기 전에 실행되고,  
+함수 after는 (전체) 테스트가 실행된 후에 실행된다.  
+함수 beforeEach는 매 it이 실행되기 전에 실행되고,  
+함수 afterEach는 매 it이 실행된 후에 실행된다.  
+
+```jsx
+describe("test", function() {
+
+  before(() => alert("테스트를 시작합니다 - 테스트가 시작되기 전"));
+  after(() => alert("테스트를 종료합니다 - 테스트가 종료된 후"));
+
+  beforeEach(() => alert("단일 테스트를 시작합니다 - 각 테스트 시작 전"));
+  afterEach(() => alert("단일 테스트를 종료합니다 - 각 테스트 종료 후"));
+
+  it('test 1', () => alert(1));
+  it('test 2', () => alert(2));
+
+});
+```
+
+실행 순서는 아래와 같다.  
+
+```bash
+테스트를 시작합니다 - 테스트가 시작되기 전          (before)
+단일 테스트를 시작합니다 - 각 테스트 시작 전         (beforeEach)
+1
+단일 테스트를 종료합니다 - 각 테스트 종료 후         (afterEach)
+단일 테스트를 시작합니다 - 각 테스트 시작 전         (beforeEach)
+2
+단일 테스트를 종료합니다 - 각 테스트 종료 후         (afterEach)
+테스트를 종료합니다 - 테스트가 종료된 후            (after)
+```
+
+before/after와 beforeEach/afterEach는 대게 초기화의 용도로 사용하게 된다.  
+카운터 변수를 0으로 만들거나  
+테스트가 바뀔 때(또는 테스트 그룹이 바뀔 때)마다 해줘야 하는 작업이 있으면 이들을 이용할 수 있다.  
+
 # 3장 React testing library
 리액트 테스팅 라이브러리는 사용자와 동일한 방식으로 DOM 쿼리를 사용할 수 있게 도와준다.  
 실제 사용자가 앱을 사용하는 방식으로 테스트하여 우리의 앱이 올바르게 동작하는지 테스트할 수 있다.  
