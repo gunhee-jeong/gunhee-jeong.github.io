@@ -388,6 +388,45 @@ describe("pow", function() {
 
 테스트 하나에서 연관이 없는 사항 두 개를 점검하고 있다면 이것을 분리하는 것이 좋다.  
 
+### (4) 코드 개선하기
+두 번째 테스트에서도 통과할 수 있도록 코드를 개선해야 한다.  
+
+```jsx
+// 코드
+function pow(x, n) {
+  let result = 1;
+
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+
+  return result;
+}
+```
+
+함수가 제대로 작동하는지 확인하기 위해 더 많은 값을 테스트하여야 한다.  
+<u>수동으로 여러 개의 it 블록을 만드는 대신</u> <span class="royalblue">for 문을 사용하여 자동으로 it 블록을</span> 만들 수 있다.  
+
+```jsx
+describe("pow", function() {
+
+  function makeTest(x) {
+    let expected = x * x * x;
+    it(`${x}을/를 세 번 곱하면 ${expected}입니다.`, function() {
+      assert.equal(pow(x, 3), expected);
+    });
+  }
+
+  for (let x = 1; x <= 5; x++) {
+    makeTest(x);
+  }
+});
+```
+
+테스트 결과는 아래의 이미지와 같다.  
+
+<img src="https://user-images.githubusercontent.com/87808288/184849615-7cb3d223-9c50-455f-bfbc-e2c6fd4979db.png" width="70%">  
+
 # 3장 React testing library
 리액트 테스팅 라이브러리는 사용자와 동일한 방식으로 DOM 쿼리를 사용할 수 있게 도와준다.  
 실제 사용자가 앱을 사용하는 방식으로 테스트하여 우리의 앱이 올바르게 동작하는지 테스트할 수 있다.  
