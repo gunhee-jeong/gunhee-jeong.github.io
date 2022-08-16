@@ -492,10 +492,71 @@ describe("test", function() {
 단일 테스트를 종료합니다 - 각 테스트 종료 후         (afterEach)
 테스트를 종료합니다 - 테스트가 종료된 후            (after)
 ```
-
 before/after와 beforeEach/afterEach는 대게 초기화의 용도로 사용하게 된다.  
 카운터 변수를 0으로 만들거나  
 테스트가 바뀔 때(또는 테스트 그룹이 바뀔 때)마다 해줘야 하는 작업이 있으면 이들을 이용할 수 있다.  
+
+### (6) 스펙 확장하기
+앞서 정의했듯이 함수 pow(x, n)의 매개변수 n은 양의 정수이어햐 했다.  
+
+자바스크립트에선 수학 관련 연산을 수행하다 에러가 발생하면 NaN을 반환한다.  
+함수 pow도 n이 조건에 맞지 않으면 NaN을 반환해야 한다.  
+
+n이 조건에 맞지 않을 때 함수가 NaN을 반환하는지를 검사해주는 테스트를 추가하면 아래와 같다.  
+
+```jsx
+describe("pow", function() {
+
+  // ...
+
+  it("n이 음수일 때 결과는 NaN입니다.", function() {
+    assert.isNaN(pow(2, -1));
+  });
+
+  it("n이 정수가 아닐 때 결과는 NaN입니다.", function() {
+    assert.isNaN(pow(2, 1.5));
+  });
+
+});
+```
+
+<img src="https://user-images.githubusercontent.com/87808288/184854058-61d4492b-b276-45e9-8af4-0b155684fa50.png" width="70%">  
+
+기존에 n이 음수이거나 정수가 아닌 경우를 생각하지 않고 구현했기에  
+<span class="tomato">새롭게 추가한 테스트는 실패할 수 밖에 없다</span>.  
+<span class="red">BDD의 핵심</span>은 바로 그것에 있다.  
+<span class="royalblue">실패할 수 밖에 없는 테스트를 추가</span>하고, <span class="blue">테스트를 통과할 수 있게 코드를 개선</span>하는 것이다.  
+
+> 다양한 assertion
+위에서 사용한 assert.isNaN은 NaN인지 아닌지 확인한다.  
+(Chai) : [assert](https://www.chaijs.com/api/assert/)  
+Chai는 이 외에도 다양한 assertion을 지원한다.  
+- assert.equal(value1, value2) – value1과 value2의 동등성을 확인합니다(value1 == value2).  
+- assert.strictEqual(value1, value2) – value1과 value2의 일치성을 확인합니다(value1 === value2).  
+- assert.notEqual, assert.notStrictEqual – 비 동등성, 비 일치성을 확인합니다.  
+- assert.isTrue(value) – value가 true인지 확인합니다(value === true).  
+- assert.isFalse(value) – value가 false인지 확인합니다(value === false).  
+
+이제 새롭게 추가한 테스트를 통과하기 위해 pow 코드를 수정한다.  
+
+```jsx
+// code
+function pow(x, n) {
+  if (n < 0) return NaN;
+  if (Math.round(n) != n) return NaN;
+
+  let result = 1;
+
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+
+  return result;
+}
+```
+
+<img src="https://user-images.githubusercontent.com/87808288/184856051-a627eb9a-43fa-47e2-abb0-0f7e9a01b2b1.png" width="70%">  
+그러면 위의 이미지와 같이 에러 없이 테스트들을 통과하게 된다.  
 
 # 3장 React testing library
 리액트 테스팅 라이브러리는 사용자와 동일한 방식으로 DOM 쿼리를 사용할 수 있게 도와준다.  
@@ -517,7 +578,6 @@ click, change 등의 이벤트를 발생시킬 수 있다.
 mocking은 일부 기능을 테스트할 때 의존 관계를 끊고 독립적으로 테스트할 수 있게 한다.  
 `jest.fn()`을 통해서 <span class="blue">함수를 mocking</span> 할 수도 있다.  
 Jest에서 제공하는 다양한 mocking 방법이 있다.  
-
 
 <!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
 
