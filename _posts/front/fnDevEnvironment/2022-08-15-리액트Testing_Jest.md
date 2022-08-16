@@ -12,6 +12,38 @@ date: 2022-08-15T16:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+<style>
+.red {
+  color: red;
+  font-weight: bold;
+}
+
+.tomato {
+  color: tomato;
+  font-weight: bold;
+}
+
+.blue {
+  color: blue;
+  font-weight: bold;
+}
+
+.royalblue {
+  color: royalblue;
+  font-weight: bold;
+}
+
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.darkorange {
+  color: darkorange;
+  font-weight: bold;
+}
+
+</style>
 우리가 <span class="blue">무언가를 수정했을 때 다른 컴포넌트들이 올바르게 동작하는지</span> 손으로 직접 테스트하는 것은 많이 시간이 소요된다.  
 이 모든 것을 <span class="tomato">컴퓨터가 자동으로 아주 빠르게 확인</span>해주면 어떨까에서 시작한 것이 바로 <span class="red">TDD</span>이다.  
 
@@ -259,6 +291,47 @@ TDD에서 핵심은 Refactoring 단계이다.
 우리에겐 테스트 코드가 있으니 마음에 들 때까지 얼마든지 코드를 수정해도 문제가 생기지 않는다.  
 이 부분에서 Kent Beck이 말한 TDD가 두려움을 조절하는 기술임을 확실하게 느낄 수 있다.  
 
+## 3. BDD 방법론
+(테스트 자동화와 Mocha) : [JAVASCRPT.INFO](https://ko.javascript.info/testing-mocha#ref-1068)  
+
+Behavior Driven Development라 불리는 방법론에 대해 알아보자.  
+이 방법론은 <u>test</u>, <u>documentation</u>, <u>example</u>를 한데 모아놓은 개념이다.  
+### (1) 예시: 거듭제곱 함수와 명세서
+x를 n번 곱해주는 함수인 pow(x, n)을 구현하고 있다고 가정해보자.  
+(사실 JS에는 거듭제곱 연산자, **가 이미 존재하지만 BDD에 관한 설명을 위해 함수로 만든다.)  
+
+코드를 작성하기 전에 먼저 <span class="royalblue">코드가 무슨 일을 하는지</span> 이를 자연어로 표현해야한다.  
+이때 만들어진 산출물을 BDD에선 <span class="royalblue">명세서(specification)</span> 또는 <span class="royalblue">스펙(spec)</span>이라고 부른다.  
+명세서에는 아래와 같이 유스 케이스에 대한 자세한 설명과 테스트가 담겨있다.  
+
+```jsx
+describe("pow", function() {
+
+  it("주어진 숫자의 n 제곱", function() {
+    assert.equal(pow(2, 3), 8);
+  });
+
+});
+```
+
+`스펙`은 <span class="blue">세 가지 주요 구성 요소</span>로 이루어진다.  
+⓵ <span class="forestgreen">describe</span>("title", function() { ... })  
+<u>구현하고자 하는 기능에 대한 설명</u>이 들어간다.  
+
+⓶ <span class="forestgreen">it</span>("유스 케이스 설명", function() { ... })  
+<span class="tomato">it</span>의 <u>첫 번째 인수</u>엔 <span class="blue">특정 유스 케이스에 대한 설명</span>이 들어간다.  
+이 설명은 <span class="blue">누구나 읽을 수 있고 이해할 수 있는 자연어로</span> 적게된다.  
+두 번째 인수엔 유스 케이스 테스트 함수가 들어간다.  
+
+⓷ <span class="forestgreen">assert.equal</span>(value1, value2)  
+기능을 제대로 구현했다면 it 블록 내의 코드 <span class="darkorange">assert.equal(value1, value2)</span> 이 <u>에러 없이 실행</u>된다.  
+
+### (2) 스펙 실행하기
+#### [라이브러리 설명]
+- Mocha: 핵심 테스트 프레임워크로, describe it과 같은 테스팅 함수와 테스트 실행 관련 주요 함수 제공
+- Chai: 다양한 assertion을 제공해 주는 라이브러리(assert.equal)
+- Sinon: 함수의 정보를 캐내는 데 사용하는 라이브러리로, 내장 함수 등을 모방한다.  
+
 # 3장 React testing library
 리액트 테스팅 라이브러리는 사용자와 동일한 방식으로 DOM 쿼리를 사용할 수 있게 도와준다.  
 실제 사용자가 앱을 사용하는 방식으로 테스트하여 우리의 앱이 올바르게 동작하는지 테스트할 수 있다.  
@@ -281,37 +354,7 @@ mocking은 일부 기능을 테스트할 때 의존 관계를 끊고 독립적�
 Jest에서 제공하는 다양한 mocking 방법이 있다.  
 
 
-<style>
-.red {
-  color: red;
-  font-weight: bold;
-}
-
-.tomato {
-  color: tomato;
-  font-weight: bold;
-}
-
-.blue {
-  color: blue;
-  font-weight: bold;
-}
-
-.royalblue {
-  color: royalblue;
-  font-weight: bold;
-}
-
-.forestgreen {
-  color: forestgreen;
-  font-weight: bold;
-}
-
-.darkorange {
-  color: darkorange;
-  font-weight: bold;
-}
-</style>
+<!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
 
 <!-- ### 2. Link 넣기
 
