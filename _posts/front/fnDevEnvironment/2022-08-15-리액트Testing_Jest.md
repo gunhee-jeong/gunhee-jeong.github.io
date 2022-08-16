@@ -332,6 +332,62 @@ describe("pow", function() {
 - Chai: 다양한 assertion을 제공해 주는 라이브러리(assert.equal)
 - Sinon: 함수의 정보를 캐내는 데 사용하는 라이브러리로, 내장 함수 등을 모방한다.  
 
+코드의 초안을 아래와 같이 작성할 수 있다.  
+
+```jsx
+// 코드
+function pow(x, n) {
+  return 8; // 속임수를 써봤습니다. :)
+}
+```
+
+### (3) 스펙 개선하기
+꼼수를 사용했기 때문에 pow(3,4)를 실행하면 바로 틀린 결과라고 나오게 된다.  
+하지만 <u>테스트는 모두 통과하게</u> 된다.  
+이러한 결과는 스펙이 불완전해서 그런 것이기에 <span class="blue">더 많은 유스 케이스를 추가해야</span>한다.  
+
+pow(3, 4) = 81을 만족하는지 확인하는 테스트를 추가할 수 있다.  
+스펙에 테스트를 추가하는 방법은 아래와 같이 두 가지가 있다.  
+
+⓵ 기존 it 블록에 assert를 하나 더 추가
+
+```jsx
+describe("pow", function() {
+
+  it("주어진 숫자의 n 제곱", function() {
+    assert.equal(pow(2, 3), 8);
+    assert.equal(pow(3, 4), 81);
+  });
+
+});
+```
+
+⓶ 테스트를 하나 더 추가(it 블록 하나 더 추가하기)
+
+```jsx
+describe("pow", function() {
+
+  it("2를 세 번 곱하면 8입니다.", function() {
+    assert.equal(pow(2, 3), 8);
+  });
+
+  it("3을 네 번 곱하면 81입니다.", function() {
+    assert.equal(pow(3, 4), 81);
+  });
+
+});
+```
+
+<u>assert에서 에러가 발생</u>하면 <span class="royalblue">it 블록은 즉시 종료</span>된다.  
+따라서 <span class="blue">기존 it 블록에 assert를 하나 더 추가</span>하면  
+첫 번째 assert가 실패했을 때 <span class="tomato">두 번째 assert의 결과를 알 수 없게 된다</span>.  
+때문에 두 번째 방법과 같이 <span class="red">it 블록을 추가하여 테스트할 경우 더 많은 정보를 얻을 수 있는 것</span>이다.  
+
+추가로 테스트를 추가할 때 아래의 규칙도 따르는 것이 좋다.  
+- <u>테스트 하나에선</u> <span class="blue">한 가지만 확인</span>하기  
+
+테스트 하나에서 연관이 없는 사항 두 개를 점검하고 있다면 이것을 분리하는 것이 좋다.  
+
 # 3장 React testing library
 리액트 테스팅 라이브러리는 사용자와 동일한 방식으로 DOM 쿼리를 사용할 수 있게 도와준다.  
 실제 사용자가 앱을 사용하는 방식으로 테스트하여 우리의 앱이 올바르게 동작하는지 테스트할 수 있다.  
