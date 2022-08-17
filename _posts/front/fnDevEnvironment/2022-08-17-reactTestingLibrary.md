@@ -1,61 +1,56 @@
 ---
 layout: single
-title: "target"
+title: "react-testing-library"
 # categories: Git
 categories:
-  - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [state, props, target, onChange] #tag는 여러개 가능함
+  - feDevEnvironment # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
+tag: [jest] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
+date: 2022-08-16T23:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+<style>
+.red {
+  color: red;
+  font-weight: bold;
+}
 
-# target
+.tomato {
+  color: tomato;
+  font-weight: bold;
+}
 
-```java
-// import React from "react";
-import React, { useState } from "react";
+.blue {
+  color: blue;
+  font-weight: bold;
+}
 
-const InputId = () => {
-  const [text, setText] = useState("");
+.royalblue {
+  color: royalblue;
+  font-weight: bold;
+}
 
-  const handleIdInput = (event) => {
-    // console.log(event); //output == SyntheticBaseEvent {_reactName: 'onChange', _targetInst: null, type: 'change', nativeEvent: InputEvent, target: input#id, …}
-    // console.log(event.target); //output == <input id="id" type="text" placeholder="전화번호, 사용자 이름 또는 이메일">
-    console.log(event.target.value); //타켓의 value를 출력
-    // console.log(event.target);
-    setText(event.target.value);
-  };
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
 
-  console.log(text);
+.darkorange {
+  color: darkorange;
+  font-weight: bold;
+}
+</style>
 
-  return (
-    <input
-      id="id"
-      type="text"
-      placeholder="전화번호, 사용자 이름 또는 이메일"
-      onChange={handleIdInput}
-    />
-  );
-};
+getByText  
 
-export default InputId;
+getByPlaceholderText  
 
-```
 
-InputId라는 Component를 만들면서, input 태그에는 onChange라는 이벤트를 넣어주었다.  
-<span style="color:green">onChange={handleIdInput}</span>  
-&nbsp; <u>input에 onChange라는 이벤트</u>를 넣었고 -> onChange 이벤트가 실행되면  
-&nbsp; `handleIdInput 함수를 실행`하게 된다.  
-<span style="color:green">const handleIdInput = (event) => {}</span>  
-&nbsp; handleIdInput 함수는 <u>1개의 event라는 argument</u>를 받게 되는데 ->  
-&nbsp; event라는 parameter를 <u>console.log를 통해서 결과</u>를 확인해보면 `object`로 결과가 나온다.  
-<span style="color:green">console.log(event.target);</span>  
-&nbsp; 이렇게 .target을 이용하여 접근하면 -> <u>이벤트가 발생한</u> target의 `element`를 출력한다.  
-<span style="color:green">console.log(event.target.value);</span>  
-&nbsp; .target.valueㄹ 접근하면 input 태그에 입력된 value를 출력한다.
+
+<!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
 
 <!-- ### 2. Link 넣기
 
