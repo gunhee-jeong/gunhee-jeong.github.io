@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "react-testing-library"
+title: "React-Testing-Library"
 # categories: Git
 categories:
   - feDevEnvironment # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
@@ -44,11 +44,44 @@ date: 2022-08-16T23:00:00+09:00
 }
 </style>
 
-getByText  
+(DaleSeo) : [React Testing Library 사용법](https://www.daleseo.com/react-testing-library/)  
 
-getByPlaceholderText  
+# 1장 소개
+`React Testing Library`는 <span class="tomato">행위 주도 테스트</span> 방법론이 주목받으며 함께 성장한 라이브러리이다.  
+이는 행위 주도는 기존의 <u>구현 주도 테스트(Implementation Driven Test)의 단점을 보완</u>하기 위한 방법론이다.  
 
+```html
+<h2 class="title">제목</h2>
+```
 
+기존의 <span class="blue">구현 주도</span>에서는 위의 html에서 <u>h2라는 태그가 사용</u>되었고  
+<u>title이라는 class가 사용되었는지 여부</u> 등을 테스트하였다.  
+그런데 실질적으로 사용자는 h2 태그의 사용과 title이라는 클래스 네임의 존재도 모르고 <span class="tomato">관심도 없다</span>.  
+따라서 현재 사용자에게 <span class="red">어떤 컨텐츠가 보이고</span>,  
+사용자가 어떤 이벤트를 발생시켰을 때의 <span class="red">화면 변화 등을 테스트</span>하는 것을 초점을 맞추고 있다.  
+
+# 2장 주요 API
+React Testing Library에는 크기 DOM에 컴포넌트를 렌더링해주는 `render() 함수`와  
+특정 이벤트를 발생시켜주는 `fireEvent 객체`, 그리고 DOM에서 특정 영역을 선택하기 위한 다양한 `쿼리 함수`가 존재한다.  
+
+`render() 함수`는 React Testing Library에서 제공하는 모든 쿼리 함수와  
+기타 유틸리티 함수를 담고 있는 <span class="blue">객체를 반환</span>하게 된다.  
+따라서 자바스크립트의 문법인 <span class="royalblue">Destructuring 문법</span>을 사용하여  
+render 함수가 리턴한 객체로부터 <u>원하는 쿼리 함수를</u> 얻을 수 있다.  
+
+```jsx
+import { render, fireEvent } from "@testing-library/react";
+
+const { getByText, getByLabelText, getByPlaceholderText } = render(
+  <YourComponent />
+);
+```
+
+## 1. Queries
+
+```jsx
+// NotFound.js
+```
 
 <!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
 
