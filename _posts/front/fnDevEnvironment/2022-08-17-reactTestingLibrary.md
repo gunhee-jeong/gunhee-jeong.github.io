@@ -78,10 +78,47 @@ const { getByText, getByLabelText, getByPlaceholderText } = render(
 ```
 
 ## 1. Queries
-
+### (1) 정적 컴포넌트 테스팅
 ```jsx
 // NotFound.js
+import React from "react";
+
+function NotFound({ path }) {
+  return (
+    <>
+      <h2>Page Not Found</h2>
+      <p>해당 페이지({path})를 찾을 수 없습니다.</p>
+      <img
+        alt="404"
+        src="https://media.giphy.com/media/14uQ3cOFteDaU/giphy.gif"
+      />
+    </>
+  );
+}
 ```
+
+위의 `NotFound 컴포넌트`는 기본적으로 <u>정적인 텍스트와 이미지로만 구성</u>되어 있다.  
+아래는 NotFound 컴포넌트 검증을 위한 NotFound.test.js이다.  
+
+```jsx
+// NotFound.test.js
+import React from "react";
+import { render } from "@testing-library/react";
+import NotFound from "./NotFound";
+
+describe("<NotFound />", () => {
+  it("renders header", () => {
+    const { getByText } = render(<NotFound path="/abc" />);
+    const header = getByText("Page Not Found");
+    expect(header).toBeInTheDocument();
+  });
+});
+```
+
+render 함수에서 얻은 `getByText`는  
+화면에서 검색할 <u>Page Not Found</u>를 인수로 넘기고 이를 담고 있는 태그는 <span class="blue">h2 엘리먼트를 얻게</span> 된다.  
+마지막으로 <span class="tomato">jest-dom</span>의 <span class="red">toBeInTheDocument()</span> matcher 함수를 이용하여  
+해당 &lt;h2&gt; 태그가 화면에 존재하는지 검증하게 된다.  
 
 <!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
 
