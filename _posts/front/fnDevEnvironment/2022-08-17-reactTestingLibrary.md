@@ -120,6 +120,77 @@ render 함수에서 얻은 `getByText`는
 마지막으로 <span class="tomato">jest-dom</span>의 <span class="red">toBeInTheDocument()</span> matcher 함수를 이용하여  
 해당 &lt;h2&gt; 태그가 화면에 존재하는지 검증하게 된다.  
 
+### (2) 동적 컴포넌트 테스팅
+```jsx
+// LoginForm.js
+import React, { useState } from "react";
+
+function LoginForm({ onSubmit }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  return (
+    <>
+      <h2>Login</h2>
+      <form onSubmit={onSubmit}>
+        <label>
+          이메일
+          <input
+            type="email"
+            placeholder="user@test.com"
+            value={email}
+            onChange={({ target: { value } }) => setEmail(value)}
+          />
+        </label>
+        <label>
+          비밀번호
+          <input
+            type="password"
+            value={password}
+            onChange={({ target: { value } }) => setPassword(value)}
+          />
+        </label>
+        <button disabled={!email || !password}>로그인</button>
+      </form>
+    </>
+  );
+}
+```
+
+위의 `LoginForm 컴포넌트`는 이메일과 비밀번호 입력란과 버튼으로 구성된 <span class="royalblue">로그인 폼</span>, 컴포넌트이다.  
+
+```jsx
+// LoginForm.test.js
+import React from "react";
+import { render, fireEvent } from "@testing-library/react";
+import LoginForm from "./LoginForm";
+
+describe("<LoginForm />", () => {
+  it("enables button when both email and password are entered", () => {
+    const { getByText, getByLabelText } = render(
+      <LoginForm onSubmit={() => null} />
+    );
+
+    const button = getByText("로그인");
+    const email = getByLabelText("이메일");
+    const password = getByLabelText("비밀번호");
+
+    expect(button).toBeDisabled();
+
+    fireEvent.change(email, { target: { value: "user@test.com" } });
+    fireEvent.change(password, { target: { value: "Test1234" } });
+
+    expect(button).toBeEnabled();
+  });
+});
+```
+
+`로그인 버튼`은 <span class="blue">getByText()</span> 쿼리 함수를 통해 선택가능하고  
+`이메일과 비밀번호 입력칸`은 <span class="blue">getByLabelText()</span> 쿼리 함수로 선택 가능하다.  
+
+그리고 <span class="tomato">jest-dom</span>의 <span class="red">toBeDisabled</span>()와 <span class="red">toBeEnabled</span>() matcher 함수를 통해  
+로그인 <span class="blue">버튼의 활성화 여부</span>를 이벤트 발생 전후로 검증하게 된다.  
+
 <!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
 
 <!-- ### 2. Link 넣기
