@@ -45,6 +45,7 @@ date: 2022-08-16T23:00:00+09:00
 </style>
 
 (DaleSeo) : [React Testing Library 사용법](https://www.daleseo.com/react-testing-library/)  
+(npm Now Packing Magic) : [@testing-library/jest-dom](https://www.npmjs.com/package/@testing-library/jest-dom)  
 
 # 1장 소개
 `React Testing Library`는 <span class="tomato">행위 주도 테스트</span> 방법론이 주목받으며 함께 성장한 라이브러리이다.  
