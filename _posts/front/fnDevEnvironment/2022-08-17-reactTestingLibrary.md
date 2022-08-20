@@ -60,6 +60,13 @@ date: 2022-08-16T23:00:00+09:00
 따라서 현재 사용자에게 <span class="red">어떤 컨텐츠가 보이고</span>,  
 사용자가 어떤 이벤트를 발생시켰을 때의 <span class="red">화면 변화 등을 테스트</span>하는 것을 초점을 맞추고 있다.  
 
+## 1. @testing-library/jest-dom
+@testing-library/jest-dom은 jest의 matcher들을 확장하여 테스트의 의도를 명확하게 표현할 수 있다.  
+
+## 2. fireEvent
+테스팅에서 DOM 이벤트를 편리하게 발생시켜주는 메서드이다.  
+click, change 등의 이벤트를 발생시킬 수 있다.  
+
 # 2장 주요 API
 React Testing Library에는 크기 DOM에 컴포넌트를 렌더링해주는 `render() 함수`와  
 특정 이벤트를 발생시켜주는 `fireEvent 객체`, 그리고 DOM에서 특정 영역을 선택하기 위한 다양한 `쿼리 함수`가 존재한다.  
