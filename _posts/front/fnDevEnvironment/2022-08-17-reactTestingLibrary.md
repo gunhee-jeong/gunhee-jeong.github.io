@@ -44,10 +44,11 @@ date: 2022-08-16T23:00:00+09:00
 }
 </style>
 
+# React-Testing-Library
 (DaleSeo) : [React Testing Library 사용법](https://www.daleseo.com/react-testing-library/)  
 (npm Now Packing Magic) : [@testing-library/jest-dom](https://www.npmjs.com/package/@testing-library/jest-dom)  
 
-# 1장 소개
+## 1장 소개
 `React Testing Library`는 <span class="tomato">행위 주도 테스트</span> 방법론이 주목받으며 함께 성장한 라이브러리이다.  
 이는 행위 주도는 기존의 <u>구현 주도 테스트(Implementation Driven Test)의 단점을 보완</u>하기 위한 방법론이다.  
 
@@ -61,14 +62,14 @@ date: 2022-08-16T23:00:00+09:00
 따라서 현재 사용자에게 <span class="red">어떤 컨텐츠가 보이고</span>,  
 사용자가 어떤 이벤트를 발생시켰을 때의 <span class="red">화면 변화 등을 테스트</span>하는 것을 초점을 맞추고 있다.  
 
-## 1. @testing-library/jest-dom
+### 1. @testing-library/jest-dom
 @testing-library/jest-dom은 jest의 matcher들을 확장하여 테스트의 의도를 명확하게 표현할 수 있다.  
 
-## 2. fireEvent
+### 2. fireEvent
 테스팅에서 DOM 이벤트를 편리하게 발생시켜주는 메서드이다.  
 click, change 등의 이벤트를 발생시킬 수 있다.  
 
-# 2장 주요 API
+## 2장 주요 API
 React Testing Library에는 크기 DOM에 컴포넌트를 렌더링해주는 `render() 함수`와  
 특정 이벤트를 발생시켜주는 `fireEvent 객체`, 그리고 DOM에서 특정 영역을 선택하기 위한 다양한 `쿼리 함수`가 존재한다.  
 
@@ -85,8 +86,8 @@ const { getByText, getByLabelText, getByPlaceholderText } = render(
 );
 ```
 
-## 1. Queries
-### (1) 정적 컴포넌트 테스팅
+### 1. Queries
+#### (1) 정적 컴포넌트 테스팅
 ```jsx
 // NotFound.js
 import React from "react";
@@ -128,7 +129,7 @@ render 함수에서 얻은 `getByText`는
 마지막으로 <span class="tomato">jest-dom</span>의 <span class="red">toBeInTheDocument()</span> matcher 함수를 이용하여  
 해당 &lt;h2&gt; 태그가 화면에 존재하는지 검증하게 된다.  
 
-### (2) 동적 컴포넌트 테스팅
+#### (2) 동적 컴포넌트 테스팅
 ```jsx
 // LoginForm.js
 import React, { useState } from "react";
@@ -198,6 +199,10 @@ describe("<LoginForm />", () => {
 
 그리고 <span class="tomato">jest-dom</span>의 <span class="red">toBeDisabled</span>()와 <span class="red">toBeEnabled</span>() matcher 함수를 통해  
 로그인 <span class="blue">버튼의 활성화 여부</span>를 이벤트 발생 전후로 검증하게 된다.  
+
+### 2. ByText
+ByText는 주어진 TextMatch와 일치하는 textContent가 있는 텍스트 노드의 모든 요소를 검색한다.  
+
 
 <!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
 
