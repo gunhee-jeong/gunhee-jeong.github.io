@@ -13,18 +13,18 @@ date: 2022-08-16T23:00:00+09:00
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 <style>
-.red {
-  color: red;
+.crimson {
+  color: crimson;
   font-weight: bold;
 }
 
-.tomato {
-  color: tomato;
+.darkorange {
+  color: darkorange;
   font-weight: bold;
 }
 
-.blue {
-  color: blue;
+.olive {
+  color: olive;
   font-weight: bold;
 }
 
@@ -34,12 +34,7 @@ date: 2022-08-16T23:00:00+09:00
 }
 
 .forestgreen {
-  color: forestgreen;
-  font-weight: bold;
-}
-
-.darkorange {
-  color: darkorange;
+  color: foresgreen;
   font-weight: bold;
 }
 </style>
@@ -49,18 +44,13 @@ date: 2022-08-16T23:00:00+09:00
 (npm Now Packing Magic) : [@testing-library/jest-dom](https://www.npmjs.com/package/@testing-library/jest-dom)  
 
 ## 1장 소개
-`React Testing Library`는 <span class="tomato">행위 주도 테스트</span> 방법론이 주목받으며 함께 성장한 라이브러리이다.  
-이는 행위 주도는 기존의 <u>구현 주도 테스트(Implementation Driven Test)의 단점을 보완</u>하기 위한 방법론이다.  
+`React Testing Library`는 <span class="darkorange">행위 주도 테스트</span> 방법론이 주목받으며 함께 성장한 라이브러리이다. 이는 행위 주도는 기존의 <u>구현 주도 테스트(Implementation Driven Test)의 단점을 보완</u>하기 위한 방법론이다.
 
 ```html
 <h2 class="title">제목</h2>
 ```
 
-기존의 <span class="blue">구현 주도</span>에서는 위의 html에서 <u>h2라는 태그가 사용</u>되었고  
-<u>title이라는 class가 사용되었는지 여부</u> 등을 테스트하였다.  
-그런데 실질적으로 사용자는 h2 태그의 사용과 title이라는 클래스 네임의 존재도 모르고 <span class="tomato">관심도 없다</span>.  
-따라서 현재 사용자에게 <span class="red">어떤 컨텐츠가 보이고</span>,  
-사용자가 어떤 이벤트를 발생시켰을 때의 <span class="red">화면 변화 등을 테스트</span>하는 것을 초점을 맞추고 있다.  
+기존의 <span class="olive">구현 주도</span>에서는 위의 html에서 <u>h2라는 태그가 사용</u>되었고 <u>title이라는 class가 사용되었는지 여부</u> 등을 테스트하였다. 그런데 실질적으로 사용자는 h2 태그의 사용과 title이라는 클래스 네임의 존재도 모르고 <span class="darkorange">관심도 없다</span>. 따라서 현재 사용자에게 <span class="crimson">어떤 컨텐츠가 보이고</span>, 사용자가 어떤 이벤트를 발생시켰을 때의 <span class="crimson">화면 변화 등을 테스트</span>하는 것을 초점을 맞추고 있다.
 
 ### 1. @testing-library/jest-dom
 @testing-library/jest-dom은 jest의 matcher들을 확장하여 테스트의 의도를 명확하게 표현할 수 있다.  
@@ -70,24 +60,85 @@ date: 2022-08-16T23:00:00+09:00
 click, change 등의 이벤트를 발생시킬 수 있다.  
 
 ## 2장 주요 API
-React Testing Library에는 크기 DOM에 컴포넌트를 렌더링해주는 `render() 함수`와  
-특정 이벤트를 발생시켜주는 `fireEvent 객체`, 그리고 DOM에서 특정 영역을 선택하기 위한 다양한 `쿼리 함수`가 존재한다.  
+React Testing Library에는 DOM에 컴포넌트를 렌더링해주는 render() 함수와 특정 이벤트를 발생시켜주는 fireEvent 객체, 그리고 DOM에서 특정 영역을 선택하기 위한 다양한 쿼리 함수가 존재한다.
 
-`render() 함수`는 React Testing Library에서 제공하는 모든 쿼리 함수와  
-기타 유틸리티 함수를 담고 있는 <span class="blue">객체를 반환</span>하게 된다.  
-따라서 자바스크립트의 문법인 <span class="royalblue">Destructuring 문법</span>을 사용하여  
-render 함수가 리턴한 객체로부터 <u>원하는 쿼리 함수를</u> 얻을 수 있다.  
+<span class="crimson">render() 함수</span>는 React Testing Library에서 제공하는 <u>모든 쿼리 함수</u>와 <u>기타 유틸리티 함수</u>를 담고 있는 <span class="darkorange">객체를 반환</span>하게 된다. 따라서 자바스크립트의 문법인 <span class="olive">Destructuring 문법</span>을 사용하여 render 함수가 리턴한 객체로부터 원하는 쿼리 함수를 얻을 수 있다. 그리고 렌더링 된 DOM 요소(container)를 반환한다.
 
 ```jsx
-import { render, fireEvent } from "@testing-library/react";
+import { render } from '@testing-library/react';
 
-const { getByText, getByLabelText, getByPlaceholderText } = render(
-  <YourComponent />
+const Button = () => (
+  <button>Click Me!</button>
 );
+
+const { getByText, container } = render(<Button />);
 ```
 
-### 1. Queries
-#### (1) 정적 컴포넌트 테스팅
+### 1. Query
+렌더링 된 DOM 노드에 접근하여 엘리먼트를 가져오는 메서드이다. 예시로 <u>getAllByRole 메서드</u>를 살펴보자면, get(<span class="olive">쿼리 타입</span>) -> All(<span class="olive">타켓의 개수</span>) -> ByRole(<span class="olive">타겟 유형</span>)으로 세션을 나눌 수 있다.
+
+#### (1) 쿼리 타입
+- <span class="darkorange">get</span>: 동기적으로 처리되며 타겟을 찾지 못하면 에러를 발생
+- <span class="darkorange">find</span>: 비동기적으로 처리되며 타겟을 칮지 못하면 에러를 발생
+- <span class="darkorange">query</span>: 동기적으로 처리되며 타겟을 찾지 못하면 null을 반환
+
+#### (2) 타겟의 개수
+<u>다수의 엘리먼트가 탐색</u>되는 상황에서는 All을 사용하여 탐색할 수 있다.
+
+#### (3) 타겟 유형
+##### [ByRole]
+공식문서에서 <span class="darkorange">getByRole</span>을 권장한다고 해서 테스트를 위해 role을 선언하지 않아도 된다. 기본적으로 <span class="olive">몇몇 HTMl 시맨틱 태그는 이미 implict role을 가지고</span> 있기 때문이다. z해당 role과 <span class="royalblue">두 번째 인자로 들어가는 옵션 객체</span>를 통해 찾고자 하는 <u>타입을 좀더 명확하게</u> 할 수 있다. 만약 implict role을 파악하기 어렵다면 아래의 이미지의 방법으로 사용 가능한 role을 제안받을 수도 있다.
+
+```jsx
+// Counter.js
+import React, { useState } from 'react';
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const decrement = () => setCount(count - 1);
+
+  const increment = () => setCount(count + 1);
+
+  return (
+    <>
+      <div>{count}</div>
+      <button onClick={decrement}>-</button>
+      <button onClick={increment}>+</button>
+    </>
+  );
+};
+
+export default Counter;
+```
+
+```jsx
+import { render, screen } from '@testing-library/react';
+
+import Counter from './Counter';
+
+describe('Counter test', () => {
+  it('should render Counter', () => {
+    render(<Counter />);
+
+    // 두 쿼리 모두 같은 element 탐색(문자열 대신 정규식 탐색도 가능)
+    screen.getByRole('button', { name: '+' });
+    screen.getByText('+');
+  });
+});
+```
+
+<img src="https://user-images.githubusercontent.com/87808288/187027970-7f8f5004-abe5-4633-91bf-809adab49613.png" width="90%">
+
+- ByLabelText
+- ByPlaceholderText
+- ByText
+- ByDisplayValue
+- ByAltText
+- ByTitle
+- ByTestId
+
+### 2. 정적 컴포넌트 테스팅 실습
 ```jsx
 // NotFound.js
 import React from "react";
@@ -125,11 +176,11 @@ describe("<NotFound />", () => {
 ```
 
 render 함수에서 얻은 `getByText`는  
-화면에서 검색할 <u>Page Not Found</u>를 인수로 넘기고 이를 담고 있는 태그는 <span class="blue">h2 엘리먼트를 얻게</span> 된다.  
-마지막으로 <span class="tomato">jest-dom</span>의 <span class="red">toBeInTheDocument()</span> matcher 함수를 이용하여  
+화면에서 검색할 <u>Page Not Found</u>를 인수로 넘기고 이를 담고 있는 태그는 <span class="olive">h2 엘리먼트를 얻게</span> 된다.  
+마지막으로 <span class="darkorange">jest-dom</span>의 <span class="crimson">toBeInTheDocument()</span> matcher 함수를 이용하여  
 해당 &lt;h2&gt; 태그가 화면에 존재하는지 검증하게 된다.  
 
-#### (2) 동적 컴포넌트 테스팅
+### 3. 동적 컴포넌트 테스팅 실습
 ```jsx
 // LoginForm.js
 import React, { useState } from "react";
@@ -194,15 +245,11 @@ describe("<LoginForm />", () => {
 });
 ```
 
-`로그인 버튼`은 <span class="blue">getByText()</span> 쿼리 함수를 통해 선택가능하고  
-`이메일과 비밀번호 입력칸`은 <span class="blue">getByLabelText()</span> 쿼리 함수로 선택 가능하다.  
+`로그인 버튼`은 <span class="olive">getByText()</span> 쿼리 함수를 통해 선택가능하고  
+`이메일과 비밀번호 입력칸`은 <span class="olive">getByLabelText()</span> 쿼리 함수로 선택 가능하다.  
 
-그리고 <span class="tomato">jest-dom</span>의 <span class="red">toBeDisabled</span>()와 <span class="red">toBeEnabled</span>() matcher 함수를 통해  
-로그인 <span class="blue">버튼의 활성화 여부</span>를 이벤트 발생 전후로 검증하게 된다.  
-
-### 2. ByText
-ByText는 주어진 TextMatch와 일치하는 textContent가 있는 텍스트 노드의 모든 요소를 검색한다.  
-
+그리고 <span class="darkorange">jest-dom</span>의 <span class="crimson">toBeDisabled</span>()와 <span class="crimson">toBeEnabled</span>() matcher 함수를 통해  
+로그인 <span class="olive">버튼의 활성화 여부</span>를 이벤트 발생 전후로 검증하게 된다.  
 
 <!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
 
@@ -285,7 +332,7 @@ _기울여서_ -> 이탤릭체
 ~~취소선~~ -> 취소선
 
 <ul>밑줄넣기</ul> -> 밑줄
-<span style="color:red">빨간 글씨</span> -> 글자색
+<span style="color:crimson">빨간 글씨</span> -> 글자색
 이것이 `인라인` 입니다 -> 인라인 코드
 ```
 
@@ -293,7 +340,7 @@ _기울여서_ -> 이탤릭체
 _기울여서_ -> 이탤릭체
 ~~취소선~~ -> 취소선
 <u>밑줄넣기</u> -> 밑줄
-<span style="color:red">빨간 글씨</span>
+<span style="color:crimson">빨간 글씨</span>
 이것이 `인라인` 입니다 -> 인라인 코드
 
 ---
