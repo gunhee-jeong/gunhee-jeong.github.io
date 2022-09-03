@@ -257,6 +257,8 @@ useEffet를 사용하면서 2번째 argument에 [] 이렇게 빈 array를 사용
 &nbsp; <u>그래서 setInterval()을 종료하도록</u>, useEffect의 return에 `clearInterval()`를 사용한다.  
 &nbsp;
 
+<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
+
 <!-- ### 2. Link 넣기
 
 ```
