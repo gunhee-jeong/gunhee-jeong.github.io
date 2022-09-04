@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "리덕스 thunk 와 middleware"
+title: "리덕스 thunk 와 미들웨어(middleware)"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [리액트 기초] #tag는 여러개 가능함
+tag: [리액트 기초, 미들웨어] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -35,8 +35,14 @@ date: 2022-09-02T13:50:00+09:00
 </style>
 
 # 리덕스 thunk와 middleware
+(화해 블로그)) : [Redux Toolkit은 정말 천덕꾸러기일까?](http://blog.hwahae.co.kr/all/tech/tech-tech/6946/)
+
 # middleware
-`미들웨어`는 <u>dispatch 함수를 결합</u>해서 <span class="teal">새 dispatch 함수를 반환하는 고차함수</span>이다. action을 로깅하거나, 라우팅과 같은 부수 효과를 일으키거나, 비동기 API 호출을 일련의 동기 action으로 바꾸는데 유용하다.
+<u>소프트웨어 공학적 관점</u>에서의 `미들웨어`는 <span class="teal">운영 체제와 응용 소프트웨어 중간에서 조정과 중개</span>의 역할을 수행하는 소프트웨어라 할 수 있다.
+
+`리덕스 미들웨어`는 <u>dispatch된 액션</u>이 <span class="teal">리듀서에 도달하기 전</span> 중간 영역에서 <span class="mediumblue">사용자의 목적에 맞게 기능을 확장할 수 있도록 도와주는</span> 역할을 한다. 예를 들어 미들웨어로 redux-logger를 추가하면 액션이 디스패치될 때마다 개발자 도구 콘솔에 로그가 찍히는 것을 생각해 볼 수 있다. 로그를 출력하는 과정이 중간에 추가된 것이다. 이처럼 개발자는 <span class="teal">자신의 필요에 따라 미들웨어를 작성</span>하여 원하는 목적을 달성할 수 있게 된다.
+
+<img src="https://user-images.githubusercontent.com/87808288/188295814-3153a43e-f38e-4236-8aa7-57d8eb58503c.png" width="70%">  
 
 리덕스에 임의의 기능을 넣어 확장하는 방법으로는 미들웨어를 추천한다. 미들웨어의 중요한 기능 중 하나는 조합이 가능하다는 점이다. redux-thunk는 액션 생산자가 디스패치 함수를 통해 제어를 역전할 수 있게 한다. 액션 생산자는 dipatch를 인수로 받아 비동기적으로 호출할 수 있다. 이런 함수들을 thunk라고 부른다.
 
@@ -45,11 +51,6 @@ date: 2022-09-02T13:50:00+09:00
 
 ## thunk 란?
 thunk는 <u>특정 작업을 나중에 하도록</u> 미루기 위해 <span class="teal">함수형태로 감싸는 것</span>을 말한다. 
-
-
-
-
-
 
 ```bash
 npm i redux-thunk
