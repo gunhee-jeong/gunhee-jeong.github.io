@@ -33,6 +33,7 @@ date: 2022-09-02T13:50:00+09:00
   font-weight: bold;
 }
 </style>
+
 # 리덕스 thunk와 middleware
 # middleware
 `미들웨어`는 <u>dispatch 함수를 결합</u>해서 <span class="teal">새 dispatch 함수를 반환하는 고차함수</span>이다. action을 로깅하거나, 라우팅과 같은 부수 효과를 일으키거나, 비동기 API 호출을 일련의 동기 action으로 바꾸는데 유용하다.
