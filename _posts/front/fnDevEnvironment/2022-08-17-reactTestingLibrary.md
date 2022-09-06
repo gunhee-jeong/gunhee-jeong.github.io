@@ -18,23 +18,13 @@ date: 2022-08-16T23:00:00+09:00
   font-weight: bold;
 }
 
-.darkorange {
-  color: darkorange;
+.mediumblue {
+  color: mediumblue;
   font-weight: bold;
 }
 
-.olive {
-  color: olive;
-  font-weight: bold;
-}
-
-.royalblue {
-  color: royalblue;
-  font-weight: bold;
-}
-
-.forestgreen {
-  color: foresgreen;
+.teal {
+  color: teal;
   font-weight: bold;
 }
 </style>
@@ -44,13 +34,13 @@ date: 2022-08-16T23:00:00+09:00
 (npm Now Packing Magic) : [@testing-library/jest-dom](https://www.npmjs.com/package/@testing-library/jest-dom)  
 
 ## 1장 소개
-`React Testing Library`는 <span class="darkorange">행위 주도 테스트</span> 방법론이 주목받으며 함께 성장한 라이브러리이다. 이는 행위 주도는 기존의 <u>구현 주도 테스트(Implementation Driven Test)의 단점을 보완</u>하기 위한 방법론이다.
+`React Testing Library`는 <u>행위 주도 테스트</u> 방법론이 주목받으며 함께 성장한 라이브러리이다. 이는 행위 주도는 기존의 <span class="teal">구현 주도 테스트(Implementation Driven Test)의 단점을 보완</span>하기 위한 방법론이다.
 
 ```html
 <h2 class="title">제목</h2>
 ```
 
-기존의 <span class="olive">구현 주도</span>에서는 위의 html에서 <u>h2라는 태그가 사용</u>되었고 <u>title이라는 class가 사용되었는지 여부</u> 등을 테스트하였다. 그런데 실질적으로 사용자는 h2 태그의 사용과 title이라는 클래스 네임의 존재도 모르고 <span class="darkorange">관심도 없다</span>. 따라서 현재 사용자에게 <span class="crimson">어떤 컨텐츠가 보이고</span>, 사용자가 어떤 이벤트를 발생시켰을 때의 <span class="crimson">화면 변화 등을 테스트</span>하는 것을 초점을 맞추고 있다.
+기존의 구현 주도에서는 위의 html에서 <u>h2라는 태그가 사용</u>되었고 <u>title이라는 class가 사용되었는지 여부</u> 등을 테스트하였다. 그런데 실질적으로 사용자는 h2 태그의 사용과 title이라는 클래스 네임의 존재도 모르고 <u>관심도 없다</u>. 따라서 현재 사용자에게 <span class="crimson">어떤 컨텐츠가 보이고</span>, 사용자가 어떤 이벤트를 발생시켰을 때의 <span class="crimson">화면 변화 등을 테스트</span>하는 것을 초점을 맞추고 있다.
 
 ### 1. @testing-library/jest-dom
 @testing-library/jest-dom은 jest의 matcher들을 확장하여 테스트의 의도를 명확하게 표현할 수 있다.  
@@ -62,7 +52,7 @@ click, change 등의 이벤트를 발생시킬 수 있다.
 ## 2장 주요 API
 React Testing Library에는 DOM에 컴포넌트를 렌더링해주는 render() 함수와 특정 이벤트를 발생시켜주는 fireEvent 객체, 그리고 DOM에서 특정 영역을 선택하기 위한 다양한 쿼리 함수가 존재한다.
 
-<span class="crimson">render() 함수</span>는 React Testing Library에서 제공하는 <u>모든 쿼리 함수</u>와 <u>기타 유틸리티 함수</u>를 담고 있는 <span class="darkorange">객체를 반환</span>하게 된다. 따라서 자바스크립트의 문법인 <span class="olive">Destructuring 문법</span>을 사용하여 render 함수가 리턴한 객체로부터 원하는 쿼리 함수를 얻을 수 있다. 그리고 렌더링 된 DOM 요소(container)를 반환한다.
+<span class="crimson">render() 함수</span>는 React Testing Library에서 제공하는 <u>모든 쿼리 함수</u>와 <u>기타 유틸리티 함수</u>를 담고 있는 <span class="mediumblue">객체를 반환</span>하게 된다. 따라서 자바스크립트의 문법인 <span class="teal">Destructuring 문법</span>을 사용하여 render 함수가 리턴한 객체로부터 원하는 쿼리 함수를 얻을 수 있다. 그리고 렌더링 된 DOM 요소(container)를 반환한다.
 
 ```jsx
 import { render } from '@testing-library/react';
@@ -75,19 +65,19 @@ const { getByText, container } = render(<Button />);
 ```
 
 ### 1. Query
-렌더링 된 DOM 노드에 접근하여 엘리먼트를 가져오는 메서드이다. 예시로 <u>getAllByRole 메서드</u>를 살펴보자면, get(<span class="olive">쿼리 타입</span>) -> All(<span class="olive">타켓의 개수</span>) -> ByRole(<span class="olive">타겟 유형</span>)으로 세션을 나눌 수 있다.
+렌더링 된 DOM 노드에 접근하여 엘리먼트를 가져오는 메서드이다. 예시로 <u>getAllByRole 메서드</u>를 살펴보자면, get(<span class="teal">쿼리 타입</span>) -> All(<span class="teal">타켓의 개수</span>) -> ByRole(<span class="teal">타겟 유형</span>)으로 세션을 나눌 수 있다.
 
 #### (1) 쿼리 타입
-- <span class="darkorange">get</span>: 동기적으로 처리되며 타겟을 찾지 못하면 에러를 발생
-- <span class="darkorange">find</span>: 비동기적으로 처리되며 타겟을 칮지 못하면 에러를 발생
-- <span class="darkorange">query</span>: 동기적으로 처리되며 타겟을 찾지 못하면 null을 반환
+- get: 동기적으로 처리되며 타겟을 찾지 못하면 에러를 발생
+- find: 비동기적으로 처리되며 타겟을 칮지 못하면 에러를 발생
+- query: 동기적으로 처리되며 타겟을 찾지 못하면 null을 반환
 
 #### (2) 타겟의 개수
 <u>다수의 엘리먼트가 탐색</u>되는 상황에서는 All을 사용하여 탐색할 수 있다.
 
 #### (3) 타겟 유형
 ##### [ByRole]
-공식문서에서 <span class="darkorange">getByRole</span>을 권장한다고 해서 테스트를 위해 role을 선언하지 않아도 된다. 기본적으로 <span class="olive">몇몇 HTMl 시맨틱 태그는 이미 implict role을 가지고</span> 있기 때문이다. z해당 role과 <span class="royalblue">두 번째 인자로 들어가는 옵션 객체</span>를 통해 찾고자 하는 <u>타입을 좀더 명확하게</u> 할 수 있다. 만약 implict role을 파악하기 어렵다면 아래의 이미지의 방법으로 사용 가능한 role을 제안받을 수도 있다.
+공식문서에서 <span class="teal">getByRole</span>을 권장한다고 해서 테스트를 위해 <u>role을 선언하지 않아도 된다</u>. 기본적으로 <span class="mediumblue">몇몇 HTMl 시맨틱 태그는 이미 implict role을 가지고</span> 있기 때문이다. 해당 role과 <span class="teal">두 번째 인자로 들어가는 옵션 객체</span>를 통해 찾고자 하는 <u>타입을 좀더 명확하게</u> 할 수 있다. 만약 implict role을 파악하기 어렵다면 아래의 이미지의 방법으로 사용 가능한 role을 제안받을 수도 있다.
 
 ```jsx
 // Counter.js
@@ -250,6 +240,28 @@ describe("<LoginForm />", () => {
 
 그리고 <span class="darkorange">jest-dom</span>의 <span class="crimson">toBeDisabled</span>()와 <span class="crimson">toBeEnabled</span>() matcher 함수를 통해  
 로그인 <span class="olive">버튼의 활성화 여부</span>를 이벤트 발생 전후로 검증하게 된다.  
+
+# 3장 jest-dom
+(github) : [testing-library/ jest-dom](https://github.com/testing-library/jest-dom#tohavetextcontent)
+
+## 1. Custom matchers
+### toHaveTextContent
+toHaveTextContent를 통해 <u>주어진 노드</u>에 <span class="teal">text content가 있는지</span> 확인할 수 있다. 이것은 요소뿐만 아니라 텍스트 노드와 fragment도 지원한다.
+
+문자열 인수가 전달되면 노드 내용과 부분적으로 대소문자를 구분하는 일치를 수행한다.
+
+```html
+<span data-testid="text-content">Text Content</span>
+```
+
+```jsx
+const element = getByTestId('text-content')
+
+expect(element).toHaveTextContent('Content')
+expect(element).toHaveTextContent(/^Text Content$/) // to match the whole content
+expect(element).toHaveTextContent(/content$/i) // to use case-insensitive match
+expect(element).not.toHaveTextContent('content')
+```
 
 <!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
 
