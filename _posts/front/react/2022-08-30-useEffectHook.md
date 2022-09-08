@@ -18,18 +18,13 @@ date: 2022-08-30T14:00:00+09:00
   font-weight: bold;
 }
 
-.royalblue {
-  color: royalblue;
+.mediumblue {
+  color: mediumblue;
   font-weight: bold;
 }
 
-.olive {
-  color: olive;
-  font-weight: bold;
-}
-
-.forestgreen {
-  color: foresgreen;
+.teal {
+  color: teal;
   font-weight: bold;
 }
 </style>
@@ -40,17 +35,17 @@ date: 2022-08-30T14:00:00+09:00
 # 1장 학습목표
 - `useEffect` 훅을 활용해 다양한 <u>side effect(부수효과)</u>를 일으킬 수 있다.
 - React에서 일어나는 <span class="crimson">UI Rendering</span>과 <span class="crimson">Side Effect</span>의 차이를 구분하여 설명할 수 있다.
-- `useEffect Hook`을 활용해 원하는 타이밍(<span class="olive">의존성 배열</span>)에 Side Effect를 일으킬 수 있으며, 이 과정에서 일어나는 컴포넌트 랜더링 과정을 설명할 수 있다.
+- `useEffect Hook`을 활용해 원하는 타이밍(의존성 배열)에 Side Effect를 일으킬 수 있으며, 이 과정에서 일어나는 컴포넌트 렌더링 과정을 설명할 수 있다.
 
-useEffect 훅을 이해하는 데 있어 가장 중요한 것은<span class="royalblue">발생 시점</span>이다. 컴포넌트가 화면에 올라가고 내려가고 훅은 업데이트 되는 과정 속에서 <u>어느 시점에 useEffect 훅이 발생하는지</u> 정확하게 파악할 수 있어야한다.
+useEffect 훅을 이해하는 데 있어 가장 중요한 것은<span class="mediumblue">발생 시점</span>이다. 컴포넌트가 화면에 올라가고 내려가고 훅은 업데이트 되는 과정 속에서 <u>어느 시점에 useEffect 훅이 발생하는지</u> 정확하게 파악할 수 있어야한다.
 
 # 2장 Side Effect
 
 ## 1. What is?
-React에서 함수 컴포넌트의 `rendering` 이란 <u>state, props를 기반으로 UI 요소를</u> 그려내는 행위이다. <span class="olive">rendering 결과물에 영향을 주는 요소</span>는 <span class="royalblue">state</span>와 <span class="royalblue">props</span>이다.
+React에서 함수 컴포넌트의 `rendering` 이란 <u>state, props를 기반으로 UI 요소를</u> 그려내는 행위이다. <span class="teal">rendering 결과물에 영향을 주는 요소</span>는 <span class="mediumblue">state</span>와 <span class="mediumblue">props</span>이다.
 
 ## 2. Side Effect
-부작용, 부수 효과라고도 부른다. 일상 생활에서는 부정적인 의미로 사용되지만, 프로그래밍 측면에서는 단순히 부정적인 의미로만 사용하지 않는다. <span class="royalblue">외부 변수의 개입</span>이 있다면 `side effect`이다.
+부작용, 부수 효과라고도 부른다. 일상 생활에서는 부정적인 의미로 사용되지만, 프로그래밍 측면에서는 단순히 부정적인 의미로만 사용하지 않는다. <span class="mediumblue">외부 변수의 개입</span>이 있다면 `side effect`이다.
 
 ```jsx
 let count = 0
@@ -62,10 +57,25 @@ function greetWithSideEffect(name) { // Input
 }
 ```
 
-이 함수는 <u>함수 외부 세계에 count라는 변수를 조작</u>한다. 이는 <span class="crimson">함수의 결과값 이외의 다른 상태를 변경시키는 행위</span>에 해당하고 <span class="royalblue">Side Effect가 있다</span>고 할 수 있다. react의 함수 컴포넌트에서의 Side Effect는, rendering이 아니고 <span class="olive">외부 세계에 영향을 주는 어떠한 행위</span>이다. 대표적으로 <u>Data Fetching, DOM에 직접 접근, 구독</u>과 같은 행위들이 있다.
+이 함수는 <u>함수 외부 세계에 count라는 변수를 조작</u>한다. 이는 <span class="crimson">함수의 결과값 이외의 다른 상태를 변경시키는 행위</span>에 해당하고 <span class="teal">Side Effect가 있다</span>고 할 수 있다. react의 함수 컴포넌트에서의 Side Effect는, rendering이 아니고 <span class="mediumblue">외부 세계에 영향을 주는 어떠한 행위</span>이다. 대표적으로 <u>Data Fetching, DOM에 직접 접근, 구독</u>과 같은 행위들이 있다.
+
+side Effect는 비순수 하기 때문에 순수 함수와는 반대로 <span class="crimson">예측할 수 없다</span>는 문제가 있다.
+
+예를 들어, 브라우저 탭에 사용자 이름을 표시하도록 <u>제목 메타 태그를 변경</u>하려는 경우 <span class="teal">구성 요소 자체 내에서 변경할 수 있지만 그렇게 해서는 안된다</span>.
+
+```jsx
+function User({ name }) {
+  document.title = name; 
+  // This is a side effect. Don't do this in the component body!
+    
+  return <h1>{name}</h1>;   
+}
+```
+
+컴포넌트 body에서 직접 <span class="crimson">side effect</span>를 수행하면 <span class="mediumblue">리액트 컴포넌트의 렌더링에 방해</span>가 된다. <span class="teal">side effect는 렌더링 프로세스와 분리되어야</span> 한다. <u>side effect를 수행해야 하는 경우</u> <span class="mediumblue">컴포넌트가 렌더링된 후에 엄격하게 수행되어야</span> 한다. 이것이 useEffect를 사용하는 이유이다. 요컨대, useEffect는 외부 세계와 상호 작용할 수 있지만 해당 구성 요소의 렌더링이나 성능에는 영향을 미치지 않는 도구이다.
 
 # 3장 useEffect
-<u>함수 컴포넌트</u>의 <span class="olive">리턴 값은 UI 요소</span>라고 했고, <span class="royalblue">state와 props의 변화가 있을 때마다 함수가 실행</span>된다. 이 말은 <u>매 Rendering 때마다 함수 body에 있는 로직이 실행</u>된다는 의미이다. 그리고 <span class="royalblue">rendering과 무관한 로직이 rendering 과정에서 실행</span>되기 때문에 rendering 자체에 영향을 줘 <span class="crimson">성능에 악영향</span>을 끼칠 수 있다. 그래서 react에서는 이런 <u>side effect를 일으키기 위한 장소</u>로 `useEffect hook`을 제공한다.
+<u>함수 컴포넌트</u>의 <span class="teal">리턴 값은 UI 요소</span>라고 했고, <span class="mediumblue">state와 props의 변화가 있을 때마다 함수가 실행</span>된다. 이 말은 <u>매 Rendering 때마다 함수 body에 있는 로직이 실행</u>된다는 의미이다. 그리고 <span class="mediumblue">rendering과 무관한 로직이 rendering 과정에서 실행</span>되기 때문에 rendering 자체에 영향을 줘 <span class="crimson">성능에 악영향</span>을 끼칠 수 있다. 그래서 react에서는 이런 <u>side effect를 일으키기 위한 장소</u>로 `useEffect hook`을 제공한다.
 
 ```jsx
 function greetWithSideEffect({ name }) { //
