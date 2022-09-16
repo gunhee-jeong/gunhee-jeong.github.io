@@ -23,19 +23,54 @@ date: 2022-09-02T13:50:00+09:00
   font-weight: bold;
 }
 
-.teal {
-  color: teal;
-  font-weight: bold;
-}
-
 .forestgreen {
   color: foresgreen;
   font-weight: bold;
 }
 </style>
 
-# 리덕스 thunk와 middleware
-(화해 블로그)) : [Redux Toolkit은 정말 천덕꾸러기일까?](http://blog.hwahae.co.kr/all/tech/tech-tech/6946/)
+# 리덕스 thunk와 미들웨어
+(화해 블로그) : [Redux Toolkit은 정말 천덕꾸러기일까?](http://blog.hwahae.co.kr/all/tech/tech-tech/6946/)  
+(벨로퍼트) : [리덕스 미들웨어](https://react.vlpt.us/redux-middleware/02-make-middleware.html)
+
+# Redux Thunk middleware
+`Redux Thunk middleware`는 Action creator가 액션을 반환하는 대신에 <span class="mediumblue">함수를 반환</span>한다. 그래서 특정 액션이 실행되는 것을 지연시키거나 <u>특정한 조건이 충족될 때만 액션이 실행될 수 있도록</u> 할 수 있다.
+
+
+```jsx
+const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+
+function increment() {
+  return {
+    type: INCREMENT_COUNTER,
+  };
+}
+
+function incrementAsync() {
+  return (dispatch) => {
+    setTimeout(() => {
+      // Yay! Can invoke sync or async actions with `dispatch`
+      dispatch(increment());
+    }, 1000);
+  };
+}
+```
+
+두 번째 매개변수인 getState를 이용하여 현재 상태를 불러올 수 있다. 그리고 아무것도 dispatch 하지 않는다면 아무일도 일어나지 않는다.
+
+```jsx
+function incrementIfOdd() {
+  return (dispatch, getState) => {
+    const { counter } = getState();
+
+    if (counter % 2 === 0) {
+      return;
+    }
+
+    dispatch(increment());
+  };
+}
+```
 
 # middleware
 <u>소프트웨어 공학적 관점</u>에서의 `미들웨어`는 <span class="teal">운영 체제와 응용 소프트웨어 중간에서 조정과 중개</span>의 역할을 수행하는 소프트웨어라 할 수 있다.
@@ -45,6 +80,34 @@ date: 2022-09-02T13:50:00+09:00
 <img src="https://user-images.githubusercontent.com/87808288/188295814-3153a43e-f38e-4236-8aa7-57d8eb58503c.png" width="70%">  
 
 리덕스에 임의의 기능을 넣어 확장하는 방법으로는 미들웨어를 추천한다. 미들웨어의 중요한 기능 중 하나는 조합이 가능하다는 점이다. redux-thunk는 액션 생산자가 디스패치 함수를 통해 제어를 역전할 수 있게 한다. 액션 생산자는 dipatch를 인수로 받아 비동기적으로 호출할 수 있다. 이런 함수들을 thunk라고 부른다.
+
+리덕스 미들웨어를 만들 때는 아래의 모양을 이용한다.
+
+```jsx
+const middleware = store => next => action => {
+  // 하고 싶은 작업...
+}
+```
+
+미들웨어는 결국 함수를 연달아서 두 번 리턴하는 하나의 함수이다.
+
+```jsx
+function middleware(store) {
+  return function (next) {
+    return function (action) {
+      // 하고 싶은 작업...
+    };
+  };
+};
+```
+
+위 함수의 매개변수를 살펴보면 첫번째 store는 리덕스 스토어 인스턴스이다. 여기에 dispatch, getState, subscribe 내장함수가 들어있다.
+
+두번째 next는 액션을 다음 미들웨어에게 전달하는 함수이다. 만약 다음 미들웨어가 없다면 리듀서에게 액션을 전달한다. 만약에 next를 호출하지 않게 된다면 액션이 무시처리되어 리듀서에게 전달되지 않는다.
+
+세번째 action은 현재 처리하고 있는 액션 객체이다.  
+<img src="https://user-images.githubusercontent.com/87808288/190568187-274f6723-2d1e-4a21-bdca-0a6f1b443647.png" width="60%">
+
 
 # 리덕스 thunk
 `redux-thunk`는 리덕스를 사용하는 어플리케이션에서 <span class="crimson">비동기 작업</span>을 처리할 때 가장 기본적으로 사용되는 방법으로 redux-thunk 라는 <span class="mediumblue">미들웨어</span>를 사용하는 것이다. 
