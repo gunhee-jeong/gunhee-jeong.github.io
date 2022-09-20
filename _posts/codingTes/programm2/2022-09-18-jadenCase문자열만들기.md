@@ -1,9 +1,9 @@
 ---
 layout: single
-title: "프로그래머스 2단계 JadenCase 문자열 만들기(자바스크립트)"
+title: "프로그래머스 JadenCase 문자열 만들기(자바스크립트)"
 # categories: Git
 categories:
-  - Programmers1
+  - Programmers2
 tag: [프로그래머스 2단계] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
