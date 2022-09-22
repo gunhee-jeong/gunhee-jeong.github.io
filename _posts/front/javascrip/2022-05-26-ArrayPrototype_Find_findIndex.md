@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Array.prototype -> 'find' and findIndex"
+title: "Array.prototype -> find and findIndex"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
@@ -12,8 +12,31 @@ date: 2022-05-26T21:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 1. find
-<span style="color:red">find</span> method는 <u>주어진 판별 함수를 만족하는</u> <span style="color:blue">첫 번째 요소의 값을 반환</span>한다.  
+<style>
+.crimson {
+  color: crimson;
+  font-weight: bold;
+}
+
+.mediumblue {
+  color: mediumblue;
+  font-weight: bold;
+}
+
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
+  font-weight: bold;
+}
+</style>
+
+# Array.prototype -> find and findIndex
+# 🔴 find
+`find` method는 <u>주어진 판별 함수를 만족하는</u> <span class="crimson">첫 번째 요소의 값을 반환</span>한다.
 
 ```js
 const array1 = [5, 12, 8, 130, 44];
@@ -22,12 +45,9 @@ const found = array1.find(element => element > 10);
 console.log(found); //output == 12
 ```
 
-<u>10보다 큰 element로는 12, 130, 44</u>가 있지만 <span style="color:tomato">10을 넘는 첫 번째 element 만을 바로 반환</span>한다.  
-그렇게 <span style="color:blue">element를 찾았다면 메서드를 종료</span>하게 된다.  
+<u>10보다 큰 element로는 12, 130, 44</u>가 있지만 <span class="mediumblue">10을 넘는 첫 번째 element 만을 바로 반환</span>한다. 그렇게 <span class="forestgreen">element를 찾았다면 메서드를 종료</span>하게 된다. find method는 주어진 <u>판별 함수에 true가 없다면 <span class="crimson">undefined</span>를 반환</u>한다.
 
-find method는 주어진 <span style="color:royalblue">판별 함수를 만족하는 -> true가 없다면</span> <span style="color:red">undefined</span>를 반환한다.  
-
-[callback(<u>element</u>, <u>array</u>, <u>index</u>)를 사용할 수 있다.]  
+callback(element, array, index)를 사용할 수 있다.
 
 ```js
 let array = [1, 3, 5, 4, 4, 8];
@@ -35,7 +55,7 @@ let array = [1, 3, 5, 4, 4, 8];
 console.log(array.find((element, index) => index == 2)); //output == 5
 ```
 
-[Quiz]  
+## 🟠 예제
 find student with the score 90  
 
 ```js
@@ -62,14 +82,9 @@ const result = students.find((student, index) => student.score == 90)
 console.log(result); //output == Student {name: 'C', age: 30, enrolled: true, score: 90}
 ```
 
-`find 메서드`는 <u>filter 메서드와 같이</u> <span style="color:tomato">배열의 모든 인덱스를 순회</span>하면서  
-<u>판별함수를 만족하는 element를 찾으면</u> <span style="color:red">배열의 순회를 그 자리에서 중지</span>한다.  
-"<span style="color:blue">includes</span>"와 "<span style="color:blue">indexOf</span>" <span style="color:royalblue">와는 다르게</span> filter 함수와 같이 배열을 순회하는 것이 큰 특징이다.  
+`find 메서드`는 filter 메서드와 같이 <span class="mediumblue">배열의 모든 인덱스를 순회</span>하면서 <u>판별함수를 만족하는 element를 찾으면</u> <span class="mediumblue">배열의 순회를 그 자리에서 중지</span>한다. <u>"includes"와 "indexOf" 와는 다르게</u> filter 함수와 같이 find 함수는 <span class="forestgreen">배열을 순회하는 것</span>이 특징이다.
 
-위의 <u>find 메서드의 특징</u>을 살려,  
-배열을 순회하면서 <span style="color:royalblue">판별 함수의 조건</span>에 해당하는 <span style="color:tomato">element를 변수로 선언</span>하고  
-find로 순회한 배열을 <span style="color:blue">filter 함수</span>를 사용하여 <u>false를 주어서</u> <span style="color:red">배열에서 해당 element를 제거할 수도</span> 있다.  
-활용의 예시는 아래의 코드와 같다.  
+위의 find 메서드의 특징을 살려, 배열을 순회하면서 <span class="mediumblue">판별 함수의 조건에 해당하는 element를 반환하여 변수로 선언</span>하고 이 <u>선언된 변수를 이용</u>하여 <span class="forestgreen">filter 함수에 boolean을 반환</span>하여 배열에서 <u>해당 element를 제거</u>할 수도 있다. 활용의 예시는 아래의 코드와 같다.
 
 ```js
 let n = 5;
@@ -77,18 +92,20 @@ let lost = [2, 4];
 let reserve = [3];
 
 function solution(n, lost, reserve) {      
-  return n - lost.filter(a => {
-    const b = reserve.find(r => Math.abs(r-a) <= 1); // 판별 함수의 조건에 맞는 element를 변수에 할당함
-    if(!b) return true; // 판별 함수의 조건에 맞는 element가 없다면 'undefined'가 변수에 할당됨
-    reserve = reserve.filter(r => r !== b); // 판별 함수의 조건에 맞는 element가 있었다면 if문을 뛰어 넘어간다.
-  }).length; // find 메서드로 element를 변수로 지정하고 -> filter 메서드로 배열에서 해당 element를 지운다.
+  return n - lost.filter(loster => {
+    const reserveMan = reserve.find(reserver => Math.abs(reserver - loster) === 1);
+
+    reserve = reserve.filter(reserver => reserver !== resereMan);
+
+    if(!reserveMan) return true;
+  }).length;
 }
 
 solution(n, lost, reserve );
 ```
 
-# 2. findIndex
-`findIndex()`는 주어진 <span style="color:tomato">판별 함수의 결과가 true</span>인 -> <span style="color:red">첫 번째 element의 index를 반환</span>한다.  
+# 🔴 findIndex
+`findIndex 함수`는 주어진 <u>판별 함수의 결과가 true</u> 인 <span class="crimson">첫 번째 element의 index를 반환</span>한다.
 
 ```js
 let array = [1, 3, 5, 4, 4, 8];
@@ -96,13 +113,11 @@ let array = [1, 3, 5, 4, 4, 8];
 console.log(array.findIndex((element, index) => element == 4)); //output == 3
 ```
 
-`find` 메서드와 `findIndex` 메서드는 -> <span style="color:tomato">판별 함수가 true</span>인 경우 <span style="color:red">더이상 진행하지 않는다</span>!  
+`find` 메서드와 `findIndex` 메서드는 -> <span class="mediumblue">판별 함수가 true</span>인 경우 <span class="crimson">더이상 진행하지 않는다</span>!
 
-<u>find 메서드와 다른 점</u>이라고 할 수 있는 것은, <span style="color:royalblue">판별 함수가 false일 경우</span>이다.  
-판별 함수가 <span style="color:blue">false</span>일 경우 `find`는 -> <span style="color:tomato">undefined</span>를 반환하고  
-`findIndex`의 경우에는 -> <span style="color:red">-1</span>을 반환한다.  
+<u>find 메서드와 다른 점</u>이라고 할 수 있는 것은, <span class="forestgreen">판별 함수가 false일 경우</span>이다. 판별 함수가 false 일 경우 `find` 함수는 <span class="mediumblue">undefined</span>를 반환하고 `findIndex`의 경우에는 <span class="mediumblue">-1</span>을 반환한다.
 
-callback(element, index, array)를 사용할 수 있다.  
+callback(element, index, array)를 사용할 수 있다.
 
 <!-- <span style="color:royalblue"> -->
 
