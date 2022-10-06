@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "Github repository(저장소) 생성"
+title: "GitHub, Repository 생성하기"
 # categories: Git
 categories:
   - Github # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [Github Tutorial] #tag는 여러개 가능함
+tag: [Repository] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함  
@@ -12,17 +12,37 @@ date: 2022-05-17T09:50:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# local 프로젝트를 github 서버로
-우선 Github에 접속해서 <u>repository를 생성</u>한다 ->  
-아래로 내리다보면 페이지에 <span class="royalblue">...or create a new repository</span>가 있는데  
-거기서 "<span class="tomato">git remote add origin 주소</span>"로 되어있는 것을 <u>복사하여 터미널에 붙여넣는다</u> ->  
+<style>
+.crimson {
+  color: crimson;
+  font-weight: bold;
+}
 
-정상적으로 등록이 되었는지 확인하기 위해 터미널에서 <span class="tomato">git remote</span>를 입력해서 <u>origin이 나오면 성공</u> ->  
-git hist로 살펴보면 아직 server로는 올라가있지 않기 때문에   
-"<span class="tomato">git push</span>"를 통해 local의 commit들을 server로 올려야 한다.  
+.mediumblue {
+  color: mediumblue;
+  font-weight: bold;
+}
 
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
 
-# 2. fork 받아 사용하기
+.black {
+  color: black;
+  font-weight: bold;
+}
+</style>
+
+# GitHub, Repository 생성하기
+# 🔴 local 프로젝트를 github 서버로
+우선 Github에 접속해서 `repository`를 생성한다.
+
+아래로 내리다보면 페이지에 "<span class="forestgreen">...or create a new repository</span>"가 있는데 거기서 "<span class="mediumblue">git remote add origin 주소</span>"로 되어있는 것을 <u>복사하여 터미널에 붙여넣는다</u>.
+
+정상적으로 등록이 되었는지 확인하기 위해 터미널에서 <span class="crimson">git remote</span>를 입력해서 <u>origin이 나오면 성공</u> git hist로 살펴보면 아직 server로는 올라가있지 않기 때문에 "<span class="crimson">git push</span>"를 통해 local의 commit들을 server로 올려야 한다.
+
+# 🔴 fork 받아 사용하기
 <span class="blue">먼저 PR을 보내고 싶은 repository를 fork</span>한다.  
 그러면 <span class="royalblue">자신의 계정의 GitHub에 동일한 repository가 복사</span>된다.  
 
@@ -48,37 +68,7 @@ git rebase upstream/main
 git switch -c xunxee upstream/main
 ```
 
-<style>
-.red {
-  color: red;
-  font-weight: bold;
-}
-
-.tomato {
-  color: tomato;
-  font-weight: bold;
-}
-
-.blue {
-  color: blue;
-  font-weight: bold;
-}
-
-.royalblue {
-  color: royalblue;
-  font-weight: bold;
-}
-
-.forestgreen {
-  color: foresgreen;
-  font-weight: bold;
-}
-
-.darkorange {
-  color: darkorange;
-  font-weight: bold;
-}
-</style>
+<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
 
 <!-- ### 2. Link 넣기
 
@@ -90,10 +80,27 @@ git switch -c xunxee upstream/main
 
 ```
 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
-유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](#1-header)
-유형 3의 방법
+```bash
+.next/static
+        ├── AbmKMg9BFeVUuJ7lsQ1w8
+        ├── chunks                 // 여러 페이지에서 공통으로 사용되는 번들 파일
+        │       └──  pages         // 각 페이지의 번들 파일
+        ├── runtime                // 웹팩과 next의 런타임과 관련된 번들 파일
+        ├── css                    // 애플리케이션의 모든 페이지에 대한 글로벌 CSS 파일
+        └── media                  // 정적으로 가져온 이미지 next/image가 여기에 해시 및 복사
+        
+```
+
+<details>
+<summary class="black">코드</summary>
+<div markdown="1">
+
+```jsx
+// helloWorld!
+const hello = 'hi';
+```
+</div>
+</details>
 
 1. 특수문자를 제거
 2. 스페이스는 -로 바꾸고

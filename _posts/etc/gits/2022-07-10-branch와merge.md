@@ -1,10 +1,11 @@
 ---
 layout: single
-title: "생활코딩 -> GIT CLI - Branch & Conflict"
+# title: "생활코딩 -> GIT CLI - Branch & Conflict"
+title: "branch 와 merge"
 # categories: Git
 categories:
   - Github # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
-tag: [생활코딩, git] #tag는 여러개 가능함
+tag: [생활코딩] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,28 +13,76 @@ date: 2022-07-10T22:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 1장 브랜치의 사용법
-branch를 추가하고자 할 때는
+<style>
+.crimson {
+  color: crimson;
+  font-weight: bold;
+}
+
+.mediumblue {
+  color: mediumblue;
+  font-weight: bold;
+}
+
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
+  font-weight: bold;
+}
+</style>
+
+# branch 와 merge
+(Outsider's Dev Story) : [새 버전에 맞게 git checkout 대신 switch/ restore 사용하기](https://blog.outsider.ne.kr/1505)
+
+# 🔴 이론
+<img src="https://user-images.githubusercontent.com/87808288/194032929-23485934-679d-4f29-8358-0b2e4d729300.png" width="60%">
+git 에서 따로 지정을 하지 않는 이상, 위의 이미지와 같이 main branch(master branch)가 사용된다.
+
+# 🔴 branch 명령어
+## 🟠 git branch
+<u>모든 branch 를 확인</u>해 볼 수 있다.
 
 ```bash
-git branch 브랜치이름
+git branch
 ```
 
-위의 명령어를 통해 branch를 생성할 수 있다.  
+## 🟠 git branch xxx-branch
+```bash
+git branch xxx-branch
+```
+
+위의 명령어를 터미널에서 입력하면 "xxx-branch" 라는 <u>branch 가 새롭게 만들어</u> 진다.
+
+## 🟠 git branch -d xxx-branch
 
 ```bash
-git checkout 브랜치이름
+git branch -d xxx-branch
 ```
 
-위의 명령어를 통해 다른 branch로 이동할 수 있다.  
+위의 명령어를 통해 "xxx-branch" 라는 branch 를 삭제할 수 있다.
 
+## 🟠 git branch -C yyy-branch
+
+```bash
+git checkout -C yyy-branch
+```
+
+"yyy-branch" 라는 branch 를 생성하면서 바로 해당 branch 로 이동하게 된다.
+
+
+## 🟠 기타 명령어
+### 🟡 git log --all --graph --oneline
 ```bash
 git log --all --graph --oneline
 ```
 
-위의 명령어를 통해서는 git log를 그래프를 사용해 한 눈에 알아볼 수 있도록 터미널에서 UI를 제공해준다.  
+위의 명령어를 통해서는 git log를 그래프를 사용해 한 눈에 알아볼 수 있도록 터미널에서 UI를 제공해준다.
 
-# 2장 브랜치 병합
+# 🔴 merge
 현재 1번 이라는 공통된 내용을 가지고  
 A라는 branch와 main branch가 있을 때 ->  
 1번 내용을 기점으로 A branch와 main branch는 각각의 버전을 형성했다.  
@@ -74,10 +123,7 @@ checkout은 HEAD를 제어하고
 이제 <span style="color:blue">main이 가리키고 있는 2번 commit으로 가리키라</span>고 하는 것과 같다.(<u>HEAD -> google</u> -> <span style="color:tomato">2번 commit</span>)  
 <img src="https://user-images.githubusercontent.com/87808288/178182224-779d4da7-fe20-4347-ac91-038596618511.png" width="500">  
 
-<!-- # 6장 시간여행
-## 1. revert -->
- 
-<!-- <span style="color:royalblue"> -->
+<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
 
 <!-- ### 2. Link 넣기
 
@@ -89,10 +135,27 @@ checkout은 HEAD를 제어하고
 
 ```
 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
-유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](#1-header)
-유형 3의 방법
+```bash
+.next/static
+        ├── AbmKMg9BFeVUuJ7lsQ1w8
+        ├── chunks                 // 여러 페이지에서 공통으로 사용되는 번들 파일
+        │       └──  pages         // 각 페이지의 번들 파일
+        ├── runtime                // 웹팩과 next의 런타임과 관련된 번들 파일
+        ├── css                    // 애플리케이션의 모든 페이지에 대한 글로벌 CSS 파일
+        └── media                  // 정적으로 가져온 이미지 next/image가 여기에 해시 및 복사
+        
+```
+
+<details>
+<summary class="black">코드</summary>
+<div markdown="1">
+
+```jsx
+// helloWorld!
+const hello = 'hi';
+```
+</div>
+</details>
 
 1. 특수문자를 제거
 2. 스페이스는 -로 바꾸고
