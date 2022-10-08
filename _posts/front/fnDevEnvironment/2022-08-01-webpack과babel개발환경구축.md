@@ -111,13 +111,13 @@ npm install react react-dom
 ```
 
 ### 🟡 public
-#### 🟢 index.js
+#### 🟢 index.html
 <details>
-<summary class="black">index.js 코드</summary>
+<summary class="black">클릭해서 index.html 코드 보기</summary>
 <div markdown="1">
 
 ```html
-<!-- index.js -->
+<!-- index.html -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -134,14 +134,24 @@ npm install react react-dom
 </details>
 
 ### 🟡 src
-#### 🟢
+#### 🟢 index.jsx
+<details>
+<summary class="black">코드</summary>
+<div markdown="1">
 
-웹팩이 src 폴더 안의 파일을 모두, main.js로 묶는다. 그래서 src 와 public 폴더가 필요하다.
+```jsx
+// helloWorld!
+const hello = 'hi';
+```
+</div>
+</details>
 
 
 
 
-### (3) eslint 추가
+
+
+## 🟠 eslint
 ```bash
 npm i -D eslint
 ```
@@ -168,6 +178,73 @@ TypeScript 사용 여부 등으로 이루어진다.
 npx eslint --fix .
 ```
 
+### 🟡 eslintrc.js
+<details>
+<summary class="black">클릭해서 eslintrc.js 코드 보기</summary>
+<div markdown="1">
+
+```jsx
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    jest: true,
+  },
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+  ],
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  plugins: [
+    'react',
+  ],
+  globals: {
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+    actor: 'readonly',
+    Feature: 'readonly',
+    Scenario: 'readonly',
+    context: 'readonly', // context 사용시 설정
+    given: 'readonly', // given 사용시 설정
+  },
+  rules: {
+    indent: ['error', 2],
+    'no-trailing-spaces': 'error',
+    curly: 'error',
+    'brace-style': 'error',
+    'no-multi-spaces': 'error',
+    'space-infix-ops': 'error',
+    'space-unary-ops': 'error',
+    'no-whitespace-before-property': 'error',
+    'func-call-spacing': 'error',
+    'space-before-blocks': 'error',
+    'keyword-spacing': ['error', { before: true, after: true }],
+    'comma-spacing': ['error', { before: false, after: true }],
+    'comma-style': ['error', 'last'],
+    'comma-dangle': ['error', 'always-multiline'],
+    'space-in-parens': ['error', 'never'],
+    'block-spacing': 'error',
+    'array-bracket-spacing': ['error', 'never'],
+    'object-curly-spacing': ['error', 'always'],
+    'key-spacing': ['error', { mode: 'strict' }],
+    'arrow-spacing': ['error', { before: true, after: true }],
+    'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
+    'linebreak-style': 'off',
+
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
+  },
+};
+```
+</div>
+</details>
+
 ## 3. 개발용 서버 실행방법
 기존의 webpack을 이용하여 서버를 여는 방법은 "webpack-dev-server"였지만  
 이것이 변경되어 현재는 아래의 명령어가 되었다.  
@@ -182,9 +259,16 @@ npm start
 
 그리고 webpack.config.js에 mode 옵션이 없을 경우 에러가 발생하므로 아래와 같이 config 파일을 설정해야한다.  
 
-```js
+<details>
+<summary class="black">클릭해서 webpack.config.js 코드 보기</summary>
+<div markdown="1">
+
+```jsx
 // webpack.config.js
+const path = require('path');
+
 module.exports = {
+  entry: path.resolve(__dirname, 'src/index.jsx'),
   module: {
     rules: [
       {
@@ -194,15 +278,30 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  devServer: {
+    historyApiFallback: {
+      index: 'index.html',
+    },
+  },
 };
-
 ```
 
+</div>
+</details>
+
 <img src="https://user-images.githubusercontent.com/87808288/183346122-71f52957-01cc-4c50-9c47-248b6d7b02a5.png" width="30%">  
-그리고 public 폴더 내에 존재하는 <span class="blue">index.html</span> 내부에 <span class="tomato">main.js를 연결</span>해주어야 한다.  
+
+그리고 public 폴더 내에 존재하는 <span class="blue">index.html</span> 내부에 <span class="tomato">main.js를 연결</span>해주어야 한다. 코드는 아래와 같다.
+
+<details>
+<summary class="black">클릭해서 index.html 코드 보기</summary>
+<div markdown="1">
 
 ```html
-<!-- index.js -->
+<!-- index.html -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -211,10 +310,12 @@ module.exports = {
   </head>
   <body>
     <div id="app"></div>
-    <script src="main.js"></script>
+    <script src="/main.js"></script>
   </body>
 </html>
 ```
+</div>
+</details>
 
 ## 4. babel 설정
 ### (1) babel 설치
@@ -224,8 +325,12 @@ npm i -D @babel/core #
 npm i -D @babel/preset-env @babel/preset-react
 ```
 
-```js
-// babel config 설정
+<details>
+<summary class="black">클릭해서 babel.config.js 코드 보기</summary>
+<div markdown="1">
+
+```jsx
+// babel.config.js
 module.exports = {
   presets: [
     [
@@ -238,8 +343,18 @@ module.exports = {
     ],
     '@babel/preset-react',
   ],
+  plugins: [
+    [
+      '@babel/plugin-transform-react-jsx',
+      {
+        runtime: 'automatic',
+      },
+    ],
+  ],
 };
 ```
+</div>
+</details>
 
 <!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
 
