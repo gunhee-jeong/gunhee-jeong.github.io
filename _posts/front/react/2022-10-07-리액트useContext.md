@@ -58,9 +58,7 @@ context 를 사용하면 위의 이미지와 같이 자식 컴포넌트 중에�
 
 <img src="https://user-images.githubusercontent.com/87808288/194495750-1292030b-1bb8-4a93-b66a-3fc1eaf224b2.png" width="40%">
 
-<details>
-<summary class="black">클릭해서 App.jsx 코드 보기</summary>
-<div markdown="1">
+# 🔴 Prop Drilling
 
 ```jsx
 // App.jsx
@@ -78,12 +76,6 @@ export default function App() {
   );
 }
 ```
-</div>
-</details>
-
-<details>
-<summary class="black">클릭해서 Page.jsx 코드 보기</summary>
-<div markdown="1">
 
 ```jsx
 // Page.jsx
@@ -102,13 +94,6 @@ export default function Page({ isDark, setIsDark }) {
 }
 ```
 
-</div>
-</details>
-
-<details>
-<summary class="black">클릭해서 Header.jsx 코드 보기</summary>
-<div markdown="1">
-
 ```jsx
 // Header.jsx
 export default function Header({ isDark }) {
@@ -126,13 +111,6 @@ export default function Header({ isDark }) {
 }
 ```
 
-</div>
-</details>
-
-<details>
-<summary class="black">클릭해서 Content.jsx 코드 보기</summary>
-<div markdown="1">
-
 ```jsx
 // Content.jsx
 export default function Content({ isDark }) {
@@ -149,12 +127,6 @@ export default function Content({ isDark }) {
   );
 }
 ```
-</div>
-</details>
-
-<details>
-<summary class="black">클릭해서 Footer.jsx 코드 보기</summary>
-<div markdown="1">
 
 ```jsx
 // Footer.jsx
@@ -177,27 +149,16 @@ export default function Footer({ isDark, setIsDark }) {
   );
 }
 ```
-</div>
-</details>
 
-<details>
-<summary class="black">클릭해서 ThemeContext.jsx 코드 보기</summary>
-<div markdown="1">
-
+# 🔴 Context
 ```jsx
 // ThemeContext.jsx
 import { createContext } from 'react';
 
 export const ThemeContext = createContext(null);
 ```
-</div>
-</details>
 
-위의 ThemeContext.jsx 에는 createContext 를 사용하여 context 를 생성하게 된다. 그러면 이 기존의 코드들에서 사용하던 props 를 사용하지 않고도 ThemeContext 를 사용하여 data 가 필요한 컴포넌트들에서 바로 사용할 수 있게 된다. 변화되는 코드들은 아래와 같다.
-
-<details>
-<summary class="black">클릭해서 App.jsx 코드 보기</summary>
-<div markdown="1">
+위의 `ThemeContext.jsx` 에는 <span class="crimson">createContext</span> 를 사용하여 context 를 생성하게 된다. 그러면 이 기존의 코드들에서 사용하던 props 를 사용하지 않고도 ThemeContext 를 사용하여 data 가 필요한 컴포넌트들에서 바로 사용할 수 있게 된다. 변화되는 코드들은 아래와 같다.
 
 ```jsx
 // App.jsx
@@ -219,47 +180,37 @@ export default function App() {
   );
 }
 ```
-</div>
-</details>
 
-이렇게 위의 코드와 같이 ThemeContext.Provider 에서 감싸는 모든 하위 컴포넌트에서는 우리가 value 에 넣어준 isDark 와 setIsDark 를 사용할 수 있게 된다.
-
-<details>
-<summary class="black">클릭해서 Page.jsx 코드 보기</summary>
-<div markdown="1">
+이렇게 위의 코드와 같이 <span class="mediumblue">ThemeContext.Provider</span> 에서 감싸는 모든 하위 컴포넌트에서는 우리가 <span class="forestgreen">value</span> 에 넣어준 <u>isDark</u> 와 <u>setIsDark</u> 를 사용할 수 있게 된다.
 
 ```jsx
 // Page.jsx
-import React, { useContext } from 'react';
-
-import { ThemeContext } from '../context/ThemeContext';
-
 import Content from "./Content";
 import Footer from "./Footer";
 import Header from "./Header";
 
 export default function Page() {
-  const data = useContext(ThemeContext);
-
   return (
     <div className="Page">
-      <Header isDark={isDark} />
-      <Content isDark={isDark} />
-      <Footer isDark={isDark} />
+      <Header />
+      <Content />
+      <Footer />
     </div>
   );
 }
 ```
-</div>
-</details>
 
-<details>
-<summary class="black">클릭해서 Header.jsx 코드 보기</summary>
-<div markdown="1">
+위의 Page 컴포넌트는 App 컴포넌트에서 선언된 state(isDark) 를 실질적으로 사용하지 않고 그 자식 컴포넌트들에게 내려주는 역할만을 하는 컴포넌트였다. 그래서 Page 컴포넌트는 App 컴포넌트의 state 의 존재를 몰라도 되므로 위의 코드와 같이 정리해줄 수 있는 것이다.
 
 ```jsx
 // Header.jsx
-export default function Header({ isDark }) {
+import React, { useContext } from 'react';
+
+import ThemeContext from '../context/ThemeContext';
+
+export default function Header() {
+  const { isDark } = useContext(ThemeContext);
+
   return (
     <header
       className="Page"
@@ -273,16 +224,18 @@ export default function Header({ isDark }) {
   );
 }
 ```
-</div>
-</details>
 
-<details>
-<summary class="black">클릭해서 Content.jsx 코드 보기</summary>
-<div markdown="1">
+위의 컴포넌트에서는 <span class="mediumblue">useContext(ThemeContext);</span> 를 사용하여 ThemeContext 에서 value 를 가져와 사용하게 된다. 만약 <u>App 컴포넌트에서 ThemeContext.Provider 를 사용하지 않았다면</u> Context 컴포넌트에서 선언한 <span class="forestgreen">초기값인 null</span> 이 사용된다.
 
 ```jsx
 // Content.jsx
-export default function Content({ isDark }) {
+import React, { useContext } from 'react';
+
+import ThemeContext from '../context/ThemeContext';
+
+export default function Content() {
+  const { isDark } = useContext(ThemeContext);
+
   return (
     <div
       className="content"
@@ -296,16 +249,16 @@ export default function Content({ isDark }) {
   );
 }
 ```
-</div>
-</details>
-
-<details>
-<summary class="black">클릭해서 Footer.jsx 코드 보기</summary>
-<div markdown="1">
 
 ```jsx
 // Footer.jsx
-export default function Footer({ isDark, setIsDark }) {
+import React, { useContext } from 'react';
+
+import ThemeContext from '../context/ThemeContext';
+
+export default function Footer() {
+  const { isDark, setIsDark } = useContext(ThemeContext);
+
   function toggleTheme() {
     setIsDark(!isDark);
   }
@@ -324,8 +277,6 @@ export default function Footer({ isDark, setIsDark }) {
   );
 }
 ```
-</div>
-</details>
 
 
 
