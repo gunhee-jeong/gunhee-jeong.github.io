@@ -1,14 +1,14 @@
 ---
 layout: single
-title: "리액트 코드숨 프로젝트 테스트코드 정리"
+title: "리액트 MemoryRouter"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [코드숨] #tag는 여러개 가능함
+tag: [메모리라우터] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-09-22T21:00:00+09:00
+date: 2022-10-09T15:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
@@ -34,78 +34,76 @@ date: 2022-09-22T21:00:00+09:00
 }
 </style>
 
-# 리액트 코드숨 프로젝트 테스트코드 정리
-# 🔴 리뷰 작성
-RestaurantPage -> RestaurantContainer -> ReviewForm -> TextField
+# 리액트 MemoryRouter
+(REACT ROUTER)) : [MemoryRouter](https://v5.reactrouter.com/web/api/MemoryRouter)
 
-`RestaurantContainer` 는 <u>레스토랑의 상세정보</u>와 <u>리뷰</u>를 랜더링하는 컴포넌트이다. 이 RestaurantContainer 는 사용자가 <span class="forestgreen">입력 버튼을 클릭</span>시, 함수의 인자로 data를 전달받아 <span class="mediumblue">dispatch를 일으키는</span> 함수 <span class="crimson">handleClick 이 선언</span>되어 있다. 코드는 아래와 같다.
+# 🔴 MemoryRouter
+```jsx
+<MemoryRouter
+  initialEntries={optionalArray}
+  initialIndex={optionalNumber}
+  getUserConfirmation={optionalFunc}
+  keyLength={optionalNumber}
+>
+  <App />
+</MemoryRouter>
+```
+
+`MemoryRouter` 는 <u>위치를 내부적으로 저장</u>하는 라우터이다. BrowserRouter 와는 달리 브라우저의 <span class="forestgreen">history stack 과 같은 외부적인 요소와 연결되지 않는다</span>. 그래서 MemoryRouter 는 history stack 을 직접 제어해야하는 <span class="mediumblue">테스트 환경</span>에서 사용되는 라우터이다.
+
+사용하는 방법은 <u>BroswerRouter 를 MemoryRouter 로</u> 사용하고, prop 으로 initialEntries 를 사용하면 된다.
+
+## 🟠 initialEntries: array
+history stack 의 locations 배열이다.
 
 ```jsx
-// RestaurantContainer.jsx
-import { useEffect } from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
-
+// App.jsx
 import {
-  loadRestaurant,
-  changeReviewField,
-} from './actions';
+  Routes,
+  Route,
+} from 'react-router-dom';
 
-import { get } from './utils';
+import HomePage from './HomePage';
+import LoginPage from './Login/LoginPage';
 
-import RestaurantDetail from './RestaurantDetail';
-import ReviewForm from './ReviewForm';
-
-export default function RestaurantContainer({ restaurantId }) {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadRestaurant({ restaurantId }));
-  }, []);
-
-  const restaurant = useSelector(get('restaurant'));
-
-  if (!restaurant) {
-    return (
-      <p>Loading......</p>
-    );
-  }
-
-  function handleChange({ name, value }) {
-    dispatch(changeReviewField({ name, value }));
-  }
-
+export default function App() {
   return (
     <>
-      <RestaurantDetail restaurant={restaurant} />
-      <ReviewForm onChange={handleChange} />
+      <div>Header</div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+      <div>Footer</div>
     </>
   );
 }
 ```
 
-여기서 `RestaurantContainer` 는  <u>ReviewForm 에게 handleChange 함수를 props 로 전달</u>한다. `ReviewForm` 은 전달받은 <span class="forestgreen">onChange(handleChange) 가 무엇인지 알지 못하고 그저 TextField 에게 props(onChange) 로 전달</span>할 뿐이다. ReviewForm 의 코드는 아래와 같다.
-
 ```jsx
-import TextField from './TextField';
+// App.test.jsx
+import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
-export default function ReviewForm({ onChange }) {
-  return (
-    <>
-      <TextField
-        label="평점"
-        name="score"
-        type="number"
-        onChange={onChange}
-      />
-      <TextField
-        label="리뷰 설명"
-        name="description"
-        onChange={onChange}
-      />
-    </>
-  );
-}
+import App from './App';
+
+describe('App', () => {
+  function renderApp({ path }) {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
+        <App />
+      </MemoryRouter>
+    ));
+  }
+
+  context('with path /', () => {
+    it('renders the home page', () => {
+      const { container } = renderApp({ path: '/' });
+
+      expect(container).toHaveTextContent('HomePage');
+    });
+  });
+});
 ```
 
 <!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->

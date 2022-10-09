@@ -23,15 +23,21 @@ date: 2022-08-16T23:00:00+09:00
   font-weight: bold;
 }
 
-.teal {
-  color: teal;
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
   font-weight: bold;
 }
 </style>
 
+
 # React-Testing-Library
+(공식 문서) : [Testing Library](https://testing-library.com/docs/react-testing-library/api/)  
 (DaleSeo) : [React Testing Library 사용법](https://www.daleseo.com/react-testing-library/)  
-(npm Now Packing Magic) : [@testing-library/jest-dom](https://www.npmjs.com/package/@testing-library/jest-dom)  
 
 # 🔴 소개
 `React Testing Library`는 <u>행위 주도 테스트</u> 방법론이 주목받으며 함께 성장한 라이브러리이다. 이는 행위 주도는 기존의 <span class="teal">구현 주도 테스트(Implementation Driven Test)의 단점을 보완</span>하기 위한 방법론이다.
@@ -68,9 +74,9 @@ const { getByText, container } = render(<Button />);
 렌더링 된 DOM 노드에 접근하여 엘리먼트를 가져오는 메서드이다. 예시로 <u>getAllByRole 메서드</u>를 살펴보자면, get(<span class="teal">쿼리 타입</span>) -> All(<span class="teal">타켓의 개수</span>) -> ByRole(<span class="teal">타겟 유형</span>)으로 세션을 나눌 수 있다.
 
 ## 🟠 쿼리 타입
-- get: 동기적으로 처리되며 타겟을 찾지 못하면 에러를 발생
+- `get`: 동기적으로 처리되며 <span class="forestgreen">타겟을 찾지 못하면 에러</span>를 발생
 - find: 비동기적으로 처리되며 타겟을 칮지 못하면 에러를 발생
-- query: 동기적으로 처리되며 타겟을 찾지 못하면 null을 반환
+- `query`: 동기적으로 처리되며 <span class="mediumblue">타겟을 찾지 못하면 null</span>을 반환
 
 ## 🟠 타겟의 개수
 <u>다수의 엘리먼트가 탐색</u>되는 상황에서는 All을 사용하여 탐색할 수 있다.
@@ -141,6 +147,41 @@ describe('LoginFormContainer', () => {
 ```
 
 ### 🟡 ByPlaceholderText
+```jsx
+// LoginFormContainer.jsx
+export default function LoginFormContainer() {
+  return (
+    <form>
+      <input type="email" placeholder="Email" />
+      <input type="password" placeholder="Password" />
+      <button type="submit">Log In</button>
+    </form>
+  );
+}
+```
+
+```jsx
+// LoginFormContainer.test.jsx
+import { render } from '@testing-library/react';
+
+import LoginFormContainer from './LoginFormContainer';
+
+describe('LoginFormContainer', () => {
+  it('renders the LoginFormContainer', () => {
+    const { queryByPlaceholderText } = render((
+      <LoginFormContainer />
+    ));
+
+    expect(queryByPlaceholderText('Email')).not.toBeNull();
+    expect(queryByPlaceholderText('Password')).not.toBeNull();
+  });
+});
+```
+
+`ByPlaceholderText` 를 사용하면 <span class="mediumblue">input 태그</span>를 찾고 그 안에 입력되어있는 <span class="mediumblue">placeholder 의 값</span>을 찾게 된다.
+
+위의 예제에서는 쿼리 타입을 "query" 로 설정하여 타겟을 찾지 못하면 null 을 반환한다.
+
 ### 🟡 ByText
 ### 🟡 ByDisplayValue
 ### 🟡 ByAltText
@@ -261,25 +302,40 @@ describe("<LoginForm />", () => {
 로그인 <span class="olive">버튼의 활성화 여부</span>를 이벤트 발생 전후로 검증하게 된다.  
 
 # 🔴 jest-dom
-(github) : [testing-library/ jest-dom](https://github.com/testing-library/jest-dom#tohavetextcontent)
+(github) : [testing-library/ jest-dom](https://github.com/testing-library/jest-dom#tohavetextcontent)  
+(npm Now Packing Magic) : [@testing-library/jest-dom](https://www.npmjs.com/package/@testing-library/jest-dom)  
 
-## 1. Custom matchers
-### toHaveTextContent
-toHaveTextContent를 통해 <u>주어진 노드</u>에 <span class="teal">text content가 있는지</span> 확인할 수 있다. 이것은 요소뿐만 아니라 텍스트 노드와 fragment도 지원한다.
+##  🟠 Custom matchers
+### 🟡 toHaveTextContent
+toHaveTextContent를 통해 <u>주어진 노드</u>에 <span class="forestgreen">text content가 있는지</span> 확인할 수 있다. 이것은 요소뿐만 아니라 텍스트 노드와 fragment도 지원한다.
 
-문자열 인수가 전달되면 노드 내용과 부분적으로 대소문자를 구분하는 일치를 수행한다.
+```jsx
+// App.jsx
+import LoginPage from './Login/LoginPage';
 
-```html
-<span data-testid="text-content">Text Content</span>
+export default function App() {
+  return (
+    <>
+      <div>Test</div>
+      <LoginPage />
+    </>
+  );
+}
 ```
 
 ```jsx
-const element = getByTestId('text-content')
+// App.test.jsx
+import { render } from '@testing-library/react';
 
-expect(element).toHaveTextContent('Content')
-expect(element).toHaveTextContent(/^Text Content$/) // to match the whole content
-expect(element).toHaveTextContent(/content$/i) // to use case-insensitive match
-expect(element).not.toHaveTextContent('content')
+import App from './App';
+
+describe('App', () => {
+  it('renders Test', () => {
+    const { container } = render(<App />);
+
+    expect(container).toHaveTextContent('Test');
+  });
+});
 ```
 
 <!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
