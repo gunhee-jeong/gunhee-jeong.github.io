@@ -12,7 +12,6 @@ date: 2022-08-01T17:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-
 <style>
 .crimson {
   color: crimson;
@@ -38,16 +37,13 @@ date: 2022-08-01T17:00:00+09:00
 # webpack과 bable 개발환경 구축
 
 # 🔴 개발환경 구축
-
 ## 🟠 Node.js
-
 (Node.js 공식문서) : <https://nodejs.org/ko/about/>
 
 `Node.js`는 <u>Chrome V8 JavaScript Engine</u>으로 빌드된 JavaScript Runtime Enviroment 이다.
 
 ### 🟡 Node.js 설치
-
-(Node.js 다운로드) : <https://nodejs.org/ko/>
+(Node.js 다운로드) : <https://nodejs.org/ko/>  
 
 <span class="mediumblue">LTS(Long Term Supported)</span> 버전은 장기적으로 안정적인 지원을 보장하므로 LTS 버전을 선택했다. 정상적으로 설치했다면 아래와 같은 결과를 확인할 수 있다.
 
@@ -57,11 +53,9 @@ node -v # Node.js version 확인
 ```
 
 ## 🟠 NPM 프로젝트 만들기
-
 ### 🟡 NPM?
-
 (NPM 공식문서) : <https://docs.npmjs.com/about-npm>  
-(NPM의 이해) : [김정환님 블로그](https://jeonghwan-kim.github.io/series/2019/12/09/frontend-dev-env-npm.html)
+(NPM의 이해) : [김정환님 블로그](https://jeonghwan-kim.github.io/series/2019/12/09/frontend-dev-env-npm.html)  
 
 `NPM(Node Package Manager)`은 <u>Node.js에서 사용할 수 있는 모듈</u>들을 패키지화하여 모아둔 저장소 역할과 <u>패키치 설치 및 관리를 위한 CLI(Command Line Interface)를 제공</u>한다.
 
@@ -74,7 +68,6 @@ npm init -y # 개별 설정 없이 package.json 생성
 ```
 
 ### 🟡 NPM 의존성 추가 및 webpack 설치
-
 (npm Docs) : [package.json](https://docs.npmjs.com/cli/v8/configuring-npm/package-json)
 
 ```bash
@@ -91,7 +84,7 @@ npm i --save-dev
 npm i -D
 ```
 
-우리는 <span class="blue">webpack 까지 설치</span>해야하므로 <span class="royalblue">아래와 같이 작성</span>한다.
+우리는 <span class="blue">webpack 까지 설치</span>해야하므로 <span class="royalblue">아래와 같이 작성</span>한다.  
 
 ```bash
  npm i -D webpack webpack-cli webpack-dev-server
@@ -101,13 +94,11 @@ npm i -D
 <img src="https://user-images.githubusercontent.com/87808288/183345012-1bc2cc35-348f-41b2-a8ba-883064cd67d9.png" width="55%">
 
 ## 🟠 리액트 및 폴더 설정
-
 ```bash
 npm install react react-dom
 ```
 
 ### 🟡 package.json
-
 ```json
 {
   // ......
@@ -120,9 +111,7 @@ npm install react react-dom
 ```
 
 ### 🟡 public
-
 #### 🟢 index.html
-
 <details>
 <summary class="black">클릭해서 index.html 코드 보기</summary>
 <div markdown="1">
@@ -132,7 +121,7 @@ npm install react react-dom
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Demo</title>
   </head>
   <body>
@@ -141,35 +130,35 @@ npm install react react-dom
   </body>
 </html>
 ```
-
 </div>
 </details>
 
 ### 🟡 src
-
 #### 🟢 index.jsx
-
 <details>
 <summary class="black">코드</summary>
 <div markdown="1">
 
 ```jsx
 // helloWorld!
-const hello = "hi";
+const hello = 'hi';
 ```
-
 </div>
 </details>
 
-## 🟠 eslint
 
+
+
+
+
+## 🟠 eslint
 ```bash
 npm i -D eslint
 ```
 
-<img src="https://user-images.githubusercontent.com/87808288/183356419-4dbccf15-da11-484a-86d8-3e4e24290307.png" width="55%">
+<img src="https://user-images.githubusercontent.com/87808288/183356419-4dbccf15-da11-484a-86d8-3e4e24290307.png" width="55%">  
 
-그리고 eslint의 사용에 관한 설명을 위해 아래의 명령어를 입력한다.
+그리고 eslint의 사용에 관한 설명을 위해 아래의 명령어를 입력한다.  
 
 ```bash
 npx eslint --init
@@ -181,82 +170,79 @@ To check syntax,  find problems, and enforce code style ->
 JavaScript modules(import/ export) ->  
 React ->  
 TypeScript 사용 여부 등으로 이루어진다.  
-<img src="https://user-images.githubusercontent.com/87808288/183358099-c511ca6a-418d-4c74-a8e1-ef346614787d.png" width="60%">
+<img src="https://user-images.githubusercontent.com/87808288/183358099-c511ca6a-418d-4c74-a8e1-ef346614787d.png" width="60%">  
 
-이렇게 설정 후, 자동으로 eslint를 이용해 코드를 수정하기 위해서는 아래의 명령어를 이용할 수 있다.
+이렇게 설정 후, 자동으로 eslint를 이용해 코드를 수정하기 위해서는 아래의 명령어를 이용할 수 있다.  
 
 ```bash
 npx eslint --fix .
 ```
 
 ### 🟡 eslintrc.js
-
-<details>
-<summary class="black">클릭해서 eslintrc.js 코드 보기</summary>
-<div markdown="1">
-
 ```jsx
+// eslintrc.js
 module.exports = {
   env: {
     browser: true,
     es2021: true,
     jest: true,
   },
-  extends: ["plugin:react/recommended", "airbnb"],
+  extends: [
+    'plugin:react/recommended',
+    'airbnb',
+  ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  plugins: ["react"],
+  plugins: [
+    'react',
+  ],
   globals: {
-    Atomics: "readonly",
-    SharedArrayBuffer: "readonly",
-    actor: "readonly",
-    Feature: "readonly",
-    Scenario: "readonly",
-    context: "readonly", // context 사용시 설정
-    given: "readonly", // given 사용시 설정
+    Atomics: 'readonly',
+    SharedArrayBuffer: 'readonly',
+    actor: 'readonly',
+    Feature: 'readonly',
+    Scenario: 'readonly',
+    context: 'readonly', // context 사용시 설정
+    given: 'readonly', // given 사용시 설정
   },
   rules: {
-    indent: ["error", 2],
-    "no-trailing-spaces": "error",
-    curly: "error",
-    "brace-style": "error",
-    "no-multi-spaces": "error",
-    "space-infix-ops": "error",
-    "space-unary-ops": "error",
-    "no-whitespace-before-property": "error",
-    "func-call-spacing": "error",
-    "space-before-blocks": "error",
-    "keyword-spacing": ["error", { before: true, after: true }],
-    "comma-spacing": ["error", { before: false, after: true }],
-    "comma-style": ["error", "last"],
-    "comma-dangle": ["error", "always-multiline"],
-    "space-in-parens": ["error", "never"],
-    "block-spacing": "error",
-    "array-bracket-spacing": ["error", "never"],
-    "object-curly-spacing": ["error", "always"],
-    "key-spacing": ["error", { mode: "strict" }],
-    "arrow-spacing": ["error", { before: true, after: true }],
-    "jsx-a11y/label-has-associated-control": ["error", { assert: "either" }],
-    "linebreak-style": "off",
+    indent: ['error', 2],
+    'no-trailing-spaces': 'error',
+    curly: 'error',
+    'brace-style': 'error',
+    'no-multi-spaces': 'error',
+    'space-infix-ops': 'error',
+    'space-unary-ops': 'error',
+    'no-whitespace-before-property': 'error',
+    'func-call-spacing': 'error',
+    'space-before-blocks': 'error',
+    'keyword-spacing': ['error', { before: true, after: true }],
+    'comma-spacing': ['error', { before: false, after: true }],
+    'comma-style': ['error', 'last'],
+    'comma-dangle': ['error', 'always-multiline'],
+    'space-in-parens': ['error', 'never'],
+    'block-spacing': 'error',
+    'array-bracket-spacing': ['error', 'never'],
+    'object-curly-spacing': ['error', 'always'],
+    'key-spacing': ['error', { mode: 'strict' }],
+    'arrow-spacing': ['error', { before: true, after: true }],
+    'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
+    'linebreak-style': 'off',
 
-    "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off",
+    'react/prop-types': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
 };
 ```
 
-</div>
-</details>
-
 ## 3. 개발용 서버 실행방법
-
 기존의 webpack을 이용하여 서버를 여는 방법은 "webpack-dev-server"였지만  
-이것이 변경되어 현재는 아래의 명령어가 되었다.
+이것이 변경되어 현재는 아래의 명령어가 되었다.  
 
 ```bash
 npx webpack serve --mode development
@@ -266,55 +252,44 @@ npx webpack serve --mode development
 npm start
 ```
 
-그리고 webpack.config.js에 mode 옵션이 없을 경우 에러가 발생하므로 아래와 같이 config 파일을 설정해야한다.
-
-<details>
-<summary class="black">클릭해서 webpack.config.js 코드 보기</summary>
-<div markdown="1">
+그리고 webpack.config.js에 mode 옵션이 없을 경우 에러가 발생하므로 아래와 같이 config 파일을 설정해야한다.  
 
 ```jsx
 // webpack.config.js
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  entry: path.resolve(__dirname, "src/index.jsx"),
+  entry: path.resolve(__dirname, 'src/index.jsx'),
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        use: 'babel-loader',
       },
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx'],
   },
   devServer: {
     historyApiFallback: {
-      index: "index.html",
+      index: 'index.html',
     },
   },
 };
 ```
 
-</div>
-</details>
-
-<img src="https://user-images.githubusercontent.com/87808288/183346122-71f52957-01cc-4c50-9c47-248b6d7b02a5.png" width="30%">
+<img src="https://user-images.githubusercontent.com/87808288/183346122-71f52957-01cc-4c50-9c47-248b6d7b02a5.png" width="30%">  
 
 그리고 public 폴더 내에 존재하는 <span class="blue">index.html</span> 내부에 <span class="tomato">main.js를 연결</span>해주어야 한다. 코드는 아래와 같다.
-
-<details>
-<summary class="black">클릭해서 index.html 코드 보기</summary>
-<div markdown="1">
 
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Demo</title>
   </head>
   <body>
@@ -324,50 +299,38 @@ module.exports = {
 </html>
 ```
 
-</div>
-</details>
-
 ## 4. babel 설정
-
 ### (1) babel 설치
-
 ```bash
 npm i -D babel-loader # webpack에서 babel을 사용할 수 있도록 도와준다.(webpack에서 babel을 사용할 준비를 한다.)
-npm i -D @babel/core #
+npm i -D @babel/core # 
 npm i -D @babel/preset-env @babel/preset-react
 ```
-
-<details>
-<summary class="black">클릭해서 babel.config.js 코드 보기</summary>
-<div markdown="1">
 
 ```jsx
 // babel.config.js
 module.exports = {
   presets: [
     [
-      "@babel/preset-env",
+      '@babel/preset-env',
       {
         targets: {
-          node: "current",
+          node: 'current',
         },
       },
     ],
-    "@babel/preset-react",
+    '@babel/preset-react',
   ],
   plugins: [
     [
-      "@babel/plugin-transform-react-jsx",
+      '@babel/plugin-transform-react-jsx',
       {
-        runtime: "automatic",
+        runtime: 'automatic',
       },
     ],
   ],
 };
 ```
-
-</div>
-</details>
 
 <!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
 
@@ -389,7 +352,7 @@ module.exports = {
         ├── runtime                // 웹팩과 next의 런타임과 관련된 번들 파일
         ├── css                    // 애플리케이션의 모든 페이지에 대한 글로벌 CSS 파일
         └── media                  // 정적으로 가져온 이미지 next/image가 여기에 해시 및 복사
-
+        
 ```
 
 <details>
