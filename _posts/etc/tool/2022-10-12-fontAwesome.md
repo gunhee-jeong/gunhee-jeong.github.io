@@ -1,14 +1,14 @@
 ---
 layout: single
-title: "리액트 combineReducers"
+title: "리액트에서 폰트어썸 사용하기"
 # categories: Git
 categories:
-  - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [리덕스] #tag는 여러개 가능함
+  - Tool # HTML CSS JavaScript Server Algorithm Wecode Programmers CS vsCode
+tag: [FontAwesome] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-10-10T21:30:00+09:00
+date: 2022-10-12T11:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
@@ -34,34 +34,10 @@ date: 2022-10-10T21:30:00+09:00
 }
 </style>
 
-# 리액트 combineReducers
-(Redux) : [combineReducers](https://ko.redux.js.org/api/combinereducers/)  
+# 리액트에서 폰트어썸 사용하기
+(DaleSeo) : [React 에서 Font Awesome 사용하기](https://www.daleseo.com/react-font-awesome/)
 
-# 🔴 combineReducers
-앱이 복잡해짐에 따라 리듀싱 함수(reducer) 를 state 의 독립된 부분들을 관리하는 함수들로 분리하고자 할 것이다.
-
-combineReducers 헬퍼 함수는 서로 다른 리듀싱 함수(reducer)들을 값으로 가지는 객체를 받아서 createStore 에 넘길 수 있는 하나의 리듀싱 함수로 바꾸어준다.
-
-resulting reducer 는 모든 자식 reducer 를 호출하고 그 결과를 단일 state 객체로 수집한다. combineReducers() 네임스페이스에 의해 생성된 state 는 combineRedusers() 에 전달된 키 아래에 있는 각 reducer 의 state 이다.
-
-```jsx
-rootReducer = combineReducers({potato: potatoReducer, tomato: tomatoReducer})
-// This would produce the following state object
-{
-  potato: {
-    // ... potatoes, and other state managed by the potatoReducer ...
-  },
-  tomato: {
-    // ... tomatoes, and other state managed by the tomatoReducer, maybe some nice sauce? ...
-  }
-}
-```
-
-전달된 객체의 reducers 에 대해 다른 키를 사용하여 state 키 이름을 제어할 수 있다. 예를 들어 state 모양이 { todos. counter } 가 되도록 combineReducers({ todos: myTodosReducer, counter: myCounterReducer }) 를 호출할 수 있다.
-
-널리 사용되는 규칙은 reducers 가 관리하는 state slices 의 이름을 따서 명명하는 것이므로 ES6 property 약식 표기법인 combineRdducers({ coounter, todos }) 를 사용할 수 있다. 이것은 combineReducers({ counter: counter, todos: todos }) 를 작성하는 것과 같다.
-
-<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
+<!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
 
 <!-- ### 2. Link 넣기
 
@@ -73,16 +49,10 @@ rootReducer = combineReducers({potato: potatoReducer, tomato: tomatoReducer})
 
 ```
 
-<details>
-<summary class="black">코드</summary>
-<div markdown="1">
-
-```jsx
-// helloWorld!
-const hello = 'hi';
-```
-</div>
-</details>
+유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
+유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
+유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](#1-header)
+유형 3의 방법
 
 1. 특수문자를 제거
 2. 스페이스는 -로 바꾸고
@@ -208,4 +178,19 @@ _기울여서_ -> 이탤릭체
 > - header를 넣고 싶은 경우 ---을 사용하고 :을 이용하여 정렬에 사용함!
 
 ### 10. 토글 만들기
- -->
+
+```
+<details>
+<summary>여기를 누르세요</summary>
+<div markdown="1">
+숨겨진 내용
+</div>
+</details>
+```
+
+<details>
+<summary>여기를 누르세요</summary>
+<div markdown="1">
+숨겨진 내용
+</div>
+</details> -->
