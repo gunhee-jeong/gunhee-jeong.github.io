@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "리액트에서 폰트어썸 사용하기"
+title: "리액트에서 Font Awesome 사용하기"
 # categories: Git
 categories:
   - Tool # HTML CSS JavaScript Server Algorithm Wecode Programmers CS vsCode
@@ -36,6 +36,56 @@ date: 2022-10-12T11:00:00+09:00
 
 # 리액트에서 폰트어썸 사용하기
 (DaleSeo) : [React 에서 Font Awesome 사용하기](https://www.daleseo.com/react-font-awesome/)
+
+# 🔴 Font Awesome 의 SVG
+Font Awesome 5 부터는 SVG 기반 아이콘을 지원하고 있다. SVG 기반의 아이콘은 성능적인 측면에서 유리한 점이 많다.
+
+> SVG?  
+SVG 는 "Scalable Vector Graphics" 의 약자로 각 위치 값을 표시하는 벡터와 같은 방식의 2차원 그래픽용 XML 기반 형식이다. SVG 는 어떤 디바이스 크기에도 깨지지 않고, 마크업 언어로 이루어져 CSS 와 JavaScript 로 수정이 가능하며 우리가 웹상에서 보는 움직이는 텍스트와 아이콘은 모두 SVG 아이콘이다.
+
+기본적으로 PNG 와 SVG 아이콘을 비교하면 PNG 는 테두리가 흐릿하지만 SVG 는 선명한 이미지를 갖는다.
+
+PNG 나 JPG 는 비트맵 기반의 이미지로 각 항목에서 하나 이상의 정보 비트를 가지고 있고, 반면에 SVG 는 벡터 기반으로 각 좌표에 점을 이어서 만들어진다. 벡터 기반의 아이콘은 확대나 축소에도 깨지지 않고 선명하게 보이는 것이 이러한 이유 때문이다.
+
+# 🔴 패키지 설치
+```bash
+npm i @fortawesome/fontawesome-svg-core
+```
+
+먼저 위의 명령어와 같이 Font Awesome 의 SVG 기반 아이콘을 활성화 시키기 위한 기본 패키지를 설치하게 된다.
+
+```bash
+npm i @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
+```
+
+그리고 위의 명령어와 같이, Font Awesome 에 아이콘에 관한 패키지를 설치한다. Solid, Regular 등과 같이 여러 개의 패키지들이 존재한다. 위의 명령어에서는 Solid, Regular, Brands 이렇게 3개의 카테고리에 대한 패키지를 설치했지만 3개를 모두 설치할 필요는 없다. 자신이 사용하게 될 아이콘이 속한 카테고리만을 설치해도 상관없다.
+
+```bash
+npm i @fortawesome/react-fontawesome
+```
+
+마지막으로 위의 명령어와 같이 Font Awesome 을 React 컴포넌트 형태로 사용할 수 있도록 해주는 패키지를 설치하면 된다.
+
+# 🔴 Font Awesome 아이콘 임포트 하기
+웹에서 바로 Font Awesome 을 사용하면 일반적으로 수천개의 아이콘을 모두 로드해야하므로 이는 매우 비효율적이다. 그러나 React 에서는 특정 카테고리에서 필요한 아이콘만을 임포트할 수 있으므로 큰 장점을 가진다.
+
+@fortawesome/react-fontawesome 패키지를 사용하기 때문에 직접 &lt;svg/&gt; 태그를 사용할 필요가 없다. 대신에 이 패키지에서 제공하는 FontAwesomeIcom 컴포넌트 위에서 임포트한 Font Awesome 아이콘을 icon prop 으로 넘겨주어야 한다.
+
+```jsx
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChair } from '@fortawesome/free-solid-svg-icons';
+
+export default function FooterPage() {
+  return (
+    <>
+      <div>footer</div>
+      <FontAwesomeIcon icon={faChair} size="2x" />
+    </>
+  );
+}
+
+// const SIZES = ["xs", "sm", "lg", "2x", "3x", "5x", "7x", "10x"];
+```
 
 <!-- ⓵ ⓶ ⓷ ⓸ ⓹ ⓺ ⓻ ⓼ ⓽ ⓾ -->
 
