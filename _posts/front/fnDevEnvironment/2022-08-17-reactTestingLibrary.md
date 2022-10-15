@@ -186,6 +186,9 @@ describe('LoginFormContainer', () => {
 ### 🟡 ByDisplayValue
 ### 🟡 ByAltText
 ### 🟡 ByTitle
+#### 🟢 Font Awesome 테스트
+
+
 ### 🟡 ByTestId
 
 # 🔴 정적 컴포넌트 테스팅 실습
