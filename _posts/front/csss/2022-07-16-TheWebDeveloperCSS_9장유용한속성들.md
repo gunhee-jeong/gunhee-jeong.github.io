@@ -12,9 +12,32 @@ date: 2022-07-16T09:30:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 9장 CSS 박스 모델
-## 1. Opacity and Alpha Channel
-### (1) Alpha Channel
+<style>
+.crimson {
+  color: crimson;
+  font-weight: bold;
+}
+
+.mediumblue {
+  color: mediumblue;
+  font-weight: bold;
+}
+
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
+  font-weight: bold;
+}
+</style>
+
+# The Web Developer CSS -> 9장 CSS 유용한 속성들
+# 🔴 CSS 박스 모델
+## 🟠 Opacity and Alpha Channel
+### 🟡 Alpha Channel
 `alpha channel`은 색상이 비치는 정도, 즉 <span style="color:red">투명도</span>를 결정하게 된다.  
 alpha channel은 <u>0에서 1사이의 값</u>이다. -> <span style="color:blue">1은 불투명</span>을 <span style="color:blue">0은 완전한 투명</span>을 의미한다.    
 
@@ -58,16 +81,16 @@ section {
 <img src="https://user-images.githubusercontent.com/87808288/179327820-ef20d55a-b260-4fe2-9d1e-66bd4cbcade2.png" width="400">  
 위의 그림과 같이 background-color: rgba(255, 255, 255, 1); 에서 1은 불투명을 의미한다.  
 
-### (2) Opacity
+### 🟡 Opacity
 <u>alpha channel과 opacity 사이에는 큰 차이점</u>이 있는데  
 `opacity`에서는 버튼이나 font 들도 불투명도에 영향을 미친다는 점이다.  
 <span style="color:tomato">전체 요소들이 opacity 속성에 영향을</span> 받게 된다.  
 alpha channel에서는 font 등은 영향을 받지 않았지만, opacity에서는 font와 태그들도 모두 영향을 받는다.  
 <img src="https://user-images.githubusercontent.com/87808288/179327955-8e294465-f366-49e0-9915-ab47d83241d6.png" width="400">  
 
-## 2. 위치 속성
-### (1) static
-### (2) relative
+## 🟠 위치 속성
+### 🟡 static
+### 🟡 relative
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -116,9 +139,11 @@ top: 100px;
 ```
 
 <img src="https://user-images.githubusercontent.com/87808288/179328519-74230bd0-9f6b-49a5-b330-02fed7fb08ee.png" width="300">  
-`relative`는 위의 이미지와 같이 <span style="color:tomato">원래의 위치</span>에서 <span style="color:blue">상대적인 위치로 이동</span>하게 된다.  
+`relative`는 위의 이미지와 같이 <span class="crimson">원래의 위치</span>에서 <span class="mediumblue">상대적인 위치로 이동</span>하게 된다.
 
-### (3) absolute
+### 🟡 absolute
+  <img src="https://user-images.githubusercontent.com/87808288/179328853-ee966c76-0ae1-4aea-8b43-139226871c6e.png" width="300">
+
 ```css
 #absolute #middle {
   background-color: red;
@@ -126,9 +151,9 @@ top: 100px;
 }
 ```
 
-<img src="https://user-images.githubusercontent.com/87808288/179328853-ee966c76-0ae1-4aea-8b43-139226871c6e.png" width="300">  
-absolute 속성을 사용하자 yellowgreen 색상의 div위로 middle div가 올라가 있는 것을 확인할 수 있다.  
-(middle div 아래에 yellowgreen이 깔려있다.)  
+위의 이미지와 같이 absolute 를 사용할 박스의 색상을 red 로 지정했다.
+
+아래의 이미지에서는, <u>absolute 속성</u>을 사용하자 aquamarine 색상의 div위로 <span class="forestgreen">middle div(absolute red 박스)가 올라가 있는</span> 것을 확인할 수 있다. (middle div 아래에 aquamarine이 깔려있다.)
 
 ```css
 #absolute #middle {
@@ -139,13 +164,9 @@ absolute 속성을 사용하자 yellowgreen 색상의 div위로 middle div가 �
 ```
 
 <img src="https://user-images.githubusercontent.com/87808288/179328979-197cbc2b-795e-46bf-a7e0-98abdd5e1f18.png" width="300">  
-<span style="color:green">top: 50px;</span>을 주면 이렇게 원래의 위치에서 상대적으로 이동하는 것이 아닌 <u>예상치 못한 곳에 위치하고</u> 있다.  
-`absolute`를 사용하면 -> 요소가 문서의 <span style="color:royalblue">일반적인 흐름에서 제거</span>되어 <span style="color:red">가장 가까이 있는 조상 요소를 기준으로 이동</span>하게 된다.  
-<span style="color:royalblue">문서에서 제거되어 이동</span>하기 때문에 red div의 <span style="color:tomato">빈자리를 yellowgreen div가 차지</span>하는 것을 확인할 수 있다.  
-<u>조상 요소들에 posotion이 지정되어 있지 않다면</u> <span style="color:tomato">&lt;body&gt;를 기준으로 이동</span>하는데  
-이때 <span style="color:blue">조상 요소의 위치를 기준</span>으로  
-<u>위쪽(top), 아래쪽(bottom), 왼쪽(left), 오른쪽(right)에서 얼마큼 이동할 것인지</u> 결정하게 된다.  
+<u>top: 50px;</u>을 주면 이렇게 원래의 위치에서 상대적으로 이동하는 것이 아닌 <span class="forestgreen">예상치 못한 곳에 위치하고</span> 있다. `absolute`를 사용하면 요소가 문서의 <span class="mediumblue">일반적인 흐름에서 제거</span>되어 <span class="crimson">가장 가까이 있는 조상 요소를 기준으로 이동</span>하게 된다. <u>문서에서 제거되어 이동</u>하기 때문에 red div의 <span class="mediumblue">빈자리를 yellowgreen div가 차지</span>하는 것을 확인할 수 있다.
 
+<u>조상 요소들에 posotion이 지정되어 있지 않다면</u> <span class="crimson">&lt;body&gt;를 기준으로 이동</span>하는데 이때 <span class="mediumblue">조상 요소의 위치를 기준</span>으로 위쪽(top), 아래쪽(bottom), 왼쪽(left), 오른쪽(right)에서 얼마큼 이동할 것인지 결정하게 된다.
 
 ```css
 #absolute {

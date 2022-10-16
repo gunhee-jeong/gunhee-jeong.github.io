@@ -186,8 +186,57 @@ describe('LoginFormContainer', () => {
 ### 🟡 ByDisplayValue
 ### 🟡 ByAltText
 ### 🟡 ByTitle
-#### 🟢 Font Awesome 테스트
+ByTitle 은 <u>태그 안에 title 어트리뷰트</u>를 넣어서 사용할 때 이를 찾는 역할을 할 수 있다.
 
+#### 🟢 Font Awesome 테스트
+아래의 TitleContainer 컴포넌트에는 Font Awesome 을 사용하고 있다. 그리고 여기에서 Font Awesome 을 사용하여 아이콘을 사용중이라는 것을 테스트하고자 한다.
+
+```jsx
+// TitleContainer.jsx
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChair } from '@fortawesome/free-solid-svg-icons';
+
+export default function TitleContainer() {
+  return (
+    <>
+      <FontAwesomeIcon
+        title="chair"
+        icon={faChair}
+        size="2x"
+        color="red"
+      />
+      <ul>
+        <li>All</li>
+        <li>New Arrivals</li>
+        <li>Featured</li>
+      </ul>
+    </>
+  );
+}
+```
+
+이때에는 위의 코드에서 <u>title 어트리뷰트</u>를 넣어주고 아래의 코드와 같이 `ByTitle` 을 사용하여 title 어트리뷰트를 찾는 것으로 <span class="forestgreen">Font Awesome 을 테스트</span>할 수 있다.
+
+```jsx
+// TitleContainer.test.jsx
+import { render } from '@testing-library/react';
+
+import TitleContainer from './TitleContainer';
+
+describe('TitleContainer', () => {
+  it('renders the title logo', () => {
+    const { queryByTitle } = render(<TitleContainer />);
+
+    expect(queryByTitle('chair')).not.toBeNull();
+  });
+
+  it('renders the title list', () => {
+    const { container } = render(<TitleContainer />);
+
+    expect(container).toHaveTextContent('New Arrivals');
+  });
+});
+```
 
 ### 🟡 ByTestId
 
