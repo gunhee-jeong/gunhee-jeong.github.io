@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Hello Coding-> 4장 퀵 정렬"
+title: "Hello Coding 알고리즘, 4장 퀵 정렬"
 # categories: Git
 categories:
   - Algorithm # HTML CSS JavaScript Server Algorithm wecodes Programmers1 Programmers2 CS Github Blog
@@ -12,41 +12,50 @@ date: 2022-05-23T20:50:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 4장 퀵 정렬
-## 1. 분할 정복
-분할 정복 전략은 문제를 푸는 새로운 방식을 제시한다.  
+<style>
+.crimson {
+  color: crimson;
+  font-weight: bold;
+}
+
+.mediumblue {
+  color: mediumblue;
+  font-weight: bold;
+}
+
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
+  font-weight: bold;
+}
+</style>
+
+# Hello Coding 알고리즘, 4장 퀵 정렬
+# 🔴 분할 정복
+분할 정복 전략은 문제를 푸는 새로운 방식을 제시한다.
 
 아래의 토지를 정사각형으로 나누고자 한다.  
-<img src="https://user-images.githubusercontent.com/87808288/177139817-0faf82e7-c480-40c9-af75-dc875a5af7ad.png" width="400">  
-<u>정사각형으로 나누면서 그중 가장 큰 정사각형을 구하려고</u> 한다면 분할 정복을 사용해볼 수 있다.  
+<img src="https://user-images.githubusercontent.com/87808288/177139817-0faf82e7-c480-40c9-af75-dc875a5af7ad.png" width="50%">  
+<u>정사각형으로 나누면서</u> 그중 `가장 큰 정사각형`을 구하려고 한다면 분할 정복을 사용해볼 수 있다. 우선 쉽게 생각해보면, 가로가 50m 세로가 25m라고 가정해보자. 그러면 가장 큰 정사각형을 만들 수 있는 것은 25 * 25이다.
 
-우선 쉽게 생각해보면, 가로가 50m 세로가 25m라고 가정해보자.  
-그러면 가장 큰 정사각형을 만들 수 있는 것은 25 * 25이다.  
+<span class="crimson">분할 정복</span>으로 생각해보면 <span class="mediumblue">재귀 함수를 호출할 때마다 문제를 작게 나누어야</span> 한다. 우선 조건에 맞는 가장 큰 상자를 알아내는 것부터 시작이다. 아래의 이미지에는 <u>가로 1680 * 세로 640</u> 의 직사각형이 준비되어있다.  
+<img src="https://user-images.githubusercontent.com/87808288/177140747-9bba975f-de74-4b05-9fcb-d3f9766a26cc.png" width="50%">  
+한 변의 길이가 640m인 두 개의 정사각형 토지는 만들 수 있지만, <span class="forestgreen">토지가 남게 된다</span>. 원래는 <u>1680 * 640m 크기를 가진 토지를 나누는 것으로 시작</u>했지만 이제는 <span class="mediumblue">640 * 400의 토지를 나누는 문제를 푸는 것</span>이다. <u>남은 토지 크기에 맞는 정사각형을 찾는다면</u> <span class="crimson">이 정사각형으로 전체 농장을 나눌 수 있게</span> 된다. 이렇게 1680 * 640에서 640 * 400으로 그 대상이 바뀌었다.
 
-`분할 정복`으로 생각해보면 <span style="color:blue">재귀 함수를 호출할 때마다 문제를 작게 나누어야</span> 한다.  
-우선 조건에 맞는 <span style="color:tomato">가장 큰 상자를 알아내는 것부터</span> 시작이다.  
-<img src="https://user-images.githubusercontent.com/87808288/177140747-9bba975f-de74-4b05-9fcb-d3f9766a26cc.png" width="400">  
-한 변의 길이가 640m인 두 개의 정사각형 토지는 만들 수 있지만, 토지가 남게 된다.  
-원래는 <u>1680 * 640m 크기를 가진 토지를 나누는 것으로 시작</u>했지만  
-이제는 <span style="color:red">640 * 400의 토지를 나누는 문제를 푸는 것</span>이다.  
-<u>남은 토지 크기에 맞는 정사각형을 찾는다면</u> <span style="color:blue">이 정사각형으로 전체 농장을 나눌 수 있게</span> 된다.  
-이렇게 1680 * 640에서 <span style="color:royalblue">640 * 400으로 그 대상이 바뀌었다</span>.  
+다시 위와 같은 알고리즘으로, <u>640 * 400의 크기를 가진 토지</u>로 시작하여 <span class="forestgreen">가장 큰 정사각형의 크기는 400 * 400</span>이다. <span class="mediumblue">남은 부분은 400 * 240</span>이다.  
+<img src="https://user-images.githubusercontent.com/87808288/177141773-6aa3b105-60da-402a-a881-fc5a3c07b773.png" width="30%">  
+그리고 같은 방법으로 진행하면 <span class="mediumblue">240 * 160</span>이고  
+<img src="https://user-images.githubusercontent.com/87808288/177142371-f1c523f7-1113-489a-b3d5-512422c81562.png" width="40%">  
 
-다시 위와 같은 알고리즘으로,  
-<u>640 * 400의 크기를 가진 토지</u>로 시작하여 <span style="color:blue">가장 큰 정사각형의 크기는 400 * 400</span>이다.  
-남은 부분은 400 * 240이다.  
-<img src="https://user-images.githubusercontent.com/87808288/177141773-6aa3b105-60da-402a-a881-fc5a3c07b773.png" width="250">  
-그리고 같은 방법으로 진행하면 240 * 160이고  
-<img src="https://user-images.githubusercontent.com/87808288/177142371-f1c523f7-1113-489a-b3d5-512422c81562.png" width="400">  
+이제 <u>토지를 나눌 수 있는 가장 큰 정사각형</u>이 <span class="crimson">80 * 80m</span> 라는 사실을 알게 되었다.  
+<img src="https://user-images.githubusercontent.com/87808288/177142728-b65d6a54-5a7a-46be-a414-2cf7f8e77178.png" width="30%">  
 
-이제 토지를 나눌 수 있는 가장 큰 정사각형이 80 * 80m 라는 사실을 알게 되었다.  
-<img src="https://user-images.githubusercontent.com/87808288/177142728-b65d6a54-5a7a-46be-a414-2cf7f8e77178.png" width="300">  
-
-
-
-## 2. 퀵 정렬
-퀵 정렬은 정렬 알고리즘이다.  
-<u>선택 정렬보다 훨씬 빠르고</u> 실제로도 자주 사용된다.  
+# 🔴 퀵 정렬
+퀵 정렬은 정렬 알고리즘이다. <u>선택 정렬보다 훨씬 빠르고</u> 실제로도 자주 사용된다.
 
 배열을 정렬해야 한다면 이중에서 <u>가장 간단한 배열</u>의 경우는  
 바로 아예 <span style="color:royalblue">정렬할 필요도 없는 정렬</span>이다.  
