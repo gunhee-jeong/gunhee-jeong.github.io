@@ -1,14 +1,14 @@
 ---
 layout: single
-title: "CSS-in-JS"
+title: "리액트 emotion reset css"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [CSS, emotion] #tag는 여러개 가능함
+tag: [리덕스] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-09-26T22:00:00+09:00
+date: 2022-10-16T18:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
@@ -34,148 +34,68 @@ date: 2022-09-26T22:00:00+09:00
 }
 </style>
 
-# CSS-in-JS
-(HACKERnoon) : [All You Need To Know About CSS-in-JS](https://hackernoon.com/all-you-need-to-know-about-css-in-js-984a72d48ebc)  
-(아로리) : [CSS-in-JS 에 관해 알아야 할 모든 것](https://d0gf00t.tistory.com/22)
-
-
-CSS-in-JS 를 통해서 스타일을 컴포넌트의 개념으로 생각할 수 있다.
-
-JavaScript 를 사용하여 스타일을 선언적이고, 유지 보수 가능한 방식으로 설명한다.(인라인 스타일과 CSS-in-JS 는 같지 않다.)
-
-# 인라인 스타일이 동작하는 방법
-```jsx
-const textStyles = {
-  color: white,
-  backgroundColor: black
-};
-
-<p style={textStyles}>inline style!</p>
-```
-
-브라우저에서 DOM 노드를 아래와 같이 연결한다.
-
-```jsx
-<p style="color: white; backgrond-color: black;">inline style!</p>
-```
-
-# CSS-in-JS 가 동작하는 방법
-```jsx
-import styled from 'styled-components';
-
-const Text = styled.div`
-  color: white,
-  background: black
-`
-
-<Text>Hello CSS-in-JS</Text>
-```
-
-브라우저에서 DOM 노드를 아래와 같이 연결한다.
-
-```jsx
-<style>
-.hash136s21 {
-  background-color: black;
-  color: white;
-}
-</style>
-
-<p class="hash136s21">Hello CSS-in-JS</p>
-```
-
-`인라인 스타일`과 `CSS-in-JS` 의 차이는, CSS-in-JS 는 <span class="mediumblue">DOM의 상단에 &lt;style&gt; 태그</span>를 추가했고, 인라인 스타일은 <span class="forestgreen">DOM 노드에 속성으로 추가</span>했다.
-
-모든 CSS 기능을 JavaScript 이벤트 핸들러로 지정할 수 있는 것은 아니다. 많은 pseudo 선택자(:disabled, :before, :nth-child)의 사용이 불가능하고 html, body 등도 지원하지 않는다.
-
-# 장점
-더이상 스타일시트의 묶음을 유지보수할 필요가 없다. CSS-in-JS 는 CSS 모델을 문서 레벨이 아니라 컴포넌트 레벨로 추상화한다.
-
-CSS-in-JS 는 자바스크립트 환경을 최대한 활용하여 CSS 를 향상시킨다.
-
-CSS 에서는 명시적으로 정의하지 않은 경우, 부모 요소에서 자동으로 상속되는 속성이 있다. CSS-in-JS 는 이것을 해결해준다.
-
-# 🔴 CSS-in-JS 라이브러리
-## 🟠 Styled Components
-(공식 문서) : [styled components](https://styled-components.com/)
-
-```jsx
-import React, { Component } from 'react';
-import styled from 'styled-components';
-
-const Title = styled.h1`
-  color: white;
-`;
-
-const Wrapper = styled.div`
-    background: black
-`
-
-class App extends Component {
-  render() {
-    return (
-        <Wrapper>
-            <Title>Hello World!</Title>
-        </Wrapper>
-    );
-  }
-}
-
-export default App;
-```
-
-## 🟠 Emotion
-(공식 문서) : [Emotion](https://emotion.sh/docs/introduction)
+# 리액트 emotion reset css
+(npm 공식문서) : [emotion-reset](https://www.npmjs.com/package/emotion-reset)  
 
 ```bash
-npm i @emotion/css
-
-npm i @emotion/react
-
-npm i @emotion/core @emotion/styled
+🗂 src
+  ├── 🗂 Header
+  ├── 🗂 LoginPage
+  └── 🗂 styles
+      └── reset.js
 ```
 
-### 🟡 @emotion/css
-(Emotion 공식 문서) : [@emotion/css](https://emotion.sh/docs/@emotion/css)
+# 🔴 사용방법
+```bash
+npm install --save emotion-reset
+```
+
+터미널에서 위의 명령어로 emotion-reset 을 설치한다.
 
 ```jsx
-import { css } from '@emotion/css'
+// reset.js
+import { css } from '@emotion/react';
 
-const app = document.getElementById('root')
-const myStyle = css`
-  color: rebeccapurple;
-`
-app.classList.add(myStyle)
+import emotionReset from 'emotion-reset';
+
+export default css`
+    ${emotionReset}
+
+    *, *::after, *::before {
+      box-sizing: border-box;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+    }
+`;
 ```
 
-위으 코드에서 css 함수는 스타일을 템플릿 리터럴, 객체, 배열로 받아들이고 클래스 이름을 반환한다. 이는 emotion 의 기초적인 사용법이다.
-
-### 🟡 Styled Components
-(Emotion 공식 문서) : [Styled Components](https://emotion.sh/docs/styled)
-
-styled 는 스타일이 첨부된 React 구성 요소를 만드는 방법이다. @emotion/styled 에서 사용할 수 있다. styled 는 styled-components 와 glamorous 에서 영감을 받아 만들어졌다.
+styles 디렉터리를 생성한 후 위와 같이 reset.js 파일을 하나 생성하여 export 한다.
 
 ```jsx
-import styled from '@emotion/styled'
+// index.jsx
+import ReactDOM from 'react-dom/client';
 
-const Button = styled.button`
-  color: turquoise;
-`
+import { Provider } from 'react-redux';
 
-render(<Button>This my button component.</Button>)
+import { BrowserRouter } from 'react-router-dom';
+
+import { Global } from '@emotion/react';
+
+import store from './store';
+import App from './App';
+import reset from './styles/reset';
+
+ReactDOM.createRoot(document.getElementById('app')).render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <Global styles={reset} />
+      <App />
+    </BrowserRouter>
+  </Provider>,
+);
 ```
 
-```jsx
-() => {
-  return {
-    // 
-  }
-}
-
-() => ({
-  // 
-})
-```
+그리고 위의 코드와 같이 <u>index.jsx</u> 에서 <span class="forestgreen">reset.js 를 import</span> 하여 사용하게 된다.
 
 <!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
 
@@ -197,7 +117,6 @@ render(<Button>This my button component.</Button>)
         ├── runtime                // 웹팩과 next의 런타임과 관련된 번들 파일
         ├── css                    // 애플리케이션의 모든 페이지에 대한 글로벌 CSS 파일
         └── media                  // 정적으로 가져온 이미지 next/image가 여기에 해시 및 복사
-        
 ```
 
 <details>
