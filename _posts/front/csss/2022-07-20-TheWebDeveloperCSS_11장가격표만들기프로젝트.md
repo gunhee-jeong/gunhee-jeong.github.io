@@ -12,15 +12,38 @@ date: 2022-07-20T13:50:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+<style>
+.crimson {
+  color: crimson;
+  font-weight: bold;
+}
+
+.mediumblue {
+  color: mediumblue;
+  font-weight: bold;
+}
+
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
+  font-weight: bold;
+}
+</style>
+
 # 11장 가격표 만들기 프로젝트
+
 ## 1. web
 <img src="https://user-images.githubusercontent.com/87808288/180206073-101a755d-2de0-4781-8902-fd18042960fc.png" width="100%">  
 
 ## 2. mobile
 <img src="https://user-images.githubusercontent.com/87808288/180193822-ef6a72a7-7e3f-4daf-af78-5dec1140aa0c.png" width="50%">  
 
-## 3. code
-### (1) HTML code
+# 🔴 code
+## 🟠 HTML code
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -76,9 +99,8 @@ date: 2022-07-20T13:50:00+09:00
 <span style="color:royalblue">다른 a 태그</span>들의 className(<u>class="pricing"</u>)과는 다르게  
 <span style="color:green">class="pricing-button is-featured"</span>으로 className을 만들었다.  
 
-
-### (2) CSS code
-#### [reset css]
+## 🟠 CSS code
+### 🟡 reset css
 ```css
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -248,7 +270,7 @@ body {
 }
 ```
 
-#### [html]
+### 🟡 html
 ```css
 html {
   box-sizing: border-box;
@@ -259,7 +281,7 @@ html {
 reset css를 작성한 후  
 기본적으로 <u>&lt;html&gt;</u>에는 <span style="color:red">box-sizing</span>: border-box; 속성을 추가한다.  
 
-#### [body]
+### 🟡 body
 ```css
 body {
   background-color: #60a9ff;
@@ -270,11 +292,9 @@ body {
 }
 ```
 
-<span style="color:blue">body에 기본적인 height를 설정</span>하면 <span style="color:tomato">자식 element에서 높이를 상대적으로 줄 때 body를 기준으로 사용</span>할 수 있게 된다.  
-이때 &lt;body&gt;에 <span style="color:blue">min-height: 100vh;</span>를 주거나  
-<span style="color:blue">heigth: 100%;</span>를 주고 시작하게 된다.  
+<span class="mediumblue">body에 기본적인 height를 설정</span>하면 <span class="crimson">자식 element에서 높이를 상대적으로 줄 때 body를 기준으로 사용</span>할 수 있게 된다. 이때 &lt;body&gt;에 `min-height: 100vh;`를 주거나 `heigth: 100%;`를 주고 시작하게 된다.
 
-#### [.panel]
+### 🟡 .panel
 ```css
 .panel {
   display: flex;
@@ -349,6 +369,8 @@ width와 height 등의 속성을 추가할 수 없다.
 따라서 <u>padding이 가능</u>하고 <span style="color:tomato">width와 height가 가능</span>한 display: <span style="color:red">inline-block; 속성</span>으로 변경한다.  
 
 
+<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
+
 <!-- ### 2. Link 넣기
 
 ```
@@ -359,10 +381,26 @@ width와 height 등의 속성을 추가할 수 없다.
 
 ```
 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
-유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](#1-header)
-유형 3의 방법
+```bash
+.next/static
+        ├── AbmKMg9BFeVUuJ7lsQ1w8
+        ├── chunks                 // 여러 페이지에서 공통으로 사용되는 번들 파일
+        │       └──  pages         // 각 페이지의 번들 파일
+        ├── runtime                // 웹팩과 next의 런타임과 관련된 번들 파일
+        ├── css                    // 애플리케이션의 모든 페이지에 대한 글로벌 CSS 파일
+        └── media                  // 정적으로 가져온 이미지 next/image가 여기에 해시 및 복사
+```
+
+<details>
+<summary class="black">코드</summary>
+<div markdown="1">
+
+```jsx
+// helloWorld!
+const hello = 'hi';
+```
+</div>
+</details>
 
 1. 특수문자를 제거
 2. 스페이스는 -로 바꾸고

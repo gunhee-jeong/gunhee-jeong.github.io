@@ -12,6 +12,28 @@ date: 2022-07-18T13:30:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+<style>
+.crimson {
+  color: crimson;
+  font-weight: bold;
+}
+
+.mediumblue {
+  color: mediumblue;
+  font-weight: bold;
+}
+
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
+  font-weight: bold;
+}
+</style>
+
 # 10장 반응형 CSS 및 Flexbox
 ## 1. flex-direction
 flex model에는 "Main Axis"와 "Cross Axis"가 존재한다.  
@@ -255,11 +277,8 @@ main .sidebar {
 }
 ```
 
-## 9. midea queries
-midea queries를 사용하다보면 `view port`라는 것을 알아야한다.  
-view port는 컴퓨터 그래픽에 있는 polygonal 영역을 말한다.  
-이는 <u>브라우저에서 우리가 보고 있는 문서</u>나 윈도우 화면을 통해서 보고 있는 문서를 말한다.  
-즉 <span style="color:royalblue">화면 전체를 말하는 것이 아니라</span> <span style="color:tomato">브라우저의 width</span>를 말한다는 것이다.  
+# 🔴 midea queries
+midea queries를 사용하다보면 `view port`라는 것을 알아야한다. view port는 컴퓨터 그래픽에 있는 polygonal 영역을 말한다. 이는 브라우저에서 <span class="crimson">우리가 보고 있는 문서</span>나 윈도우 화면을 통해서 보고 있는 문서를 말한다. 즉 <u>화면 전체를 말하는 것이 아니라</u> <span class="mediumblue">브라우저의 width</span>를 말한다는 것이다.
 
 ```css
 @media (min-width: 800px) {
@@ -269,7 +288,7 @@ view port는 컴퓨터 그래픽에 있는 polygonal 영역을 말한다.
 }
 ```
 
-위의 media queries는 width가 800px 이상이면 &lt;h1&gt;의 color를 보라색으로 바꾸도록 설정했다.  
+위의 코드에서 media queries는 width가 800px 이상이면 &lt;h1&gt;의 color를 보라색으로 바꾸도록 설정했다.  
 
 ```css
 @media (min-width: 600px) and (max-width: 800px) {
@@ -295,8 +314,7 @@ view port는 컴퓨터 그래픽에 있는 polygonal 영역을 말한다.
 }
 ```
 
-<u>위의 코드</u>를 저장하고 실행해보면 <span style="color:ivory;background:royalblue">브라우저가 300px일 때도 color는 orange</span>이다.  
-왜냐하면 media queries의 <span style="color:ivory;background:tomato">조건문의 순서</span>에서 max-width가 1000px이기 때문이다.  
+위의 코드를 저장하고 실행해보면 <u>브라우저가 300px일 때도 color는 orange</u>이다. 왜냐하면 media queries의 <span class="mediumblue">조건문의 순서</span>에서 max-width가 1000px이기 때문이다.
 
 ```css
 @media (max-width: 1000px) {
@@ -312,10 +330,9 @@ view port는 컴퓨터 그래픽에 있는 polygonal 영역을 말한다.
 }
 ```
 
-위의 코드와 같이 max-width: 500px이 코드의 가장 아래에 있으면  
-화면의 width가 최대 500px까지는 red color이고 500px이 넘고 1000px 이하에서는 orange color로 나온다.  
+위의 코드와 같이 max-width: 500px이 코드의 가장 아래에 있으면 화면의 width가 최대 500px까지는 red color이고 500px이 넘고 1000px 이하에서는 orange color로 나온다.
 
-이렇게 CSS 코드를 <span style="color:ivory;background:blue">역방향으로 사용하지 않기 위해</span>서는 아래의 코드와 같이 <span style="color:ivory;background:red">min-width</span>를 사용할 수 있다.  
+이렇게 CSS 코드를 <u>역방향으로 사용하지 않기 위해</u>서는 아래의 코드와 같이 <span class="mediumblue">min-width</span>를 사용할 수 있다.
 
 ```css
 h1 {
@@ -461,6 +478,8 @@ CSS 코드의 <span style="color:green">ul {}</span>에서 <span style="color:gr
 고정될 수 있도록 설정할 수 있다.  
 <img src="https://user-images.githubusercontent.com/87808288/179899658-d8ca91e8-cf27-45ae-8550-340e21f24c47.png" width="70%">  
 
+<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
+
 <!-- ### 2. Link 넣기
 
 ```
@@ -471,10 +490,26 @@ CSS 코드의 <span style="color:green">ul {}</span>에서 <span style="color:gr
 
 ```
 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
-유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](#1-header)
-유형 3의 방법
+```bash
+.next/static
+        ├── AbmKMg9BFeVUuJ7lsQ1w8
+        ├── chunks                 // 여러 페이지에서 공통으로 사용되는 번들 파일
+        │       └──  pages         // 각 페이지의 번들 파일
+        ├── runtime                // 웹팩과 next의 런타임과 관련된 번들 파일
+        ├── css                    // 애플리케이션의 모든 페이지에 대한 글로벌 CSS 파일
+        └── media                  // 정적으로 가져온 이미지 next/image가 여기에 해시 및 복사
+```
+
+<details>
+<summary class="black">코드</summary>
+<div markdown="1">
+
+```jsx
+// helloWorld!
+const hello = 'hi';
+```
+</div>
+</details>
 
 1. 특수문자를 제거
 2. 스페이스는 -로 바꾸고

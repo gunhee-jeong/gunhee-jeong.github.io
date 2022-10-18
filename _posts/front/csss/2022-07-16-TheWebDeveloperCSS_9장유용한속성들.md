@@ -287,9 +287,8 @@ sticky는 fixed와 비슷하게 생겼는데
 스크롤을 시작할 때는 고정되지 않은 상태이지만  
 개발자가 설정한 위치에 도달하면 그 위치에 머물게 된다.  
 
-## 3. transition
-`transition 속성`을 이용하면 <u>:hover일 때</u> 도형등이 바뀌는 것을 <span style="color:tomato">서서히 바뀌도록 설정</span>할 수 있다.  
-transition을 사용하면 :hover일 때 빠르게 변하지만 transition을 사용하면 애니메이션처럼 움직임을 줄 수 있다.  
+# 🔴 transition
+`transition 속성`을 이용하면 <u>:hover일 때</u> 도형등이 바뀌는 것을 <span class="crimson">서서히 바뀌도록 설정</span>할 수 있다. transition을 사용하면 :hover일 때 빠르게 변하지만 transition을 사용하면 애니메이션처럼 움직임을 줄 수 있다.
 
 ```html
 <!DOCTYPE html>
