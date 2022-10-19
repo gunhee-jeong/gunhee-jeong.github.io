@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "useEffect Hook"
+title: "리액트 useEffect"
 # categories: Git
 categories:
   - React # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [useEffect, hook, setInterval, clearInterval] #tag는 여러개 가능함
+tag: [useEffect] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -23,13 +23,18 @@ date: 2022-08-30T14:00:00+09:00
   font-weight: bold;
 }
 
-.teal {
-  color: teal;
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
   font-weight: bold;
 }
 </style>
 
-# useEffect Hook
+# 리액트 useEffect
 (React 공식문서) : [Using the Effeck Hook](https://ko.reactjs.org/docs/hooks-effect.html)
 
 # 1장 학습목표
@@ -39,13 +44,10 @@ date: 2022-08-30T14:00:00+09:00
 
 useEffect 훅을 이해하는 데 있어 가장 중요한 것은<span class="mediumblue">발생 시점</span>이다. 컴포넌트가 화면에 올라가고 내려가고 훅은 업데이트 되는 과정 속에서 <u>어느 시점에 useEffect 훅이 발생하는지</u> 정확하게 파악할 수 있어야한다.
 
-# 2장 Side Effect
+# 🔴 Side Effect
+React에서 함수 컴포넌트의 `rendering` 이란 <span class="crimson">state</span>, <span class="crimson">props</span>를 기반으로 UI 요소를 그려내는 행위이다. rendering 결과물에 <u>영향을 주는 요소는 state와 props</u>이다.
 
-## 1. What is?
-React에서 함수 컴포넌트의 `rendering` 이란 <u>state, props를 기반으로 UI 요소를</u> 그려내는 행위이다. <span class="teal">rendering 결과물에 영향을 주는 요소</span>는 <span class="mediumblue">state</span>와 <span class="mediumblue">props</span>이다.
-
-## 2. Side Effect
-부작용, 부수 효과라고도 부른다. 일상 생활에서는 부정적인 의미로 사용되지만, 프로그래밍 측면에서는 단순히 부정적인 의미로만 사용하지 않는다. <span class="mediumblue">외부 변수의 개입</span>이 있다면 `side effect`이다.
+`Side Effect`는 부작용, 부수 효과라고도 부른다. 일상 생활에서는 부정적인 의미로 사용되지만, 프로그래밍 측면에서는 단순히 부정적인 의미로만 사용하지 않는다. <span class="mediumblue">외부 변수의 개입</span>이 있다면 side effect이다.
 
 ```jsx
 let count = 0
@@ -74,8 +76,8 @@ function User({ name }) {
 
 컴포넌트 body에서 직접 <span class="crimson">side effect</span>를 수행하면 <span class="mediumblue">리액트 컴포넌트의 렌더링에 방해</span>가 된다. <span class="teal">side effect는 렌더링 프로세스와 분리되어야</span> 한다. <u>side effect를 수행해야 하는 경우</u> <span class="mediumblue">컴포넌트가 렌더링된 후에 엄격하게 수행되어야</span> 한다. 이것이 useEffect를 사용하는 이유이다. 요컨대, useEffect는 외부 세계와 상호 작용할 수 있지만 해당 구성 요소의 렌더링이나 성능에는 영향을 미치지 않는 도구이다.
 
-# 3장 useEffect
-<u>함수 컴포넌트</u>의 <span class="teal">리턴 값은 UI 요소</span>라고 했고, <span class="mediumblue">state와 props의 변화가 있을 때마다 함수가 실행</span>된다. 이 말은 <u>매 Rendering 때마다 함수 body에 있는 로직이 실행</u>된다는 의미이다. 그리고 <span class="mediumblue">rendering과 무관한 로직이 rendering 과정에서 실행</span>되기 때문에 rendering 자체에 영향을 줘 <span class="crimson">성능에 악영향</span>을 끼칠 수 있다. 그래서 react에서는 이런 <u>side effect를 일으키기 위한 장소</u>로 `useEffect hook`을 제공한다.
+# 🔴 useEffect
+<span class="forestgreen">함수 컴포넌트</span>의 리턴 값은 UI 요소라고 했고, <span class="crimson">state와 props의 변화가 있을 때마다 함수가 실행</span>된다. 이 말은 <u>매 Rendering 때마다 함수 body에 있는 로직이 실행</u>된다는 의미이다. 그리고 <span class="mediumblue">rendering과 무관한 로직이 rendering 과정에서 실행</span>되기 때문에 rendering 자체에 영향을 줘 <span class="crimson">성능에 악영향</span>을 끼칠 수 있다. 그래서 react에서는 이런 <u>side effect를 일으키기 위한 장소</u>로 `useEffect hook`을 제공한다.
 
 ```jsx
 function greetWithSideEffect({ name }) { //
@@ -88,7 +90,7 @@ function greetWithSideEffect({ name }) { //
 
 react 공식문서에도 <span class="crimson">useEffect</span>를 "React의 순수한 함수적인 세계에서 <u>명령적인 세계로의 탈출구</u>로 생각하세요"라고 설명하고 있다. 여기서 <span class="olive">'순수한 세계' = rendering(input -> output)</span>을 뜻하고, <span class="royalblue">rendering 이외에 일으켜야 하는 Side Effect</span>를 일으킬 탈출구로 <span class="crimson">useEffect</span>를 사용하라는 의미를 가진다.
 
-useEffect는 <u>Side Effect</u>를 `rendering 이후에 발생`시킨다.(예외: useLayoutEffect) useEffect가 <u>수행되는 시점에 이미 DOM이 업데이트 되었음을 보장</u>한다는 뜻이고, 바뀌 말하면 `Side Effect가 rendering에 영향을 주지 않도록 설계`되었음을 의미한다.
+<span class="mediumblue">useEffect는 Side Effect를 rendering 이후에 발생시킨다</span>.(예외: useLayoutEffect) useEffect가 <u>수행되는 시점에 이미 DOM이 업데이트 되었음을 보장</u>한다는 뜻이고, 바뀌 말하면 <span class="forestgreen">Side Effect가 rendering에 영향을 주지 않도록 설계</span>되었음을 의미한다.
 
 ```jsx
 import { useEffect } from 'react';
@@ -105,7 +107,7 @@ function greetWithSideEffect({ name }) { // Input
 
 만약 Side Effect 이후 업데이트 된 정보가 있어 새롭게 화면이 그려져야 할 경우 (state, props의 업데이트) 새롭게 rendering을 일으킨다. 함수 컴포넌트는 최신 state와 props를 반영한 화면을 리턴하게 된다. `effect를 일으킬 타이밍`은 앞서 설명했던 <u>useEffect의 두 번째 argumnet</u>인 <span style="color:red">의존성 배열(Dependancy Array)</span>를 통해 표현하게 된다.
 
-## 1. Rendering Cycle with useEffect
+## 🟠 Rendering Cycle with useEffect
 useEffect는 다음과 같은 형태로 사용된다.
 
 ```jsx
@@ -115,31 +117,39 @@ import { useEffect } from "react"
 useEffect( 실행시킬 동작, [ 타이밍 ] )
 document.addEventListener("타이밍", 실행시킬 동작) // 추상화 한 예시
 
-//1번
-// 매 렌더링마다 Side Effect가 실행되어야 하는 경우
+// 렌더링 될 때마다 실행
 useEffect(() => {
-  // Side Effect
+  // 이펙트 함수
 })
 
-//2번
-// Side Effect가 첫 번째 렌더링 이후 한번 실행 되고,
-// 이후 특정 값의 업데이트를 감지했을 때마다 실행되어야 하는 경우
+// 특정 값의 업데이트 마다 실행
 useEffect(() => {
-  // Side Effect
+  // 이펙트 함수
 }, [value])
 
-// Side Effect가 첫 번째 렌더링 이후 한번 실행 되고,
-// 이후 어떤 값의 업데이트도 감지하지 않도록 해야 하는 경우
+// 컴포넌트가 최초로 렌더링되는 마운트시에 단 한번 실행
 useEffect(() => {
-  // Side Effect
+  // 이펙트 함수
 }, [])
 ```
 
-### (1) 렌더링 될 때마다 실행
-<span class="royalblue">컴포넌트가 렌더링될 때마다</span> 매번 call function이 실행된다. 컴포넌트가 <span class="olive">처음 화면에 렌더링될 때</span> 그리고 <span class="olive">다시 컴포넌트가 렌더링될 때 실행된다.
+### 🟡 렌더링 될 때마다 실행
+컴포넌트가 <span class="mediumblue">렌더링될 때마다</span> 매번 이펙트 함수가 실행된다. 컴포넌트가 <u>처음 화면에 렌더링될 때</u> 그리고 <u>다시 컴포넌트가 렌더링될 때</u> 실행된다.
 
-### (2) 컴포넌트가 처음 화면에 렌더링될 때, 배열 안의 엘리먼트의 값이 바뀔 때 실행
-<u>만약 빈 배열이라면</u> 화면에 <span class="crimson">처음 rendering될 때만</span> 실행된다.
+### 🟡 특정 값의 업데이트 마다 실행
+value 라고 하는 state 가 변결 될때 마다 이펙트 함수가 실행된다.
+
+### 🟡 컴포넌트가 최초로 렌더링되는 마운트시에 단 한번 실행
+빈 배열은 처음 생성되었을 때 이후로 변경될 수 없기 때문에 처음 생성시에만 이펙트 함수가 실행된다. 즉, 컴포넌트가 최초로 렌더링되는 <span class="crimson">마운트(mount) 시에 단 한번</span> 실행된다.
+
+### 🟡 언마운트 시점에 실행
+```jsx
+useEffect(() => {
+  return () => console.log('bye');
+}, []);
+```
+
+`언마운트`(unmount) 는 <span class="mediumblue">빈 배열</span>과 <span class="mediumblue">클린업 함수</span>를 조합하여 만들 수 있다. 위의 코드는 <span class="crimson">컴포넌트가 없어지는 순간 실행</span>되며 그 이전에는 실행되지 않는다.
 
 ## 2. useEffect를 사용하여 버튼만들기
 
@@ -279,10 +289,26 @@ useEffet를 사용하면서 2번째 argument에 [] 이렇게 빈 array를 사용
 
 ```
 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
-유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](#1-header)
-유형 3의 방법
+```bash
+.next/static
+        ├── AbmKMg9BFeVUuJ7lsQ1w8
+        ├── chunks                 // 여러 페이지에서 공통으로 사용되는 번들 파일
+        │       └──  pages         // 각 페이지의 번들 파일
+        ├── runtime                // 웹팩과 next의 런타임과 관련된 번들 파일
+        ├── css                    // 애플리케이션의 모든 페이지에 대한 글로벌 CSS 파일
+        └── media                  // 정적으로 가져온 이미지 next/image가 여기에 해시 및 복사
+```
+
+<details>
+<summary class="black">코드</summary>
+<div markdown="1">
+
+```jsx
+// helloWorld!
+const hello = 'hi';
+```
+</div>
+</details>
 
 1. 특수문자를 제거
 2. 스페이스는 -로 바꾸고
