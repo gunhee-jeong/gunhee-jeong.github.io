@@ -131,6 +131,14 @@ useEffect(() => {
 useEffect(() => {
   // 이펙트 함수
 }, [])
+
+// 언마운트 시점에 실행
+useEffect(() => {
+  document.addEventListener('mousedown', listener);
+  return () => {
+    document.removeEventListener('mousedown', listener);
+  };
+}, []);
 ```
 
 ### 🟡 렌더링 될 때마다 실행
