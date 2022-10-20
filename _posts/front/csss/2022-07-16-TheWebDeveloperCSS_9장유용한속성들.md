@@ -260,7 +260,8 @@ top: 100px;
 위의 코드처럼 #absolute 라는 <span class="crimson">조상 요소에서 position</span> 이 지정되어있다면 <span class="mediumblue">해당 조상 요소를 기준으로 이동</span>하게 된다.
 
 ### 🟡 fixed
-fixed 로 지정되면 기본적으로 그 자리를 계속해서 유지한다. fixed 또한 <span class="forestgreen">일반적인 문서 흐름에서 제거</span>되고 <span class="mediumblue">공간도 차지하지 않으며 초기 컨테이닝 블록의 상대적 위치를 갖게 된다.  
+fixed 로 지정되면 기본적으로 그 자리를 계속해서 유지한다. fixed 또한 <span class="forestgreen">일반적인 문서 흐름에서 제거</span>되고 공간도 차지하지 않으며 초기 컨테이닝 블록의 상대적 위치를 갖게 된다. 어떤 엘리먼트의 position 속성을 `fixed` 로 지정하면 해당 엘리먼트는 <span class="crimson">부모 엘리먼트로 부터 완전히 독립</span>되어 브라우저 화면(viewport) 상에서 <u>어디든지 원하는 위치에 자유롭게 배치</u>시킬 수 있게 된다.
+
 <img src="https://user-images.githubusercontent.com/87808288/179335598-633d4905-2d2c-44de-8890-3957beb64d9c.png" width="300">
 <img src="https://user-images.githubusercontent.com/87808288/179335632-e73b745e-d7a1-4490-876f-7a68c06f95b3.png" width="280">  
 
@@ -341,18 +342,130 @@ top: 100px;
 }
 ```
 
-<!-- ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-</head>
+#### 🟢 fixed position 으로 메뉴바 상단 고정
+(DaleSeo 님의 블로그) : [CSS의 fixed position으로 메뉴바 상단 고정](https://www.daleseo.com/css-position-fixed-navigation/)
 
-<body>
-</body>
-``` -->
+<img src="https://user-images.githubusercontent.com/87808288/196864483-7e3fb226-ec6f-4752-83fa-e9681973eba2.png" width="80%">
+
+```jsx
+// HeaderPage.jsx
+import styled from '@emotion/styled';
+
+// ......
+
+const Container = styled.div({
+  position: 'fixed',
+  minWidth: '950px',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  height: '74px',
+  padding: '0px 24px',
+  color: '#EAEAEA',
+  backgroundColor: '#000000',
+});
+
+export default function HeaderPage() {
+// ......
+
+  return (
+    <Container>
+      {isModalOpen && (
+        <LoginPage
+          onClick={handleToggle}
+          refUserIcon={refUserIcon}
+        />
+      )}
+      <TitleContainer />
+      <SearchBarContainer />
+      <PurchaseContainer
+        onClick={handleToggle}
+        refUserIcon={refUserIcon}
+      />
+    </Container>
+  );
+}
+```
+
+위의 이미지와 코드와 같이 기본적으로 Header 컴포넌트에 position: fixed 속성을 사용하면 Header 컴포넌트는 fixed 를 사용했으므로 3차원적으로 공중에 떠있고 그 밑에는 공간이 떠버렸기 떄문에 기존의 컨텐츠들이 밑으로 들어가버리는 상황이 생긴다. 그렇기 때문에 임의로 body 에 padding 을 주어서 헤더가 떠버린 자리를 메꿔야한다.
+
+<img src="https://user-images.githubusercontent.com/87808288/196864146-53ccb13d-089a-4efe-b69d-3b402d6fed95.png" width="80%">
+
+```jsx
+// App.jsx
+import styled from '@emotion/styled';
+
+// ......
+
+const Container = styled.div({
+  minWidth: '950px',
+  minHeight: '100vh',
+  paddingTop: '74px',
+});
+
+export default function App() {
+  return (
+    <Container>
+      <HeaderPage />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      <FooterPage />
+    </Container>
+  );
+}
+```
+
+위의 이미지와 코드와 같이 <u>body 에 해당하는 App 컴포넌트</u>에 <span class="mediumblue">paddingTop</span> 을 HeaderPage 의 height 만큼 추가했다. 그런데 위의 이미지와 같이 body 에 padding 이 생겼으므로 HeaderPage 의 위치도 padding 의 height 만큼 내려가버렸다. 이제 HeaderPage 의 위치를 맨위로 올려야 하므로 top 을 설정해야 한다.
+
+<img src="https://user-images.githubusercontent.com/87808288/196866675-3b15a292-99c7-41a7-b7dc-be9baba16b57.png" width="80%">
+
+```jsx
+// HeaderPage.jsx
+import styled from '@emotion/styled';
+
+// ......
+
+const Container = styled.div({
+  top: '0',
+  position: 'fixed',
+  minWidth: '950px',
+  width: '100%',
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  height: '74px',
+  padding: '0px 24px',
+  color: '#EAEAEA',
+  backgroundColor: '#000000',
+});
+
+export default function HeaderPage() {
+// ......
+
+  return (
+    <Container>
+      {isModalOpen && (
+        <LoginPage
+          onClick={handleToggle}
+          refUserIcon={refUserIcon}
+        />
+      )}
+      <TitleContainer />
+      <SearchBarContainer />
+      <PurchaseContainer
+        onClick={handleToggle}
+        refUserIcon={refUserIcon}
+      />
+    </Container>
+  );
+}
+```
+
+위의 이미지와 코드와 같이 HeaderPage 에 top 을 0 으로 설정하여 fixed 된 HeaderPage 를 상단에 고정시킬 수 있다.
 
 ### (5) sticky
 sticky는 fixed와 비슷하게 생겼는데  
@@ -584,11 +697,6 @@ h1, h2, h3 {
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
 ```
-
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
-유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](#1-header)
-유형 3의 방법
 
 1. 특수문자를 제거
 2. 스페이스는 -로 바꾸고
