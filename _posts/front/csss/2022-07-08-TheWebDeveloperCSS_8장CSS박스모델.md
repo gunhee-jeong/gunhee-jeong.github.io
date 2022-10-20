@@ -4,7 +4,7 @@ title: "The Web Developer CSS -> 8장 CSS 박스 모델"
 # categories: Git
 categories:
   - CSS # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [The Web Developer CSS] #tag는 여러개 가능함
+tag: [rem, em, percentages] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -12,6 +12,28 @@ date: 2022-07-08T20:00:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
+<style>
+.crimson {
+  color: crimson;
+  font-weight: bold;
+}
+
+.mediumblue {
+  color: mediumblue;
+  font-weight: bold;
+}
+
+.forestgreen {
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.black {
+  color: black;
+  font-weight: bold;
+}
+</style>
+
 # 8장 CSS 박스 모델
 ## 1. 가로와 세로
 width & height
@@ -256,12 +278,8 @@ h2 {
 
 이렇게 block 디스플레이 속성은 한줄의 공간 밖에 영향을 주지 않는 inline 디스플레이 속성과 다른점이 존재한다.  
 
-## 6. CSS 단위
-### (1) Absolute
-#### []
-
-### (2) Relative
-#### [percentages]
+# 🔴 CSS 단위
+## 🟠 percentages
 `퍼센티지`는 <span style="color:tomato">부모의 특성에 상대적</span>이다.  
 
 ```html
@@ -324,11 +342,8 @@ h1 {
 <span style="color:tomato">같은 h1 태그의 font-size 크기의 200%를</span> 말하기 때문이다.  
 이렇게 <u>percentage를 사용한다고해서</u> <span style="color:red">무조건 부모 태그에 상대적으로 사용되는 것은 아니다</span>.  
 
-#### [em]
-em은 rem과 같이 상대적 단위이며 다른 값에 영향을 받는다.  
-
-<u>글꼴의 크기를 1em</u>으로 설정하면 <span style="color:blue">부모 요소와 똑같은 크기</span>가 된다.  
-그러니깐 <span style="color:royalblue">2em</span>은 <u>부모 요소보다 2배 더 큰</u> 것이다.  
+## 🟠 em
+`em`은 rem과 같이 <u>상대적 단위</u>이며 다른 값에 영향을 받는다. 글꼴의 크기를 1em으로 설정하면 <span class="mediumblue">부모 요소와 똑같은 크기</span>가 된다. 그러니깐  <span class="forestgreen">2em</span>은 <u>부모 요소보다 2배 더 큰</u> 것이다.
 
 ```html
 <!DOCTYPE html>
@@ -380,9 +395,7 @@ p {
 }
 ```
 
-<u>h2 태그의 부모 요소는 article</u>로,  
-<u>&lt;article&gt;의 font-size는 30px</u>로 <span style="color:royalblue">h2의 font-size는 2em</span>이기때문에 <span style="color:blue">2배인 60px</span>이 된다.  
-&lt;p&gt;도 article 태그가 부모이므로 30px의 font-size를 가지게 된다.  
+h2 태그의 <u>부모 요소는 article</u>로, <u>&lt;article&gt;의 font-size는 30px</u>이고 <span class="forestgreen">h2의 font-size는 2em</span>이기 때문에 <u>2배인 60px</u>이 된다. &lt;p&gt;도 article 태그가 부모이므로 30px의 font-size를 가지게 된다.
 
 ```css
 section {
@@ -411,13 +424,9 @@ p {
 }
 ```
 
-`percentage`에서는 <u>width와 height 속성</u>일 경우에는 <span style="color:tomato">부모에 상대적으로 표현</span>되고  
-<u>line-height 속성</u>일 경우에는 <span style="color:red">같은 태그 안의 font-size 크기에 상대적</span>이었다.  
-`em`에서도 <u>&lt;article&gt; font-size는 30px</u>로 -> <span style="color:blue">&lt;h2&gt; font-size가 2em</span>이기 때문에 <span style="color:royalblue">2배인 60px</span>이 된다.  
-그리고 <span style="color:tomato">추가적으로 margin-left</span>를 <u>1em</u>을 준다면, 여기서 1em은 <u>부모 요소가 아닌</u>  
-같은 <span style="color:red">&lt;h2&gt;의 font-size가 60px</span>로 정해졌기 때문에 -> <span style="color:red">이것에 상대적인 1em</span>, 즉 <u>60px로 margin-left가</u> 설정된다.  
+`percentage`에서는 <u>width와 height 속성</u>일 경우에는 <span class="mediumblue">부모에 상대적으로 표현</span>되고 <u>line-height 속성</u>일 경우에는 <span class="crimson">같은 태그 안의 font-size 크기에 상대적</span>이었다. `em`에서도 <u>&lt;article&gt; font-size는 30px</u> 로 <span class="mediumblue">&lt;h2&gt; font-size가 2em</span>이기 때문에 <span class="forestgreen">2배인 60px</span>이 된다. 그리고 추가적으로 <span class="mediumblue">margin-left를 1em</span>을 준다면, <u>여기서 1em은 부모 요소가 아닌</u> 같은 <span class="crimson">&lt;h2&gt;의 font-size가 60px</span>로 정해졌기 때문에 <span class="crimson">이것에 상대적인 1em</span>, 즉 <u>60px로 margin-left가</u> 설정된다.
 
-#### [rem]
+## 🟠 rem
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -488,17 +497,13 @@ ul {
 }
 ```
 
-<u>&lt;article&gt; 안에는 자식 관계로</u> <span style="color:royalblue">&lt;ul&gt;</span>가 들어있고 <span style="color:tomato">&lt;ul&gt;는 중첩</span>되어있다.  
-그리고 위의 CSS 코드에서 볼 수 있듯이, <span style="color:royalblue">&lt;ul&gt;의 font-size는 1.5em</span>으로 설정되어있어서  
-&lt;ul&gt;의 부모 태그인 article의 font-size가 15px이므로 -> <u>50% 더 커지게</u> 설정되었다.  
-<img src="https://user-images.githubusercontent.com/87808288/178713067-bb79d888-c5c5-4585-a67b-ba22a2c7c699.png" width="400">  
-그런데 위의 사진과 같이 em의 문제점이 들어나는데 -> &lt;ul&gt;가 &lt;article&gt; 안에 3번 중첩되어있으므로  
-<span style="color:red">단계별로 누적</span>되어 <u>font-size가 커지게</u> 된 것이다.  
-`em`의 <span style="color:tomato">글꼴 크기는 부모 항목의 글꼴 크기를 기반으로</span> 하기 때문이다.  
+&lt;article&gt; 안에는 자식 관계로 &lt;ul&gt; 가 들어있고 <u>&lt;ul&gt;는 중첩</u>되어있다. 그리고 위의 CSS 코드에서 볼 수 있듯이, <span class="forestgreen">&lt;ul&gt;의 font-size는 1.5em</span>으로 설정되어있어서 &lt;ul&gt;의 <u>부모 태그인 article의 font-size가 15px</u>이므로 <span class="forestgreen">50% 더 커지게</span> 설정되었다.
 
-`rem`은 <u>글꼴의 크기를 부모 요소의 크기에 따라 바꾸지 않는다</u>.  
-<span style="color:red">root HTML 요소의 글씨 크기에 따라 바꾼다</span>는 것이 다른점이다.  
-즉, <span style="color:red">문서 전체에서 하나의 글꼴 크기에 비례하여 바뀐다</span>는 것이다.  
+<img src="https://user-images.githubusercontent.com/87808288/178713067-bb79d888-c5c5-4585-a67b-ba22a2c7c699.png" width="400">
+
+그런데 위의 사진과 같이 em의 문제점이 들어나는데 &lt;ul&gt;가 &lt;article&gt; 안에 3번 중첩되어있으므로 <span class="crimson">단계별로 누적</span>되어 <u>font-size가 커지게</u> 된 것이다 `em`의 <span class="mediumblue">font-size 는 부모 항목의 글꼴 크기를 기반으로</span> 하기 때문이다.
+
+`rem`은 <u>글꼴의 크기를 부모 요소의 크기에 따라 바꾸지 않는다</u>. <span class="crimson">root HTML 요소의 글씨 크기에 따라 바꾼다</span>는 것이 다른점이다. 즉, <span class="mediumblue">문서 전체에서 하나의 글꼴 크기에 비례하여 바뀐다</span>는 것이다.
 
 ```html
 <body>
@@ -555,18 +560,7 @@ html {
 rem 단위를 사용하면 &lt;ul&gt;이 중첩되어 있다해도 누적되어서 font-size가 정해지지 않는다.  
 루트 요소에 상대적으로 결정될 뿐이다.  
 
-<!-- ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-</head>
-
-<body>
-</body>
-``` -->
+<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
 
 <!-- ### 2. Link 넣기
 
@@ -578,10 +572,26 @@ rem 단위를 사용하면 &lt;ul&gt;이 중첩되어 있다해도 누적되어�
 
 ```
 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
-유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](#1-header)
-유형 3의 방법
+```bash
+.next/static
+        ├── AbmKMg9BFeVUuJ7lsQ1w8
+        ├── chunks                 // 여러 페이지에서 공통으로 사용되는 번들 파일
+        │       └──  pages         // 각 페이지의 번들 파일
+        ├── runtime                // 웹팩과 next의 런타임과 관련된 번들 파일
+        ├── css                    // 애플리케이션의 모든 페이지에 대한 글로벌 CSS 파일
+        └── media                  // 정적으로 가져온 이미지 next/image가 여기에 해시 및 복사
+```
+
+<details>
+<summary class="black">코드</summary>
+<div markdown="1">
+
+```jsx
+// helloWorld!
+const hello = 'hi';
+```
+</div>
+</details>
 
 1. 특수문자를 제거
 2. 스페이스는 -로 바꾸고
