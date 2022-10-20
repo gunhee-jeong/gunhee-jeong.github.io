@@ -156,6 +156,24 @@ top: 100px;
 아래의 이미지에서는, <u>absolute 속성</u>을 사용하자 aquamarine 색상의 div위로 <span class="forestgreen">middle div(absolute red 박스)가 올라가 있는</span> 것을 확인할 수 있다. (middle div 아래에 aquamarine이 깔려있다.)
 
 ```css
+div {
+  width: 100px;
+  height: 100px;
+  background-color: yellowgreen;
+  border: 2px solid black;
+  margin: 10px;
+  display: inline-block;
+}
+
+#middle {
+  background-color: aquamarine;
+}
+
+#relative #middle {
+position: relative;
+top: 100px;
+}
+
 #absolute #middle {
   background-color: red;
   position: absolute;
@@ -168,7 +186,64 @@ top: 100px;
 
 <u>조상 요소들에 posotion이 지정되어 있지 않다면</u> <span class="crimson">&lt;body&gt;를 기준으로 이동</span>하는데 이때 <span class="mediumblue">조상 요소의 위치를 기준</span>으로 위쪽(top), 아래쪽(bottom), 왼쪽(left), 오른쪽(right)에서 얼마큼 이동할 것인지 결정하게 된다.
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+  <h1>Position Property</h1>
+  <section id="static">
+    <h2>Static</h2>
+    <div></div>
+    <div id="middle"></div>
+    <div></div>
+  </section>
+  <section id="relative">
+    <h2>relative</h2>
+    <div></div>
+    <div id="middle"></div>
+    <div></div>
+  </section>
+  <section id="absolute">
+    <h2>absolute</h2>
+    <div></div>
+    <div id="middle"></div>
+    <div></div>
+  </section>
+</body>
+```
+
 ```css
+div {
+  width: 100px;
+  height: 100px;
+  background-color: yellowgreen;
+  border: 2px solid black;
+  margin: 10px;
+  display: inline-block;
+}
+
+#middle {
+  background-color: aquamarine;
+}
+
+#relative #middle {
+position: relative;
+top: 100px;
+}
+
+#absolute #middle {
+  background-color: red;
+  position: absolute;
+  top: 50px;
+}
+
 #absolute {
   position: relative;
 }
@@ -182,13 +257,10 @@ top: 100px;
 ```
 
 <img src="https://user-images.githubusercontent.com/87808288/179333770-e875708d-39ff-4ef6-91d0-a2d87720c998.png" width="300">  
-위의 코드처럼 #absolute라는 조상 요소에서 position이 지정되어있다면  
-해당 조상 요소를 기준으로 이동하게 된다.  
+위의 코드처럼 #absolute 라는 <span class="crimson">조상 요소에서 position</span> 이 지정되어있다면 <span class="mediumblue">해당 조상 요소를 기준으로 이동</span>하게 된다.
 
-### (4) fixed
-fixed로 지정되면 기본적으로 <span style="color:red">그 자리를 계속해서 유지</span>한다.  
-fixed 또한 <span style="color:blue">일반 문서 흐름에서 제거</span>되고 공간도 차지하지 않으며  
-<span style="color:tomato">초기 컨테이닝 블록의 상대적 위치</span>를 갖게 된다.  
+### 🟡 fixed
+fixed 로 지정되면 기본적으로 그 자리를 계속해서 유지한다. fixed 또한 <span class="forestgreen">일반적인 문서 흐름에서 제거</span>되고 <span class="mediumblue">공간도 차지하지 않으며 초기 컨테이닝 블록의 상대적 위치를 갖게 된다.  
 <img src="https://user-images.githubusercontent.com/87808288/179335598-633d4905-2d2c-44de-8890-3957beb64d9c.png" width="300">
 <img src="https://user-images.githubusercontent.com/87808288/179335632-e73b745e-d7a1-4490-876f-7a68c06f95b3.png" width="280">  
 

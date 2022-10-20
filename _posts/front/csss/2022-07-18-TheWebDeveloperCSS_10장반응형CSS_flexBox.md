@@ -104,12 +104,9 @@ div:nth-of-type(3) {
 ### (3) start
 ### (4) end
 
-## 7. flex sizing
-### (1) flex-basis
-요소가 한 줄로 늘어서 있을 때 flex-basis가 너비의 기준이 된다.  
-flex-basis는 main axis인 가로에 걸쳐있기 때문이다.  
-flex-basis는 요소가 배치될 때의 최초 크기이다.  
-main axis의 방향에 따라 width이기도 하고 height이기도 하다.  
+# 🔴 flex sizing
+## 🟠 flex-basis
+요소가 한 줄로 늘어서 있을 때 `flex-basis`가 너비의 기준이 된다. <u>flex-basis는 main axis인 가로에 걸쳐있기</u> 때문이다. flex-basis는 요소가 배치될 때의 최초 크기이다. <span class="mediumblue">main axis의 방향에 따라 width이기도 하고 height이기도</span> 하다.
 
 <img src="https://user-images.githubusercontent.com/87808288/179656704-043c3a49-6b9d-457a-a666-234a6a103faa.png" width="500">  
 
