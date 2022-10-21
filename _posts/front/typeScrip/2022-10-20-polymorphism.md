@@ -246,26 +246,76 @@ function printAllNumbers(arr: Array<number>) {
 
 위의 코드는 "number[]" 를 다르게 쓸 수 있는 방법이다.
 
-<!-- <span style="color:mediumblue"> -->
+# 🔴 과제
+## 🟠 함수 만들기
+prepend(arr, item) 함수는 배열 arr 에 새로운 아이템(item) 을 맨 앞에 넣은 후 그렇게 만들어진 새로운 배열을 반환하는 함수이다. 코드는 아래와 같다.
+
+```ts
+type Prepend = <T, Y>(items: T[], item: Y) => (T | Y)[];
+
+const prepend: Prepend = (arr, item) => [item, ...arr];
+
+const test = prepend([1, 2, 3], "hello");
+
+console.log(test); // "hello"
+```
+
+```ts
+// Last
+
+type Last = <T>(items: T[]) => T;
+
+const last: Last = (items) => items[items.length - 1];
+
+const lastItem = last([1, 2, 3, 4, 5]);
+
+console.log(lastItem);
+
+// Prepend
+
+type Prepend = <T>(items: T[], item: T) => T[];
+
+const prepend: Prepend = (items, item) =>  [item, ...items]
+
+const items = [1, 2, 3, 4, 5];
+
+const newItems = prepend(items,0);
+
+console.log(newItems)
+```
 
 <!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
-
-<!-- 메소드 위에 변수 선언, 메소드  안에 메소드, 메소드 끝나고 리턴 -->
 
 <!-- ### 2. Link 넣기
 
 ```
 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github. io/)
+유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
 유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
 ```
 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
-유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](#1-header)
-유형 3의 방법
+```bash
+.next/static
+        ├── AbmKMg9BFeVUuJ7lsQ1w8
+        ├── chunks                 // 여러 페이지에서 공통으로 사용되는 번들 파일
+        │       └──  pages         // 각 페이지의 번들 파일
+        ├── runtime                // 웹팩과 next의 런타임과 관련된 번들 파일
+        ├── css                    // 애플리케이션의 모든 페이지에 대한 글로벌 CSS 파일
+        └── media                  // 정적으로 가져온 이미지 next/image가 여기에 해시 및 복사
+```
+
+<details>
+<summary class="black">코드</summary>
+<div markdown="1">
+
+```jsx
+// helloWorld!
+const hello = 'hi';
+```
+</div>
+</details>
 
 1. 특수문자를 제거
 2. 스페이스는 -로 바꾸고
