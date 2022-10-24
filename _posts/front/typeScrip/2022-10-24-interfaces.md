@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Recap"
+title: "Interfaces"
 # categories: Git
 categories:
   - TypeScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
@@ -8,7 +8,7 @@ tag: [노마드코더, 객체지향 프로그래밍] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-10-21T16:20:00+09:00
+date: 2022-10-24T09:20:00+09:00
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
@@ -29,221 +29,7 @@ date: 2022-10-21T16:20:00+09:00
 }
 </style>
 
-# Recap
-```ts
-abstract class User {
-  constructor(
-    protected firstName: string,
-    protected lastName: string,
-    protected nickName: string,
-  ) {}
-
-  abstract getNickName(): void;
-
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`
-  }
-}
-
-class Player extends User { 
-    getNickName() {
-        console.log(this.nickName);
-        return this.nickName;
-    }
-}
-
-const gunhee = new Player("gunhee", "jeong", "거니");
-
-gunhee.getFullName(); // "gunhee jeong"
-gunhee.getNickName();
-```
-
-```ts
-type Words = {
-    [key: string]: string,
-};
-
-class Dict {
-    private words: Words;
-
-    constructor() {
-      this.words = {}
-    }
-}
-
-class Word {
-  constructor(
-    public term: string,
-    public def: string,
-  ) {}
-}
-
-// 자바스크립트일 경우
-class Dict {
-    constructor() {
-        this.words = {};
-    }
-}
-class Word {
-    constructor(term, def) {
-        this.term = term;
-        this.def = def;
-    }
-}
-```
-
-위의 코드에서 property 의 이름은 모르지만, 타입만을 알 때 type Words 와 같은 형식으로 타입을 지정하게 된다. 여기서 words 객체에 들어갈 타입을 Words 라는 이름으로 지정해주었고, Index Signatures 라는 것을 통해 words 객체에 어떤 식으로 들어가는지 지정해주게 되었다.
-
-```ts
-type Words = {
-    [key: string]: string,
-};
-
-class Dict {
-    private words: Words;
-
-    constructor() {
-      this.words = {}
-    }
-}
-
-class Word {
-  constructor(
-    public term: string,
-    public def: string,
-  ) {}
-}
-
-const kimchi = new Word("kimchi", "한국의 음식");
-// Word: {
-//   "term": "kimchi",
-//   "def": "한국의 음식"
-// } 
-```
-
-```ts
-type Words = {
-    [key: string]: string,
-};
-
-class Dict {
-    private words: Words;
-
-    constructor() {
-      this.words = {}
-    }
-
-    add(word: Word) { // 이 파라미터가 이 클래스의 인스턴스이기를 원하면 이렇게 사용할 수 있다.
-    // 이렇게 클래스를 타입처러 사용할 수 있다.
-      if (this.words[word.term] === undefined) {
-        this.words[word.term] = word.def;
-      }
-    }
-
-    def(term: string) {
-      return this.words[term];
-    }
-}
-
-class Word {
-  constructor(
-    public term: string,
-    public def: string,
-  ) {}
-}
-
-const kimchi = new Word("kimchi", "한국의 음식");
-// Word: {
-//   "term": "kimchi",
-//   "def": "한국의 음식"
-// } 
-
-const dict = new Dict();
-// Dict: {
-//   "words": {}
-// } 
-
-dict.add(kimchi);
-// Dict: {
-//   "words": {
-//     "kimchi": "한국의 음식"
-//   }
-// } 
-
-dict.def("kimchi");
-// "한국의 음식"
-```
-
-# 🔴 과제
-타입스크립트의 클래스를 이용하여 Dict (딕셔너리. dictionary) 클래스를 만드세요. Dict 클래스는 아래와 같은 메소드들을 갖고 있어야 합니다.
-
-- add: 단어를 추가함
-- get: 단어의 정의를 반환함
-- delete: 단어를 삭제함
-- update: 단어를 업데이트 함
-- showAll: 딕셔너리의 단어를 모두 프린트함
-- count: 딕셔너리 단어들의 총 수를 반환함
-
-```ts
-type Words = {
-    [key: string]: string,
-};
-
-class Dict {
-    private words: Words;
-
-    constructor() {
-      this.words = {}
-    }
-
-    add(word: Word) { // 이 파라미터가 이 클래스의 인스턴스이기를 원하면 이렇게 사용할 수 있다.
-    // 이렇게 클래스를 타입처러 사용할 수 있다.
-      if (this.words[word.term] === undefined) {
-        this.words[word.term] = word.def;
-      }
-    }
-
-    getDefine(term: string) {
-      return this.words[term];
-    }
-
-    deleteWord(term: string) {
-        if (this.words[term] !== undefined) {
-            delete this.words[term];
-        }
-    }
-
-    update(term: string, def: string) {
-        if (this.words[term] !== undefined) {
-            this.words[term] = def;
-        }
-    }
-
-    showAll() {
-        Object.entries(this.words).forEach(([name, recap]) => console.log(`${name}(은)는 ${recap} 입니다`));
-    }
-
-    count() {
-        return Object.keys(this.words).length;
-    }
-}
-
-class Word {
-  constructor(
-    public term: string,
-    public def: string,
-  ) {}
-}
-
-const kimchi = new Word("kimchi", "한국의 음식");
-const bulgogi = new Word("bulgogi", "한국의 전통 음식");
-const bibimbap = new Word("bibimbap", "한국의 건강한 음식");
-
-const dictionary = new Dict();
-dictionary.add(kimchi);
-dictionary.add(bulgogi);
-dictionary.add(bibimbap);
-```
+# Interfaces
 
 ```ts
 type Words = {
@@ -309,6 +95,129 @@ dictionary.add(bibimbap);
 ```
 
 class Word 는 redaonly 를 통해서 읽기 전용으로 사용한다. 따라서 <u>kimchi.def = "xxx"</u> 를 사용하여 수정하는 것에 있어서 에러를 발생시켜 데이터를 보호한다.
+
+```ts
+type Player = {
+  nickname: string,
+  healthBar: number,
+};
+
+const gunhee: Player = {
+  nickname: "gunhee",
+  healthBar: 10,
+};
+
+// 위의 타입을 아래와 같이 사용할 수도 있다.
+
+type Nickname = stirng;
+type Health = number;
+type Friends = Array<string>
+type Player = {
+  nickname: Nickname,
+  healthBar: Health,
+};
+
+//
+
+type Food = string;
+
+const kimchi: Food = 'delicious';
+```
+
+아래의 코드와 같이 타입을 지정된 옵션으로만 제한할 수도 있다.
+
+```ts
+type Team = "red" | "blue" | "yellow";
+type Health = 1 | 5 | 10;
+
+type Player = {
+  nickname: string,
+  team: Team,
+  health: Health,
+};
+
+const gunhee: Palyer = {
+  nickname: "gunhee",
+  team: "pink", // error
+};
+```
+
+인터페이스(Interface) 란 오브젝트의 모양을 설명하는 한 방법을 말한다. 아래의 코드를 살펴보자.
+
+```ts
+type Team = "red" | "blue" | "yellow";
+type Health = 1 | 5 | 10;
+
+// type Player = {
+interface Player { // Interface
+  nickname: string,
+  team: Team,
+  health: Health,
+};
+
+const gunhee: Palyer = {
+  nickname: "gunhee",
+  team: "pink", // error
+};
+```
+
+기본적으로 타입은 우리가 원하는 모든 것이 될 수 있다. 그러나 위의 코드에서 보이는 interface 는 오직 한 가지의 용도만을 가진다. 그리고 그것은 오브젝트의 모양을 특정해주는 것이다.
+
+타입스크립트에게 오브젝트의 모양을 알려주는 방법에는 두 가지가 있다. 하나는 type 을 사용하여 오브젝트의 모양을 써주는 방법이고, 다른 하나가 바로 인터페이스 이다. 이 두 가지 방법은 오브젝트의 모양을 결정한다는 같은 역할을 한다.
+
+하지만 다른 점은, `type` 은 interface 키워드에 비해 <u>더 다양하게 활용</u>할 수 있다. `interface` 는 <span class="mediumblue">오로지 오브젝트의 모양을 타입스크립트에게 설명</span>해 주기 위해서만 사용되는 키워드이다.
+
+```ts
+// 인터페이스를 사용한 모습
+interface User {
+  name: string,
+}
+
+interface Player extends User {
+}
+
+const gunhee: Player = {
+  name: "gunhee",
+};
+
+// 타입을 사용한 모습
+type User = {
+  name: string,
+}
+
+type Player = User & {
+}
+
+const gunhee: Player = {
+  name: "gunhee",
+};
+```
+
+위의 코드에서 interface 를 사용하면 class 를 사용하는 개념과 유사하다. 인터페이스는 클래스와 닮았다. 이렇게 인터페이스는 <span class="mediumblue">타입스크립트에게 오브젝트의 모양을 설명해주기 위해서 존재</span>한다. 인터페이스를 사용하는 것이 더 객체지향 프로그래밍 처럼 보여서 이해하기 더 쉽게 해준다.
+
+인터페이스의 또 다른 특징은 프로퍼티 들을 축적시킬 수 있다는 것이다. 아래의 코드를 살펴보자.
+
+```ts
+interface User {
+  name: string,  
+}
+
+interface User {
+  lastName: string,
+}
+
+interface User {
+  health: number,
+}
+
+const gunhee: User = {
+  name: "gunhee",
+  lastName: "jeong",
+  health: 10,
+};
+```
+
+이렇게 각각 인터페이스를 3번 만들었지만, 타입스크립트는 알아서 하나로 합쳐준다. type 을 가지고 이렇게 각각 3번 만들 수는 없다.
 
 <!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
 
