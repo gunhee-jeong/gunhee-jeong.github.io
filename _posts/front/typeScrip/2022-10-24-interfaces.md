@@ -94,7 +94,7 @@ dictionary.add(bulgogi);
 dictionary.add(bibimbap);
 ```
 
-class Word 는 redaonly 를 통해서 읽기 전용으로 사용한다. 따라서 <u>kimchi.def = "xxx"</u> 를 사용하여 수정하는 것에 있어서 에러를 발생시켜 데이터를 보호한다.
+위의 코드에서 class Word 는 redaonly 를 통해서 읽기 전용으로 사용한다. 따라서 <u>kimchi.def = "xxx"</u> 를 사용하여 수정하는 것에 있어서 에러를 발생시켜 데이터를 보호한다.
 
 ```ts
 type Player = {
@@ -193,9 +193,9 @@ const gunhee: Player = {
 };
 ```
 
-위의 코드에서 interface 를 사용하면 class 를 사용하는 개념과 유사하다. 인터페이스는 클래스와 닮았다. 이렇게 인터페이스는 <span class="mediumblue">타입스크립트에게 오브젝트의 모양을 설명해주기 위해서 존재</span>한다. 인터페이스를 사용하는 것이 더 객체지향 프로그래밍 처럼 보여서 이해하기 더 쉽게 해준다.
+위의 코드에서 interface 를 사용하면 class 를 사용하는 개념과 유사하다. 인터페이스는 클래스와 닮았다. 이렇게 인터페이스는 <span class="mediumblue">타입스크립트에게 오브젝트의 모양을 설명해주기 위해서 존재</span>한다. 인터페이스를 사용하는 것이 더 객체지향 프로그래밍 처럼 보여서 이해하기 더 쉽게 해준다. <u>인터페이스는 클래스가 아니지만</u> <span class="mediumblue">클래스의 모양을 특정할 수 있게 해주는 간단한 방법</span>이다
 
-인터페이스의 또 다른 특징은 프로퍼티 들을 축적시킬 수 있다는 것이다. 아래의 코드를 살펴보자.
+인터페이스의 또 다른 특징은 <span class="forestgreen">프로퍼티 들을 축적</span>시킬 수 있다는 것이다. 아래의 코드를 살펴보자.
 
 ```ts
 interface User {
@@ -218,6 +218,76 @@ const gunhee: User = {
 ```
 
 이렇게 각각 인터페이스를 3번 만들었지만, 타입스크립트는 알아서 하나로 합쳐준다. type 을 가지고 이렇게 각각 3번 만들 수는 없다.
+
+기본적으로 인터페이스는 가볍고, 인터페이스는 컴파일하면 자바스크립트로 바뀌지 않고 사라지게 된다.
+
+```ts
+// abstract class
+abstract class User {
+  constructor(
+    protected firstName: string,
+    protected lastName: string,
+  ) {}
+
+  abstract sayHi(name: string): string,
+  abstract fullName(): string,
+}
+
+// interface
+interface User {
+  firstName: string,
+  lastName: string,
+  sayHi(name: string): string,
+  fullName(): string,
+}
+
+interface Human { // 인터페이스를 추가
+  health: number,
+}
+
+class Player implemnets User {
+  constructor(
+    public firstName: string,
+    public lastName: string,
+    public health: number, // 이 부분을 추가 작성
+  ){}
+  fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  sayHi(name: string) {
+    return `Hello ${name}. My name is ${this.fullName()}`;
+  }
+}
+```
+
+위의 코드에서 <span class="crimson">인터페이스는 타입스크립트에서만 존재하는 키워드</span> 이므로 <u>자바스크립트는 User 인터페이스를 추적할 수가 없다</u>. 이렇게 interface 를 사용하면 <u>파일 사이즈를 줄일 수 있게</u> 된다. 추상 클래스(abstract class)를 사용하면 자바스크립트에서는 일반적인 클래스로 바뀌는데 이는 추상 클래스로 특정 모양을 따르도록 하기 위한 용도로 사용한다면 같은 역할을 하지만 자바스크립트로 변환되지 않는 인터페이스를 사용하는 것이 더 좋다는 것이다.
+
+인터페이스를 상속하는 것의 문제점 중 하나는 private 프로퍼티를 사용하지 못한다는 것과 인터페이스를 사용하면 constructor 가 없기 때문에 User 를 상속받으면서 constructor 를 생성해야 한다.
+
+또한 위의 코드와 같이 interface 를 추가로 작성할 수도 있다.
+
+```ts
+type PlayerA = {
+  name: string,
+};
+
+const playerA: PlayerA = {
+  name: "gunhee",
+};
+
+// 인터페이스
+interface PlayerB {
+  name: string,
+};
+
+const playerB: playerB = {
+  name: "gunhee",
+};
+```
+
+위의 코드를 살펴보면 playerA 와 playerB 를 보면 어떤 것이 인터페이스인지 타입인지 구별할 수 없다. 그 이유는 타입과 인터페이스 모두 객체의 모양과 타입을 알려주는 것이 목표이기 때문이다.
+
+그러나 타입과 인터페이스는 할 수 있는 것이 서로 다르다. <u>type 은 새 프로퍼티를 추가하기 위해 다시 선언될 수 없지만</u>, <span class="mediumblue">인터페이스는 항상 상속이 가능</span>하다는 것이다. 타입스크립트에서는 오브젝트의 모양을 알려주기 위해서는 인터페이스를 사용하고 나머지 상황에서는 타입을 사용한다.
 
 <!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
 
