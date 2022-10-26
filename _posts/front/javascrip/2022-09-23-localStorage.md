@@ -1,10 +1,10 @@
 ---
 layout: single
-title: "localStorage 와 sessionStorage"
+title: "로컬 스토리지 와 세션 스토리지"
 # categories: Git
 categories:
   - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
-tag: [storage] #tag는 여러개 가능함
+tag: [local storage, session storage] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
@@ -29,12 +29,11 @@ date: 2022-09-24T:00:00+09:00
 }
 </style>
 
-# localStorage 와 sessionStorage
+# "로컬 스토리지" 와 "세션 스토리지"
 
-# 🔴 localStorage 와 sessionStorage
 (JAVASCRIPT.INFO) : [localStorage 와 sessionStorage](https://ko.javascript.info/localstorage)
 
-웹 스토리 객체(web storage object)인 `localStorage` 와 `sessionStorage` 는 브라우저 내에 키-값 쌍을 저장할 수 있게 한다.
+웹 스토리 객체(web storage object)인 `localStorage` 와 `sessionStorage` 는 브라우저 내에 <span class="crimson">키-값 쌍을 저장</span>할 수 있게 한다.
 
 이 둘을 이용하면 페이지를 새로 고침(sessionStorage) 심지어 브라우저를 다시 실행해도 (localStorage) 데이터가 사라지지 않고 남아있다.
 
@@ -76,26 +75,38 @@ for(let i=0; i<localStorage.length; i++) {
 
 
 
-<!-- <span style="color:mediumblue"> -->
-
-<!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
-
-<!-- 메소드 위에 변수 선언, 메소드  안에 메소드, 메소드 끝나고 리턴 -->
+!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
 
 <!-- ### 2. Link 넣기
 
 ```
 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github. io/)
+유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
 유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
 유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](###-1-header)
 
 ```
 
-유형 1: (설명어를 입력) : [gunhee's coding blog](https://gunhee-jeong.github.io/)
-유형 2: (URL 자동연결) : <https://gunhee-jeong.github.io/>
-유형 3: (동일 파일 내 '문단으로 이동') : [1. Header로 이동](#1-header)
-유형 3의 방법
+```bash
+.next/static
+        ├── AbmKMg9BFeVUuJ7lsQ1w8
+        ├── chunks                 // 여러 페이지에서 공통으로 사용되는 번들 파일
+        │       └──  pages         // 각 페이지의 번들 파일
+        ├── runtime                // 웹팩과 next의 런타임과 관련된 번들 파일
+        ├── css                    // 애플리케이션의 모든 페이지에 대한 글로벌 CSS 파일
+        └── media                  // 정적으로 가져온 이미지 next/image가 여기에 해시 및 복사
+```
+
+<details>
+<summary class="black">코드</summary>
+<div markdown="1">
+
+```jsx
+// helloWorld!
+const hello = 'hi';
+```
+</div>
+</details>
 
 1. 특수문자를 제거
 2. 스페이스는 -로 바꾸고
