@@ -30,6 +30,9 @@ date: 2022-10-20T22:00:00+09:00
 </style>
 
 # polymorphism
+(typescript.kr) : [타입스크립트 핸드북](https://typescript-kr.github.io/)  
+(TypeScript playground) : [타입스크립트 코드 테스트](https://www.typescriptlang.org/play?#code/PTAEHUFMBsGMHsC2lQBd5oBYoCoE8AHSAZVgCcBLA1UABWgEM8BzM+AVwDsATAGiwoBnUENANQAd0gAjQRVSQAUCEmYKsTKGYUAbpGF4OY0BoadYKdJMoL+gzAzIoz3UNEiPOofEVKVqAHSKymAAmkYI7NCuqGqcANag8ABmIjQUXrFOKBJMggBcISGgoAC0oACCbvCwDKgU8JkY7p7ehCTkVDQS2E6gnPCxGcwmZqDSTgzxxWWVoASMFmgYkAAeRJTInN3ymj4d-jSCeNsMq-wuoPaOltigAKoASgAywhK7SbGQZIIz5VWCFzSeCrZagNYbChbHaxUDcCjJZLfSDbExIAgUdxkUBIursJzCFJtXydajBBCcQQ0MwAUVWDEQC0gADVHBQGNJ3KAALygABEAAkYNAMOB4GRonzFBTBPB3AERcwABS0+mM9ysygc9wASmCKhwzQ8ZC8iHFzmB7BoXzcZmY7AYzEg-Fg0HUiQ58D0Ii8fLpDKZgj5SWxfPADlQAHJhAA5SASPlBFQAeS+ZHegmdWkgR1QjgUrmkeFATjNOmGWH0KAQiGhwkuNok4uiIgMHGxCyYrA4PCCJSAA)
+
 ```jsx
 type SuperPrint = {
   (arr: number[]): void,
@@ -45,9 +48,9 @@ superPrint([1, 2, 3, 4]);
 superPrint([true, false, true]);
 ```
 
-위의 코드와 같이 superPrint 함수를 실행할 때 SuperPrint 라고 하는 call signatures 를 만들어주었고 이를 이용해서 superPrint 함수를 호출할 수 있다. 하지만 superPrint 함수의 인자로 들어오는 배열에 string 등의 형식으로 배열이 구성된다면 call signatures 로 모든 상황을 다 적어주는 것은 옳은 방법이 아니다. 그래서 이때는 polymorphism 을 사용할 수 있다.
+위의 코드와 같이 superPrint 함수를 실행할 때 SuperPrint 라고 하는 call signatures 를 만들어주었고 이를 이용해서 superPrint 함수를 호출할 수 있다. 하지만 superPrint 함수의 인자로 들어오는 배열에 string 등의 형식으로 배열이 구성된다면 call signatures 로 모든 상황을 다 적어주는 것은 옳은 방법이 아니다. 그래서 이때는 polymorphism 을 사용할 수 있다. 다형성은 <u>다른 모양의 코드를 가질 수 있게</u> 해주는 것이고 그렇게 `다형성`을 이룰 수 있는 방법은 <span class="mediumblue">제네릭(generic)</span>을 사용하는 것이다.
 
-generic 이란, 타입의 placholder 와 같은 것이다. 아래의 코드와 같이 superPrint 함수의 인자로 전달되는 배열에 number 타입과 boolean 타입이 섞여있다. 그러면 이 부분은 제대로 동작하지 못한다. 왜냐하면 그 부분에 대한 call signature 가 없기 때문이다.
+제네릭(generic) 이란, 타입의 <span class="forestgreen">placholder</span> 와 같은 것이다. 아래의 코드와 같이 superPrint 함수의 인자로 전달되는 배열에 number 타입과 boolean 타입이 섞여있다. 그러면 이 부분은 제대로 동작하지 못한다. 왜냐하면 그 부분에 대한 call signature 가 없기 때문이다.
 
 ```jsx
 type SuperPrint = {
@@ -283,6 +286,126 @@ const newItems = prepend(items,0);
 
 console.log(newItems)
 ```
+
+# 🔴 10월 25일
+```ts
+interface SStorage<T> {
+  [key: string]: T,
+}
+
+class LocalStorage<T> {
+  private storage: SStorage<T> = {};
+
+  set(key: string, value: T) {
+    this.storage[key] = value;
+  }
+  remove(key: string) {
+    delete this.storage[key]
+  }
+  get(key: string): T {
+    return this.storage[key]
+  }
+  clear() {
+    this.storage = {}
+  }
+}
+
+const stringsStorage = new LocalStorage<string>();
+
+stringsStorage.set("key", "hello");
+stringsStorage.get("key"); // get(key: string): string
+
+const booleansStorage = new LocalStorage<boolean>();
+
+booleansStorage.set("hello", true);
+booleansStorage.get("hello");
+```
+
+"<u>new LocalStorage&lt;string&gt;()<u>" 을 사용하면 <span class="forestgreen">LocalStorage 에서 string 을 사용</span>한다고 말하는 것이다. 타입스크립트는 제네릭을 바탕으로 call signature 을 만들게 된다.
+
+## 🟠 과제
+### 🟡 classes 그리고 interface 를 활용하여 아래의 API 를 위한 "미니" 버전 구현하기
+#### 🟢 LocalStorage API
+- Use abstract classes and generics
+- 추상화 클래스와 제네릭을 사용하세요
+
+```ts
+// usage
+
+localStorage.setItem(<key>, <value>)
+localStorage.getItem(<key>)
+localStorage.clearItem(<key>)
+localStorage.clear()
+```
+
+```ts
+// 나의 풀이
+
+interface SStorage<T> {
+  [key: string]: T,
+}
+
+abstract class LocalStorage<T> {
+    constructor(
+        protected storage: SStorage<T> = {},
+    ) {}
+
+    get() {
+        console.log(this.storage);
+    }
+
+    abstract setItem(key: string, value: T): void;
+
+    abstract getItem(key: string): void;
+
+    abstract clearItem(key: string): void;
+
+    abstract clear(): void;
+}
+
+class localStorages extends LocalStorage<string> {
+    setItem(key: string, value: string) {
+        this.storage[key] = value;
+    }
+
+    getItem(key: string) {
+        console.log(this.storage[key]);
+    }
+    
+    clearItem(key: string) {
+        if (this.storage[key] === undefined) { return; }
+        delete this.storage[key];
+    }
+
+    clear() {
+        this.storage = {};
+    }
+}
+
+const stringStorage = new localStorages({ hello: "word" });
+stringStorage.setItem("hi", "bye");
+stringStorage.getItem("hi");
+stringStorage.clearItem("hello");
+stringStorage.clear();
+stringStorage.get();
+```
+
+#### 🟢 Geolocation API
+- overloading 사용하기
+
+```ts
+// usage
+
+geolocation.getCurrentPosition(successFn);
+geolocation.getCurrentPosition(successFn, errorFn);
+geolocation.getCurrentPosition(successFn, errorFn, optionsObj);
+geolocation.watchPosition(success);
+geolocation.watchPosition(success, error);
+geolocation.watchPosition(success, error, options);
+geolocation.clearWatch(id);
+```
+
+
 
 <!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
 
