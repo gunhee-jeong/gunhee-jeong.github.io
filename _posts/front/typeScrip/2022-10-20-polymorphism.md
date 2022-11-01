@@ -321,7 +321,7 @@ booleansStorage.set("hello", true);
 booleansStorage.get("hello");
 ```
 
-"<u>new LocalStorage&lt;string&gt;()<u>" 을 사용하면 <span class="forestgreen">LocalStorage 에서 string 을 사용</span>한다고 말하는 것이다. 타입스크립트는 제네릭을 바탕으로 call signature 을 만들게 된다.
+"<u>new LocalStorage&lt;string&gt;()</u>" 을 사용하면 <span class="forestgreen">LocalStorage 에서 string 을 사용</span>한다고 말하는 것이다. 타입스크립트는 제네릭을 바탕으로 call signature 을 만들게 된다.
 
 ## 🟠 과제
 ### 🟡 classes 그리고 interface 를 활용하여 아래의 API 를 위한 "미니" 버전 구현하기
