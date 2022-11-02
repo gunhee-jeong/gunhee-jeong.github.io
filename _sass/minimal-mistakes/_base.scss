@@ -538,8 +538,10 @@ td > code {
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   font-size: 0.8em;
-  background: $code-background-color;
-  color: $primary-color;
+  // background: $code-background-color;
+  background: #242629;
+  // color: $primary-color;
+  color: #FFFFFF;
   border-radius: $border-radius;
 
   &:before,

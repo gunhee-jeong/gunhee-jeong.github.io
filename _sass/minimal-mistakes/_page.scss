@@ -73,7 +73,8 @@ body {
   line-height: 1;
 
   a {
-    color: $text-color;
+    // color: $text-color;
+    color: #FFFFFF;
     text-decoration: none;
   }
 
@@ -299,7 +300,7 @@ body {
   }
 
   a {
-    color: inherit;
+    // color: inherit;
   }
 }
 
@@ -321,8 +322,8 @@ body {
 
 .page__taxonomy {
   .sep {
-    //display: none;
-    display: inline;
+    display: none;
+    // display: inline;
   }
 
   strong {
@@ -338,14 +339,15 @@ body {
   text-decoration: none;
   border: 1px solid $background-color;
   border-radius: 10px; //$border-radius;
-  background-color: #60cffb; //#0692ca
+  background-color: steelblue;
   // font-family: $serif;
-  color: rgb(0, 0, 0); //$primary-color
+  // color: rgb(0, 0, 0); //$primary-color
+  color: #eaeaea; // 포스팅 목록의 키워드 아이템
   font-size: 17px; //원래 없었음
 
   &:hover {
     text-decoration: none;
-    color: mix(#00adb5, $text-color, 40%); /* 커서 댈 때 색깔 */
+    color: mix(SlateGray, $text-color, 40%); /* 커서 댈 때 색깔 */
   }
 }
 //e4d12a
@@ -358,14 +360,17 @@ body {
   text-decoration: none;
   border: 1px solid $background-color;
   border-radius: $border-radius;
-  background-color: mix(#fff, #9be0fb, 18%); //#28a5d6
+  background-color: mix(#fff, DodgerBlue	, 18%); // 블로그 
+  // background-color: mix(#fff, #9be0fb, 18%); //#28a5d6
   font-family: $serif;
-  color: mix(#fff, rgb(0, 0, 0), 2%); //$primary-color, 2%
+  // color: mix(#fff, rgb(0, 0, 0), 2%); //$primary-color, 2%
+  color: mix(#fff, #eaeaea, 2%); //$primary-color, 2%
   font-size: 17px; //원래 없었음
 
   &:hover {
     text-decoration: none;
-    color: mix(#00adb5, $text-color, 40%); /* 커서 댈 때 색깔 */
+    // color: mix(SlateGray, $text-color, 40%); /* 커서 댈 때 색깔 */
+    color: mix(#FFFFFF, $text-color, 40%); /* 커서 댈 때 색깔 */
   }
 }
 
@@ -571,7 +576,7 @@ body {
   }
 
   a {
-    color: inherit; //inherit
+    // color: inherit; //inherit
     text-decoration: none;
   }
 }

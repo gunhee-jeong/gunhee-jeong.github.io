@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "git blog 환경설정"
+title: "minimal mistakes 블로그 환경설정"
 # categories: Git
 categories:
   - Tool # HTML CSS JavaScript Server Algorithm Wecode Programmers CS Github Blog
@@ -109,6 +109,124 @@ includes 폴더 -> <u>nav_list_main 파일</u>로 이동하여 `위의 메뉴 �
 
 - ``코드블록  
   \_sass -> \_base.scss -> line 541~542
+
+# 🔴 블로그 CSS 설정
+```bash
+🗂 _data
+🗂 _includes
+🗂 _layouts
+🗂 _pages
+🗂 _posts
+🗂 _sass
+└── 🗂 minimal-mistakes
+    └── 🗂 skins
+    └── 🗂 vendor
+        ├── _reset.scss
+        ├── _base.scss
+        ├── _syntax.scss
+        └── _page.scss
+```
+
+## 🟠 제목, 링크, 강조색
+sass 디렉터리 안에 skins에 들어가 자신이 선택한 스킨의 scss 파일로 들어간다.
+
+강조색은 $primary-color를 변경하면 된다.
+
+## 🟠 글자 크기 변경
+_reset.scss에 들어가서 아래의 코드와 같이 변경할 수 있다. 아래의 코드를 해석해보면, 폰 화면에서는 14px, 태블릿이나 pc 화면에서는 16px로 보이도록 설정했다.
+
+```jsx
+html {
+  /* apply a natural box layout model to all elements */
+  box-sizing: border-box;
+  background-color: $background-color;
+  font-size: 14px;
+
+  @include breakpoint($medium) {
+    font-size: 16px;
+  }
+
+  @include breakpoint($large) {
+    font-size: 16px;
+  }
+
+  @include breakpoint($x-large) {
+    font-size: 16px;
+  }
+
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+```
+
+## 🟠 인라인 코드 강조 색상 변경
+_base.scss에서 아래의 코드와 같이 내용을 변경하자.
+
+```jsx
+p > code,
+a > code,
+li > code,
+figcaption > code,
+td > code {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  font-size: 0.8em;
+  // background: $code-background-color;
+  background: DarkSlateGray;
+  // color: $primary-color;
+  color: LightGray;
+  border-radius: $border-radius;
+```
+
+## 🟠 코드 블록 색상 변경하기
+_syntax.scss에서 아래와 같이 코드를 변경하자.
+
+```jsx
+div.highlighter-rouge,
+figure.highlight {
+  position: relative;
+  margin-bottom: 1em;
+  // background: $base00;
+  background: #2D2D2D;
+  color: $base05;
+  font-family: $monospace;
+  font-size: $type-size-6;
+  line-height: 1.8;
+  border-radius: $border-radius;
+```
+
+## 🟠 최근 포스트 list
+### 🟡 page taxonomy
+_page.scss의 .page__taxonomy-item-tag와 .page__taxonomy-item-category에서 CSS를 수정할 수 있다.
+
+## 🟠 toc_menu
+toc_menu는 블로그의 목차를 요약해준다. 나의 경우는 nover를 주석 처리하여 효과를 없애주는 작업을 했다.
+```jsx
+.toc__menu {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  font-size: $type-size-6; //toc 모바일 화면에서 소제목 font 크기
+
+  @include breakpoint($large) {
+    font-size: $type-size-6; //toc 전체화면에서 소제목 font 크기
+  }
+
+  a {
+    display: block;
+    padding: 0.25rem 0.75rem;
+    color: $muted-text-color;
+    font-weight: bold;
+    line-height: 1.5;
+    border-bottom: 1px solid $border-color;
+
+    // &:hover {
+    //   color: $text-color;
+    // }
+  }
+```
+
 
 <!-- ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨-->
 
