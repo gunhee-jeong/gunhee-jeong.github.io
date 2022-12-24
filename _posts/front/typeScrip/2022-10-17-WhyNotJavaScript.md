@@ -13,26 +13,23 @@ date: 2022-10-17T17:30:00+09:00
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
 <style>
-.crimson {
+.red {
   color: crimson;
-  font-weight: bold;
 }
 
-.mediumblue {
+.blue {
   color: mediumblue;
-  font-weight: bold;
 }
 
-.forestgreen {
+.green {
   color: forestgreen;
-  font-weight: bold;
 }
 </style>
 
 # Why not JavaScript
-`타입스크립트`의 <span class="crimson">타입 안정성</span>으로 많은 이점을 가질 수 있게 된다. 코드 등에 버그를 매우 많이 줄일 수 있게 된다. 타입 안정성은 타입스크립트가 제공하는 가장 큰 장점이다.
+타입스크립트의 <span class="red">타입 안정성</span>으로 많은 이점을 가질 수 있게 된다. 코드 등에 버그를 매우 많이 줄일 수 있게 된다. 타입 안정성은 타입스크립트가 제공하는 가장 큰 장점이다.
 
-기본적으로 자바스크립트라는 언어는 굉장히 <span class="forestgreen">유연한 언어</span>이다. 자바스크립트는 <u>에러를 보여주지 않으려고</u> 많은 노력을 하는 언어이다.
+기본적으로 자바스크립트라는 언어는 굉장히 <span class="green">유연한 언어</span>이다. 자바스크립트는 <u>에러를 보여주지 않으려고</u> 많은 노력을 하는 언어이다.
 
 ```jsx
 console.log([1, 2, 3, 4] + false); // '1, 2, 3, 4false'
@@ -48,15 +45,15 @@ function divide(a, b) {
 divide(2, 3); // 0.6666.....
 ```
 
-우리가 일반적으로 생각하는 divide 함수의 사용방법은 위의 코드와 같이 숫자를 인수로 넣어서 사용하는 것이다. 그러나 <span class="mediumblue">사용자</span>가 아래의 코드와 같이 divide 함수를 사용할 수도 있다.
+우리가 일반적으로 생각하는 divide 함수의 사용방법은 위의 코드와 같이 숫자를 인수로 넣어서 사용하는 것이다. 그러나 <span class="green">사용자</span>가 아래의 코드와 같이 divide 함수를 사용할 수도 있다.
 
 ```jsx
 divide("xxxxxx"); // NaN
 ```
 
-사용자가 위의 코드와 같이 divide 함수를 사용해도 <u>자바스크립트는 에러를 발생시키지 않는다</u>. divide 함수는 기본적으로 인수를 2개 받아야 하는 함수인데도 불구하고 위의 코드와 같이 실행해도 <span class="mediumblue">자바스크립트는 에러를 발생시키지 않고 함수를 실행</span>시킨다. <span class="forestgreen">이런 점들은 편해보일 수 있지만</span> 이런 부분들이 쌓이다보면 예상치 못한 문제들이 한번에 쏟아져 나오는 경우가 생기게 된다.
+사용자가 위의 코드와 같이 divide 함수를 사용해도 <u>자바스크립트는 에러를 발생시키지 않는다</u>. divide 함수는 기본적으로 인수를 2개 받아야 하는 함수인데도 불구하고 위의 코드와 같이 실행해도 <span class="blue">자바스크립트는 에러를 발생시키지 않고 함수를 실행</span>시킨다. <span class="green">이런 점들은 편해보일 수 있지만</span> 이런 부분들이 쌓이다보면 예상치 못한 문제들이 한번에 쏟아져 나오는 경우가 생기게 된다.
 
-자바스크립트의 가장 큰 단점은 <span class="crimson">런타입 에러</span>이다.(런타임 에러는 코드가 실행되는 동안 발생하는 에러를 말한다.)
+자바스크립트의 가장 큰 단점은 <span class="red">런타입 에러</span>이다.(런타임 에러는 코드가 실행되는 동안 발생하는 에러를 말한다.)
 
 ```jsx
 const gunhee = { name: 'gunhee' };
@@ -64,7 +61,7 @@ const gunhee = { name: 'gunhee' };
 gunhee.hello(); // Uncaught TypeError
 ```
 
-위의 코드와 같이 <u>코드가 실행되기 전에 이미 에러를 확인할 수 있는 것이 가장 좋은 방법</u>이다. 그러나 위의 `Uncaught TypeError` 는 <span class="mediumblue">사용자가 컴퓨터에서 코드를 실행할 때 나타나는 에러</span>이다. 좋은 프로그래밍 언어라면 gunhee 라는 객체를 분석하여 hello 함수가 있는지 없는지 확인할 수 있어야 한다.
+위의 코드와 같이 <u>코드가 실행되기 전에 이미 에러를 확인할 수 있는 것이 가장 좋은 방법</u>이다. 그러나 위의 `Uncaught TypeError` 는 <span class="blue">사용자가 컴퓨터에서 코드를 실행할 때 나타나는 에러</span>이다. 좋은 프로그래밍 언어라면 gunhee 라는 객체를 분석하여 hello 함수가 있는지 없는지 확인할 수 있어야 한다.
 
 <!-- <span style="color:mediumblue"> -->
 
