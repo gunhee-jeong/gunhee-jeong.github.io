@@ -1,93 +1,102 @@
 ---
 layout: single
-title: "부족한 금액 계산하기"
+title: "slice와 splice의 차이점"
 # categories: Git
 categories:
-  - Programmers1
-tag: [JS코딩테스트] #tag는 여러개 가능함
+  - JavaScript # HTML CSS JavaScript Server Algorithm Wecodes Programmers CS Github Blog
+tag: [Array.prototype] #tag는 여러개 가능함
 toc: true #table of content 기능!
 toc_sticky: true
 author_profile: true #blog 글안에서는 author_profile이 따라다니지 않도록 설정함
-date: 2022-07-30T17:30:00+09:00
+date: 2022-05-16
+last_modified_at: 2022-08-06
 # sidebar:
 # nav: "docs" #네비게이션에 있는 docs를 의미함
 ---
-# 1. 문제
-(프로그래머스) : <https://school.programmers.co.kr/learn/courses/30/lessons/82612>  
-
-새로 생긴 놀이기구는 인기가 매우 많아 줄이 끊이질 않습니다.  
-이 놀이기구의 원래 이용료는 price원 인데,  
-놀이기구를 N 번 째 이용한다면 원래 이용료의 N배를 받기로 하였습니다.  
-즉, 처음 이용료가 100이었다면 2번째에는 200, 3번째에는 300으로 요금이 인상됩니다.  
-놀이기구를 count번 타게 되면  
-현재 자신이 가지고 있는 금액에서 얼마가 모자라는지를 return 하도록 solution 함수를 완성하세요.  
-단, 금액이 부족하지 않으면 0을 return 하세요.  
-
-## 제한사항
-놀이기구의 이용료 price : 1 ≤ price ≤ 2,500, price는 자연수  
-처음 가지고 있던 금액 money : 1 ≤ money ≤ 1,000,000,000, money는 자연수  
-놀이기구의 이용 횟수 count : 1 ≤ count ≤ 2,500, count는 자연수  
-
-# 2. 나의 풀이
-```js
-function solution(price, money, count) {
-    let acc = 0;
-    let total = 0;
-    
-    for (let i = 0; i < count; i++) {
-        acc += price; // 3, 6, 9, 12
-        total += acc;
-    }
-    return total - money;
-}
-```
-
-```js
-function solution(price, money, count) {
-  let counting = count; // 6
-  let cumPrice = price; // 1
-  
-  for (let i = 1; i <= count; i++) {
-    money -= cumPrice; // 9 7 4 0 -5 -11
-    cumPrice += price; // 2 3 4 5  6   7
-    if (i === count) return money > 0 ? 0 : -1 * money;
-  }
-}
-```
-
 <style>
 .red {
-  color: ivory;
-  background-color: red;
-}
-
-.tomato {
-  color: ivory;
-  background-color: tomato;
+  color: crimson;
 }
 
 .blue {
-  color: ivory;
-  background-color: blue;
+  color: mediumblue;
 }
 
-.royalblue {
-  color: ivory;
-  background-color: royalblue;
+.green {
+  color: forestgreen;
 }
 
-.forestgreen {
-  color: ivory;
-  background-color: forestgreen;
-}
-
-.darkorange {
-  color: ivory;
-  background-color: darkorange;
+.grey {
+  color: #696871;
 }
 </style>
 
-<!-- <span style="color:royalblue"> -->
+📌 글의 목적: slice와 splice 메서드의 차이점에 대해서 다른 사람들에게 정보를 제공하기 위해 작성한 글
+
+slice 메서드와 splice 메서드 모두, <span class="green">첫 번째 파라미터</span>는 <span class="blue">start로 잘라낼 인덱스의 시작점</span>을 의미한다.
+
+```jsx
+slice(begin, end);
+slice(start: 추출을 시작할 인덱스, end: 추출을 끝낼 인덱스);
+
+splice(start, deleteCount);
+splice(start: 자르기 시작할 인덱스, deleteCount: start부터 몇 개를 삭제할 것인지에 대한 값);
+```
+
+위의 코드와  같이 <span class="green">splice 메서드</span>의 <span class="blue">deleteCount</span> 파라미터는 <span class="red">start부터 n 개를 삭제하겠다는 값</span>을 의미한다. <span class="green">slice 메서드</span>의 <span class="blue">end</span> 파라미터는 지정된 인덱스를 포함하지 않고 지정한 <span class="red">end의 앞에서 추출을 끝낸다</span>.
+
+```jsx
+const numberList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+let sliceResult = numberList.slice(3, 4 + 1);
+
+let spliceResult = numArray.splice(3, 4);
+
+console.log(sliceResult); // [3, 4]
+console.log(spliceResult); // [3, 4, 5, 6]
+```
+
+<span class="green">slice 메서드</span>는 <span class="red">원본 배열을 변형시키지 않는다</span>.
+
+```jsx
+const array = [1, 2, 3, 4, 5];
+
+const result = array.slice(2, 5); //outcome = (3) [3, 4, 5]
+
+const result2 = array.slice(-2); //output == [4, 5]
+
+console.log(array); //outcome = (5) [1, 2, 3, 4, 5]
+```
+
+위의 코드와 같이 array의 값인 배열은 변형되지 않았다.
+
+slice 메서드와는 달리 <span class="green">splice</span>는 <span class="red">원본 배열을 변형</span>시킨다.
+
+```jsx
+const fruits = ["🍎", "🍌", "🍓", "🍑", "🍋"];
+
+console.log(fruits.splice(1, 1)); // [ '🍌' ]
+
+console.log(fruits); // ['🍎', '🍓', '🍑', '🍋']
+```
+
+위의 코드와 같이 원본 배열인 fruits를 살펴보면 🍌<span class="blue">가 삭제</span>되어 <span class="red">원본 배열이 변형</span>된 것을 볼 수 있다. 
+
+그리고 <span class="green">splice 메서드</span>는 원본 배열의 <span class="blue">value를 삭제하고 데이터를 새롭게 추가</span>할 수 있다.
+
+```jsx
+const fruits = ["🍎", "🍌", "🍓", "🍑", "🍋"];
+
+fruits.splice(1, 1, "🍏", "🍉");
+
+console.log(fruits); // ['🍎', '🍏', '🍉', '🍓', '🍑', '🍋']
+```
+
+위의 코드를 살펴보면, `splice(1, 1)`를 통해서 🍌<span class="green">를 삭제</span>하고, 그 이후에 🍏, 🍉은 <span class="blue">삭제한 value의 자리에 추가</span>된 것을 확인할 수 있다.
+
+💡 <span class="grey">MDN: [Array.prototype.splice()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)</span>
+
+💡 <span class="grey">MDN: [Array.prototype.slice()](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)</span>
 
 <!-- 메소드 위에 변수 선언, 메소드 안에 메소드, 메소드 끝나고 리턴 -->
 
