@@ -113,7 +113,7 @@ module.exports = {
 
 위의 설정을 마치면, 이제 @를 사용한 경로로 import가 정상적으로 진행되는 것을 확인할 수 있을 것이다. 그런데 이것과는 별개로 eslint에서는 에러를 나타내고 있다.
 
-<img src="https://user-images.githubusercontent.com/87808288/219870252-80c28418-8089-4543-bba6-e28701625da4.png" width="50%">
+<img src="https://user-images.githubusercontent.com/87808288/219870252-80c28418-8089-4543-bba6-e28701625da4.png" width="65%">
 
 eslint의 **import/no-unresolved** 규칙이 발생한 것이다. 이 규칙은 _경로가 정확한지_ 확인하고, _존재하는 모듈이 import 되었는지_ 확인한다.
 
@@ -139,7 +139,7 @@ eslint의 **import/no-unresolved** 규칙이 발생한 것이다. 이 규칙은 
 
 # 📌 테스트 코드 에러
 
-<img src="https://user-images.githubusercontent.com/87808288/219870260-41065399-1188-4832-8eba-d1550af1559e.png" width="60%">
+<img src="https://user-images.githubusercontent.com/87808288/219870260-41065399-1188-4832-8eba-d1550af1559e.png" width="80%">
 
 npm start를 통해 살펴보면 import가 정상적으로 잘 붙었지만, 위의 이미지와 같이 테스트 코드에서는 아주 좋아하고 있다(부끄러운지 잔뜩 빨갛다🥹).
 
